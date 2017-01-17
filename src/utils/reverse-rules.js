@@ -788,11 +788,11 @@ export const ottomanTurkish = {
 "K": "K",
 "k": "k",
 
-"l2": "",
+"l2": undefined,
 "L": "L",
 "l": "l",
 
-"l2": "",
+"l2": undefined,
 
 "M": "M",
 "m": "m",
@@ -1194,13 +1194,13 @@ export const ottomanTurkish = {
 "-5": "-+305;",
 "-4": "-i",
 "-3": "-",
-"-2": "",
+"-2": undefined,
 "-1": "-",
 "'2": "+703;",
 "'3": "+704;",
-"'4": "",
+"'4": undefined,
 "l2": "'",
-"'5": "",
+"'5": undefined,
 };
 export const ottomanLatin = {
     // digraphs 
@@ -1388,7 +1388,7 @@ export const ottomanLatin = {
 "k": "k",
 
 "L": "L",
-"l2": "",
+"l2": undefined,
 "l": "l",
 
 "M": "M",
@@ -1788,7 +1788,7 @@ export const ottomanLatin = {
 "-5": "-+305;",
 "-4": "-i",
 "-3": "-",
-"-2": "",
+"-2": undefined,
 "-1": "-",
 "'2": "+703;",
 "'3": "+704;",
@@ -1986,11 +1986,11 @@ export const ottomanCyrillic = {
 "K": "K",
 "k": "k",
 
-"l2": "",
+"l2": undefined,
 "L": "L",
 "l": "l",
 
-"l2": "",
+"l2": undefined,
 
 "M": "M",
 "m": "m",
@@ -2392,11 +2392,11 @@ export const ottomanCyrillic = {
 "-5": "-+305;",
 "-4": "-i",
 "-3": "-",
-"-2": "",
+"-2": undefined,
 "-1": "-",
 "'2": "+703;",
 "'3": "+704;",
-"'4": "",
+"'4": undefined,
 "l2": "'",
-"'5": "",
+"'5": undefined,
 };
