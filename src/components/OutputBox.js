@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import { ottomanArabic, ottomanTurkish, ottomanLatin, ottomanCyrillic } from '../utils/reverse-rules'
-class OutputBox extends Component {
+export default class OutputBox extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
             language: "ottomanTurkish", //default to Turkish
-            displayText: "Nothing to translate"
+            displayText: ''
         }
+        
+        this.onLanguageChange = this.onLanguageChange.bind(this);
     }
 
     translate(input) {
@@ -19,7 +21,7 @@ class OutputBox extends Component {
         if (language === "ottomanTurkish") {
             translationRules = ottomanTurkish;
         }
-        else if (language == "ottomanArabic") {
+        else if (language === "ottomanArabic") {
             translationRules = ottomanArabic;
         }
         else if (language === "ottomanLatin") {
@@ -35,16 +37,51 @@ class OutputBox extends Component {
         }
     }
 
-    onLanguageChange(language) {
-        if (language) {
-            this.state.language = language;
+    //TODO: remove after we use this to generate the objects
+    invert(obj) {
+
+        var new_obj = {};
+
+        for (var prop in obj) {
+            if (obj.hasOwnProperty(prop)) {
+
+                let value = obj[prop];
+                if (new_obj[value]) {
+                    //already has a key defined
+                    var array;
+                    if (Array.isArray(new_obj[value])) {
+                        //already an array, don't make a new one
+                        array = new_obj[value];
+                    } else {
+                        //simply a string, make new array with first element the string
+                        array = [new_obj[value]];
+                    } 
+                    array.push(prop); //add current value
+                    new_obj[value] = array;                   
+                } else {
+                    //brand new key
+                    new_obj[value] = prop;
+                }
+            }
+        }
+
+        return new_obj;
+    };
+
+    //TODO: bind to Component
+    onLanguageChange(newLanguage) {
+        if (newLanguage) {
+            this.setState({
+                language: newLanguage
+            })
         }
     }
 
     render() {
-
+        const outputText = this.state.displayText;
+        
         return (
-                <stuff></stuff>
+                <h2>{this.props.inputText}</h2>
         );
     }
 }

@@ -1,11 +1,33 @@
 import React, { Component } from 'react';
 
-class InputBox extends Component {
+export default class InputBox extends Component {
+    
+    constructor (props) {
+        super(props);
+        this.state = {
+            textContents: ''
+        }
+        this.updateInputValue = this.updateInputValue.bind(this);
+    }
 
+    updateInputValue(event) {
+        const text = event.target.value;
+
+        this.setState({
+            textContents: text
+        });
+
+        this.props.onInputTextChange(text);
+        console.log(text);
+    }
+    
     render() {
+        const { textContents } = this.state;
 
         return (
-                <stuff></stuff>
+            <div>
+                <input value={textContents} onChange={this.updateInputValue}/>
+            </div>
         );
     }
 }

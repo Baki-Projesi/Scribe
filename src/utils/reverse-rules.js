@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 // Exports four JSON objects in which each key: property
 // is in the format "rule": "output" for the following languages:
 // 1. OttomanCode: Arabic

@@ -1,4 +1,8 @@
 #node cache
-
 /node_modules/.cache/*
+
+#ds store
 .DS_Store
+
+#debug logs
+*.log
