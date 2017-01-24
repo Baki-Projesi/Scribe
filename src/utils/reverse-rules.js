@@ -1,9 +1,11 @@
+/* eslint-disable */
+
 // Exports four JSON objects in which each key: property
 // is in the format "rule": "output" for the following languages:
-// 1. Ottoman: Arabic
-// 2. Ottoman: Turkish
-// 3. Ottoman: Latin
-// 4. Ottoman: Cyrillic
+// 1. OttomanCode: Arabic
+// 2. OttomanCode: Turkish
+// 3. OttomanCode: Latin
+// 4. OttomanCode: Cyrillic
 
 // Exported object names are as follows:
 // ottomanArabic, ottomanTurkish, ottomanLatin, ottomanCyrillic

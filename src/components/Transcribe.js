@@ -1,22 +1,40 @@
 import React, { Component } from 'react';
 import LanguageTabBar from "./LanguageTabBar";
-
+import OutputBox from './OutputBox';
+import InputBox from './InputBox';
+import '../styles/Transcribe.css';
 
 export default class Transcribe extends Component {
-    constructor() {
-      super();
-      this.state = {
-        language:"Turkish",
-      };
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            language:"Turkish",
+            inputText: undefined
+        }
+
+        this.onInputTextChange = this.onInputTextChange.bind(this);
     }
+
+    onInputTextChange(text) {
+        this.setState({
+            inputText: text
+        });
+    }
+
     changeLang(lang) {
       this.setState({language: lang});
     }
+    
     render() {
+        const {inputText} = this.state;
 
         return (
-          <LanguageTabBar changeLang={this.changeLang.bind(this)} language={this.state.language}/>
-          {console.log(this.state)}
+            <div> 
+                <InputBox onInputTextChange={this.onInputTextChange}/>
+                <OutputBox inputText={inputText} />
+                <LanguageTabBar changeLang={this.changeLang.bind(this)} language={this.state.language}/>
+            </div>
         );
     }
 }

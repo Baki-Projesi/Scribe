@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import logo from '../assets/logo.svg';
+import Transcribe from './Transcribe.js';
 import '../styles/App.css';
 
 class App extends Component {
@@ -12,6 +13,7 @@ class App extends Component {
           <h2>Welcome to React </h2>
           <p className="App-intro"></p>
         </div>
+        <Transcribe/>
       </div>
     );
   }
