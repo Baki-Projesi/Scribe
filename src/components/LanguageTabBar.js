@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
+import LanguageTab from "./LanguageTab.js";
 
-class LanguageTabBar extends Component {
+export default class LanguageTabBar extends Component {
 
-    render() {
-
-        return (
-                <stuff></stuff>
-        );
-    }
+  render() {
+    return(
+      <div>
+        <LanguageTab onTabClick={this.props.changeLang} language="Turkish"/>
+        <LanguageTab onTabClick={this.props.changeLang} language="Ottoman Arabic"/>
+        <LanguageTab onTabClick={this.props.changeLang} language="Latin"/>
+        <LanguageTab onTabClick={this.props.changeLang} language="other"/>
+      </div>
+    );
+  }
 }
