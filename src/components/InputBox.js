@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import he from 'he';
 import '../styles/InputBox.css';
 
 export default class InputBox extends Component {
@@ -19,7 +20,7 @@ export default class InputBox extends Component {
         });
 
         this.props.onInputTextChange(text);
-        console.log(text);
+
     }
     
     render() {
