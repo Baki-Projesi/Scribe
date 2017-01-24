@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import '../styles/InputBox.css';
 
 export default class InputBox extends Component {
     

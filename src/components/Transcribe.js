@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import OutputBox from './OutputBox';
 import InputBox from './InputBox';
+import '../styles/Transcribe.css';
 
 export default class Transcribe extends Component {
 

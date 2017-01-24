@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { ottomanArabic, ottomanTurkish, ottomanLatin, ottomanCyrillic } from '../utils/reverse-rules'
+import '../styles/OutputBox.css';
+
 export default class OutputBox extends Component {
 
     constructor(props) {
@@ -70,6 +72,7 @@ export default class OutputBox extends Component {
 
     //TODO: bind to Component
     onLanguageChange(newLanguage) {
+
         if (newLanguage) {
             this.setState({
                 language: newLanguage
@@ -80,6 +83,9 @@ export default class OutputBox extends Component {
     render() {
         const outputText = this.state.displayText;
         
+        var ottomanLatinReverse = this.invert(ottomanLatin);
+        console.log(ottomanLatinReverse);
+
         return (
                 <h2>{this.props.inputText}</h2>
         );
