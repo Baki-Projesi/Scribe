@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { ottomanArabic, ottomanTurkish, ottomanLatin, ottomanCyrillic } from '../utils/reverse-rules'
+import { arabicCodes, turkishCodes, latinCodes, cyrillicCodes } from '../utils/rules'
 import '../styles/OutputBox.css';
 
 export default class OutputBox extends Component {
@@ -7,87 +8,67 @@ export default class OutputBox extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            language: "ottomanTurkish", //default to Turkish
-            displayText: ''
-        }
-        
-        this.onLanguageChange = this.onLanguageChange.bind(this);
-    }
-
-    translate(input) {
-        const language = this.state.language;
-        const inputText = input;
-        var outputText;
-        var translationRules;
-
-        if (language === "ottomanTurkish") {
-            translationRules = ottomanTurkish;
-        }
-        else if (language === "ottomanArabic") {
-            translationRules = ottomanArabic;
-        }
-        else if (language === "ottomanLatin") {
-            translationRules = ottomanLatin;
-        }
-        else if (language === "ottomanCyrillic") {
-            translationRules = ottomanCyrillic;
-        }
-        
-        for (var i = 0; i < inputText.length; ++i) {
-            let character = inputText.charAt(i);
-            
+            displayText: '',
+            inputSourceText: ''
         }
     }
 
-    //TODO: remove after we use this to generate the objects
-    invert(obj) {
+    translate(inputText) {
+        const language = this.props.language, 
+            newInput = inputText ? inputText.substring(this.state.inputSourceText.length) : '';
+        var outputText = this.state.displayText, codeToCharRules, charToCodeRules;
 
-        var new_obj = {};
+        if (language.toLowerCase() === "turkish") {
+            codeToCharRules = ottomanTurkish;
+            charToCodeRules = turkishCodes;
+        }
+        else if (language.toLowerCase() === "ottoman arabic") {
+            codeToCharRules = ottomanArabic;
+            charToCodeRules = arabicCodes;
+        }
+        else if (language.toLowerCase() === "latin") {
+            codeToCharRules = ottomanLatin;
+            charToCodeRules = latinCodes;
+        }
+        else if (language.toLowerCase() === "other") {
+            codeToCharRules = ottomanCyrillic;
+            charToCodeRules = cyrillicCodes;
+        }
 
-        for (var prop in obj) {
-            if (obj.hasOwnProperty(prop)) {
-
-                let value = obj[prop];
-                if (new_obj[value]) {
-                    //already has a key defined
-                    var array;
-                    if (Array.isArray(new_obj[value])) {
-                        //already an array, don't make a new one
-                        array = new_obj[value];
-                    } else {
-                        //simply a string, make new array with first element the string
-                        array = [new_obj[value]];
-                    } 
-                    array.push(prop); //add current value
-                    new_obj[value] = array;                   
-                } else {
-                    //brand new key
-                    new_obj[value] = prop;
+        for (let i = 0; i < newInput.length; ++i) {
+            var character = newInput.charAt(i);
+            var code = charToCodeRules[character];
+            if (code != undefined) {
+                if (Array.isArray(code)) {
+                    //TODO: find out which one to use
+                    code = code[0];
                 }
+                var translatedChar = codeToCharRules[code];
+                outputText += translatedChar;
             }
         }
+        return outputText;
+    }
 
-        return new_obj;
-    };
-
-    //TODO: bind to Component
-    onLanguageChange(newLanguage) {
-
-        if (newLanguage) {
+    componentWillReceiveProps(nextProps) {
+        console.log("component recieved props");
+        var currentDisplayText = this.state.displayText;
+        var newDisplayText = this.translate(nextProps.inputText);
+        console.log("translated text is", newDisplayText);
+        if (currentDisplayText != newDisplayText) {
             this.setState({
-                language: newLanguage
+                displayText: newDisplayText,
+                inputSourceText: nextProps.inputText
             })
         }
     }
 
+
     render() {
-        const outputText = this.state.displayText;
-        
-        var ottomanLatinReverse = this.invert(ottomanLatin);
-        console.log(ottomanLatinReverse);
+        const {outputText} = this.state;
 
         return (
-                <h2>{this.props.inputText}</h2>
+            <h2>{outputText}</h2>
         );
     }
 }
