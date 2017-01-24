@@ -14,8 +14,7 @@ export default class OutputBox extends Component {
         }
     }
 
-    translate(newInput) {
-        const language = this.props.language;
+    translate(newInput, language) {
         var outputText = '', codeToCharRules, charToCodeRules;
 
         if (language.toLowerCase() === "turkish") {
@@ -35,45 +34,43 @@ export default class OutputBox extends Component {
             var character = newInput.charAt(i);
             if (character === '&' && newInput.charAt(i + 1) === '#') {
                 let k = i;
-                while (newInput.charAt(k) != ';' && k - i < 6) {
+                while (newInput.charAt(k) !== ';' && k - i < 6) {
                     ++k;
                     character += newInput.charAt(k);
                 }
                 i = k;
             }
-            var code = turkishCodes[character]; //TODO: what is the input language?
-            if (code !== undefined) {
-                if (Array.isArray(code)) {
-                    //TODO: find out which one to use
-                    code = code[0];
+            if (character !== ' ') {
+                var code = turkishCodes[character]; //TODO: what is the input language?
+                if (code !== undefined) {
+                    if (Array.isArray(code)) {
+                        //TODO: find out which one to use
+                        code = code[0];
+                    }
+                    var translatedChar = codeToCharRules[code];
+
+                    if (translatedChar !== undefined) {
+                        outputText += translatedChar;
+
+                    }
                 }
-                var translatedChar = codeToCharRules[code];
-                outputText += translatedChar;
+            } else {
+                outputText += character;
             }
         }
         return outputText;
     }
 
-    parseHtmlEntities(str) {
-        return str.replace(/&#([0-9]{1,3});/gi, function (match, numStr) {
-            var num = parseInt(numStr, 10); // read num as normal number
-            return String.fromCharCode(num);
-        });
-    }
-
     componentWillReceiveProps(nextProps) {
-        var currentDisplayText = this.state.displayText;
-        var newDisplayText = nextProps.inputText ? he.decode(this.translate(nextProps.inputText), {decimal:true}) : '';
+        var newDisplayText = nextProps.inputText ? 
+            he.decode(this.translate(nextProps.inputText, nextProps.language), { decimal: true }) 
+            : '';
 
+        this.setState({
+            displayText: newDisplayText,
+            inputSourceText: nextProps.inputText
+        })
 
-        console.log("translated text is", newDisplayText);
-
-        if (currentDisplayText !== newDisplayText) {
-            this.setState({
-                displayText: newDisplayText,
-                inputSourceText: nextProps.inputText
-            })
-        }
     }
 
 
