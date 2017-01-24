@@ -9,10 +9,11 @@ export default class Transcribe extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            language:"Turkish",
+            language: "Turkish",
             inputText: undefined
         }
 
+        this.changeLang = this.changeLang.bind(this);
         this.onInputTextChange = this.onInputTextChange.bind(this);
     }
 
@@ -23,17 +24,19 @@ export default class Transcribe extends Component {
     }
 
     changeLang(lang) {
-      this.setState({language: lang});
+        this.setState({
+            language: lang
+        });
     }
-    
+
     render() {
         const {inputText} = this.state;
 
         return (
-            <div> 
-                <InputBox onInputTextChange={this.onInputTextChange}/>
+            <div>
+                <InputBox onInputTextChange={this.onInputTextChange} />
                 <OutputBox inputText={inputText} />
-                <LanguageTabBar changeLang={this.changeLang.bind(this)} language={this.state.language}/>
+                <LanguageTabBar changeLang={this.changeLang} language={this.state.language} />
             </div>
         );
     }
