@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import '../styles/LanguageTab.css';
 
 export default class LanguageTab extends Component {
     constructor() {

@@ -28,11 +28,11 @@ export default class Transcribe extends Component {
     }
 
     render() {
-        const {inputText} = this.state;
+        const {inputText, language} = this.state;
         return (
             <div>
                 <InputBox onInputTextChange={this.onInputTextChange} />
-                <OutputBox inputText={inputText} />
+                <OutputBox inputText={inputText} language={language}/>
                 <LanguageTabBar changeLang={this.changeLang} language={this.state.language} />
                 {console.log(this.state)}
             </div>
