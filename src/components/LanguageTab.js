@@ -5,15 +5,16 @@ export default class LanguageTab extends Component {
         super();
         this.handleClick = this.handleClick.bind(this);
     }
+
     handleClick() {
         this.props.onTabClick(
-            this.props.language);
+            this.props.language
+        );
     }
     render() {
         var language = this.props.language;
-
         return (
-            <button onClick={this.handleClick}>{language}</button>
+            <a className="button" onClick={this.handleClick}>{language}</a>
         );
     }
 }

@@ -5,7 +5,6 @@ import InputBox from './InputBox';
 import '../styles/Transcribe.css';
 
 export default class Transcribe extends Component {
-
     constructor(props) {
         super(props);
         this.state = {
