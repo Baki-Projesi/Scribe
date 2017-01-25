@@ -9,7 +9,7 @@ export default class LanguageTabBar extends Component {
         <LanguageTab onTabClick={this.props.changeLang} language="Turkish" />
         <LanguageTab onTabClick={this.props.changeLang} language="Ottoman Arabic" />
         <LanguageTab onTabClick={this.props.changeLang} language="Latin" />
-        <LanguageTab onTabClick={this.props.changeLang} language="other" />
+        <LanguageTab onTabClick={this.props.changeLang} language="Cyrillic" />
       </div>
     );
   }
