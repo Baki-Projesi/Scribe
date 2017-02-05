@@ -6,3 +6,6 @@
 
 #debug logs
 *.log
+
+#build files
+/build

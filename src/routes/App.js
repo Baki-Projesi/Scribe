@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import logo from '../assets/logo.svg';
-import Transcribe from './Transcribe.js';
+import Transcribe from '../components/Transcribe';
 import '../styles/App.css';
 
-class App extends Component {
+export default class App extends Component {
 
   render() {
     return (
@@ -18,5 +18,3 @@ class App extends Component {
     );
   }
 }
-
-export default App;
