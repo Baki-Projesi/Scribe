@@ -9,3 +9,6 @@
 
 #build files
 /build
+
+#vs code stuff
+.vscode
