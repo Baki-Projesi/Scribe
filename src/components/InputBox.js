@@ -1,6 +1,14 @@
 import React, { Component } from 'react';
 import '../styles/InputBox.css';
 
+
+/*
+The input area has the following properties:
+    -Holds a collection of Words
+    -
+
+*/
+
 export default class InputBox extends Component {
     
     constructor (props) {
