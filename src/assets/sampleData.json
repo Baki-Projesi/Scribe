@@ -1,33 +1,33 @@
 {
-    "sampleCollection1": {
-        "Name": "Divan",
-        "Location": {
-            "Library": "Suzzallo Library",
-            "Country": "USA",
-            "State": "Washington",
-            "City": "Seattle"
-        },
-        "Manuscripts": [
-            {
-                "Name": "Sample Manuscript 1",
-                "Author": {
-                    "Name/Identifier": "Baki" //name of the author?
-                },
-                "Date": "1671-04-23T18:25:43.511Z" //should this be more granular?
-            },
-            {
-                "Name": "Sample Manuscript 2",
-                "Author": {
-                    "Name/Identifier": "Baki"
-                },
-                "Date": "1684-04-23T18:25:43.511Z"
-            }
-        ]
-    },
     "samplePoem1": {
-        "Instance_ID": "1", //unique
-        "Content_ID": "1", //not unique, may be shared with other instances
-        "Manuscript_IDs": [],
+        "Identifier": "", //might be first line?
+        "Visibility": "public", //either 'private' or 'public'?
+        "Transcriber": "JohnSmith42",
+        "collectionInfo": {
+            "Name": "Divan",
+            "Location": {
+                "Library": "Suzzallo Library",
+                "Country": "USA",
+                "State": "Washington",
+                "City": "Seattle"
+            },
+            "Manuscripts": [
+                {
+                    "Name": "Sample Manuscript 1",
+                    "Author": {
+                        "Name/Identifier": "Baki" //name of the author?
+                    },
+                    "Date": "1671-04-23T18:25:43.511Z" //should this be more granular?
+                },
+                {
+                    "Name": "Sample Manuscript 2",
+                    "Author": {
+                        "Name/Identifier": "Baki"
+                    },
+                    "Date": "1684-04-23T18:25:43.511Z"
+                }
+            ]
+        },
         "Lines": [
             {
                 "Comment": {
@@ -79,7 +79,7 @@
                 ]
             },
             {
-                "Comment" :{},
+                "Comment": {},
                 "Words": [
                     {
                         "Latin_Text": "Nice",
@@ -122,9 +122,26 @@
         ]
     },
     "samplePoem2": {
-        "Instance ID": "2", //unique
-        "Content ID": "2", //not unique, may be shared with other instances
-        "Manuscript IDs": [],
+        "Identifier": "", //might be first line?
+        "Visibility": "public", //either 'private' or 'public'?
+        "collectionInfo": {
+            "Name": "Divan",
+            "Location": {
+                "Library": "Suzzallo Library",
+                "Country": "USA",
+                "State": "Washington",
+                "City": "Seattle"
+            },
+            "Manuscripts": [
+                {
+                    "Name": "Sample Manuscript 1",
+                    "Author": {
+                        "Name/Identifier": "Baki" //name of the author?
+                    },
+                    "Date": "1671-04-23T18:25:43.511Z" //should this be more granular?
+                }
+            ]
+        },
         "Lines": [
             {
                 "Comment": {
@@ -176,7 +193,7 @@
                 ]
             },
             {
-                "Comment" :{},
+                "Comment": {},
                 "Words": [
                     {
                         "Latin_Text": "Nice",
@@ -219,9 +236,26 @@
         ]
     },
     "samplePoem3": {
-        "Instance ID": "3", //unique
-        "Content ID": "2", //not unique, may be shared with other instances
-        "Manuscript IDs": [],
+        "Identifier": "", //might be first line?
+        "Visibility": "public", //either 'private' or 'public'?
+        "collectionInfo": {
+            "Name": "Divan",
+            "Location": {
+                "Library": "Suzzallo Library",
+                "Country": "USA",
+                "State": "Washington",
+                "City": "Seattle"
+            },
+            "Manuscripts": [
+                {
+                    "Name": "Sample Manuscript 2",
+                    "Author": {
+                        "Name/Identifier": "Baki"
+                    },
+                    "Date": "1684-04-23T18:25:43.511Z"
+                }
+            ]
+        },
         "Lines": [
             {
                 "Comment": {
@@ -273,7 +307,7 @@
                 ]
             },
             {
-                "Comment" :{},
+                "Comment": {},
                 "Words": [
                     {
                         "Latin_Text": "Nice",
@@ -352,6 +386,6 @@
         "Collection": "", //need to figure out an identifier
         "Manuscript": "", //see above
         "InputCodes": "Ni6ce0 ferya1da0 ve1re0 na1le0leru0m a2h san6a7 \\n Ni6ce0 '2arz4 i2de0yu0m h3a1lu0mi6 herga1h san6a7",
-        "TimeStamp":"2017-04-25T18:25:43.511Z" 
+        "TimeStamp": "2017-04-25T18:25:43.511Z"
     }
 }
