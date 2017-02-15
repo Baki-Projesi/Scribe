@@ -1,0 +1,136 @@
+{
+    "name": "Baki Divan",
+    "description": "This is the first project we have started...",
+    "userData": [
+        {
+            "username": "SarahKetchley123",
+            "poems": [
+                {
+                    "Name": "My favorite poem: number 42", //let the user choose
+                    "Published": false,
+                    "Visibility": "private", //public == searchable, restricted == only project participants, private == only me
+                    "metadata": {
+                        "Collection": {
+                            "Name": "The Great Baki Collection",
+                            "Location": {
+                                "Library": "Suzzallo Library",
+                                "Country": "USA",
+                                "State": "Washington",
+                                "City": "Seattle"
+                            }
+                        },
+                        "Manuscript": {
+                            "Name": "Sample Manuscript 1",
+                            "Author": "Baki",
+                            "Date": "1671-04-23T18:25:43.511Z" //should this be more granular?
+                        },
+                        "RelatedWorks": [ //These are poem IDs of similar poems that may show up in other manuscripts
+                            "A3c0gH4w2",
+                            "t5H0LYgQ12"
+                        ]
+                    },
+                    "Lines": [
+                        {
+                            "Comment": {
+                                "Author": "SallyJones",
+                                "Content": "So fun! I love comments.",
+                                "TimeStamp": "2017-05-23T18:25:43.511Z"
+                            },
+                            "Words": [
+                                {
+                                    "Latin_Text": "Nice",
+                                    "Arabic_Text": "نيجه‌",
+                                    "Coded_Text": "Ni6ce0 ",
+                                    "Comment": {}
+                                },
+                                {
+                                    "Latin_Text": "feryada",
+                                    "Arabic_Text": "فرياده‌",
+                                    "Coded_Text": "ferya1da0 ",
+                                    "Comment": {}
+                                },
+                                {
+                                    "Latin_Text": "vere",
+                                    "Arabic_Text": "ويره‌",
+                                    "Coded_Text": "ve1re0 ",
+                                    "Comment": {}
+                                },
+                                {
+                                    "Latin_Text": "nalelerüm",
+                                    "Arabic_Text": "ناله‌",
+                                    "Coded_Text": "na1le0leru0m ",
+                                    "Comment": {}
+                                },
+                                {
+                                    "Latin_Text": "ah",
+                                    "Arabic_Text": "لرم آه",
+                                    "Coded_Text": "a2h ",
+                                    "Comment": {
+                                        "Author": "JohnSmith42",
+                                        "Content": "difficult to read",
+                                        "TimeStamp": "2017-04-23T18:25:43.511Z"
+                                    }
+                                },
+                                {
+                                    "Latin_Text": "sana",
+                                    "Arabic_Text": "سكا",
+                                    "Coded_Text": "san6a7 ",
+                                    "Comment": {}
+                                }
+                            ]
+                        },
+                        {
+                            "Comment": {},
+                            "Words": [
+                                {
+                                    "Latin_Text": "Nice",
+                                    "Arabic_Text": "نيجه‌",
+                                    "Coded_Text": "Ni6ce0",
+                                    "Comment": {}
+                                },
+                                {
+                                    "Latin_Text": "ʿarz",
+                                    "Arabic_Text": "عرض",
+                                    "Coded_Text": "'2arz4",
+                                    "Comment": {}
+                                },
+                                {
+                                    "Latin_Text": "ideyüm",
+                                    "Arabic_Text": "ايده‌",
+                                    "Coded_Text": "i2de0yu0m",
+                                    "Comment": {}
+                                },
+                                {
+                                    "Latin_Text": "halümi",
+                                    "Arabic_Text": "يم",
+                                    "Coded_Text": "h3a1lu0mi6",
+                                    "Comment": {}
+                                },
+                                {
+                                    "Latin_Text": "hergah",
+                                    "Arabic_Text": "حالمى هركاه",
+                                    "Coded_Text": "herga1h",
+                                    "Comment": {}
+                                },
+                                {
+                                    "Latin_Text": "sana",
+                                    "Arabic_Text": "سكا",
+                                    "Coded_Text": "san6a7",
+                                    "Comment": {}
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "username": "WalterAndrews",
+            "poems": []
+        },
+        {
+            "username": "SelimLovesEkmek",
+            "poems": []
+        }
+    ]
+}
