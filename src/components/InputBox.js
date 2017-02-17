@@ -19,7 +19,7 @@ export default class InputBox extends Component {
         });
 
         this.props.onInputTextChange(text);
-        console.log(text);
+
     }
     
     render() {
@@ -27,7 +27,7 @@ export default class InputBox extends Component {
 
         return (
             <div>
-                <input value={textContents} onChange={this.updateInputValue}/>
+                <textarea value={textContents} onChange={this.updateInputValue}/>
             </div>
         );
     }
