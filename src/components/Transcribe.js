@@ -5,6 +5,7 @@ import InputBox from './InputBox';
 import '../styles/Transcribe.css';
 
 export default class Transcribe extends Component {
+
     constructor(props) {
         super(props);
         this.state = {
@@ -28,11 +29,11 @@ export default class Transcribe extends Component {
     }
 
     render() {
-        const {inputText, language} = this.state;
+        const {inputText} = this.state;
         return (
             <div>
                 <InputBox onInputTextChange={this.onInputTextChange} />
-                <OutputBox inputText={inputText} language={language}/>
+                <OutputBox inputText={inputText} />
                 <LanguageTabBar changeLang={this.changeLang} language={this.state.language} />
                 {console.log(this.state)}
             </div>
