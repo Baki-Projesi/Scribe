@@ -15,6 +15,10 @@ import '../styles/InputBox.css';
 
 /*
     The input area contains a rich text editor that allows the typist to add comment entities to any part of the text
+    Milestone TODOs:
+    - Handle pasted text -> see https://github.com/facebook/draft-js/issues/416#issuecomment-221639163
+    - Handle input choice dropdowns using live decorators 
+    - Handle comments using current selection triggering an inline popup -> For inspiration --> https://www.draft-js-plugins.com/plugin/inline-toolbar
 */
 
 export default class InputBox extends Component {
