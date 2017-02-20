@@ -16,8 +16,7 @@ export default class Word extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            active: false, //The user is actively working on this word
-            hover: false, 
+            hover: false, //TODO: change to CSS hover?
             latinText: "",
             arabicText: "",
             codedText: "",
@@ -57,12 +56,12 @@ export default class Word extends Component {
     }
 
     render() {
-        const {active, hover, latinText, arabicText, codedtext, comment} = this.state;
+        const {hover, latinText, arabicText, codedtext, comment} = this.state;
 
         var wordClass = classNames({
             'word': true,
-            'word-highlighted': comment !== undefined && comment !== null && comment !== '',
-            'word-mouseOver': hover
+            'word-active': this.props.active,
+            'word-highlighted': comment !== undefined && comment !== null && comment !== ''
         });
 
         var displayText = codedtext;
