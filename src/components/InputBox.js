@@ -17,29 +17,6 @@ import '../styles/InputBox.css';
     The input area contains a rich text editor that allows the typist to add comment entities to any part of the text
 */
 
-class Comment extends Component {
-    constructor(props) {
-        super(props);
-    }
-
-    render() {
-        const styles = {
-            comment: {
-                color: '#3b5998',
-                textDecoration: 'underline'
-            }
-        }
-        const {commentText} = this.props.contentState.getEntity(this.props.entityKey).getData();
-        return (
-            //TODO: show comment popup text on click
-            <span title={commentText} style={styles.comment}>
-                {this.props.children}
-            </span>
-        );
-    }
-
-}
-
 export default class InputBox extends Component {
 
     constructor(props) {
@@ -187,11 +164,10 @@ export default class InputBox extends Component {
         //TODO: move to hovering tooltip near cursor
         if (this.state.showCommentInput) {
             commentInput =
-                <div style={styles.commentInputContainer}>
+                <div>
                     <input
                         onChange={this.onCommentChange}
                         ref="comment"
-                        style={styles.commentInput}
                         type="text"
                         value={this.state.commentContent}
                         onKeyDown={this.onCommentInputKeyDown}
@@ -203,12 +179,12 @@ export default class InputBox extends Component {
         }
 
         return (
-            <div style={styles.root}>
+            <div>
                 <div style={{ marginBottom: 10 }}>
                     Select some text, then use the buttons to add or remove comments
                 on the selected text.
               </div>
-                <div style={styles.buttons}>
+                <div>
                     <button
                         onMouseDown={this.promptForComment}
                         style={{ marginRight: 10 }}>
@@ -238,4 +214,28 @@ export default class InputBox extends Component {
             </div>
         );
     }
+}
+
+
+class Comment extends Component {
+    constructor(props) {
+        super(props);
+    }
+
+    render() {
+        const styles = {
+            comment: {
+                color: '#3b5998',
+                textDecoration: 'underline'
+            }
+        }
+        const {commentText} = this.props.contentState.getEntity(this.props.entityKey).getData();
+        return (
+            //TODO: show comment popup text on click
+            <span title={commentText} style={styles.comment}>
+                {this.props.children}
+            </span>
+        );
+    }
+
 }
