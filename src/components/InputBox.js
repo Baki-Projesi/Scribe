@@ -29,8 +29,12 @@ export default class InputBox extends Component {
         const decorator = new CompositeDecorator([
             {
                 strategy: this.findCommentEntities,
-                component: Comment,
+                component: Comment
             },
+            {
+                strategy: this.findDisambiguatedCharacterEntities,
+                component: DisambiguatedCharacter
+            }
         ])
 
         this.state = {
@@ -78,7 +82,7 @@ export default class InputBox extends Component {
     //TODO: move comment prompt into a floating tooltip
     _promptForComment(e) {
         e.preventDefault();
-        const {editorState} = this.state;
+        const { editorState } = this.state;
         const selection = editorState.getSelection();
         if (!selection.isCollapsed()) {
             const contentState = editorState.getCurrentContent();
@@ -104,7 +108,7 @@ export default class InputBox extends Component {
 
     _confirmComment(e) {
         e.preventDefault();
-        const {editorState, commentContent} = this.state;
+        const { editorState, commentContent } = this.state;
         const contentState = editorState.getCurrentContent();
         const contentStateWithEntity = contentState.createEntity(
             'COMMENT',
@@ -137,7 +141,7 @@ export default class InputBox extends Component {
     //Removes comment from selection
     _removeComment(e) {
         e.preventDefault();
-        const {editorState} = this.state;
+        const { editorState } = this.state;
         const selection = editorState.getSelection();
 
         if (!selection.isCollapsed()) {
@@ -159,6 +163,19 @@ export default class InputBox extends Component {
             },
             callback
         );
+    }
+
+    //Searches though a block of content and finds DISAMBIGUATED entities
+    findDisambiguatedCharacterEntities(contentBlock, callback, contentState) {
+        contentBlock.findEntityRanges(
+            (character) => {
+                const entityKey = character.getEntity();
+                return (
+                    entityKey !== null &&
+                    contentState.getEntity(entityKey).getType === 'DISAMBIGUATED'
+                )
+            }
+        )
     }
 
 
@@ -233,7 +250,7 @@ class Comment extends Component {
                 textDecoration: 'underline'
             }
         }
-        const {commentText} = this.props.contentState.getEntity(this.props.entityKey).getData();
+        const { commentText } = this.props.contentState.getEntity(this.props.entityKey).getData();
         return (
             //TODO: show comment popup text on click
             <span title={commentText} style={styles.comment}>
@@ -242,4 +259,23 @@ class Comment extends Component {
         );
     }
 
+}
+
+class DisambiguatedCharacter extends Component {
+    constructor(props) {
+        super(props);
+    }
+
+    render() {
+        const styles = {
+            disambiguatedcharacter: {
+                color: 'red'
+            }
+        }
+        return (
+            <span style={styles.disambiguatedcharacter}>
+                {this.props.children}
+            </span>
+        )
+    }
 }
