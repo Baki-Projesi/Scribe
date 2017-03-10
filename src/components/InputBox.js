@@ -31,15 +31,21 @@ export default class InputBox extends Component {
     constructor(props) {
         super(props);
 
-        const ambiguousCharProps = {
-            callback: function () {
-                console.log("ambiguous character called back");
-            }
-        }, commentProps = {
+        const commentProps = {
             callback: function (commentText) {
                 console.log("comment called back with text: " + commentText);
             }
-        }
+        },
+            disambiguatedCharProps = {
+                callback: function () {
+                    console.log("disambiguated character called back");
+                }
+            },
+            ambiguousCharProps = {
+                callback: function () {
+                    console.log("ambiguous character called back");
+                }
+            }
 
 
         const decorator = new CompositeDecorator([
@@ -71,25 +77,37 @@ export default class InputBox extends Component {
         this.focus = () => this.refs.editor.focus();
         this.onChange = (editorState) => {
 
-            const selection = editorState.getSelection();
-            if (!selection.isCollapsed()) {
-                this._promptForComment();
+
+            /*TODO:
+                if cursor is within a disambiguated character entity, display ambiguous dropdown for re-selection (with current selection highlighted)
+                else if cursor is within an ambiguous character/word, display ambiguous dropdown (with default selection highlighted)
+                else if if current selection is within a comment entity, display empty comment popup 
+                else if current selection is within a comment entity,  display comment popup with the comment text inside
+            */
+
+            const newState = { editorState: editorState };
+            const contentState = editorState.getCurrentContent();
+            const currentSelection = editorState.getSelection();
+            const startKey = currentSelection.getStartKey();
+            const startOffset = currentSelection.getStartOffset();
+            const endOffset = currentSelection.getEndOffset();
+            const currentBlock = contentState.getBlockForKey(startKey);
+            //const entityKey = currentBlock.getEntityAt(startOffset);
+
+            if (currentSelection.isCollapsed()) {
+                // Selection is just the cursor, no characters highlighted
+                if (startOffset > 0) {
+                    const entity = currentBlock.getEntityAt(startOffset - 1);
+                    if (entity) {
+                        console.log('entity found: ', entity);
+                    }
+                }
             } else {
-                const currentBlockKey = selection.getStartKey();
-                const currentBlockIndex = selection.getBlockMap()
-                    .keySeq().findIndex(k => k === currentBlockKey);
-                /*TODO:
-                    if current selection is within a comment entity,  display comment popup with the comment text inside
-                    else if current seleciton is within a disambiguated character entity, display ambiguous dropdown for re-selection (with current selection highlighted)
-                    else if current selection is within an ambiguous character/word, display ambiguous dropdown (with default selection highlighted)
-                */
+                // At least one character highlighted
+                this._promptForComment();
             }
 
-
-            this.setState({
-                editorState: editorState,
-                showCommentInput: !selection.isCollapsed()
-            });
+            this.setState(newState);
         }
 
         this.onCommentChange = (e) => this.setState({ commentContent: e.target.value });
@@ -151,6 +169,7 @@ export default class InputBox extends Component {
         console.log(position);
 
         this.setState({
+            showCommentInput: true,
             commentPopupPosition: position,
             commentContent: commentText,
         }, () => {
@@ -165,7 +184,7 @@ export default class InputBox extends Component {
         const contentState = editorState.getCurrentContent();
         const contentStateWithEntity = contentState.createEntity(
             'COMMENT',
-            'MUTABLE',
+            'IMMUTABLE',
             { comment: commentContent }
         );
         const entityKey = contentStateWithEntity.getLastCreatedEntityKey();
