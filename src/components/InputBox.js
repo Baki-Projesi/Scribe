@@ -7,10 +7,15 @@ import {
     convertToRaw,
     contentState,
     getDefaultKeyBinding,
+    getVisibleSelectionRect,
     hasCommandModifier,
     KeyBindingUtil
 } from 'draft-js';
 import '../styles/InputBox.css';
+import '../styles/CommentPopup.css';
+import decorateComponentWithProps from 'decorate-component-with-props';
+import findWithRegex from '../utils/findWithRegex';
+import getRelativeParentElement from '../utils/getRelativeParentElement';
 
 
 /*
@@ -26,16 +31,31 @@ export default class InputBox extends Component {
     constructor(props) {
         super(props);
 
+        const ambiguousCharProps = {
+            callback: function () {
+                console.log("ambiguous character called back");
+            }
+        }, commentProps = {
+            callback: function (commentText) {
+                console.log("comment called back with text: " + commentText);
+            }
+        }
+
+
         const decorator = new CompositeDecorator([
             {
                 strategy: this.findCommentEntities,
-                component: Comment
+                component: decorateComponentWithProps(Comment, commentProps)
             },
             {
                 strategy: this.findDisambiguatedCharacterEntities,
                 component: DisambiguatedCharacter
+            },
+            {
+                strategy: this.findAmbiguousCharacters,
+                component: decorateComponentWithProps(AmbiguousCharacter, ambiguousCharProps)
             }
-        ])
+        ]);
 
         this.state = {
             editorState: EditorState.createEmpty(decorator),
@@ -49,7 +69,29 @@ export default class InputBox extends Component {
         };
 
         this.focus = () => this.refs.editor.focus();
-        this.onChange = (editorState) => this.setState({ editorState });
+        this.onChange = (editorState) => {
+
+            const selection = editorState.getSelection();
+            if (!selection.isCollapsed()) {
+                this._promptForComment();
+            } else {
+                const currentBlockKey = selection.getStartKey();
+                const currentBlockIndex = selection.getBlockMap()
+                    .keySeq().findIndex(k => k === currentBlockKey);
+                /*TODO:
+                    if current selection is within a comment entity,  display comment popup with the comment text inside
+                    else if current seleciton is within a disambiguated character entity, display ambiguous dropdown for re-selection (with current selection highlighted)
+                    else if current selection is within an ambiguous character/word, display ambiguous dropdown (with default selection highlighted)
+                */
+            }
+
+
+            this.setState({
+                editorState: editorState,
+                showCommentInput: !selection.isCollapsed()
+            });
+        }
+
         this.onCommentChange = (e) => this.setState({ commentContent: e.target.value });
 
         this.promptForComment = this._promptForComment.bind(this);
@@ -80,30 +122,41 @@ export default class InputBox extends Component {
     }
 
     //TODO: move comment prompt into a floating tooltip
-    _promptForComment(e) {
-        e.preventDefault();
+    _promptForComment() {
         const { editorState } = this.state;
-        const selection = editorState.getSelection();
-        if (!selection.isCollapsed()) {
-            const contentState = editorState.getCurrentContent();
-            const startKey = editorState.getSelection().getStartKey();
-            const startOffset = editorState.getSelection().getStartOffset();
-            const blockWithCommentAtBeginning = contentState.getBlockForKey(startKey);
-            const commentKey = blockWithCommentAtBeginning.getEntityAt(startOffset);
 
-            let commentText = '';
-            if (commentKey) {
-                const commentInstance = contentState.getEntity(commentKey);
-                commentText = commentInstance.getData().commentText;
-            }
+        const contentState = editorState.getCurrentContent();
+        const startKey = editorState.getSelection().getStartKey();
+        const startOffset = editorState.getSelection().getStartOffset();
+        const blockWithCommentAtBeginning = contentState.getBlockForKey(startKey);
+        const commentKey = blockWithCommentAtBeginning.getEntityAt(startOffset);
 
-            this.setState({
-                showCommentInput: true,
-                commentContent: commentText,
-            }, () => {
-                setTimeout(() => this.refs.comment.focus(), 0);
-            });
+        let commentText = '';
+        if (commentKey) {
+            const commentInstance = contentState.getEntity(commentKey);
+            commentText = commentInstance.getData().commentText;
         }
+
+        let commentPopupHeight = 44, position, relativeParent;
+        // const relativeParent = getRelativeParentElement(this.toolbar.parentElement);
+        const relativeRect = relativeParent ? relativeParent.getBoundingClientRect() : document.body.getBoundingClientRect();
+        const selectionRect = getVisibleSelectionRect(window);
+        position = {
+            top: (selectionRect.top - relativeRect.top) - commentPopupHeight,
+            left: (selectionRect.left - relativeRect.left) + (selectionRect.width / 2),
+            //transform: 'translate(-50%) scale(1)',
+            transition: 'transform 0.15s cubic-bezier(.3,1.2,.2,1)',
+        };
+
+        console.log(position);
+
+        this.setState({
+            commentPopupPosition: position,
+            commentContent: commentText,
+        }, () => {
+            //setTimeout(() => this.refs.comment.focus(), 0);
+        });
+
     }
 
     _confirmComment(e) {
@@ -173,9 +226,16 @@ export default class InputBox extends Component {
                 return (
                     entityKey !== null &&
                     contentState.getEntity(entityKey).getType === 'DISAMBIGUATED'
-                )
-            }
-        )
+                );
+            },
+            callback
+        );
+    }
+
+    findAmbiguousCharacters(contentBlock, callback, contentState) {
+        //for testing, only use the letter 'a'
+        const REGEX = /[a]/g;
+        findWithRegex(REGEX, contentBlock, callback);
     }
 
 
@@ -185,7 +245,7 @@ export default class InputBox extends Component {
         //TODO: move to hovering tooltip near cursor
         if (this.state.showCommentInput) {
             commentInput =
-                <div>
+                <div style={this.state.commentPopupPosition}>
                     <input
                         onChange={this.onCommentChange}
                         ref="comment"
@@ -195,22 +255,13 @@ export default class InputBox extends Component {
                     />
                     <button onMouseDown={this.confirmComment}>
                         Confirm
-                </button>
+                    </button>
                 </div>;
         }
 
         return (
             <div>
-                <div style={{ marginBottom: 10 }}>
-                    Select some text, then use the buttons to add or remove comments
-                on the selected text.
-              </div>
                 <div>
-                    <button
-                        onMouseDown={this.promptForComment}
-                        style={{ marginRight: 10 }}>
-                        Add Comment
-                </button>
                     <button onMouseDown={this.removeComment}>
                         Remove Comment
                 </button>
@@ -222,7 +273,6 @@ export default class InputBox extends Component {
                         onChange={this.onChange}
                         handleKeyCommand={this.handleKeyCommand.bind(this)}
                         keyBindingFn={this.keyBindingFn}
-                        placeholder="Enter some text..."
                         ref="editor"
                     />
                 </div>
@@ -253,7 +303,7 @@ class Comment extends Component {
         const { commentText } = this.props.contentState.getEntity(this.props.entityKey).getData();
         return (
             //TODO: show comment popup text on click
-            <span title={commentText} style={styles.comment}>
+            <span title={commentText} style={styles.comment} onClick={this.props.callback(commentText)}>
                 {this.props.children}
             </span>
         );
@@ -274,6 +324,27 @@ class DisambiguatedCharacter extends Component {
         }
         return (
             <span style={styles.disambiguatedcharacter}>
+                {this.props.children}
+            </span>
+        )
+    }
+}
+
+class AmbiguousCharacter extends Component {
+    constructor(props) {
+        super(props);
+    }
+
+    render() {
+
+        const styles = {
+            char: {
+                color: 'green'
+            }
+        }
+
+        return (
+            <span style={styles.char} onClick={this.props.callback}>
                 {this.props.children}
             </span>
         )
