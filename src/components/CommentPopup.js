@@ -13,41 +13,19 @@ We expect the following props:
 
 export default class CommentPopup extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            text: ""
-        }
-
-        this.handleSave = this.handleSave.bind(this);
-        this.handleDiscard = this.handleDiscard.bind(this);
-    }
-
-    handleSave() {
-        if (this.state.text) {
-            this.props.saveComment(this.state.text);
-        }
-    }
-
-    handleDiscard() {
-        if (this.state.text) {
-            this.setState({
-                text: ""
-            })
-        }
-
-        this.props.discardComment();
-    }
-
     render() {
-        const {} = this.state;
-        var negativeText = this.props.previouslySaved ? "Delete" : "Cancel";
-
         return (
-            <div>
-                <input type="text"> </input>
-                <button onClick={this.handleDiscard} >{negativeText}</button>
-                <button onClick={this.handleSave} >Save</button>
+            <div style={this.props.position}>
+                <input
+                    onChange={this.props.onCommentChange}
+                    ref={"comment"}
+                    type="text"
+                    value={this.props.value}
+                    onKeyDown={this.props.onCommentInputKeyDown}
+                />
+                <button onMouseDown={this.props.confirmComment}>
+                    Confirm
+                    </button>
             </div>
         );
     }

@@ -9,13 +9,17 @@ import {
     getDefaultKeyBinding,
     getVisibleSelectionRect,
     hasCommandModifier,
-    KeyBindingUtil
+    KeyBindingUtil,
+    SelectionState,
+    Modifier
 } from 'draft-js';
 import '../styles/InputBox.css';
 import '../styles/CommentPopup.css';
 import decorateComponentWithProps from 'decorate-component-with-props';
 import findWithRegex from '../utils/findWithRegex';
 import getRelativeParentElement from '../utils/getRelativeParentElement';
+import CommentPopup from './CommentPopup';
+import Dropdown from './DropDown';
 
 
 /*
@@ -25,6 +29,11 @@ import getRelativeParentElement from '../utils/getRelativeParentElement';
     - Handle input choice dropdowns using live decorators 
     - Handle comments using current selection triggering an inline popup -> For inspiration --> https://www.draft-js-plugins.com/plugin/inline-toolbar
 */
+
+
+const charRules = {
+    "a": ["a", "A", "ǎ"]
+}
 
 export default class InputBox extends Component {
 
@@ -86,25 +95,32 @@ export default class InputBox extends Component {
             */
 
             const newState = { editorState: editorState };
-            const contentState = editorState.getCurrentContent();
-            const currentSelection = editorState.getSelection();
-            const startKey = currentSelection.getStartKey();
-            const startOffset = currentSelection.getStartOffset();
-            const endOffset = currentSelection.getEndOffset();
-            const currentBlock = contentState.getBlockForKey(startKey);
-            //const entityKey = currentBlock.getEntityAt(startOffset);
 
-            if (currentSelection.isCollapsed()) {
+            const contentState = editorState.getCurrentContent();
+            const oldSelectionState = editorState.getSelection();
+            const startKey = oldSelectionState.getStartKey();
+            const startOffset = oldSelectionState.getStartOffset();
+            const endOffset = oldSelectionState.getEndOffset();
+            const currentBlock = contentState.getBlockForKey(startKey);
+
+            const current = {
+                editorState: editorState,
+                contentState: contentState,
+                oldSelectionState: oldSelectionState,
+                startKey: startKey,
+                startOffset: startOffset,
+                endOffset: endOffset,
+                currentBlock: currentBlock
+            }
+
+            if (oldSelectionState.isCollapsed()) {
                 // Selection is just the cursor, no characters highlighted
-                if (startOffset > 0) {
-                    const entity = currentBlock.getEntityAt(startOffset - 1);
-                    if (entity) {
-                        console.log('entity found: ', entity);
-                    }
-                }
+                this._promptForDisambiguation(current);
+                newState.showCommentPopup = false;
             } else {
                 // At least one character highlighted
-                this._promptForComment();
+                this._promptForComment(current);
+                newState.showDropdown = false;
             }
 
             this.setState(newState);
@@ -120,9 +136,29 @@ export default class InputBox extends Component {
     }
 
     _keyBindingFn(e) {
-        if (e.keyCode === 83 /* `S` key */ && KeyBindingUtil.hasCommandModifier(e)) {
+        if (e.which === 83 /* `S` key */ && KeyBindingUtil.hasCommandModifier(e)) {
             console.log('ctrl/cmd-S pressed');
             return 'editor-save';
+        }
+
+        //TODO: move key handing to dropdown component?
+        if (this.state.showDropdown) {
+            if (e.which === 49 || e.which === 97) {
+                return 'dropdown-1';
+            }
+            else if (e.which === 50 || e.which === 98) {
+                return 'dropdown-2';
+            }
+            else if (e.which === 51 || e.which === 99) {
+                return 'dropdown-3';
+            }
+            else if (e.which === 52 || e.which === 100) {
+                return 'dropdown-4';
+            }
+            else if (e.which === 53 || e.which === 101) {
+                return 'dropdown-5';
+            }
+
         }
         return getDefaultKeyBinding(e);
     }
@@ -135,24 +171,28 @@ export default class InputBox extends Component {
             console.log('API save draft called');
             return 'handled';
         }
+        if (command.startsWith('dropdown')) {
+            console.log(command);
+
+            if (this.state.disambiguationOptions) {
+                let choice = Number(command.charAt(command.length - 1));
+                this._confirmDisambiguation(choice - 1);
+            }
+
+            return 'handled';
+        }
 
         return 'not-handled';
     }
 
     //TODO: move comment prompt into a floating tooltip
-    _promptForComment() {
-        const { editorState } = this.state;
-
-        const contentState = editorState.getCurrentContent();
-        const startKey = editorState.getSelection().getStartKey();
-        const startOffset = editorState.getSelection().getStartOffset();
-        const blockWithCommentAtBeginning = contentState.getBlockForKey(startKey);
-        const commentKey = blockWithCommentAtBeginning.getEntityAt(startOffset);
+    _promptForComment(current) {
+        const blockWithCommentAtBeginning = current.contentState.getBlockForKey(current.startKey);
+        const commentKey = blockWithCommentAtBeginning.getEntityAt(current.startOffset);
 
         let commentText = '';
         if (commentKey) {
-            const commentInstance = contentState.getEntity(commentKey);
-            commentText = commentInstance.getData().commentText;
+            commentText = current.contentState.getEntity(commentKey).getData().commentText;
         }
 
         let commentPopupHeight = 44, position, relativeParent;
@@ -173,6 +213,8 @@ export default class InputBox extends Component {
             commentPopupPosition: position,
             commentContent: commentText,
         }, () => {
+            //uncomment below for automatic focus to the comment input 
+
             //setTimeout(() => this.refs.comment.focus(), 0);
         });
 
@@ -203,6 +245,7 @@ export default class InputBox extends Component {
         });
     }
 
+
     //Pressing enter saves the comment
     _onCommentInputKeyDown(e) {
         if (e.which === 13) {
@@ -221,6 +264,70 @@ export default class InputBox extends Component {
                 editorState: RichUtils.toggleLink(editorState, selection, null),
             });
         }
+    }
+
+
+    //TODO: move into dropdown positioned under cursor
+    _promptForDisambiguation(current) {
+        let showDropdown = false, disambiguationOptions;
+        if (current.startOffset > 0) {
+            const previousChar = current.currentBlock.getText().charAt(current.startOffset - 1);
+            const previousEntity = current.currentBlock.getEntityAt(current.startOffset - 1);
+            if (previousEntity === null || previousEntity.type !== 'DISAMBIGUATION') {
+                //previous character isn't a disambiguated character entity
+                if (charRules[previousChar] !== undefined) {
+                    console.log('rule found ', charRules[previousChar]);
+
+                    showDropdown = true;
+                    disambiguationOptions = charRules[previousChar]
+                }
+            }
+        }
+
+        this.setState({
+            showDropdown: showDropdown,
+            disambiguationOptions: disambiguationOptions
+        })
+    }
+
+    _confirmDisambiguation(choiceIndex) {
+        const displayChar = this.state.disambiguationOptions[choiceIndex];
+        const { editorState, commentContent } = this.state;
+        const contentState = editorState.getCurrentContent();
+        const contentStateWithEntity = contentState.createEntity(
+            'DISAMBIGUATION',
+            'IMMUTABLE',
+            {
+                typedCharacter: 'a',
+                charCode: 'a1',
+                displayCharacter: displayChar
+            }
+        );
+
+        const oldSelectionState = editorState.getSelection();
+        const newSelectionState = oldSelectionState.merge({
+            anchorOffset: (oldSelectionState.getAnchorOffset() - 1),
+        })
+
+        const entityKey = contentStateWithEntity.getLastCreatedEntityKey();
+        Modifier.replaceText(contentStateWithEntity, newSelectionState, displayChar, null, entityKey);
+        Modifier.applyEntity(
+            contentStateWithEntity,
+            newSelectionState,
+            entityKey
+        );
+        const newEditorState = EditorState.set(editorState, { currentContent: contentStateWithEntity });
+
+        //TESTING
+        const content = newEditorState.getCurrentContent();
+        console.log(convertToRaw(content));
+
+
+        this.setState({
+            editorState: newEditorState,
+            showDropdown: false,
+            disambiguationOptions: undefined
+        })
     }
 
     //Searches through a block of content (newLine separated) and finds embedded COMMENT entities 
@@ -253,29 +360,30 @@ export default class InputBox extends Component {
 
     findAmbiguousCharacters(contentBlock, callback, contentState) {
         //for testing, only use the letter 'a'
+
+        //TODO: use decorator to find ambiguous letters that don't have metadata
         const REGEX = /[a]/g;
         findWithRegex(REGEX, contentBlock, callback);
     }
 
 
     render() {
-        let commentInput;
+        let commentInput, dropdown;
 
         //TODO: move to hovering tooltip near cursor
         if (this.state.showCommentInput) {
-            commentInput =
-                <div style={this.state.commentPopupPosition}>
-                    <input
-                        onChange={this.onCommentChange}
-                        ref="comment"
-                        type="text"
-                        value={this.state.commentContent}
-                        onKeyDown={this.onCommentInputKeyDown}
-                    />
-                    <button onMouseDown={this.confirmComment}>
-                        Confirm
-                    </button>
-                </div>;
+            commentInput = <CommentPopup
+                onCommentChange={this.onCommentChange}
+                value={this.state.commentContent}
+                onCommentInputKeyDown={this.onCommentInputKeyDown}
+                confirmComment={this.confirmComment}
+            />
+        }
+
+        if (this.state.showDropdown) {
+            dropdown = <Dropdown
+                options={this.state.disambiguationOptions}
+            />
         }
 
         return (
@@ -286,6 +394,7 @@ export default class InputBox extends Component {
                 </button>
                 </div>
                 {commentInput}
+                {dropdown}
                 <div className={'editor'} onClick={this.focus}>
                     <Editor
                         editorState={this.state.editorState}
@@ -319,7 +428,7 @@ class Comment extends Component {
                 textDecoration: 'underline'
             }
         }
-        const { commentText } = this.props.contentState.getEntity(this.props.entityKey).getData();
+        const commentText = this.props.contentState.getEntity(this.props.entityKey).getData().comment;
         return (
             //TODO: show comment popup text on click
             <span title={commentText} style={styles.comment} onClick={this.props.callback(commentText)}>
