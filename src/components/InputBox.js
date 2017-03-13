@@ -135,6 +135,7 @@ export default class InputBox extends Component {
         this.keyBindingFn = this._keyBindingFn.bind(this);
     }
 
+    //captures global key events, results of this function (a special command string) are passed to handleKeyCommand() before the window interprets them
     _keyBindingFn(e) {
         if (e.which === 83 /* `S` key */ && KeyBindingUtil.hasCommandModifier(e)) {
             console.log('ctrl/cmd-S pressed');
@@ -163,6 +164,7 @@ export default class InputBox extends Component {
         return getDefaultKeyBinding(e);
     }
 
+    //This is passed a value from _keyBindingFn, either a special string or the default
     handleKeyCommand(command) {
         if (command === 'editor-save') {
             /*
@@ -290,6 +292,8 @@ export default class InputBox extends Component {
         })
     }
 
+    //this is called during handleKeyCommand when it detects a dropdown choice. 
+    //NOTE: the entity doesn't currently take, try logging the state (via the console or on-screen button) to see for yourself
     _confirmDisambiguation(choiceIndex) {
         const displayChar = this.state.disambiguationOptions[choiceIndex];
         const { editorState, commentContent } = this.state;
@@ -318,7 +322,7 @@ export default class InputBox extends Component {
         );
         const newEditorState = EditorState.set(editorState, { currentContent: contentStateWithEntity });
 
-        //TESTING
+        //TESTING, ENTITY DOES NOT CURRENTLY SAVE
         const content = newEditorState.getCurrentContent();
         console.log(convertToRaw(content));
 
@@ -358,6 +362,7 @@ export default class InputBox extends Component {
         );
     }
 
+    //This will eventually decorate all potentially ambiguous characters that don't have disambigtuation entities
     findAmbiguousCharacters(contentBlock, callback, contentState) {
         //for testing, only use the letter 'a'
 
@@ -380,6 +385,7 @@ export default class InputBox extends Component {
             />
         }
 
+        //TODO: move to dropdown below cursor
         if (this.state.showDropdown) {
             dropdown = <Dropdown
                 options={this.state.disambiguationOptions}
@@ -416,6 +422,7 @@ export default class InputBox extends Component {
 }
 
 
+//These will eventually be put in their own files
 class Comment extends Component {
     constructor(props) {
         super(props);
