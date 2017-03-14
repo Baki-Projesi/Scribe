@@ -18,6 +18,7 @@ import '../styles/CommentPopup.css';
 import decorateComponentWithProps from 'decorate-component-with-props';
 import findWithRegex from '../utils/findWithRegex';
 import getRelativeParentElement from '../utils/getRelativeParentElement';
+import {adjustSelectionOffset} from '../utils/selectionStateHelpers';
 import CommentPopup from './CommentPopup';
 import Dropdown from './DropDown';
 
@@ -34,6 +35,8 @@ import Dropdown from './DropDown';
 const charRules = {
     "a": ["a", "A", "ǎ"]
 }
+
+
 
 export default class InputBox extends Component {
 
@@ -142,24 +145,24 @@ export default class InputBox extends Component {
             return 'editor-save';
         }
 
-        //TODO: move key handing to dropdown component?
-        if (this.state.showDropdown) {
-            if (e.which === 49 || e.which === 97) {
-                return 'dropdown-1';
-            }
-            else if (e.which === 50 || e.which === 98) {
-                return 'dropdown-2';
-            }
-            else if (e.which === 51 || e.which === 99) {
-                return 'dropdown-3';
-            }
-            else if (e.which === 52 || e.which === 100) {
-                return 'dropdown-4';
-            }
-            else if (e.which === 53 || e.which === 101) {
-                return 'dropdown-5';
-            }
+        // TODO: possibly move key handing to dropdown component?
+        if (this.state.showDropdown && e.which !== 8) {
+            let str = 'dropdown-';
+            const keyCodeBase = 48;
+            const numOptions = this.state.disambiguationOptions.length;
+            const optionMap = {};
 
+            for (let i = 1; i < numOptions + 1; i++) {
+                optionMap[keyCodeBase + i] = (str + i); //numkeys 1-9
+                optionMap[(keyCodeBase * 2) + i] = (str + i); // numpad 1-9
+            }
+            if (optionMap[e.which]) {
+                return optionMap[e.which];
+            } else {
+                //If anything besides Backspace or a number is chosen, 
+                // use default disambiguation choice and have the editor handle the normal keypress
+                this._confirmDisambiguation(0);
+            }
         }
         return getDefaultKeyBinding(e);
     }
@@ -173,6 +176,7 @@ export default class InputBox extends Component {
             console.log('API save draft called');
             return 'handled';
         }
+
         if (command.startsWith('dropdown')) {
             console.log(command);
 
@@ -215,8 +219,7 @@ export default class InputBox extends Component {
             commentPopupPosition: position,
             commentContent: commentText,
         }, () => {
-            //uncomment below for automatic focus to the comment input 
-
+            //TODO: programmatically set focus to child input component
             //setTimeout(() => this.refs.comment.focus(), 0);
         });
 
@@ -231,6 +234,7 @@ export default class InputBox extends Component {
             'IMMUTABLE',
             { comment: commentContent }
         );
+
         const entityKey = contentStateWithEntity.getLastCreatedEntityKey();
         const newEditorState = EditorState.set(editorState, { currentContent: contentStateWithEntity });
 
@@ -274,6 +278,8 @@ export default class InputBox extends Component {
         let showDropdown = false, disambiguationOptions;
         if (current.startOffset > 0) {
             const previousChar = current.currentBlock.getText().charAt(current.startOffset - 1);
+
+            //TODO: find a better way to check if the previous character has disambiguation metadata
             const previousEntity = current.currentBlock.getEntityAt(current.startOffset - 1);
             if (previousEntity === null || previousEntity.type !== 'DISAMBIGUATION') {
                 //previous character isn't a disambiguated character entity
@@ -293,45 +299,48 @@ export default class InputBox extends Component {
     }
 
     //this is called during handleKeyCommand when it detects a dropdown choice. 
-    //NOTE: the entity doesn't currently take, try logging the state (via the console or on-screen button) to see for yourself
     _confirmDisambiguation(choiceIndex) {
-        const displayChar = this.state.disambiguationOptions[choiceIndex];
-        const { editorState, commentContent } = this.state;
+        const displayText = this.state.disambiguationOptions[choiceIndex];
+        const editorState = this.state.editorState;
         const contentState = editorState.getCurrentContent();
         const contentStateWithEntity = contentState.createEntity(
             'DISAMBIGUATION',
             'IMMUTABLE',
             {
+                //This is placeholder metadata, we should think about how to structure it
                 typedCharacter: 'a',
                 charCode: 'a1',
-                displayCharacter: displayChar
+                displayText: displayText
             }
         );
-
-        const oldSelectionState = editorState.getSelection();
-        const newSelectionState = oldSelectionState.merge({
-            anchorOffset: (oldSelectionState.getAnchorOffset() - 1),
-        })
-
         const entityKey = contentStateWithEntity.getLastCreatedEntityKey();
-        Modifier.replaceText(contentStateWithEntity, newSelectionState, displayChar, null, entityKey);
-        Modifier.applyEntity(
-            contentStateWithEntity,
+        let newSelectionState = adjustSelectionOffset(editorState.getSelection(), -1, 0);
+
+        //Replace the typed text with the displayText
+        //TODO: fix
+        Modifier.replaceText(contentStateWithEntity, newSelectionState, displayText, null, entityKey);
+
+        let newEditorState = EditorState.set(editorState, { currentContent: contentStateWithEntity });
+        /* //NOTE: toggleLink is a horribly named function that actually means to apply the entity 
+         *   (AKA establish a link between the content and the entity map) 
+         *   See: https://github.com/facebook/draft-js/issues/182 
+        */
+        newEditorState = RichUtils.toggleLink(
+            newEditorState,
             newSelectionState,
             entityKey
         );
-        const newEditorState = EditorState.set(editorState, { currentContent: contentStateWithEntity });
 
-        //TESTING, ENTITY DOES NOT CURRENTLY SAVE
-        const content = newEditorState.getCurrentContent();
-        console.log(convertToRaw(content));
-
+        newSelectionState = adjustSelectionOffset(newSelectionState, 1, 0);
+        newEditorState = EditorState.set(newEditorState, {selection: newSelectionState});
 
         this.setState({
             editorState: newEditorState,
             showDropdown: false,
-            disambiguationOptions: undefined
-        })
+            disambiguationOptions: null
+        }, () => {
+            //setTimeout(() => this.refs.editor.focus(), 0);
+        });
     }
 
     //Searches through a block of content (newLine separated) and finds embedded COMMENT entities 
@@ -355,19 +364,19 @@ export default class InputBox extends Component {
                 const entityKey = character.getEntity();
                 return (
                     entityKey !== null &&
-                    contentState.getEntity(entityKey).getType === 'DISAMBIGUATED'
+                    contentState.getEntity(entityKey).getType === 'DISAMBIGUATION'
                 );
             },
             callback
         );
     }
 
-    //This will eventually decorate all potentially ambiguous characters that don't have disambigtuation entities
+    //This will eventually decorate all potentially ambiguous characters that don't have disambiguation entities
     findAmbiguousCharacters(contentBlock, callback, contentState) {
-        //for testing, only use the letter 'a'
+        //for testing, only use the letter 'z'
 
         //TODO: use decorator to find ambiguous letters that don't have metadata
-        const REGEX = /[a]/g;
+        const REGEX = /[z]/g;
         findWithRegex(REGEX, contentBlock, callback);
     }
 
