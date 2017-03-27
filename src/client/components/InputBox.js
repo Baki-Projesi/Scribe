@@ -22,12 +22,12 @@ import {adjustSelectionOffset} from '../utils/selectionStateHelpers';
 import CommentPopup from './CommentPopup';
 import Dropdown from './DropDown';
 
-
+//test dfaf
 /*
     The input area contains a rich text editor that allows the typist to add comment entities to any part of the text
     Milestone TODOs:
     - Handle pasted text -> see https://github.com/facebook/draft-js/issues/416#issuecomment-221639163
-    - Handle input choice dropdowns using live decorators 
+    - Handle input choice dropdowns using live decorators
     - Handle comments using current selection triggering an inline popup -> For inspiration --> https://www.draft-js-plugins.com/plugin/inline-toolbar
 */
 
@@ -93,7 +93,7 @@ export default class InputBox extends Component {
             /*TODO:
                 if cursor is within a disambiguated character entity, display ambiguous dropdown for re-selection (with current selection highlighted)
                 else if cursor is within an ambiguous character/word, display ambiguous dropdown (with default selection highlighted)
-                else if if current selection is within a comment entity, display empty comment popup 
+                else if if current selection is within a comment entity, display empty comment popup
                 else if current selection is within a comment entity,  display comment popup with the comment text inside
             */
 
@@ -159,7 +159,7 @@ export default class InputBox extends Component {
             if (optionMap[e.which]) {
                 return optionMap[e.which];
             } else {
-                //If anything besides Backspace or a number is chosen, 
+                //If anything besides Backspace or a number is chosen,
                 // use default disambiguation choice and have the editor handle the normal keypress
                 this._confirmDisambiguation(0);
             }
@@ -298,7 +298,7 @@ export default class InputBox extends Component {
         })
     }
 
-    //this is called during handleKeyCommand when it detects a dropdown choice. 
+    //this is called during handleKeyCommand when it detects a dropdown choice.
     _confirmDisambiguation(choiceIndex) {
         const displayText = this.state.disambiguationOptions[choiceIndex];
         const editorState = this.state.editorState;
@@ -321,9 +321,9 @@ export default class InputBox extends Component {
         Modifier.replaceText(contentStateWithEntity, newSelectionState, displayText, null, entityKey);
 
         let newEditorState = EditorState.set(editorState, { currentContent: contentStateWithEntity });
-        /* //NOTE: toggleLink is a horribly named function that actually means to apply the entity 
-         *   (AKA establish a link between the content and the entity map) 
-         *   See: https://github.com/facebook/draft-js/issues/182 
+        /* //NOTE: toggleLink is a horribly named function that actually means to apply the entity
+         *   (AKA establish a link between the content and the entity map)
+         *   See: https://github.com/facebook/draft-js/issues/182
         */
         newEditorState = RichUtils.toggleLink(
             newEditorState,
@@ -343,7 +343,7 @@ export default class InputBox extends Component {
         });
     }
 
-    //Searches through a block of content (newLine separated) and finds embedded COMMENT entities 
+    //Searches through a block of content (newLine separated) and finds embedded COMMENT entities
     findCommentEntities(contentBlock, callback, contentState) {
         contentBlock.findEntityRanges(
             (character) => {
