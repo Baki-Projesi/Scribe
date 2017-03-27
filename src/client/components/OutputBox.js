@@ -14,8 +14,8 @@ export default class OutputBox extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        var newDisplayText = nextProps.inputText ? 
-            he.decode(translate(nextProps.inputText, nextProps.language), { decimal: true }) 
+        var newDisplayText = nextProps.inputText ?
+            he.decode(translate(nextProps.inputText, nextProps.language), { decimal: true })
             : '';
 
         this.setState({

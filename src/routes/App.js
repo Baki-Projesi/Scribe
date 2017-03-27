@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from '../assets/logo.svg';
-import Transcribe from '../components/Transcribe';
-import '../styles/App.css';
+import Transcribe from '../client/components/Transcribe';
+import '../client/styles/App.css';
 
 export default class App extends Component {
 
