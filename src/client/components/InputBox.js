@@ -18,11 +18,12 @@ import '../styles/CommentPopup.css';
 import decorateComponentWithProps from 'decorate-component-with-props';
 import findWithRegex from '../utils/findWithRegex';
 import getRelativeParentElement from '../utils/getRelativeParentElement';
-import {adjustSelectionOffset} from '../utils/selectionStateHelpers';
+import { adjustSelectionOffset } from '../utils/selectionStateHelpers';
+import { englishKeyboardDisambiguations, turkishKeyboardDisambiguations } from '../../assets/disambiguationRules';
 import CommentPopup from './CommentPopup';
 import Dropdown from './DropDown';
 
-//test dfaf
+
 /*
     The input area contains a rich text editor that allows the typist to add comment entities to any part of the text
     Milestone TODOs:
@@ -30,12 +31,6 @@ import Dropdown from './DropDown';
     - Handle input choice dropdowns using live decorators
     - Handle comments using current selection triggering an inline popup -> For inspiration --> https://www.draft-js-plugins.com/plugin/inline-toolbar
 */
-
-
-const charRules = {
-    "a": ["a", "A", "ǎ"]
-}
-
 
 
 export default class InputBox extends Component {
@@ -98,25 +93,17 @@ export default class InputBox extends Component {
             */
 
             const newState = { editorState: editorState };
-
-            const contentState = editorState.getCurrentContent();
-            const oldSelectionState = editorState.getSelection();
-            const startKey = oldSelectionState.getStartKey();
-            const startOffset = oldSelectionState.getStartOffset();
-            const endOffset = oldSelectionState.getEndOffset();
-            const currentBlock = contentState.getBlockForKey(startKey);
-
             const current = {
                 editorState: editorState,
-                contentState: contentState,
-                oldSelectionState: oldSelectionState,
-                startKey: startKey,
-                startOffset: startOffset,
-                endOffset: endOffset,
-                currentBlock: currentBlock
+                contentState: editorState.getCurrentContent(),
+                oldSelectionState: editorState.getSelection(),
+                startKey: editorState.getSelection().getStartKey(),
+                startOffset: editorState.getSelection().getStartOffset(),
+                endOffset: editorState.getSelection().getEndOffset(),
+                currentBlock: editorState.getCurrentContent().getBlockForKey(editorState.getSelection().getStartKey())
             }
 
-            if (oldSelectionState.isCollapsed()) {
+            if (current.oldSelectionState.isCollapsed()) {
                 // Selection is just the cursor, no characters highlighted
                 this._promptForDisambiguation(current);
                 newState.showCommentPopup = false;
@@ -146,7 +133,7 @@ export default class InputBox extends Component {
         }
 
         // TODO: possibly move key handing to dropdown component?
-        if (this.state.showDropdown && e.which !== 8) {
+        if (this.state.showDropdown) {
             let str = 'dropdown-';
             const keyCodeBase = 48;
             const numOptions = this.state.disambiguationOptions.length;
@@ -156,14 +143,15 @@ export default class InputBox extends Component {
                 optionMap[keyCodeBase + i] = (str + i); //numkeys 1-9
                 optionMap[(keyCodeBase * 2) + i] = (str + i); // numpad 1-9
             }
-            if (optionMap[e.which]) {
+            if ((e.which >= 49 && e.which <= 57) || (e.which >= 97 && e.which <= 105) && optionMap[e.which]) {
                 return optionMap[e.which];
             } else {
                 //If anything besides Backspace or a number is chosen,
                 // use default disambiguation choice and have the editor handle the normal keypress
-                this._confirmDisambiguation(0);
+                return optionMap[49];
             }
         }
+        
         return getDefaultKeyBinding(e);
     }
 
@@ -206,10 +194,10 @@ export default class InputBox extends Component {
         const relativeRect = relativeParent ? relativeParent.getBoundingClientRect() : document.body.getBoundingClientRect();
         const selectionRect = getVisibleSelectionRect(window);
         position = {
-            top: (selectionRect.top - relativeRect.top) - commentPopupHeight,
-            left: (selectionRect.left - relativeRect.left) + (selectionRect.width / 2),
+            //top: (selectionRect.top - relativeRect.top) - commentPopupHeight,
+            //left: (selectionRect.left - relativeRect.left) + (selectionRect.width / 2),
             //transform: 'translate(-50%) scale(1)',
-            transition: 'transform 0.15s cubic-bezier(.3,1.2,.2,1)',
+            //transition: 'transform 0.15s cubic-bezier(.3,1.2,.2,1)',
         };
 
         console.log(position);
@@ -275,6 +263,7 @@ export default class InputBox extends Component {
 
     //TODO: move into dropdown positioned under cursor
     _promptForDisambiguation(current) {
+        const charRules = this.props.charRules;
         let showDropdown = false, disambiguationOptions;
         if (current.startOffset > 0) {
             const previousChar = current.currentBlock.getText().charAt(current.startOffset - 1);
@@ -284,8 +273,6 @@ export default class InputBox extends Component {
             if (previousEntity === null || previousEntity.type !== 'DISAMBIGUATION') {
                 //previous character isn't a disambiguated character entity
                 if (charRules[previousChar] !== undefined) {
-                    console.log('rule found ', charRules[previousChar]);
-
                     showDropdown = true;
                     disambiguationOptions = charRules[previousChar]
                 }
@@ -300,25 +287,19 @@ export default class InputBox extends Component {
 
     //this is called during handleKeyCommand when it detects a dropdown choice.
     _confirmDisambiguation(choiceIndex) {
-        const displayText = this.state.disambiguationOptions[choiceIndex];
+        const displayText = this.state.disambiguationOptions[choiceIndex].turkishText;
         const editorState = this.state.editorState;
         const contentState = editorState.getCurrentContent();
-        const contentStateWithEntity = contentState.createEntity(
+        let contentStateWithEntity = contentState.createEntity(
             'DISAMBIGUATION',
             'IMMUTABLE',
-            {
-                //This is placeholder metadata, we should think about how to structure it
-                typedCharacter: 'a',
-                charCode: 'a1',
-                displayText: displayText
-            }
+            this.state.disambiguationOptions[choiceIndex]
         );
         const entityKey = contentStateWithEntity.getLastCreatedEntityKey();
         let newSelectionState = adjustSelectionOffset(editorState.getSelection(), -1, 0);
 
         //Replace the typed text with the displayText
-        //TODO: fix
-        Modifier.replaceText(contentStateWithEntity, newSelectionState, displayText, null, entityKey);
+        contentStateWithEntity = Modifier.replaceText(contentStateWithEntity, newSelectionState, displayText, null, entityKey);
 
         let newEditorState = EditorState.set(editorState, { currentContent: contentStateWithEntity });
         /* //NOTE: toggleLink is a horribly named function that actually means to apply the entity
@@ -332,7 +313,7 @@ export default class InputBox extends Component {
         );
 
         newSelectionState = adjustSelectionOffset(newSelectionState, 1, 0);
-        newEditorState = EditorState.set(newEditorState, {selection: newSelectionState});
+        newEditorState = EditorState.set(newEditorState, { selection: newSelectionState });
 
         this.setState({
             editorState: newEditorState,
