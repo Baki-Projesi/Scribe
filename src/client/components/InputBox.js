@@ -22,7 +22,8 @@ import { adjustSelectionOffset } from '../utils/selectionStateHelpers';
 import { englishKeyboardDisambiguations, turkishKeyboardDisambiguations } from '../../assets/disambiguationRules';
 import CommentPopup from './CommentPopup';
 import Dropdown from './DropDown';
-
+import AmbiguousCharacter from './AmbiguousCharacter';
+import DisambiguatedCharacter from './DisambiguatedCharacter';
 
 /*
     The input area contains a rich text editor that allows the typist to add comment entities to any part of the text
@@ -32,41 +33,45 @@ import Dropdown from './DropDown';
     - Handle comments using current selection triggering an inline popup -> For inspiration --> https://www.draft-js-plugins.com/plugin/inline-toolbar
 */
 
+const store = {
+    mostRecentAmbiguousCharCoords: null
+}
+
+
+const commentProps = {
+    callback: function (commentText) {
+        console.log("comment called back with text: " + commentText);
+    }
+},
+    disambiguatedCharProps = {
+        callback: function () {
+            console.log("disambiguated character called back");
+        }
+    },
+    ambiguousCharacterProps = {
+        updateCoordinates: function(offsetKey, coordinates) {
+            store.mostRecentAmbiguousCharCoords = coordinates;
+        }
+    }
+
 
 export default class InputBox extends Component {
 
     constructor(props) {
         super(props);
 
-        const commentProps = {
-            callback: function (commentText) {
-                console.log("comment called back with text: " + commentText);
-            }
-        },
-            disambiguatedCharProps = {
-                callback: function () {
-                    console.log("disambiguated character called back");
-                }
-            },
-            ambiguousCharProps = {
-                callback: function () {
-                    console.log("ambiguous character called back");
-                }
-            }
-
-
         const decorator = new CompositeDecorator([
             {
                 strategy: this.findCommentEntities,
                 component: decorateComponentWithProps(Comment, commentProps)
             },
-            {
-                strategy: this.findDisambiguatedCharacterEntities,
-                component: DisambiguatedCharacter
+                        {
+                strategy: this.findAmbiguousCharacters,
+                component: decorateComponentWithProps(AmbiguousCharacter, ambiguousCharacterProps)
             },
             {
-                strategy: this.findAmbiguousCharacters,
-                component: decorateComponentWithProps(AmbiguousCharacter, ambiguousCharProps)
+                strategy: this.findDisambiguatedCharacterEntities,
+                component: decorateComponentWithProps(DisambiguatedCharacter, disambiguatedCharProps)
             }
         ]);
 
@@ -96,7 +101,7 @@ export default class InputBox extends Component {
             }
 
             if (current.oldSelectionState.isCollapsed()) {
-                // Selection is just the cursor, no characters highlighted
+                // Selection is just the cursor w/ no characters highlighted
                 newState = this._promptForDisambiguation(current);
             } else {
                 // At least one character highlighted
@@ -122,26 +127,25 @@ export default class InputBox extends Component {
             return 'editor-save';
         }
 
-        // TODO: possibly move key handing to dropdown component?
         if (this.state.showDropdown && e.which !== 8 && e.which !== 46) { // backspace, delete
             let str = 'dropdown-';
             const keyCodeBase = 48;
             const numOptions = this.state.disambiguationOptions.length;
             const optionMap = {};
-
             for (let i = 1; i < numOptions + 1; i++) {
                 optionMap[keyCodeBase + i] = (str + i); //numkeys 1-9
                 optionMap[(keyCodeBase * 2) + i] = (str + i); // numpad 1-9
             }
+
             if ((e.which >= 49 && e.which <= 57) || (e.which >= 97 && e.which <= 105) && optionMap[e.which]) {
                 return optionMap[e.which];
             } else {
                 //If anything besides Backspace or a number is chosen,
                 // use default disambiguation choice and have the editor handle the normal keypress
-                return optionMap[49];
+                this._confirmDisambiguation(0);
             }
         }
-        
+
         return getDefaultKeyBinding(e);
     }
 
@@ -149,19 +153,15 @@ export default class InputBox extends Component {
     handleKeyCommand(command) {
         if (command === 'editor-save') {
             /*
-                API CALL TO SAVE DRAFT HERE
+                API CALL TO SAVE HERE
             */
             console.log('API save draft called');
             return 'handled';
         }
 
-        if (command.startsWith('dropdown')) {
-            console.log(command);
-
-            if (this.state.disambiguationOptions) {
-                let choice = Number(command.charAt(command.length - 1));
-                this._confirmDisambiguation(choice - 1);
-            }
+        if (command.startsWith('dropdown') && this.state.disambiguationOptions) {
+            let choice = Number(command.charAt(command.length - 1));
+            this._confirmDisambiguation(choice - 1);
 
             return 'handled';
         }
@@ -270,7 +270,7 @@ export default class InputBox extends Component {
         Object.assign(current, {
             showDropdown: showDropdown,
             disambiguationOptions: disambiguationOptions,
-            showCommentPopup: false
+            showCommentInput: false
         });
 
         return current;
@@ -310,8 +310,6 @@ export default class InputBox extends Component {
             editorState: newEditorState,
             showDropdown: false,
             disambiguationOptions: null
-        }, () => {
-            //setTimeout(() => this.refs.editor.focus(), 0);
         });
     }
 
@@ -336,7 +334,7 @@ export default class InputBox extends Component {
                 const entityKey = character.getEntity();
                 return (
                     entityKey !== null &&
-                    contentState.getEntity(entityKey).getType === 'DISAMBIGUATION'
+                    contentState.getEntity(entityKey).getType() === 'DISAMBIGUATION'
                 );
             },
             callback
@@ -345,11 +343,9 @@ export default class InputBox extends Component {
 
     //This will eventually decorate all potentially ambiguous characters that don't have disambiguation entities
     findAmbiguousCharacters(contentBlock, callback, contentState) {
-        //for testing, only use the letter 'z'
-
-        //TODO: use decorator to find ambiguous letters that don't have metadata
-        const REGEX = /[z]/g;
-        findWithRegex(REGEX, contentBlock, callback);
+        //TODO: use this.props.charRules ('this' needs to be bound tho)
+        const regex = new RegExp(Object.keys(englishKeyboardDisambiguations).join("|"), 'g');
+        findWithRegex(regex, contentBlock, callback);
     }
 
 
@@ -366,9 +362,9 @@ export default class InputBox extends Component {
             />
         }
 
-        //TODO: move to dropdown below cursor
         if (this.state.showDropdown) {
             dropdown = <Dropdown
+                coordinates={store.mostRecentAmbiguousCharCoords}
                 options={this.state.disambiguationOptions}
             />
         }
@@ -427,42 +423,4 @@ class Comment extends Component {
 
 }
 
-class DisambiguatedCharacter extends Component {
-    constructor(props) {
-        super(props);
-    }
 
-    render() {
-        const styles = {
-            disambiguatedcharacter: {
-                color: 'red'
-            }
-        }
-        return (
-            <span style={styles.disambiguatedcharacter}>
-                {this.props.children}
-            </span>
-        )
-    }
-}
-
-class AmbiguousCharacter extends Component {
-    constructor(props) {
-        super(props);
-    }
-
-    render() {
-
-        const styles = {
-            char: {
-                color: 'green'
-            }
-        }
-
-        return (
-            <span style={styles.char} onClick={this.props.callback}>
-                {this.props.children}
-            </span>
-        )
-    }
-}

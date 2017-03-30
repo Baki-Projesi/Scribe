@@ -2,11 +2,21 @@ import React, { Component } from 'react';
 export default class DropDown extends Component {
 
   render() {
-    const styles = {
+    const top = this.props.coordinates ? this.props.coordinates.top : 0;
+    const left = this.props.coordinates ? this.props.coordinates.left : 0;
+
+    const dropDownStyles = {
       dropDownBox: {
+        borderStyle: 'solid',
+        borderWidth: '1px',
+        position: 'absolute',
         width: '120px',
-        height: '80px',
+        top: top + 18,
+        left: left + 6,
         color: 'blue'
+      },
+      orderedList: {
+        margin: '4px'
       }
     }
 
@@ -15,8 +25,8 @@ export default class DropDown extends Component {
     ) : null;
 
     return (
-      <div style={styles.dropDownBox}>
-        <ol>
+      <div style={dropDownStyles.dropDownBox}>
+        <ol style={dropDownStyles.orderedList}>
           {dropdownOptions}
         </ol>
       </div>
