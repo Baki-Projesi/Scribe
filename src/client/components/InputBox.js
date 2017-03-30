@@ -49,7 +49,7 @@ const commentProps = {
         }
     },
     ambiguousCharacterProps = {
-        updateCoordinates: function(offsetKey, coordinates) {
+        updateCoordinates: function (offsetKey, coordinates) {
             store.mostRecentAmbiguousCharCoords = coordinates;
         }
     }
@@ -65,13 +65,14 @@ export default class InputBox extends Component {
                 strategy: this.findCommentEntities,
                 component: decorateComponentWithProps(Comment, commentProps)
             },
-                        {
-                strategy: this.findAmbiguousCharacters,
-                component: decorateComponentWithProps(AmbiguousCharacter, ambiguousCharacterProps)
-            },
+
             {
                 strategy: this.findDisambiguatedCharacterEntities,
                 component: decorateComponentWithProps(DisambiguatedCharacter, disambiguatedCharProps)
+            },
+            {
+                strategy: this.findAmbiguousCharacters,
+                component: decorateComponentWithProps(AmbiguousCharacter, ambiguousCharacterProps)
             }
         ]);
 
@@ -258,7 +259,7 @@ export default class InputBox extends Component {
 
             //TODO: find a better way to check if the previous character has disambiguation metadata
             const previousEntity = current.currentBlock.getEntityAt(current.startOffset - 1);
-            if (previousEntity === null || previousEntity.type !== 'DISAMBIGUATION') {
+            if (previousEntity === null) {
                 //previous character isn't a disambiguated character entity
                 if (charRules[previousChar] !== undefined) {
                     showDropdown = true;
@@ -341,9 +342,9 @@ export default class InputBox extends Component {
         );
     }
 
-    //This will eventually decorate all potentially ambiguous characters that don't have disambiguation entities
+    //Decorates ambiguous characters based on current ruleset
     findAmbiguousCharacters(contentBlock, callback, contentState) {
-        //TODO: use this.props.charRules ('this' needs to be bound tho)
+        //TODO: use this.props.charRules ('this' needs to be bound though)
         const regex = new RegExp(Object.keys(englishKeyboardDisambiguations).join("|"), 'g');
         findWithRegex(regex, contentBlock, callback);
     }
@@ -372,9 +373,9 @@ export default class InputBox extends Component {
         return (
             <div>
                 <div>
-                    <button onMouseDown={this.removeComment}>
+                    {/*<button onMouseDown={this.removeComment}>
                         Remove Comment
-                </button>
+                </button>*/}
                 </div>
                 {commentInput}
                 {dropdown}

@@ -33,7 +33,7 @@ class AmbiguousCharacter extends Component {
 
 const styles = {
     character: {
-        color: 'dodgerblue',
+        color: 'red',
     },
 };
 

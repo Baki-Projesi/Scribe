@@ -33,11 +33,9 @@ export default class Transcribe extends Component {
     render() {
         const {inputText} = this.state;
         return (
-            <div>
+            <div id="tool-window">
                 <InputBox charRules={englishKeyboardDisambiguations} onInputTextChange={this.onInputTextChange} />
                 <OutputBox inputText={inputText} />
-                <LanguageTabBar changeLang={this.changeLang} language={this.state.language} />
-                {console.log(this.state)}
             </div>
         );
     }
