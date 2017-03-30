@@ -82,18 +82,10 @@ export default class InputBox extends Component {
         };
 
         this.focus = () => this.refs.editor.focus();
+
         this.onChange = (editorState) => {
 
-
-            /*TODO:
-                if cursor is within a disambiguated character entity, display ambiguous dropdown for re-selection (with current selection highlighted)
-                else if cursor is within an ambiguous character/word, display ambiguous dropdown (with default selection highlighted)
-                else if if current selection is within a comment entity, display empty comment popup
-                else if current selection is within a comment entity,  display comment popup with the comment text inside
-            */
-
-            const newState = { editorState: editorState };
-            const current = {
+            let newState, current = {
                 editorState: editorState,
                 contentState: editorState.getCurrentContent(),
                 oldSelectionState: editorState.getSelection(),
@@ -105,12 +97,10 @@ export default class InputBox extends Component {
 
             if (current.oldSelectionState.isCollapsed()) {
                 // Selection is just the cursor, no characters highlighted
-                this._promptForDisambiguation(current);
-                newState.showCommentPopup = false;
+                newState = this._promptForDisambiguation(current);
             } else {
                 // At least one character highlighted
-                this._promptForComment(current);
-                newState.showDropdown = false;
+                newState = this._promptForComment(current);
             }
 
             this.setState(newState);
@@ -133,7 +123,7 @@ export default class InputBox extends Component {
         }
 
         // TODO: possibly move key handing to dropdown component?
-        if (this.state.showDropdown) {
+        if (this.state.showDropdown && e.which !== 8 && e.which !== 46) { // backspace, delete
             let str = 'dropdown-';
             const keyCodeBase = 48;
             const numOptions = this.state.disambiguationOptions.length;
@@ -200,16 +190,14 @@ export default class InputBox extends Component {
             //transition: 'transform 0.15s cubic-bezier(.3,1.2,.2,1)',
         };
 
-        console.log(position);
-
-        this.setState({
+        Object.assign(current, {
             showCommentInput: true,
             commentPopupPosition: position,
             commentContent: commentText,
-        }, () => {
-            //TODO: programmatically set focus to child input component
-            //setTimeout(() => this.refs.comment.focus(), 0);
+            showDropdown: false
         });
+
+        return current;
 
     }
 
@@ -279,10 +267,13 @@ export default class InputBox extends Component {
             }
         }
 
-        this.setState({
+        Object.assign(current, {
             showDropdown: showDropdown,
-            disambiguationOptions: disambiguationOptions
-        })
+            disambiguationOptions: disambiguationOptions,
+            showCommentPopup: false
+        });
+
+        return current;
     }
 
     //this is called during handleKeyCommand when it detects a dropdown choice.

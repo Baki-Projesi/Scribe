@@ -177,7 +177,7 @@ export const englishKeyboardDisambiguations = {
 }
 
 export const turkishKeyboardDisambiguations = function () {
-    return englishKeyboardDisambiguations.merge({
+    return englishKeyboardDisambiguations.assign({
         'ğ': [
             {
                 turkishText: 'ğ',

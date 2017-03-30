@@ -10,7 +10,7 @@ export default class DropDown extends Component {
       }
     }
 
-    let dropdownOptions = this.props.options ? this.props.options.map((option) =>
+    let dropdownOptions = this.props.options && Array.isArray(this.props.options) ? this.props.options.map((option) =>
       <li key={option.code}>{option.turkishText + '   ' + option.arabicText }</li>
     ) : null;
 
