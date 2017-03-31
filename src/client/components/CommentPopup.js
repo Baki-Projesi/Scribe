@@ -13,11 +13,20 @@ We expect the following props:
 
 export default class CommentPopup extends Component {
 
+    constructor(props) {
+        super(props);
+        this.handleChange = this.handleChange.bind(this);
+    }
+
+    handleChange(e) {
+        this.props.onCommentChange(e);
+    }
+
     render() {
         return (
             <div style={this.props.position}>
                 <input
-                    onChange={this.props.onCommentChange}
+                    onChange={this.handleChange}
                     ref={"comment"}
                     type="text"
                     value={this.props.value}
