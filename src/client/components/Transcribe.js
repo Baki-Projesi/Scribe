@@ -6,11 +6,13 @@ import '../styles/Transcribe.css';
 
 export default class Transcribe extends Component {
 
-    constructor(props) {
-        super(props);
+    constructor(props, context) {
+        super(props, context);
         this.state = {
             language: "Turkish",
-            inputText: undefined
+            inputText: undefined,
+            keyboard: "English",
+            boxesShown: [{input: true}, {arabic: true}, {output: true}]
         }
         this.changeLang = this.changeLang.bind(this);
         this.onInputTextChange = this.onInputTextChange.bind(this);
@@ -27,6 +29,8 @@ export default class Transcribe extends Component {
             language: lang
         });
     }
+
+    toggleBox() {}
 
     render() {
         const {inputText} = this.state;

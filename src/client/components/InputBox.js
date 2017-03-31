@@ -36,12 +36,10 @@ const charRules = {
     "a": ["a", "A", "ǎ"]
 }
 
-
-
 export default class InputBox extends Component {
 
-    constructor(props) {
-        super(props);
+    constructor(props, context) {
+        super(props, context);
 
         const commentProps = {
             callback: function (commentText) {
