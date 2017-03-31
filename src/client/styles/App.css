@@ -2,14 +2,14 @@
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+#title-nav {
+  text-align: left;
+  margin-top: 8px;
 }
 
 .App-header {
-  background-color: #222;
-  height: 150px;
+  background-color: #E85059;
+  height: 40px;
   padding: 20px;
   color: white;
 }

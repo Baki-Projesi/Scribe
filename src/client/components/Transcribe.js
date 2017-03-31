@@ -3,6 +3,8 @@ import LanguageTabBar from "./LanguageTabBar";
 import OutputBox from './OutputBox';
 import InputBox from './InputBox';
 import '../styles/Transcribe.css';
+import {englishKeyboardDisambiguations, turkishKeyboardDisambiguations} from '../../assets/disambiguationRules';
+
 
 export default class Transcribe extends Component {
 
@@ -35,11 +37,9 @@ export default class Transcribe extends Component {
     render() {
         const {inputText} = this.state;
         return (
-            <div>
-                <InputBox onInputTextChange={this.onInputTextChange} />
+            <div id="tool-window">
+                <InputBox charRules={englishKeyboardDisambiguations} onInputTextChange={this.onInputTextChange} />
                 <OutputBox inputText={inputText} />
-                <LanguageTabBar changeLang={this.changeLang} language={this.state.language} />
-                {console.log(this.state)}
             </div>
         );
     }

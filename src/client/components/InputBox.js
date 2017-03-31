@@ -18,11 +18,13 @@ import '../styles/CommentPopup.css';
 import decorateComponentWithProps from 'decorate-component-with-props';
 import findWithRegex from '../utils/findWithRegex';
 import getRelativeParentElement from '../utils/getRelativeParentElement';
-import {adjustSelectionOffset} from '../utils/selectionStateHelpers';
+import { adjustSelectionOffset } from '../utils/selectionStateHelpers';
+import { englishKeyboardDisambiguations, turkishKeyboardDisambiguations } from '../../assets/disambiguationRules';
 import CommentPopup from './CommentPopup';
 import Dropdown from './DropDown';
+import AmbiguousCharacter from './AmbiguousCharacter';
+import DisambiguatedCharacter from './DisambiguatedCharacter';
 
-//test dfaf
 /*
     The input area contains a rich text editor that allows the typist to add comment entities to any part of the text
     Milestone TODOs:
@@ -31,45 +33,44 @@ import Dropdown from './DropDown';
     - Handle comments using current selection triggering an inline popup -> For inspiration --> https://www.draft-js-plugins.com/plugin/inline-toolbar
 */
 
-
-const charRules = {
-    "a": ["a", "A", "ǎ"]
+const store = {
+    mostRecentAmbiguousCharCoords: null
 }
+
+const commentProps = {
+    callback: function (commentText) {
+        console.log("comment called back with text: " + commentText);
+    }
+},
+    disambiguatedCharProps = {
+        callback: function () {
+            console.log("disambiguated character called back");
+        }
+    },
+    ambiguousCharacterProps = {
+        updateCoordinates: function (offsetKey, coordinates) {
+            store.mostRecentAmbiguousCharCoords = coordinates;
+        }
+    }
 
 export default class InputBox extends Component {
 
     constructor(props, context) {
         super(props, context);
 
-        const commentProps = {
-            callback: function (commentText) {
-                console.log("comment called back with text: " + commentText);
-            }
-        },
-            disambiguatedCharProps = {
-                callback: function () {
-                    console.log("disambiguated character called back");
-                }
-            },
-            ambiguousCharProps = {
-                callback: function () {
-                    console.log("ambiguous character called back");
-                }
-            }
-
-
         const decorator = new CompositeDecorator([
             {
                 strategy: this.findCommentEntities,
                 component: decorateComponentWithProps(Comment, commentProps)
             },
+
             {
                 strategy: this.findDisambiguatedCharacterEntities,
-                component: DisambiguatedCharacter
+                component: decorateComponentWithProps(DisambiguatedCharacter, disambiguatedCharProps)
             },
             {
                 strategy: this.findAmbiguousCharacters,
-                component: decorateComponentWithProps(AmbiguousCharacter, ambiguousCharProps)
+                component: decorateComponentWithProps(AmbiguousCharacter, ambiguousCharacterProps)
             }
         ]);
 
@@ -85,43 +86,25 @@ export default class InputBox extends Component {
         };
 
         this.focus = () => this.refs.editor.focus();
+
         this.onChange = (editorState) => {
 
-
-            /*TODO:
-                if cursor is within a disambiguated character entity, display ambiguous dropdown for re-selection (with current selection highlighted)
-                else if cursor is within an ambiguous character/word, display ambiguous dropdown (with default selection highlighted)
-                else if if current selection is within a comment entity, display empty comment popup
-                else if current selection is within a comment entity,  display comment popup with the comment text inside
-            */
-
-            const newState = { editorState: editorState };
-
-            const contentState = editorState.getCurrentContent();
-            const oldSelectionState = editorState.getSelection();
-            const startKey = oldSelectionState.getStartKey();
-            const startOffset = oldSelectionState.getStartOffset();
-            const endOffset = oldSelectionState.getEndOffset();
-            const currentBlock = contentState.getBlockForKey(startKey);
-
-            const current = {
+            let newState, current = {
                 editorState: editorState,
-                contentState: contentState,
-                oldSelectionState: oldSelectionState,
-                startKey: startKey,
-                startOffset: startOffset,
-                endOffset: endOffset,
-                currentBlock: currentBlock
+                contentState: editorState.getCurrentContent(),
+                oldSelectionState: editorState.getSelection(),
+                startKey: editorState.getSelection().getStartKey(),
+                startOffset: editorState.getSelection().getStartOffset(),
+                endOffset: editorState.getSelection().getEndOffset(),
+                currentBlock: editorState.getCurrentContent().getBlockForKey(editorState.getSelection().getStartKey())
             }
 
-            if (oldSelectionState.isCollapsed()) {
-                // Selection is just the cursor, no characters highlighted
-                this._promptForDisambiguation(current);
-                newState.showCommentPopup = false;
+            if (current.oldSelectionState.isCollapsed()) {
+                // Selection is just the cursor w/ no characters highlighted
+                newState = this._promptForDisambiguation(current);
             } else {
                 // At least one character highlighted
-                this._promptForComment(current);
-                newState.showDropdown = false;
+                newState = this._promptForComment(current);
             }
 
             this.setState(newState);
@@ -143,18 +126,17 @@ export default class InputBox extends Component {
             return 'editor-save';
         }
 
-        // TODO: possibly move key handing to dropdown component?
-        if (this.state.showDropdown && e.which !== 8) {
+        if (this.state.showDropdown && e.which !== 8 && e.which !== 46) { // backspace, delete
             let str = 'dropdown-';
             const keyCodeBase = 48;
             const numOptions = this.state.disambiguationOptions.length;
             const optionMap = {};
-
             for (let i = 1; i < numOptions + 1; i++) {
                 optionMap[keyCodeBase + i] = (str + i); //numkeys 1-9
                 optionMap[(keyCodeBase * 2) + i] = (str + i); // numpad 1-9
             }
-            if (optionMap[e.which]) {
+
+            if ((e.which >= 49 && e.which <= 57) || (e.which >= 97 && e.which <= 105) && optionMap[e.which]) {
                 return optionMap[e.which];
             } else {
                 //If anything besides Backspace or a number is chosen,
@@ -162,6 +144,7 @@ export default class InputBox extends Component {
                 this._confirmDisambiguation(0);
             }
         }
+
         return getDefaultKeyBinding(e);
     }
 
@@ -169,19 +152,15 @@ export default class InputBox extends Component {
     handleKeyCommand(command) {
         if (command === 'editor-save') {
             /*
-                API CALL TO SAVE DRAFT HERE
+                API CALL TO SAVE HERE
             */
             console.log('API save draft called');
             return 'handled';
         }
 
-        if (command.startsWith('dropdown')) {
-            console.log(command);
-
-            if (this.state.disambiguationOptions) {
-                let choice = Number(command.charAt(command.length - 1));
-                this._confirmDisambiguation(choice - 1);
-            }
+        if (command.startsWith('dropdown') && this.state.disambiguationOptions) {
+            let choice = Number(command.charAt(command.length - 1));
+            this._confirmDisambiguation(choice - 1);
 
             return 'handled';
         }
@@ -204,22 +183,20 @@ export default class InputBox extends Component {
         const relativeRect = relativeParent ? relativeParent.getBoundingClientRect() : document.body.getBoundingClientRect();
         const selectionRect = getVisibleSelectionRect(window);
         position = {
-            top: (selectionRect.top - relativeRect.top) - commentPopupHeight,
-            left: (selectionRect.left - relativeRect.left) + (selectionRect.width / 2),
+            //top: (selectionRect.top - relativeRect.top) - commentPopupHeight,
+            //left: (selectionRect.left - relativeRect.left) + (selectionRect.width / 2),
             //transform: 'translate(-50%) scale(1)',
-            transition: 'transform 0.15s cubic-bezier(.3,1.2,.2,1)',
+            //transition: 'transform 0.15s cubic-bezier(.3,1.2,.2,1)',
         };
 
-        console.log(position);
-
-        this.setState({
+        Object.assign(current, {
             showCommentInput: true,
             commentPopupPosition: position,
             commentContent: commentText,
-        }, () => {
-            //TODO: programmatically set focus to child input component
-            //setTimeout(() => this.refs.comment.focus(), 0);
+            showDropdown: false
         });
+
+        return current;
 
     }
 
@@ -273,50 +250,46 @@ export default class InputBox extends Component {
 
     //TODO: move into dropdown positioned under cursor
     _promptForDisambiguation(current) {
+        const charRules = this.props.charRules;
         let showDropdown = false, disambiguationOptions;
         if (current.startOffset > 0) {
             const previousChar = current.currentBlock.getText().charAt(current.startOffset - 1);
 
             //TODO: find a better way to check if the previous character has disambiguation metadata
             const previousEntity = current.currentBlock.getEntityAt(current.startOffset - 1);
-            if (previousEntity === null || previousEntity.type !== 'DISAMBIGUATION') {
+            if (previousEntity === null) {
                 //previous character isn't a disambiguated character entity
                 if (charRules[previousChar] !== undefined) {
-                    console.log('rule found ', charRules[previousChar]);
-
                     showDropdown = true;
                     disambiguationOptions = charRules[previousChar]
                 }
             }
         }
 
-        this.setState({
+        Object.assign(current, {
             showDropdown: showDropdown,
-            disambiguationOptions: disambiguationOptions
-        })
+            disambiguationOptions: disambiguationOptions,
+            showCommentInput: false
+        });
+
+        return current;
     }
 
     //this is called during handleKeyCommand when it detects a dropdown choice.
     _confirmDisambiguation(choiceIndex) {
-        const displayText = this.state.disambiguationOptions[choiceIndex];
+        const displayText = this.state.disambiguationOptions[choiceIndex].turkishText;
         const editorState = this.state.editorState;
         const contentState = editorState.getCurrentContent();
-        const contentStateWithEntity = contentState.createEntity(
+        let contentStateWithEntity = contentState.createEntity(
             'DISAMBIGUATION',
             'IMMUTABLE',
-            {
-                //This is placeholder metadata, we should think about how to structure it
-                typedCharacter: 'a',
-                charCode: 'a1',
-                displayText: displayText
-            }
+            this.state.disambiguationOptions[choiceIndex]
         );
         const entityKey = contentStateWithEntity.getLastCreatedEntityKey();
         let newSelectionState = adjustSelectionOffset(editorState.getSelection(), -1, 0);
 
         //Replace the typed text with the displayText
-        //TODO: fix
-        Modifier.replaceText(contentStateWithEntity, newSelectionState, displayText, null, entityKey);
+        contentStateWithEntity = Modifier.replaceText(contentStateWithEntity, newSelectionState, displayText, null, entityKey);
 
         let newEditorState = EditorState.set(editorState, { currentContent: contentStateWithEntity });
         /* //NOTE: toggleLink is a horribly named function that actually means to apply the entity
@@ -330,14 +303,12 @@ export default class InputBox extends Component {
         );
 
         newSelectionState = adjustSelectionOffset(newSelectionState, 1, 0);
-        newEditorState = EditorState.set(newEditorState, {selection: newSelectionState});
+        newEditorState = EditorState.set(newEditorState, { selection: newSelectionState });
 
         this.setState({
             editorState: newEditorState,
             showDropdown: false,
             disambiguationOptions: null
-        }, () => {
-            //setTimeout(() => this.refs.editor.focus(), 0);
         });
     }
 
@@ -362,20 +333,18 @@ export default class InputBox extends Component {
                 const entityKey = character.getEntity();
                 return (
                     entityKey !== null &&
-                    contentState.getEntity(entityKey).getType === 'DISAMBIGUATION'
+                    contentState.getEntity(entityKey).getType() === 'DISAMBIGUATION'
                 );
             },
             callback
         );
     }
 
-    //This will eventually decorate all potentially ambiguous characters that don't have disambiguation entities
+    //Decorates ambiguous characters based on current ruleset
     findAmbiguousCharacters(contentBlock, callback, contentState) {
-        //for testing, only use the letter 'z'
-
-        //TODO: use decorator to find ambiguous letters that don't have metadata
-        const REGEX = /[z]/g;
-        findWithRegex(REGEX, contentBlock, callback);
+        //TODO: use this.props.charRules ('this' needs to be bound though)
+        const regex = new RegExp(Object.keys(englishKeyboardDisambiguations).join("|"), 'g');
+        findWithRegex(regex, contentBlock, callback);
     }
 
 
@@ -392,9 +361,9 @@ export default class InputBox extends Component {
             />
         }
 
-        //TODO: move to dropdown below cursor
         if (this.state.showDropdown) {
             dropdown = <Dropdown
+                coordinates={store.mostRecentAmbiguousCharCoords}
                 options={this.state.disambiguationOptions}
             />
         }
@@ -402,9 +371,9 @@ export default class InputBox extends Component {
         return (
             <div>
                 <div>
-                    <button onMouseDown={this.removeComment}>
+                    {/*<button onMouseDown={this.removeComment}>
                         Remove Comment
-                </button>
+                </button>*/}
                 </div>
                 {commentInput}
                 {dropdown}
@@ -451,44 +420,4 @@ class Comment extends Component {
         );
     }
 
-}
-
-class DisambiguatedCharacter extends Component {
-    constructor(props) {
-        super(props);
-    }
-
-    render() {
-        const styles = {
-            disambiguatedcharacter: {
-                color: 'red'
-            }
-        }
-        return (
-            <span style={styles.disambiguatedcharacter}>
-                {this.props.children}
-            </span>
-        )
-    }
-}
-
-class AmbiguousCharacter extends Component {
-    constructor(props) {
-        super(props);
-    }
-
-    render() {
-
-        const styles = {
-            char: {
-                color: 'green'
-            }
-        }
-
-        return (
-            <span style={styles.char} onClick={this.props.callback}>
-                {this.props.children}
-            </span>
-        )
-    }
 }
