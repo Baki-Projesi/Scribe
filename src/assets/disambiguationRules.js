@@ -59,7 +59,7 @@ export const englishKeyboardDisambiguations = {
     ],
     'd': [
         {
-            turkishText: 'd', // default
+            turkishText: 'd',
             arabicText: 'د',
             code: 'd'
         },
@@ -107,7 +107,7 @@ export const englishKeyboardDisambiguations = {
     ],
     'g': [
         {
-            turkishText: 'ġ', // default
+            turkishText: 'ġ',
             arabicText: 'غ',
             code: 'g4'
         },
@@ -151,14 +151,14 @@ export const englishKeyboardDisambiguations = {
     ],
     'h': [
         {
+            turkishText: 'ḥ',
+            arabicText: 'ح',
+            code: 'h3'
+        },
+        {
             turkishText: 'h',
             arabicText: 'ه',
             code: 'h'
-        },
-        {
-            turkishText: 'ḥ', // default
-            arabicText: 'ح',
-            code: 'h3'
         },
         {
             turkishText: 'ẖ',
@@ -168,14 +168,14 @@ export const englishKeyboardDisambiguations = {
     ],
     'H': [
         {
-            turkishText: 'H',
-            arabicText: 'ه',
-            code: 'H'
-        },
-        {
             turkishText: 'Ḥ',
             arabicText: 'ح',
             code: 'H3'
+        },
+        {
+            turkishText: 'H',
+            arabicText: 'ه',
+            code: 'H'
         },
         {
             turkishText: 'Ḫ',
@@ -199,7 +199,7 @@ export const englishKeyboardDisambiguations = {
     ],
     'k': [
         {
-            turkishText: 'k', // default
+            turkishText: 'k',
             arabicText: 'ك',
             code: 'k'
         },
@@ -251,7 +251,7 @@ export const englishKeyboardDisambiguations = {
     ],
     'n': [
         {
-            turkishText: 'n', // default
+            turkishText: 'n',
             arabicText: 'ن',
             code: 'n'
         },
@@ -275,9 +275,14 @@ export const englishKeyboardDisambiguations = {
     ],
     'p': [
         {
-            turkishText: 'p', // default, add b7 option
+            turkishText: 'p',
             arabicText: 'ﭖ',
             code: 'p'
+        },
+        {
+            turkishText: 'p',
+            arabicText: 'ب',
+            code: 'b7'
         }
     ],
     'P': [
@@ -285,6 +290,11 @@ export const englishKeyboardDisambiguations = {
             turkishText: 'P',
             arabicText: 'ﭖ',
             code: 'P'
+        },
+        {
+            turkishText: 'P',
+            arabicText: 'ب',
+            code: 'B7'
         }
     ],
     'r': [
@@ -303,12 +313,12 @@ export const englishKeyboardDisambiguations = {
     ],
     's': [
         {
-            turkishText: 's', // default
+            turkishText: 's',
             arabicText: 'س',
             code: 's'
         },
         {
-            turkishText: 'ş', // sh --> s2???
+            turkishText: 'ş', // sh combination --> s2???
             arabicText: 'ش',
             code: 's2'
         },
@@ -347,8 +357,8 @@ export const englishKeyboardDisambiguations = {
     ],
     't': [
         {
-            turkishText: 't', // default
-            arabicText: 'ت', //include d7
+            turkishText: 't',
+            arabicText: 'ت',
             code: 't'
         },
         {
@@ -365,6 +375,11 @@ export const englishKeyboardDisambiguations = {
             turkishText: 't',
             arabicText: 'ة',
             code: 't7'
+        },
+        {
+            turkishText: 't',
+            arabicText: 'د',
+            code: 'd7'
         }
     ],
     'T': [
@@ -387,6 +402,11 @@ export const englishKeyboardDisambiguations = {
             turkishText: 'T',
             arabicText: 'ة',
             code: 'T7'
+        },
+        {
+            turkishText: 'T',
+            arabicText: 'د',
+            code: 'D7'
         }
     ],
     'v': [
@@ -419,7 +439,7 @@ export const englishKeyboardDisambiguations = {
     ],
     'z': [
         {
-            turkishText: 'z', // default
+            turkishText: 'z',
             arabicText: 'ز',
             code: 'z'
         },
@@ -808,7 +828,7 @@ export const turkishKeyboardDisambiguations = {
     ],
     'g': [
         {
-            turkishText: 'ġ', // default
+            turkishText: 'ġ',
             arabicText: 'غ',
             code: 'g4'
         },
@@ -833,37 +853,37 @@ export const turkishKeyboardDisambiguations = {
     'ğ': [
         {
             turkishText: 'ğ',
-            arabicText: 'غ',
-            code: 'g5'
-        },
-        {
-            turkishText: 'ğ', // default
             arabicText: 'ك',
             code: 'g6'
+        },
+        {
+            turkishText: 'ğ',
+            arabicText: 'غ',
+            code: 'g5'
         }
     ],
     'Ğ': [
         {
             turkishText: 'Ğ',
-            arabicText: 'غ',
-            code: 'G5'
+            arabicText: 'ك',
+            code: 'G6'
         },
         {
             turkishText: 'Ğ',
-            arabicText: 'ك',
-            code: 'G6'
+            arabicText: 'غ',
+            code: 'G5'
         }
     ],
     'h': [
         {
-            turkishText: 'h',
-            arabicText: 'ه',
-            code: 'h'
-        },
-        {
             turkishText: 'ḥ',
             arabicText: 'ح',
             code: 'h3'
+        },
+        {
+            turkishText: 'h',
+            arabicText: 'ه',
+            code: 'h'
         },
         {
             turkishText: 'ẖ',
@@ -873,14 +893,14 @@ export const turkishKeyboardDisambiguations = {
     ],
     'H': [
         {
-            turkishText: 'H',
-            arabicText: 'ه',
-            code: 'H'
-        },
-        {
             turkishText: 'Ḥ',
             arabicText: 'ح',
             code: 'H3'
+        },
+        {
+            turkishText: 'H',
+            arabicText: 'ه',
+            code: 'H'
         },
         {
             turkishText: 'Ḫ',
@@ -983,6 +1003,11 @@ export const turkishKeyboardDisambiguations = {
             turkishText: 'p',
             arabicText: 'ﭖ',
             code: 'p'
+        },
+        {
+            turkishText: 'p',
+            arabicText: 'ب',
+            code: 'b7'
         }
     ],
     'P': [
@@ -990,6 +1015,11 @@ export const turkishKeyboardDisambiguations = {
             turkishText: 'P',
             arabicText: 'ﭖ',
             code: 'P'
+        },
+        {
+            turkishText: 'P',
+            arabicText: 'ب',
+            code: 'B7'
         }
     ],
     'r': [
@@ -1008,7 +1038,7 @@ export const turkishKeyboardDisambiguations = {
     ],
     's': [
         {
-            turkishText: 's', // default
+            turkishText: 's',
             arabicText: 'س',
             code: 's'
         },
@@ -1074,6 +1104,11 @@ export const turkishKeyboardDisambiguations = {
             turkishText: 't',
             arabicText: 'ة',
             code: 't7'
+        },
+        {
+            turkishText: 't',
+            arabicText: 'د',
+            code: 'd7'
         }
     ],
     'T': [
@@ -1096,6 +1131,11 @@ export const turkishKeyboardDisambiguations = {
             turkishText: 'T',
             arabicText: 'ة',
             code: 'T7'
+        },
+        {
+            turkishText: 'T',
+            arabicText: 'د',
+            code: 'D7'
         }
     ],
     'v': [
