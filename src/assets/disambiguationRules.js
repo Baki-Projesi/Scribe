@@ -491,6 +491,11 @@ export const englishKeyboardDisambiguations = {
             turkishText: 'ā',
             arabicText: 'ﺃ',
             code: 'a1'
+        },
+        {
+            turkishText: 'a',
+            arabicText: 'ا',
+            code: 'a7'
         }
     ],
     'A': [
@@ -503,6 +508,11 @@ export const englishKeyboardDisambiguations = {
             turkishText: 'Ā',
             arabicText: 'ﺃ',
             code: 'a1'
+        },
+        {
+            turkishText: 'A',
+            arabicText: 'ا',
+            code: 'A7'
         }
     ],
     'e': [
@@ -513,7 +523,7 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'ė',
-            arabicText: 'ﺽ',
+            arabicText: 'ي',
             code: 'e1'
         },
         {
@@ -530,7 +540,7 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'ė', // ? No capital E with diacritic in chart
-            arabicText: 'ﺽ',
+            arabicText: 'ي',
             code: 'E1'
         },
         {
@@ -577,7 +587,7 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'ı',
-            arabicText: 'آ',
+            arabicText: 'ي',
             code: 'i7'
         }
     ],
@@ -619,7 +629,7 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'I',
-            arabicText: 'آ',
+            arabicText: 'ي',
             code: 'I7'
         }
     ],
@@ -660,8 +670,8 @@ export const englishKeyboardDisambiguations = {
             code: 'o6'
         },
         {
-            turkishText: 'ö', // ?
-            arabicText: '',
+            turkishText: 'ö',
+            arabicText: 'و',
             code: 'o7'
         }
     ],
@@ -702,8 +712,8 @@ export const englishKeyboardDisambiguations = {
             code: 'O6'
         },
         {
-            turkishText: 'Ö', // ?
-            arabicText: '',
+            turkishText: 'Ö',
+            arabicText: 'و',
             code: 'O7'
         }
     ],
@@ -744,8 +754,8 @@ export const englishKeyboardDisambiguations = {
             code: 'u5'
         },
         {
-            turkishText: 'ü', // ?
-            arabicText: '',
+            turkishText: 'ü',
+            arabicText: 'و',
             code: 'u7'
         },
         {
@@ -796,8 +806,8 @@ export const englishKeyboardDisambiguations = {
             code: 'U5'
         },
         {
-            turkishText: 'Ü', // ?
-            arabicText: '',
+            turkishText: 'Ü',
+            arabicText: 'و',
             code: 'U7'
         },
         {
@@ -1330,6 +1340,11 @@ export const turkishKeyboardDisambiguations = {
             turkishText: 'ā',
             arabicText: 'ﺃ',
             code: 'a1'
+        },
+        {
+            turkishText: 'a',
+            arabicText: 'ا',
+            code: 'a7'
         }
     ],
     'A': [
@@ -1342,6 +1357,11 @@ export const turkishKeyboardDisambiguations = {
             turkishText: 'ā',
             arabicText: 'ﺃ',
             code: 'A1'
+        },
+        {
+            turkishText: 'A',
+            arabicText: 'ا',
+            code: 'A7'
         }
     ],
     'e': [
@@ -1352,7 +1372,7 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'ė',
-            arabicText: 'ﺽ',
+            arabicText: 'ي',
             code: 'e1'
         },
         {
@@ -1369,7 +1389,7 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'ė', // ? No E with a diacritic
-            arabicText: 'ﺽ',
+            arabicText: 'ي',
             code: 'E1'
         },
         {
@@ -1445,7 +1465,7 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'ı',
-            arabicText: 'آ',
+            arabicText: 'ي',
             code: 'i7'
         }
     ],
@@ -1472,7 +1492,7 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'I',
-            arabicText: 'آ',
+            arabicText: 'ي',
             code: 'I7'
         }
     ],
@@ -1542,8 +1562,8 @@ export const turkishKeyboardDisambiguations = {
             code: 'o5'
         },
         {
-            turkishText: 'ö', // ?
-            arabicText: '',
+            turkishText: 'ö',
+            arabicText: 'و',
             code: 'o7'
         }
     ],
@@ -1569,8 +1589,8 @@ export const turkishKeyboardDisambiguations = {
             code: 'O5'
         },
         {
-            turkishText: 'Ö', // ?
-            arabicText: '',
+            turkishText: 'Ö',
+            arabicText: 'و',
             code: 'O7'
         }
     ],
@@ -1630,8 +1650,8 @@ export const turkishKeyboardDisambiguations = {
     ],
     'ü': [
         {
-            turkishText: 'ü', // ?
-            arabicText: '',
+            turkishText: 'ü',
+            arabicText: 'و',
             code: 'u7'
         },
         {
@@ -1662,8 +1682,8 @@ export const turkishKeyboardDisambiguations = {
     ],
     'Ü': [
         {
-            turkishText: 'Ü', // ?
-            arabicText: '',
+            turkishText: 'Ü',
+            arabicText: 'و',
             code: 'U7'
         }, 
         {
