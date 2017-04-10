@@ -24,6 +24,8 @@ import CommentPopup from './CommentPopup';
 import Dropdown from './DropDown';
 import AmbiguousCharacter from './AmbiguousCharacter';
 import DisambiguatedCharacter from './DisambiguatedCharacter';
+import Comment from './Comment';
+import translate from '../utils/translation';
 
 /*
     The input area contains a rich text editor that allows the typist to add comment entities to any part of the text
@@ -34,19 +36,21 @@ import DisambiguatedCharacter from './DisambiguatedCharacter';
 */
 
 const store = {
-    mostRecentAmbiguousCharCoords: null
+    mostRecentAmbiguousCharCoords: null,
+    activeCommentText: '' //empty string for new comment, use text for clicked comments
 }
 
 
 const commentProps = {
     callback: function (commentText) {
         console.log("comment called back with text: " + commentText);
+        this.activeCommentText = commentText;
     }
 },
     disambiguatedCharProps = {
-        callback: function () {
-            console.log("disambiguated character called back");
-        }
+        // callback: function () {
+        //     console.log("disambiguated character called back");
+        // }
     },
     ambiguousCharacterProps = {
         updateCoordinates: function (offsetKey, coordinates) {
@@ -65,7 +69,6 @@ export default class InputBox extends Component {
                 strategy: this.findCommentEntities,
                 component: decorateComponentWithProps(Comment, commentProps)
             },
-
             {
                 strategy: this.findDisambiguatedCharacterEntities,
                 component: decorateComponentWithProps(DisambiguatedCharacter, disambiguatedCharProps)
@@ -80,12 +83,21 @@ export default class InputBox extends Component {
             editorState: EditorState.createEmpty(decorator),
             showCommentInput: false,
             commentContent: '',
+            outputText: ''
         };
 
         this.logState = () => {
             const content = this.state.editorState.getCurrentContent();
             console.log(convertToRaw(content));
         };
+
+        this.logTranslation = () => {
+            const content = translate(convertToRaw(this.state.editorState.getCurrentContent()), 0, 'arabicText');
+            console.log(content);
+        }
+        this.showTranslation = () => {
+            return translate(convertToRaw(this.state.editorState.getCurrentContent()), 0, 'arabicText');
+        }
 
         this.focus = () => this.refs.editor.focus();
 
@@ -351,8 +363,9 @@ export default class InputBox extends Component {
 
 
     render() {
-        let commentInput, dropdown;
+        let commentInput, dropdown, translation;
 
+        translation = this.showTranslation();
         //TODO: move to hovering tooltip near cursor
         if (this.state.showCommentInput) {
             commentInput = <CommentPopup
@@ -394,34 +407,18 @@ export default class InputBox extends Component {
                     type="button"
                     value="Log State to Console"
                 />
+                <input
+                    onClick={this.logTranslation}
+                    className={'buttons'}
+                    type="button"
+                    value="Log Translation to Console"    
+                />
+                <h3> 
+                    {translation}
+                </h3>
             </div>
         );
     }
-}
-
-
-//These will eventually be put in their own files
-class Comment extends Component {
-    constructor(props) {
-        super(props);
-    }
-
-    render() {
-        const styles = {
-            comment: {
-                color: '#3b5998',
-                textDecoration: 'underline'
-            }
-        }
-        const commentText = this.props.contentState.getEntity(this.props.entityKey).getData().comment;
-        return (
-            //TODO: show comment popup text on click
-            <span title={commentText} style={styles.comment} onClick={this.props.callback(commentText)}>
-                {this.props.children}
-            </span>
-        );
-    }
-
 }
 
 
