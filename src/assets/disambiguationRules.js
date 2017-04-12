@@ -1586,8 +1586,8 @@ export const turkishKeyboardDisambiguations = {
             code: 'u1'
         },
         {
-            turkishText: 'u', // ?
-            arabicText: '',
+            turkishText: 'u',
+            arabicText: 'و',
             code: 'u2'
         },
         {
@@ -1613,8 +1613,8 @@ export const turkishKeyboardDisambiguations = {
             code: 'U1'
         },
         {
-            turkishText: 'U', // ?
-            arabicText: '',
+            turkishText: 'U',
+            arabicText: 'و',
             code: 'U2'
         },
         {
