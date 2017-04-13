@@ -3,7 +3,8 @@ textarea {
     height: 100px;
     width: 600px;
     font-family: 'sans-serif';
-    font-size: 20px;
+    font-size: 28px;
+    color: #E85059;
 }
 .root {
     font-family: 'Georgia', 'serif';

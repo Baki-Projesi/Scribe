@@ -22,7 +22,7 @@ import { adjustSelectionOffset } from '../utils/selectionStateHelpers';
 import decorateComponentWithProps from 'decorate-component-with-props';
 import AmbiguousCharacter from './AmbiguousCharacter';
 import DisambiguatedCharacter from './DisambiguatedCharacter';
-import {englishKeyboardDisambiguations, turkishKeyboardDisambiguations} from '../../assets/disambiguationRules';
+import { englishKeyboardDisambiguations, turkishKeyboardDisambiguations } from '../../assets/disambiguationRules';
 
 const store = {
     mostRecentAmbiguousCharCoords: null
@@ -46,72 +46,81 @@ const commentProps = {
 
 export default class Transcribe extends Component {
 
-  constructor(props, context) {
-      super(props, context);
+    constructor(props, context) {
+        super(props, context);
 
-      const decorator = new CompositeDecorator([
-          {
-              strategy: this.findCommentEntities,
-              component: decorateComponentWithProps(Comment, commentProps)
-          },
+        const decorator = new CompositeDecorator([
+            {
+                strategy: this.findCommentEntities,
+                component: decorateComponentWithProps(Comment, commentProps)
+            },
 
-          {
-              strategy: this.findDisambiguatedCharacterEntities,
-              component: decorateComponentWithProps(DisambiguatedCharacter, disambiguatedCharProps)
-          },
-          {
-              strategy: this.findAmbiguousCharacters,
-              component: decorateComponentWithProps(AmbiguousCharacter, ambiguousCharacterProps)
-          }
-      ]);
+            {
+                strategy: this.findDisambiguatedCharacterEntities,
+                component: decorateComponentWithProps(DisambiguatedCharacter, disambiguatedCharProps)
+            },
+            {
+                strategy: this.findAmbiguousCharacters,
+                component: decorateComponentWithProps(AmbiguousCharacter, ambiguousCharacterProps)
+            }
+        ]);
+        const initEditorState = EditorState.createEmpty(decorator);
+        this.state = {
+            editorState: initEditorState,
+            contentState: initEditorState.getCurrentContent(),
+                oldSelectionState: initEditorState.getSelection(),
+                startKey: initEditorState.getSelection().getStartKey(),
+                startOffset: initEditorState.getSelection().getStartOffset(),
+                endKey: initEditorState.getSelection().getEndKey(),
+                endOffset: initEditorState.getSelection().getEndOffset(),
+                currentBlock: initEditorState.getCurrentContent().getBlockForKey(initEditorState.getSelection().getStartKey()),
+            showCommentInput: false,
+            commentContent: '',
+        };
 
-      this.state = {
-          editorState: EditorState.createEmpty(decorator),
-          showCommentInput: false,
-          commentContent: '',
-      };
+        this.logState = () => {
+            const content = this.state.editorState.getCurrentContent();
+            console.log(convertToRaw(content));
+        };
 
-      this.logState = () => {
-          const content = this.state.editorState.getCurrentContent();
-          console.log(convertToRaw(content));
-      };
+        this.focus = () => this.refs.editor.focus();
 
-      this.focus = () => this.refs.editor.focus();
+        this.onChange = (editorState) => {
+            let newState, current = {
+                editorState: editorState,
+                contentState: editorState.getCurrentContent(),
+                oldSelectionState: editorState.getSelection(),
+                startKey: editorState.getSelection().getStartKey(),
+                startOffset: editorState.getSelection().getStartOffset(),
+                endKey: editorState.getSelection().getEndKey(),
+                endOffset: editorState.getSelection().getEndOffset(),
+                currentBlock: editorState.getCurrentContent().getBlockForKey(editorState.getSelection().getStartKey())
+            }
 
-      this.onChange = (editorState) => {
-          let newState, current = {
-              editorState: editorState,
-              contentState: editorState.getCurrentContent(),
-              oldSelectionState: editorState.getSelection(),
-              startKey: editorState.getSelection().getStartKey(),
-              startOffset: editorState.getSelection().getStartOffset(),
-              endOffset: editorState.getSelection().getEndOffset(),
-              currentBlock: editorState.getCurrentContent().getBlockForKey(editorState.getSelection().getStartKey())
-          }
+            if (current.oldSelectionState.isCollapsed()) {
+                // Selection is just the cursor w/ no characters highlighted
+                newState = this._promptForDisambiguation(current);
+            } else {
+                // At least one character highlighted
+                newState = this._promptForComment(current);
+            }
 
-          if (current.oldSelectionState.isCollapsed()) {
-              // Selection is just the cursor w/ no characters highlighted
-              newState = this._promptForDisambiguation(current);
-          } else {
-              // At least one character highlighted
-              newState = this._promptForComment(current);
-          }
+            this.setState(newState);
+        }
 
-          this.setState(newState);
-      }
+        //  this.onCommentChange = (e) => this.setState({ commentContent: e.target.value });
 
-    //  this.onCommentChange = (e) => this.setState({ commentContent: e.target.value });
-
-      this.promptForComment = this._promptForComment.bind(this);
-      this.confirmComment = this._confirmComment.bind(this);
-      this.onCommentInputKeyDown = this._onCommentInputKeyDown.bind(this);
-      this.removeComment = this._removeComment.bind(this);
-      this.keyBindingFn = this._keyBindingFn.bind(this);
-      this.handleKeyCommand = this._handleKeyCommand.bind(this)
+        this.promptForComment = this._promptForComment.bind(this);
+        this.confirmComment = this._confirmComment.bind(this);
+        this.onCommentInputKeyDown = this._onCommentInputKeyDown.bind(this);
+        this.removeComment = this._removeComment.bind(this);
+        this.keyBindingFn = this._keyBindingFn.bind(this);
+        this.handleKeyCommand = this._handleKeyCommand.bind(this)
     }
 
     //captures global key events, results of this function (a special command string) are passed to KeyCommand() before the window interprets them
     _keyBindingFn(e) {
+
         if (e.which === 83 /* `S` key */ && KeyBindingUtil.hasCommandModifier(e)) {
             console.log('ctrl/cmd-S pressed');
             return 'editor-save';
@@ -221,6 +230,7 @@ export default class Transcribe extends Component {
     _onCommentInputKeyDown(e) {
         if (e.which === 13) {
             this._confirmComment(e);
+            
         }
     }
 
@@ -249,7 +259,7 @@ export default class Transcribe extends Component {
             if (previousEntity === null) {
                 //previous character isn't a disambiguated character entity
                 if (charRules[previousChar] !== undefined) {
-                    showDropdown = true;
+                    showDropdown = previousChar !== ' ';
                     disambiguationOptions = charRules[previousChar]
                 }
             }
@@ -337,7 +347,7 @@ export default class Transcribe extends Component {
     }
 
     render() {
-        const {inputText} = this.state;
+        const { inputText } = this.state;
         return (
             <div id="tool-window">
                 <InputBox
@@ -350,14 +360,16 @@ export default class Transcribe extends Component {
                     disambiguationOptions={this.state.disambiguationOptions}
                     store={store}
                     showCommentInput={this.state.showCommentInput}
-                    />
+                />
                 <input
                     onClick={this.logState}
                     className={'buttons'}
                     type="button"
                     value="Log State to Console"
-                    />
-                  <OutputBox inputText={inputText} />
+                />
+                <OutputBox
+                    transcribeState={this.state}
+                />
             </div>
         );
     }

@@ -1,4 +1,11 @@
 export const englishKeyboardDisambiguations = {
+    ' ': [
+        {
+            turkishText: ' ',
+            arabicText: ' ',
+            code: 'sp'
+        }
+    ],
     'b': [
         {
             turkishText: 'b',
@@ -836,6 +843,13 @@ export const englishKeyboardDisambiguations = {
 }
 
 export const turkishKeyboardDisambiguations = {
+    ' ': [
+        {
+            turkishText: ' ',
+            arabicText: ' ',
+            code: 'sp'
+        }
+    ],
     'b': [
         {
             turkishText: 'b',
@@ -1557,7 +1571,7 @@ export const turkishKeyboardDisambiguations = {
             code: 'o1'
         },
         {
-            turkishText: 'ö', 
+            turkishText: 'ö',
             arabicText: 'ﻮﺍ',
             code: 'o3'
         },
@@ -1685,27 +1699,27 @@ export const turkishKeyboardDisambiguations = {
             turkishText: 'Ü',
             arabicText: 'و',
             code: 'U7'
-        }, 
+        },
         {
             turkishText: 'Ü',
             arabicText: 'ُ', // ḍammah
             code: 'U0'
-        }, 
+        },
         {
             turkishText: 'Ū', // ?
             arabicText: '',
             code: 'U1'
-        }, 
+        },
         {
             turkishText: 'Ü',
             arabicText: 'ﻮﺍ',
             code: 'U3'
-        }, 
+        },
         {
             turkishText: 'Ü',
             arabicText: 'ﺍ',
             code: 'U5'
-        }, 
+        },
         {
             turkishText: 'Ü',
             arabicText: 'ى',

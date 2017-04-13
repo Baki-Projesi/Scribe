@@ -24,7 +24,6 @@ import Dropdown from './DropDown';
 import AmbiguousCharacter from './AmbiguousCharacter';
 import DisambiguatedCharacter from './DisambiguatedCharacter';
 import Comment from './Comment';
-import translate from '../utils/translation';
 
 
 /*
@@ -95,6 +94,3 @@ export default class InputBox extends Component {
         );
     }
 }
-
-
-//These will eventually be put in their own files
