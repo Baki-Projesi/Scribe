@@ -318,7 +318,7 @@ export const englishKeyboardDisambiguations = {
             code: 's'
         },
         {
-            turkishText: 'ş', // sh combination --> s2???
+            turkishText: 'ş', // sh combination --> s2
             arabicText: 'ش',
             code: 's2'
         },
@@ -1660,8 +1660,8 @@ export const turkishKeyboardDisambiguations = {
             code: 'u0'
         },
         {
-            turkishText: 'ū', // ?
-            arabicText: '',
+            turkishText: 'ū',
+            arabicText: 'و',
             code: 'u1'
         },
         {
@@ -1692,8 +1692,8 @@ export const turkishKeyboardDisambiguations = {
             code: 'U0'
         }, 
         {
-            turkishText: 'Ū', // ?
-            arabicText: '',
+            turkishText: 'Ū',
+            arabicText: 'و',
             code: 'U1'
         }, 
         {
