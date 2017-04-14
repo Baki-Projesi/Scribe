@@ -7,13 +7,15 @@ export default class DropDown extends Component {
 
     const dropDownStyles = {
       dropDownBox: {
+        backgroundColor: '#efefef',
         borderStyle: 'solid',
+        borderColor: 'grey',
         borderWidth: '1px',
         position: 'absolute',
         width: '120px',
         top: top + 18,
         left: left + 6,
-        color: 'blue'
+        color: 'black'
       },
       orderedList: {
         margin: '4px'
@@ -21,7 +23,7 @@ export default class DropDown extends Component {
     }
 
     let dropdownOptions = this.props.options && Array.isArray(this.props.options) ? this.props.options.map((option) =>
-      <li key={option.code}>{option.turkishText + '   ' + option.arabicText }</li>
+      <li key={option.code}>{option.turkishText + ' ➞ ' + option.arabicText }</li>
     ) : null;
 
     return (
