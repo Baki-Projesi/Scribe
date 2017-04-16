@@ -104,7 +104,6 @@ export default class Transcribe extends Component {
                 // At least one character highlighted
                 newState = this._promptForComment(current);
             }
-
             this.setState(newState);
         }
 
@@ -319,12 +318,6 @@ export default class Transcribe extends Component {
         newSelectionState = adjustSelectionOffset(newSelectionState, 1, 0);
         newEditorState = EditorState.set(newEditorState, { selection: newSelectionState });
 
-        this.setState({
-            editorState: newEditorState,
-            showDropdown: false,
-            disambiguationOptions: null
-        });
-
         return {
             editorState: newEditorState,
             showDropdown: false,
@@ -376,7 +369,6 @@ export default class Transcribe extends Component {
     }
 
     render() {
-        const { inputText } = this.state;
         return (
             <div id="tool-window">
                 <InputBox
