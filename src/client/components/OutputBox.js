@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { convertToRaw } from 'draft-js';
 import '../styles/OutputBox.css';
 
 export default class OutputBox extends Component {
@@ -11,10 +12,10 @@ export default class OutputBox extends Component {
     }
 
     //reduces obj1 by only keeping the values that match keys with obj2
-    reduceObj(obj1, contentState) {
+    reduceObj(obj1, obj2) {
 
-        Object.keys(obj1).forEach(function(key) {
-            if (!contentState.getBlockForKey(key)) {
+        Object.keys(obj1).forEach(function (key) {
+            if (!obj2.getBlockForKey(key)) {
                 delete obj1[key];
             }
         });
@@ -43,7 +44,7 @@ export default class OutputBox extends Component {
         const newProps = nextProps.transcribeState;
         let { contentBlocks } = this.state;
         if (newProps.contentState.getBlocksAsArray().length !== currentProps.contentState.getBlocksAsArray().length) {
-            //different number of blocks, may be from mass deletion
+            //different number of blocks between input/output, may be from mass deletion or copy/paste
             contentBlocks = this.reduceObj(contentBlocks, newProps.contentState);
         }
         if (newProps.editorState.getSelection().isCollapsed()) {
