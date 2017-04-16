@@ -68,12 +68,12 @@ export default class Transcribe extends Component {
         this.state = {
             editorState: initEditorState,
             contentState: initEditorState.getCurrentContent(),
-                oldSelectionState: initEditorState.getSelection(),
-                startKey: initEditorState.getSelection().getStartKey(),
-                startOffset: initEditorState.getSelection().getStartOffset(),
-                endKey: initEditorState.getSelection().getEndKey(),
-                endOffset: initEditorState.getSelection().getEndOffset(),
-                currentBlock: initEditorState.getCurrentContent().getBlockForKey(initEditorState.getSelection().getStartKey()),
+            oldSelectionState: initEditorState.getSelection(),
+            startKey: initEditorState.getSelection().getStartKey(),
+            startOffset: initEditorState.getSelection().getStartOffset(),
+            endKey: initEditorState.getSelection().getEndKey(),
+            endOffset: initEditorState.getSelection().getEndOffset(),
+            currentBlock: initEditorState.getCurrentContent().getBlockForKey(initEditorState.getSelection().getStartKey()),
             showCommentInput: false,
             commentContent: '',
         };
@@ -126,6 +126,10 @@ export default class Transcribe extends Component {
             return 'editor-save';
         }
 
+        if (e.which === 13) {
+            return 'editor-newline';
+        }
+
         if (this.state.showDropdown && e.which !== 8 && e.which !== 46) { // backspace, delete
             let str = 'dropdown-';
             const keyCodeBase = 48;
@@ -141,7 +145,8 @@ export default class Transcribe extends Component {
             } else {
                 //If anything besides Backspace or a number is chosen,
                 // use default disambiguation choice and have the editor  the normal keypress
-                this._confirmDisambiguation(0);
+                let newState = Object.assign(this.state, this._confirmDisambiguation(0, this.state.editorState));
+                this.setState(newState);
             }
         }
 
@@ -150,16 +155,27 @@ export default class Transcribe extends Component {
 
     //This is passed a value from _keyBindingFn, either a special string or the default
     _handleKeyCommand(command) {
+        if (command === 'editor-newline') {
+            let newState = this.state;
+            if (this.state.showDropdown) {
+                newState = Object.assign(this.state, this._confirmDisambiguation(0, this.state.editorState));
+            }
+            newState.editorState = this.keyCommandInsertNewline(this.state.editorState);
+            this.setState(newState);
+
+            return 'handled';
+        }
         if (command === 'editor-save') {
             /*
                 API CALL TO SAVE HERE
             */
             console.log('API save draft called');
+
             return 'handled';
         }
         if (command.startsWith('dropdown') && this.state.disambiguationOptions) {
             let choice = Number(command.charAt(command.length - 1));
-            this._confirmDisambiguation(choice - 1);
+            this._confirmDisambiguation(choice - 1, this.state.editorState);
 
             return 'handled';
         }
@@ -230,7 +246,7 @@ export default class Transcribe extends Component {
     _onCommentInputKeyDown(e) {
         if (e.which === 13) {
             this._confirmComment(e);
-            
+
         }
     }
 
@@ -275,9 +291,8 @@ export default class Transcribe extends Component {
     }
 
     //this is called during handleKeyCommand when it detects a dropdown choice.
-    _confirmDisambiguation(choiceIndex) {
+    _confirmDisambiguation(choiceIndex, editorState) {
         const displayText = this.state.disambiguationOptions[choiceIndex].turkishText;
-        const editorState = this.state.editorState;
         const contentState = editorState.getCurrentContent();
         let contentStateWithEntity = contentState.createEntity(
             'DISAMBIGUATION',
@@ -309,6 +324,20 @@ export default class Transcribe extends Component {
             showDropdown: false,
             disambiguationOptions: null
         });
+
+        return {
+            editorState: newEditorState,
+            showDropdown: false,
+            disambiguationOptions: null
+        }
+    }
+
+    keyCommandInsertNewline(editorState) {
+        var contentState = Modifier.splitBlock(
+            editorState.getCurrentContent(),
+            editorState.getSelection(),
+        );
+        return EditorState.push(editorState, contentState, 'split-block');
     }
 
     //Searches through a block of content (newLine separated) and finds embedded COMMENT entities
