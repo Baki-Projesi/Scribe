@@ -54,13 +54,12 @@ export default class Transcribe extends Component {
                 strategy: this.findCommentEntities,
                 component: decorateComponentWithProps(Comment, commentProps)
             },
-
             {
                 strategy: this.findDisambiguatedCharacterEntities,
                 component: decorateComponentWithProps(DisambiguatedCharacter, disambiguatedCharProps)
             },
             {
-                strategy: this.findAmbiguousCharacters,
+                strategy: this.findAmbiguousEnglishCharacters,
                 component: decorateComponentWithProps(AmbiguousCharacter, ambiguousCharacterProps)
             }
         ]);
@@ -76,6 +75,7 @@ export default class Transcribe extends Component {
             currentBlock: initEditorState.getCurrentContent().getBlockForKey(initEditorState.getSelection().getStartKey()),
             showCommentInput: false,
             commentContent: '',
+            usingTurkishKeyboard: false
         };
 
         this.logState = () => {
@@ -114,6 +114,7 @@ export default class Transcribe extends Component {
         this.onCommentInputKeyDown = this._onCommentInputKeyDown.bind(this);
         this.removeComment = this._removeComment.bind(this);
         this.keyBindingFn = this._keyBindingFn.bind(this);
+        this.toggleCheckboxValue = this._toggleCheckboxValue.bind(this);
         this.handleKeyCommand = this._handleKeyCommand.bind(this)
     }
 
@@ -264,7 +265,7 @@ export default class Transcribe extends Component {
 
     //TODO: move into dropdown positioned under cursor
     _promptForDisambiguation(current) {
-        const charRules = englishKeyboardDisambiguations;
+        let charRules = this.state.usingTurkishKeyboard ? turkishKeyboardDisambiguations : englishKeyboardDisambiguations;
         let showDropdown = false, disambiguationOptions;
         if (current.startOffset > 0) {
             const previousChar = current.currentBlock.getText().charAt(current.startOffset - 1);
@@ -333,6 +334,52 @@ export default class Transcribe extends Component {
         return EditorState.push(editorState, contentState, 'split-block');
     }
 
+    _toggleCheckboxValue() {
+        let usingTurkishKeyboard = !this.state.usingTurkishKeyboard;
+        let editorState = this.state.editorState;
+        if (usingTurkishKeyboard) {
+            editorState = this.enableTurkishKeyboardDecorations(editorState);
+        } else {
+            editorState = this.enableEnglishKeyboardDecorations(editorState);
+        }
+        this.setState({ 
+            usingTurkishKeyboard: usingTurkishKeyboard,
+            editorState: editorState
+         });
+    }
+
+    enableEnglishKeyboardDecorations(editorState, rules) {
+        const decor = new CompositeDecorator([{
+                strategy: this.findCommentEntities,
+                component: decorateComponentWithProps(Comment, commentProps)
+            },
+            {
+                strategy: this.findDisambiguatedCharacterEntities,
+                component: decorateComponentWithProps(DisambiguatedCharacter, disambiguatedCharProps)
+            },
+            {
+                strategy: this.findAmbiguousEnglishCharacters,
+                component: decorateComponentWithProps(AmbiguousCharacter, ambiguousCharacterProps)
+            }]);
+        return EditorState.set(editorState, { decorator: decor });
+    }
+
+    enableTurkishKeyboardDecorations(editorState, rules) {
+        const decor = new CompositeDecorator([{
+                strategy: this.findCommentEntities,
+                component: decorateComponentWithProps(Comment, commentProps)
+            },
+            {
+                strategy: this.findDisambiguatedCharacterEntities,
+                component: decorateComponentWithProps(DisambiguatedCharacter, disambiguatedCharProps)
+            },
+            {
+                strategy: this.findAmbiguousTurkishCharacters,
+                component: decorateComponentWithProps(AmbiguousCharacter, ambiguousCharacterProps)
+            }]);
+        return EditorState.set(editorState, { decorator: decor });
+    }
+
     //Searches through a block of content (newLine separated) and finds embedded COMMENT entities
     findCommentEntities(contentBlock, callback, contentState) {
         contentBlock.findEntityRanges(
@@ -361,10 +408,15 @@ export default class Transcribe extends Component {
         );
     }
 
-    //Decorates ambiguous characters based on current ruleset
-    findAmbiguousCharacters(contentBlock, callback, contentState) {
-        //TODO: use this.props.charRules ('this' needs to be bound though)
+    //Decorates ambiguous characters based on english keyboard ruleset
+    findAmbiguousEnglishCharacters(contentBlock, callback, contentState) {
         const regex = new RegExp(Object.keys(englishKeyboardDisambiguations).join("|"), 'g');
+        findWithRegex(regex, contentBlock, callback);
+    }
+
+    //Decorates ambiguous characters based on turkish keyboard ruleset
+    findAmbiguousTurkishCharacters(contentBlock, callback, contentState) {
+        const regex = new RegExp(Object.keys(turkishKeyboardDisambiguations).join("|"), 'g');
         findWithRegex(regex, contentBlock, callback);
     }
 
@@ -384,10 +436,13 @@ export default class Transcribe extends Component {
                 />
                 <input
                     onClick={this.logState}
-                    className={'buttons'}
-                    type="button"
-                    value="Log State to Console"
+                    className={'checkboxes'}
+                    onChange={this.toggleCheckboxValue}
+                    id="turkish_keyboard_checkbox"
+                    ref="turkish_keyboard_checkbox"
+                    type="checkbox"
                 />
+                <label htmlFor="turkish_keyboard_checkbox">I'm using a Turkish keyboard</label>
                 <OutputBox
                     transcribeState={this.state}
                 />
