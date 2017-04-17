@@ -120,9 +120,6 @@ export default class Transcribe extends Component {
 
     //captures global key events, results of this function (a special command string) are passed to KeyCommand() before the window interprets them
     _keyBindingFn(e) {
-        if (e.which === 32) {
-            return 'editor-space';
-        }
         if (e.which === 83 /* `S` key */ && KeyBindingUtil.hasCommandModifier(e)) {
             console.log('ctrl/cmd-S pressed');
             return 'editor-save';
