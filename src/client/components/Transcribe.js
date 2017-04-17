@@ -120,7 +120,9 @@ export default class Transcribe extends Component {
 
     //captures global key events, results of this function (a special command string) are passed to KeyCommand() before the window interprets them
     _keyBindingFn(e) {
-
+        if (e.which === 32) {
+            return 'editor-space';
+        }
         if (e.which === 83 /* `S` key */ && KeyBindingUtil.hasCommandModifier(e)) {
             console.log('ctrl/cmd-S pressed');
             return 'editor-save';
@@ -155,6 +157,9 @@ export default class Transcribe extends Component {
 
     //This is passed a value from _keyBindingFn, either a special string or the default
     _handleKeyCommand(command) {
+        if (command === 'editor-space') {
+            
+        }
         if (command === 'editor-newline') {
             let newState = this.state;
             if (this.state.showDropdown) {
@@ -175,8 +180,10 @@ export default class Transcribe extends Component {
         }
         if (command.startsWith('dropdown') && this.state.disambiguationOptions) {
             let choice = Number(command.charAt(command.length - 1));
-            this._confirmDisambiguation(choice - 1, this.state.editorState);
+            let newState = this.state.editorState;
+            newState = this._confirmDisambiguation(choice - 1, this.state.editorState);
 
+            this.setState(newState);
             return 'handled';
         }
 
