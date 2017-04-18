@@ -129,33 +129,39 @@ export default class Transcribe extends Component {
             return 'editor-newline';
         }
 
-        if (this.state.showDropdown && e.which !== 8 && e.which !== 46) { // backspace, delete
-            let str = 'dropdown-';
-            const keyCodeBase = 48;
-            const numOptions = this.state.disambiguationOptions.length;
-            const optionMap = {};
-            for (let i = 1; i < numOptions + 1; i++) {
-                optionMap[keyCodeBase + i] = (str + i); //numkeys 1-9
-                optionMap[(keyCodeBase * 2) + i] = (str + i); // numpad 1-9
-            }
+        if (e.which !== 8 && e.which !== 46) {
+            if (this.state.showDropdown) { // backspace, delete
+                let str = 'dropdown-';
+                const keyCodeBase = 48;
+                const numOptions = this.state.disambiguationOptions.length;
+                const optionMap = {};
+                for (let i = 1; i < numOptions + 1; i++) {
+                    optionMap[keyCodeBase + i] = (str + i); //numkeys 1-9
+                    optionMap[(keyCodeBase * 2) + i] = (str + i); // numpad 1-9
+                }
 
-            if ((e.which >= 49 && e.which <= 57) || (e.which >= 97 && e.which <= 105) && optionMap[e.which]) {
-                return optionMap[e.which];
-            } else {
-                //If anything besides Backspace or a number is chosen,
-                // use default disambiguation choice and have the editor  the normal keypress
+                if ((e.which >= 49 && e.which <= 57) || (e.which >= 97 && e.which <= 105) && optionMap[e.which]) {
+                    return optionMap[e.which];
+                } else {
+                    //If anything besides Backspace or a number is chosen,
+                    // use default disambiguation choice and have the editor  the normal keypress
+                    let newState = Object.assign(this.state, this._confirmDisambiguation(0, this.state.editorState));
+                    this.setState(newState);
+                }
+            } else if (this.state.disambiguationOptions && this.state.disambiguationOptions[0].code === 'sp') {
+                //we don't show dropdown for spaces, but they need an entity anyways
                 let newState = Object.assign(this.state, this._confirmDisambiguation(0, this.state.editorState));
                 this.setState(newState);
             }
         }
-
+        
         return getDefaultKeyBinding(e);
     }
 
     //This is passed a value from _keyBindingFn, either a special string or the default
     _handleKeyCommand(command) {
         if (command === 'editor-space') {
-            
+
         }
         if (command === 'editor-newline') {
             let newState = this.state;
@@ -346,41 +352,41 @@ export default class Transcribe extends Component {
         } else {
             editorState = this.enableEnglishKeyboardDecorations(editorState);
         }
-        this.setState({ 
+        this.setState({
             usingTurkishKeyboard: usingTurkishKeyboard,
             editorState: editorState
-         });
+        });
     }
 
     enableEnglishKeyboardDecorations(editorState, rules) {
         const decor = new CompositeDecorator([{
-                strategy: this.findCommentEntities,
-                component: decorateComponentWithProps(Comment, commentProps)
-            },
-            {
-                strategy: this.findDisambiguatedCharacterEntities,
-                component: decorateComponentWithProps(DisambiguatedCharacter, disambiguatedCharProps)
-            },
-            {
-                strategy: this.findAmbiguousEnglishCharacters,
-                component: decorateComponentWithProps(AmbiguousCharacter, ambiguousCharacterProps)
-            }]);
+            strategy: this.findCommentEntities,
+            component: decorateComponentWithProps(Comment, commentProps)
+        },
+        {
+            strategy: this.findDisambiguatedCharacterEntities,
+            component: decorateComponentWithProps(DisambiguatedCharacter, disambiguatedCharProps)
+        },
+        {
+            strategy: this.findAmbiguousEnglishCharacters,
+            component: decorateComponentWithProps(AmbiguousCharacter, ambiguousCharacterProps)
+        }]);
         return EditorState.set(editorState, { decorator: decor });
     }
 
     enableTurkishKeyboardDecorations(editorState, rules) {
         const decor = new CompositeDecorator([{
-                strategy: this.findCommentEntities,
-                component: decorateComponentWithProps(Comment, commentProps)
-            },
-            {
-                strategy: this.findDisambiguatedCharacterEntities,
-                component: decorateComponentWithProps(DisambiguatedCharacter, disambiguatedCharProps)
-            },
-            {
-                strategy: this.findAmbiguousTurkishCharacters,
-                component: decorateComponentWithProps(AmbiguousCharacter, ambiguousCharacterProps)
-            }]);
+            strategy: this.findCommentEntities,
+            component: decorateComponentWithProps(Comment, commentProps)
+        },
+        {
+            strategy: this.findDisambiguatedCharacterEntities,
+            component: decorateComponentWithProps(DisambiguatedCharacter, disambiguatedCharProps)
+        },
+        {
+            strategy: this.findAmbiguousTurkishCharacters,
+            component: decorateComponentWithProps(AmbiguousCharacter, ambiguousCharacterProps)
+        }]);
         return EditorState.set(editorState, { decorator: decor });
     }
 
@@ -447,6 +453,11 @@ export default class Transcribe extends Component {
                     type="checkbox"
                 />
                 <label htmlFor="turkish_keyboard_checkbox">I'm using a Turkish keyboard</label>
+                <input
+                    onClick={this.logState}
+                    type="button"
+                    value="log state to console"
+                />
                 <OutputBox
                     transcribeState={this.state}
                 />
