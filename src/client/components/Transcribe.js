@@ -453,11 +453,6 @@ export default class Transcribe extends Component {
                     type="checkbox"
                 />
                 <label htmlFor="turkish_keyboard_checkbox">I'm using a Turkish keyboard</label>
-                <input
-                    onClick={this.logState}
-                    type="button"
-                    value="log state to console"
-                />
                 <OutputBox
                     transcribeState={this.state}
                 />
