@@ -264,7 +264,7 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'ñ',
-            arabicText: '   ',
+            arabicText: 'ك',
             code: 'n6'
         }
     ],
