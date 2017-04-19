@@ -36,32 +36,43 @@ import DisambiguatedCharacter from './DisambiguatedCharacter';
 export default class InputBox extends Component {
     constructor(props, context) {
       super(props, context);
-      const { editorState,
-              handleKeyCommand,
-              onChange,
-              onInputTextChange,
-              keyBindingFn,
-              showDropdown,
-              disambiguationOptions,
-              showCommentInput,
-              store } = this.props;
       this.focus = () => this.refs.editor.focus();
 
     }
 
 
+
+    //Pressing enter saves the comment
+    _onCommentInputKeyDown(e) {
+        if (e.which === 13) {
+            this._confirmComment(e);
+        }
+    }
+
+    //Removes comment from selection
+    _removeComment(e) {
+        e.preventDefault();
+        const { editorState } = this.state;
+        const selection = editorState.getSelection();
+
+        if (!selection.isCollapsed()) {
+            this.setState({
+                editorState: RichUtils.toggleLink(editorState, selection, null),
+            });
+        }
+    }
+
     render() {
         // let commentInput, dropdown;
         //
         // //TODO: move to hovering tooltip near cursor
-        // if (this.props.showCommentInput) {
-        //     var commentInput = <CommentPopup
-        //         onCommentChange={this.onCommentChange}
-        //         value={this.state.commentContent}
-        //         onCommentInputKeyDown={this.onCommentInputKeyDown}
-        //         confirmComment={this.confirmComment}
-        //     />
-        // }
+        if (this.props.showCommentInput) {
+            var commentInput = <CommentPopup
+                onCommentChange={this.props.onCommentChange}
+                value={this.props.commentContent}
+                onCommentInputKeyDown={this.onCommentInputKeyDown}
+            />
+        }
         //
         if (this.props.showDropdown) {
             var dropdown = <Dropdown
@@ -69,7 +80,6 @@ export default class InputBox extends Component {
                 options={this.props.disambiguationOptions}
             />
         }
-// {commentInput}
         return (
             <div>
                 <div>
@@ -77,6 +87,8 @@ export default class InputBox extends Component {
                         Remove Comment
                 </button>*/}
                 </div>
+                {commentInput}
+
                 {dropdown}
 
                 <div className={'editor'} onClick={this.focus}>

@@ -15,18 +15,19 @@ export default class CommentPopup extends Component {
 
     constructor(props) {
         super(props);
-        this.handleChange = this.handleChange.bind(this);
+        // this.handleChange = this.handleChange.bind(this);
+
     }
 
     handleChange(e) {
-        this.props.onCommentChange(e);
+        //this.props.onCommentChange(e);
     }
 
     render() {
         return (
             <div style={this.props.position}>
                 <input
-                    onChange={this.handleChange}
+                    onChange={this.handleChange.bind(this)}
                     ref={"comment"}
                     type="text"
                     value={this.props.value}
@@ -34,7 +35,7 @@ export default class CommentPopup extends Component {
                 />
                 <button onMouseDown={this.props.confirmComment}>
                     Confirm
-                    </button>
+                  </button>
             </div>
         );
     }

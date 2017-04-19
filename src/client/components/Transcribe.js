@@ -20,6 +20,7 @@ import {
 import findWithRegex from '../utils/findWithRegex';
 import { adjustSelectionOffset } from '../utils/selectionStateHelpers';
 import decorateComponentWithProps from 'decorate-component-with-props';
+import CommentPopup from './CommentPopup';
 import AmbiguousCharacter from './AmbiguousCharacter';
 import DisambiguatedCharacter from './DisambiguatedCharacter';
 import {englishKeyboardDisambiguations, turkishKeyboardDisambiguations} from '../../assets/disambiguationRules';
@@ -51,24 +52,22 @@ export default class Transcribe extends Component {
 
       const decorator = new CompositeDecorator([
           {
-              strategy: this.findCommentEntities,
-              component: decorateComponentWithProps(Comment, commentProps)
-          },
-
-          {
               strategy: this.findDisambiguatedCharacterEntities,
               component: decorateComponentWithProps(DisambiguatedCharacter, disambiguatedCharProps)
           },
           {
               strategy: this.findAmbiguousCharacters,
               component: decorateComponentWithProps(AmbiguousCharacter, ambiguousCharacterProps)
-          }
+          },
+          {
+              strategy: this.findCommentEntities,
+              component: CommentPopup
+          },
       ]);
 
       this.state = {
           editorState: EditorState.createEmpty(decorator),
-          showCommentInput: false,
-          commentContent: '',
+          comments:[],
       };
 
       this.logState = () => {
@@ -100,7 +99,15 @@ export default class Transcribe extends Component {
           this.setState(newState);
       }
 
-    //  this.onCommentChange = (e) => this.setState({ commentContent: e.target.value });
+      // this.onCommentChange = (e) => {
+      //  var newState = {
+      //    ...this.state,
+      //    ...this.state.comments,
+      //       // content: "blop",
+      //  }
+      //  console.log(newState)
+      //  this.setState({ comments: e.target.value })
+      //  };
 
       this.promptForComment = this._promptForComment.bind(this);
       this.confirmComment = this._confirmComment.bind(this);
@@ -160,14 +167,20 @@ export default class Transcribe extends Component {
 
     //TODO: move comment prompt into a floating tooltip
     _promptForComment(current) {
+        var commentText = '';
         const blockWithCommentAtBeginning = current.contentState.getBlockForKey(current.startKey);
         const commentKey = blockWithCommentAtBeginning.getEntityAt(current.startOffset);
+       console.log(blockWithCommentAtBeginning)
+       console.log(commentKey)
 
-        let commentText = '';
         if (commentKey) {
-            commentText = current.contentState.getEntity(commentKey).getData().commentText;
-        }
+            // console.log(commentKey)
+            console.log(current.contentState.getEntity(commentKey).getData())
 
+            commentText = current.contentState.getEntity(commentKey).getData().commentText;
+            // console.log(current.contentState.getEntity(commentKey).getData())
+
+        }
         let commentPopupHeight = 44, position, relativeParent;
         // const relativeParent = getRelativeParentElement(this.toolbar.parentElement);
         const relativeRect = relativeParent ? relativeParent.getBoundingClientRect() : document.body.getBoundingClientRect();
@@ -179,6 +192,10 @@ export default class Transcribe extends Component {
             //transition: 'transform 0.15s cubic-bezier(.3,1.2,.2,1)',
         };
 
+        // var newCurrent = {
+        //   ...current,
+        //
+        // }
         Object.assign(current, {
             showCommentInput: true,
             commentPopupPosition: position,
@@ -196,7 +213,7 @@ export default class Transcribe extends Component {
         const contentState = editorState.getCurrentContent();
         const contentStateWithEntity = contentState.createEntity(
             'COMMENT',
-            'IMMUTABLE',
+            'MUTABLE',
             { comment: commentContent }
         );
 
@@ -303,15 +320,16 @@ export default class Transcribe extends Component {
 
     //Searches through a block of content (newLine separated) and finds embedded COMMENT entities
     findCommentEntities(contentBlock, callback, contentState) {
+
         contentBlock.findEntityRanges(
             (character) => {
                 const entityKey = character.getEntity();
-                return (
-                    entityKey !== null &&
-                    contentState.getEntity(entityKey).getType() === 'COMMENT'
-                );
+                if (entityKey === null) {
+                  return false;
+                }
             },
-            callback
+        //     // specify props
+            decorateComponentWithProps(CommentPopup, {bloop:"blerg"})
         );
     }
 
@@ -337,7 +355,7 @@ export default class Transcribe extends Component {
     }
 
     render() {
-        const {inputText} = this.state;
+        const {inputText, } = this.state;
         return (
             <div id="tool-window">
                 <InputBox
@@ -350,6 +368,9 @@ export default class Transcribe extends Component {
                     disambiguationOptions={this.state.disambiguationOptions}
                     store={store}
                     showCommentInput={this.state.showCommentInput}
+                    commentContent={this.state.commentContent}
+                    onCommentChange={this.onCommentChange}
+                    confirmComment={this.confirmComment}
                     />
                 <input
                     onClick={this.logState}
