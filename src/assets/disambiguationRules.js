@@ -512,6 +512,12 @@ export const englishKeyboardDisambiguations = {
             code: 'a2'
         },
         {
+            turkishText: 'ā',
+            representedText: 'a',
+            arabicText: 'ل',
+            code: 'a12'
+        },
+        {
             turkishText: 'a',
             arabicText: 'َ',
             code: 'a10'
@@ -564,7 +570,7 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'e',
-            arabicText: 'ﺍ',
+            arabicText: 'ا',
             code: 'e5'
         },
         {
@@ -591,7 +597,7 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'E',
-            arabicText: 'ﺍ',
+            arabicText: 'ا',
             code: 'E5'
         },
         {
@@ -611,7 +617,7 @@ export const englishKeyboardDisambiguations = {
             arabicText: '', // not represented in Arabic
             code: 'i12'
         },
-        {
+        /*{
             turkishText: 'ı',
             arabicText: 'ِ', // kasrah
             code: 'i0'
@@ -620,6 +626,11 @@ export const englishKeyboardDisambiguations = {
             turkishText: 'i',
             arabicText: 'ِ', // kasrah
             code: 'i10'
+        },*/
+        {
+            turkishText: 'ı',
+            arabicText: 'ى',
+            code: 'i13'
         },
         {
             turkishText: 'ī',
@@ -629,15 +640,15 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'i',
-            arabicText: 'ﻱﺍ',
+            arabicText: 'يا',
             code: 'i2'
         },
         {
             turkishText: 'ı',
-            arabicText: 'ﻱﺍ',
+            arabicText: 'يا',
             code: 'i3'
         },
-        {
+        /*{
             turkishText: 'i',
             arabicText: 'ﺍ',
             code: 'i4'
@@ -646,7 +657,7 @@ export const englishKeyboardDisambiguations = {
             turkishText: 'ı',
             arabicText: 'ﺍ',
             code: 'i5'
-        },
+        },*/
         {
             turkishText: 'i',
             arabicText: 'ي',
@@ -669,7 +680,7 @@ export const englishKeyboardDisambiguations = {
             arabicText: '', // not represented in Arabic
             code: 'I12'
         },
-        {
+        /*{
             turkishText: 'I',
             arabicText: 'ِ', // kasrah
             code: 'I0'
@@ -678,6 +689,11 @@ export const englishKeyboardDisambiguations = {
             turkishText: 'İ',
             arabicText: 'ِ', // kasrah
             code: 'I10'
+        },*/
+        {
+            turkishText: 'I',
+            arabicText: 'ى',
+            code: 'I13'
         },
         {
             turkishText: 'Ī',
@@ -687,15 +703,15 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'İ',
-            arabicText: 'ﻱﺍ',
+            arabicText: 'يا',
             code: 'I2'
         },
         {
             turkishText: 'I',
-            arabicText: 'ﻱﺍ',
+            arabicText: 'يا',
             code: 'I3'
         },
-        {
+        /*{
             turkishText: 'İ',
             arabicText: 'ﺍ',
             code: 'I4'
@@ -704,7 +720,7 @@ export const englishKeyboardDisambiguations = {
             turkishText: 'I',
             arabicText: 'ﺍ',
             code: 'I5'
-        },
+        },*/
         {
             turkishText: 'İ',
             arabicText: 'ي',
@@ -730,20 +746,20 @@ export const englishKeyboardDisambiguations = {
         {
             turkishText: 'ō',
             representedText: 'o',
-            arabicText: 'ﻮ',
+            arabicText: 'و',
             code: 'o1'
         },
         {
             turkishText: 'o',
-            arabicText: 'ﻮﺍ',
+            arabicText: 'وا',
             code: 'o2'
         },
         {
             turkishText: 'ö',
-            arabicText: 'ﻮﺍ',
+            arabicText: 'وا',
             code: 'o3'
         },
-        {
+        /*{
             turkishText: 'o',
             arabicText: 'ﺍ',
             code: 'o4'
@@ -752,7 +768,7 @@ export const englishKeyboardDisambiguations = {
             turkishText: 'ö',
             arabicText: 'ﺍ',
             code: 'o5'
-        },
+        },*/
         {
             turkishText: 'o',
             arabicText: 'و',
@@ -783,15 +799,15 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'O',
-            arabicText: 'ﻮﺍ',
+            arabicText: 'وا',
             code: 'O2'
         },
         {
             turkishText: 'Ö',
-            arabicText: 'ﻮﺍ',
+            arabicText: 'وا',
             code: 'O3'
         },
-        {
+        /*{
             turkishText: 'O',
             arabicText: 'ﺍ',
             code: 'O4'
@@ -800,7 +816,7 @@ export const englishKeyboardDisambiguations = {
             turkishText: 'Ö',
             arabicText: 'ﺍ',
             code: 'O5'
-        },
+        },*/
         {
             turkishText: 'O',
             arabicText: 'و',
@@ -845,16 +861,11 @@ export const englishKeyboardDisambiguations = {
             code: 'u1'
         },
         {
-            turkishText: 'u',
-            arabicText: 'و',
-            code: 'u2'
-        },
-        {
             turkishText: 'ü',
-            arabicText: 'ﻮﺍ',
+            arabicText: 'وا',
             code: 'u3'
         },
-        {
+        /*{
             turkishText: 'u',
             arabicText: 'ا',
             code: 'u4'
@@ -863,7 +874,7 @@ export const englishKeyboardDisambiguations = {
             turkishText: 'ü',
             arabicText: 'ﺍ',
             code: 'u5'
-        },
+        },*/
         {
             turkishText: 'ü',
             arabicText: 'و',
@@ -913,16 +924,11 @@ export const englishKeyboardDisambiguations = {
             code: 'U1'
         },
         {
-            turkishText: 'U',
-            arabicText: 'و',
-            code: 'U2'
-        },
-        {
             turkishText: 'Ü',
-            arabicText: 'ﻮﺍ',
+            arabicText: 'وا',
             code: 'U3'
         },
-        {
+        /*{
             turkishText: 'U',
             arabicText: 'ا',
             code: 'U4'
@@ -931,7 +937,7 @@ export const englishKeyboardDisambiguations = {
             turkishText: 'Ü',
             arabicText: 'ﺍ',
             code: 'U5'
-        },
+        },*/
         {
             turkishText: 'Ü',
             arabicText: 'و',
@@ -1540,7 +1546,7 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'e',
-            arabicText: 'ﺍ',
+            arabicText: 'ا',
             code: 'e5'
         },
         {
@@ -1567,7 +1573,7 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'E',
-            arabicText: 'ﺍ',
+            arabicText: 'ا',
             code: 'E5'
         },
         {
@@ -1600,14 +1606,14 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'i',
-            arabicText: 'ﻱﺍ',
+            arabicText: 'يا',
             code: 'i2'
-        },
+        }/*,
         {
             turkishText: 'i',
             arabicText: 'ﺍ',
             code: 'i4'
-        }
+        }*/
     ],
     'İ': [
         {
@@ -1633,14 +1639,14 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'İ',
-            arabicText: 'ﻱﺍ',
+            arabicText: 'يا',
             code: 'I2'
-        },
+        }/*,
         {
             turkishText: 'İ',
             arabicText: 'ﺍ',
             code: 'I4'
-        }
+        }*/
     ],
     'ı': [
         {
@@ -1650,19 +1656,24 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'ı',
+            arabicText: 'ى',
+            code: 'i13'
+        },
+        {
+            turkishText: 'ı',
             arabicText: 'ِ', // kasrah
             code: 'i0'
         },
         {
             turkishText: 'ı',
-            arabicText: 'ﻱﺍ',
+            arabicText: 'يا',
             code: 'i3'
         },
-        {
+        /*{
             turkishText: 'ı',
             arabicText: 'ﺍ',
             code: 'i5'
-        },
+        },*/
         {
             turkishText: 'ı',
             arabicText: 'ي',
@@ -1677,19 +1688,24 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'I',
+            arabicText: 'ى',
+            code: 'i13'
+        },
+        {
+            turkishText: 'I',
             arabicText: 'ِ', // kasrah
             code: 'I0'
         },
         {
             turkishText: 'I',
-            arabicText: 'ﻱﺍ',
+            arabicText: 'يا',
             code: 'I3'
         },
-        {
+        /*{
             turkishText: 'I',
             arabicText: 'ﺍ',
             code: 'I5'
-        },
+        },*/
         {
             turkishText: 'I',
             arabicText: 'ي',
@@ -1715,14 +1731,14 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'o',
-            arabicText: 'ﻮﺍ',
+            arabicText: 'وا',
             code: 'o2'
-        },
+        }/*,
         {
             turkishText: 'o',
             arabicText: 'ﺍ',
             code: 'o4'
-        }
+        }*/
     ],
     'O': [
          {
@@ -1743,14 +1759,14 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'O',
-            arabicText: 'ﻮﺍ',
+            arabicText: 'وا',
             code: 'O2'
-        },
+        }/*,
         {
             turkishText: 'O',
             arabicText: 'ﺍ',
             code: 'O4'
-        }
+        }*/
     ],
     'ö': [
         {
@@ -1760,14 +1776,14 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'ö',
-            arabicText: 'ﻮﺍ',
+            arabicText: 'وا',
             code: 'o3'
         },
-        {
+        /*{
             turkishText: 'ö',
             arabicText: 'ﺍ',
             code: 'o5'
-        },
+        },*/
         {
             turkishText: 'ö',
             arabicText: 'و',
@@ -1782,14 +1798,14 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'Ö',
-            arabicText: 'ﻮﺍ',
+            arabicText: 'وا',
             code: 'O3'
         },
-        {
+        /*{
             turkishText: 'Ö',
             arabicText: 'ﺍ',
             code: 'O5'
-        },
+        },*/
         {
             turkishText: 'Ö',
             arabicText: 'و',
@@ -1818,16 +1834,11 @@ export const turkishKeyboardDisambiguations = {
             arabicText: 'و',
             code: 'u1'
         },
-        {
-            turkishText: 'u',
-            arabicText: 'و',
-            code: 'u2'
-        },
-        {
+        /*{
             turkishText: 'u',
             arabicText: 'ا',
             code: 'u4'
-        },
+        },*/
         {
             turkishText: 'u',
             arabicText: 'ى',
@@ -1856,16 +1867,11 @@ export const turkishKeyboardDisambiguations = {
             arabicText: 'و',
             code: 'U1'
         },
-        {
-            turkishText: 'U',
-            arabicText: 'و',
-            code: 'U2'
-        },
-        {
+        /*{
             turkishText: 'U',
             arabicText: 'ا',
             code: 'U4'
-        },
+        },*/
         {
             turkishText: 'U',
             arabicText: 'ى',
@@ -1890,14 +1896,14 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'ü',
-            arabicText: 'ﻮﺍ',
+            arabicText: 'وا',
             code: 'u3'
         },
-        {
+        /*{
             turkishText: 'ü',
             arabicText: 'ﺍ',
             code: 'u5'
-        },
+        },*/
         {
             turkishText: 'ü',
             arabicText: 'ى',
@@ -1922,14 +1928,14 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'Ü',
-            arabicText: 'ﻮﺍ',
+            arabicText: 'وا',
             code: 'U3'
         },
-        {
+        /*{
             turkishText: 'Ü',
             arabicText: 'ﺍ',
             code: 'U5'
-        },
+        },*/
         {
             turkishText: 'Ü',
             arabicText: 'ى',
