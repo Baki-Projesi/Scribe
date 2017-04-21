@@ -171,6 +171,11 @@ export const englishKeyboardDisambiguations = {
             turkishText: 'ẖ',
             arabicText: 'خ',
             code: 'h5'
+        },
+        {
+            turkishText: 'ḫʷ', // need to be able to string both of these characters together in Latin
+            arabicText: 'خو',
+            code: 'hw'
         }
     ],
     'H': [
@@ -188,6 +193,11 @@ export const englishKeyboardDisambiguations = {
             turkishText: 'Ḫ',
             arabicText: 'خ',
             code: 'H5'
+        },
+        {
+            turkishText: 'Ḫᵂ', // need to be able to string both of these characters together in Latin
+            arabicText: 'خو',
+            code: 'HW'
         }
     ],
     'j': [
@@ -1149,6 +1159,11 @@ export const turkishKeyboardDisambiguations = {
             turkishText: 'ẖ',
             arabicText: 'خ',
             code: 'h5'
+        },
+        {
+            turkishText: 'ḫʷ', // need to be able to string both of these characters together in Latin
+            arabicText: 'خو',
+            code: 'hw'
         }
     ],
     'H': [
@@ -1166,6 +1181,11 @@ export const turkishKeyboardDisambiguations = {
             turkishText: 'Ḫ',
             arabicText: 'خ',
             code: 'H5'
+        },
+        {
+            turkishText: 'Ḫᵂ', // need to be able to string both of these characters together in Latin
+            arabicText: 'خو',
+            code: 'HW'
         }
     ],
     'j': [
