@@ -512,6 +512,12 @@ export const englishKeyboardDisambiguations = {
             code: 'a2'
         },
         {
+            turkishText: 'ā',
+            representedText: 'a',
+            arabicText: 'ل',
+            code: 'a12'
+        },
+        {
             turkishText: 'a',
             arabicText: 'َ',
             code: 'a10'
@@ -611,7 +617,7 @@ export const englishKeyboardDisambiguations = {
             arabicText: '', // not represented in Arabic
             code: 'i12'
         },
-        {
+        /*{
             turkishText: 'ı',
             arabicText: 'ِ', // kasrah
             code: 'i0'
@@ -620,6 +626,11 @@ export const englishKeyboardDisambiguations = {
             turkishText: 'i',
             arabicText: 'ِ', // kasrah
             code: 'i10'
+        },*/
+        {
+            turkishText: 'ı',
+            arabicText: 'ى',
+            code: 'i13'
         },
         {
             turkishText: 'ī',
@@ -669,7 +680,7 @@ export const englishKeyboardDisambiguations = {
             arabicText: '', // not represented in Arabic
             code: 'I12'
         },
-        {
+        /*{
             turkishText: 'I',
             arabicText: 'ِ', // kasrah
             code: 'I0'
@@ -678,6 +689,11 @@ export const englishKeyboardDisambiguations = {
             turkishText: 'İ',
             arabicText: 'ِ', // kasrah
             code: 'I10'
+        },*/
+        {
+            turkishText: 'I',
+            arabicText: 'ى',
+            code: 'I13'
         },
         {
             turkishText: 'Ī',
@@ -1640,6 +1656,11 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'ı',
+            arabicText: 'ى',
+            code: 'i13'
+        },
+        {
+            turkishText: 'ı',
             arabicText: 'ِ', // kasrah
             code: 'i0'
         },
@@ -1664,6 +1685,11 @@ export const turkishKeyboardDisambiguations = {
             turkishText: 'I', // default
             arabicText: '', // not represented in Arabic
             code: 'I12'
+        },
+        {
+            turkishText: 'I',
+            arabicText: 'ى',
+            code: 'i13'
         },
         {
             turkishText: 'I',
