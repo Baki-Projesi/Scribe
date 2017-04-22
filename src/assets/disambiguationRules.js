@@ -522,12 +522,6 @@ export const englishKeyboardDisambiguations = {
             code: 'a2'
         },
         {
-            turkishText: 'ā',
-            representedText: 'a',
-            arabicText: 'ل',
-            code: 'a12'
-        },
-        {
             turkishText: 'a',
             arabicText: 'َ',
             code: 'a10'
@@ -854,7 +848,7 @@ export const englishKeyboardDisambiguations = {
             arabicText: 'و',
             code: 'u6'
         },
-        {
+        /*{
             turkishText: 'ü',
             arabicText: 'ُ', // ḍammah
             code: 'u0'
@@ -863,7 +857,7 @@ export const englishKeyboardDisambiguations = {
             turkishText: 'u',
             arabicText: 'ُ', // ḍammah
             code: 'u10'
-        },
+        },*/
         {
             turkishText: 'ū',
             representedText: 'u',
@@ -917,7 +911,7 @@ export const englishKeyboardDisambiguations = {
             arabicText: 'و',
             code: 'U6'
         },
-        {
+        /*{
             turkishText: 'Ü',
             arabicText: 'ُ', // ḍammah
             code: 'U0'
@@ -926,7 +920,7 @@ export const englishKeyboardDisambiguations = {
             turkishText: 'U',
             arabicText: 'ُ', // ḍammah
             code: 'U10'
-        },
+        },*/
         {
             turkishText: 'Ū',
             representedText: 'U',

@@ -302,7 +302,13 @@ export default class Transcribe extends Component {
 
     //this is called during handleKeyCommand when it detects a dropdown choice.
     _confirmDisambiguation(choiceIndex, editorState) {
-        const displayText = this.state.disambiguationOptions[choiceIndex].turkishText;
+        var choosenText;
+        if (this.state.disambiguationOptions[choiceIndex].representedText !== undefined) {
+            choosenText = this.state.disambiguationOptions[choiceIndex].representedText;
+        } else {
+            choosenText = this.state.disambiguationOptions[choiceIndex].turkishText;
+        }
+        const displayText = choosenText;
         const contentState = editorState.getCurrentContent();
         let contentStateWithEntity = contentState.createEntity(
             'DISAMBIGUATION',
