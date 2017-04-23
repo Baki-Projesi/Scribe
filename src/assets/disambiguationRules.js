@@ -506,8 +506,13 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'a',
-            arabicText: 'ه',
+            arabicText: 'ـه' + '\u200d', // non-joiner
             code: 'a0'
+        },
+        {
+            turkishText: 'a',
+            arabicText: 'ا',
+            code: 'a12'
         },
         {
             turkishText: 'ā',
@@ -535,8 +540,13 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'A',
-            arabicText: 'ه',
+            arabicText: 'ـه' + '\u200d', // non-joiner
             code: 'A0'
+        },
+        {
+            turkishText: 'A',
+            arabicText: 'ا',
+            code: 'A12'
         },
         {
             turkishText: 'Ā',
@@ -960,12 +970,17 @@ export const englishKeyboardDisambiguations = {
     ],
     '\'': [
         {
-            turkishText: 'ʿ', // default
-            arabicText: 'ﻉ',
+            turkishText: 'ʾ', // default
+            arabicText: '',
+            code: 'hamza'
+        },
+        {
+            turkishText: 'ʿ',
+            arabicText: 'ع',
             code: '\'2'
         },
         {
-            turkishText: 'ˀ',
+            turkishText: 'ˀ', // is this necessary?
             arabicText: 'ء',
             code: '\'3'
         }
@@ -1492,8 +1507,13 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'a',
-            arabicText: 'ه',
+            arabicText: 'ـه' + '\u200d', // non-joiner
             code: 'a0'
+        },
+        {
+            turkishText: 'a',
+            arabicText: 'ا',
+            code: 'a12'
         },
         {
             turkishText: 'ā',
@@ -1521,8 +1541,13 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'A',
-            arabicText: 'ه',
+            arabicText: 'ـه' + '\u200d', // non-joiner
             code: 'A0'
+        },
+        {
+            turkishText: 'A',
+            arabicText: 'ا',
+            code: 'A12'
         },
         {
             turkishText: 'Ā',
@@ -1958,12 +1983,17 @@ export const turkishKeyboardDisambiguations = {
     ],
     '\'': [
         {
-            turkishText: 'ʿ', // default
-            arabicText: 'ﻉ',
+            turkishText: 'ʾ', // default
+            arabicText: '',
+            code: 'hamza'
+        },
+        {
+            turkishText: 'ʿ',
+            arabicText: 'ع',
             code: '\'2'
         },
         {
-            turkishText: 'ˀ',
+            turkishText: 'ˀ', // is this necessary?
             arabicText: 'ء',
             code: '\'3'
         }
