@@ -19,6 +19,7 @@ import {
 } from 'draft-js';
 import findWithRegex from '../utils/findWithRegex';
 import { adjustSelectionOffset } from '../utils/selectionStateHelpers';
+import groupByKey from '../utils/groupByKey';
 import decorateComponentWithProps from 'decorate-component-with-props';
 import AmbiguousCharacter from './AmbiguousCharacter';
 import DisambiguatedCharacter from './DisambiguatedCharacter';
@@ -115,7 +116,7 @@ export default class Transcribe extends Component {
         this.removeComment = this._removeComment.bind(this);
         this.keyBindingFn = this._keyBindingFn.bind(this);
         this.toggleCheckboxValue = this._toggleCheckboxValue.bind(this);
-        this.handleKeyCommand = this._handleKeyCommand.bind(this)
+        this.handleKeyCommand = this._handleKeyCommand.bind(this);
     }
 
     //captures global key events, results of this function (a special command string) are passed to KeyCommand() before the window interprets them
@@ -129,8 +130,8 @@ export default class Transcribe extends Component {
             return 'editor-newline';
         }
 
-        if (e.which !== 8 && e.which !== 46) {
-            if (this.state.showDropdown) { // backspace, delete
+        if (e.which !== 8 && e.which !== 46) { // backspace, delete
+            if (this.state.showDropdown) { 
                 let str = 'dropdown-';
                 const keyCodeBase = 48;
                 const numOptions = this.state.disambiguationOptions.length;
@@ -142,11 +143,13 @@ export default class Transcribe extends Component {
 
                 if ((e.which >= 49 && e.which <= 57) || (e.which >= 97 && e.which <= 105) && optionMap[e.which]) {
                     return optionMap[e.which];
-                } else {
+                } else if (this.state.dropDownCount < 2) {
                     //If anything besides Backspace or a number is chosen,
                     // use default disambiguation choice and have the editor  the normal keypress
                     let newState = Object.assign(this.state, this._confirmDisambiguation(0, this.state.editorState));
                     this.setState(newState);
+                } else {
+                    return 'require-dropdown';
                 }
             } else if (this.state.disambiguationOptions && this.state.disambiguationOptions[0].code === 'sp') {
                 //we don't show dropdown for spaces, but they need an entity anyways
@@ -154,7 +157,7 @@ export default class Transcribe extends Component {
                 this.setState(newState);
             }
         }
-        
+
         return getDefaultKeyBinding(e);
     }
 
@@ -276,7 +279,7 @@ export default class Transcribe extends Component {
     //TODO: move into dropdown positioned under cursor
     _promptForDisambiguation(current) {
         let charRules = this.state.usingTurkishKeyboard ? turkishKeyboardDisambiguations : englishKeyboardDisambiguations;
-        let showDropdown = false, disambiguationOptions;
+        let showDropdown = false, dropDownCount = 0, disambiguationOptions;
         if (current.startOffset > 0) {
             const previousChar = current.currentBlock.getText().charAt(current.startOffset - 1);
 
@@ -286,13 +289,20 @@ export default class Transcribe extends Component {
                 //previous character isn't a disambiguated character entity
                 if (charRules[previousChar] !== undefined) {
                     showDropdown = previousChar !== ' ';
-                    disambiguationOptions = charRules[previousChar]
+                    if (charRules[previousChar].length > 9) {
+                        disambiguationOptions = groupByKey(charRules[previousChar]);
+                        dropDownCount = 2;
+                    } else {
+                        disambiguationOptions = charRules[previousChar];
+                        dropDownCount = 1;
+                    }
                 }
             }
         }
 
         Object.assign(current, {
             showDropdown: showDropdown,
+            dropDownCount: dropDownCount,
             disambiguationOptions: disambiguationOptions,
             //showCommentInput: false
         });
@@ -336,6 +346,7 @@ export default class Transcribe extends Component {
         newEditorState = EditorState.set(newEditorState, { selection: newSelectionState });
 
         return {
+            dropDownCount: this.state.dropDownCount - 1,
             editorState: newEditorState,
             showDropdown: false,
             disambiguationOptions: null

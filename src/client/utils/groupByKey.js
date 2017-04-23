@@ -5,13 +5,14 @@ export default function groupByTurkishKey(arr) {
     const results = {};
 
     arr.forEach(function(element) {
-        if (results['turkishText']) {
-            let existingArr = results['turkishText'];
+        let k = element.turkishText;
+        if (results[k]) {
+            let existingArr = results[k];
             existingArr.push(element);
         } else {
             let newArr = [];
             newArr.push(element);
-            results['turkishText'] = newArr;
+            results[k] = newArr;
         }
     }, this);
 
