@@ -506,7 +506,7 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'a',
-            arabicText: 'ـه ', // either offset Arabic or find a way to keep final form
+            arabicText: 'ـه' + '\u200d', // non-joiner
             code: 'a0'
         },
         {
@@ -535,7 +535,7 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'A',
-            arabicText: 'ـه ', // either offset Arabic or find a way to keep final form
+            arabicText: 'ـه' + '\u200d', // non-joiner
             code: 'A0'
         },
         {
@@ -1497,7 +1497,7 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'a',
-            arabicText: 'ـه ', // remove space
+            arabicText: 'ـه' + '\u200d', // non-joiner
             code: 'a0'
         },
         {
@@ -1526,7 +1526,7 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'A',
-            arabicText: 'ـه ', // remove space
+            arabicText: 'ـه' + '\u200d', // non-joiner
             code: 'A0'
         },
         {
