@@ -506,7 +506,7 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'a',
-            arabicText: 'ه',
+            arabicText: 'ـه ', // either offset Arabic or find a way to keep final form
             code: 'a0'
         },
         {
@@ -535,7 +535,7 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'A',
-            arabicText: 'ه',
+            arabicText: 'ـه ', // either offset Arabic or find a way to keep final form
             code: 'A0'
         },
         {
@@ -960,12 +960,17 @@ export const englishKeyboardDisambiguations = {
     ],
     '\'': [
         {
-            turkishText: 'ʿ', // default
+            turkishText: 'ʾ', // default
+            arabicText: '',
+            code: 'hamza'
+        },
+        {
+            turkishText: 'ʿ',
             arabicText: 'ﻉ',
             code: '\'2'
         },
         {
-            turkishText: 'ˀ',
+            turkishText: 'ˀ', // is this necessary?
             arabicText: 'ء',
             code: '\'3'
         }
@@ -1492,7 +1497,7 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'a',
-            arabicText: 'ه',
+            arabicText: 'ـه ', // remove space
             code: 'a0'
         },
         {
@@ -1521,7 +1526,7 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'A',
-            arabicText: 'ه',
+            arabicText: 'ـه ', // remove space
             code: 'A0'
         },
         {
@@ -1958,12 +1963,17 @@ export const turkishKeyboardDisambiguations = {
     ],
     '\'': [
         {
-            turkishText: 'ʿ', // default
+            turkishText: 'ʾ', // default
+            arabicText: '',
+            code: 'hamza'
+        },
+        {
+            turkishText: 'ʿ',
             arabicText: 'ﻉ',
             code: '\'2'
         },
         {
-            turkishText: 'ˀ',
+            turkishText: 'ˀ', // is this necessary?
             arabicText: 'ء',
             code: '\'3'
         }
