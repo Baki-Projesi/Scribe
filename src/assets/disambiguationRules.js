@@ -976,7 +976,7 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'ʿ',
-            arabicText: 'ﻉ',
+            arabicText: 'ع',
             code: '\'2'
         },
         {
@@ -1989,7 +1989,7 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'ʿ',
-            arabicText: 'ﻉ',
+            arabicText: 'ع',
             code: '\'2'
         },
         {
