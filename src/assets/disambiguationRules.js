@@ -511,7 +511,7 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'a',
-            arabicText: 'ـه' + '\u200d', // non-joiner
+            arabicText: 'ه' + '\u200d', // non-joiner
             code: 'a0'
         },
         {
@@ -545,7 +545,7 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'A',
-            arabicText: 'ـه' + '\u200d', // non-joiner
+            arabicText: 'ه' + '\u200d', // non-joiner
             code: 'A0'
         },
         {
@@ -579,7 +579,7 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'e',
-            arabicText: 'ه',
+            arabicText: 'ه' + '\u200d',
             code: 'e0'
         },
         {
@@ -606,7 +606,7 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'E',
-            arabicText: 'ه',
+            arabicText: 'ه' + '\u200d',
             code: 'E0'
         },
         {
@@ -660,13 +660,11 @@ export const englishKeyboardDisambiguations = {
         {
             turkishText: 'i',
             arabicText: 'اي',
-            //arabicDropdown: 'ا' + '\u200d' + 'ي', //**
             code: 'i2'
         },
         {
             turkishText: 'ı',
             arabicText: 'اي',
-            //arabicDropdown: 'ا' + '\u200d' + 'ي', //**
             code: 'i3'
         },
         {
@@ -1524,7 +1522,7 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'a',
-            arabicText: 'ـه' + '\u200d', // non-joiner
+            arabicText: 'ه' + '\u200d', // non-joiner
             code: 'a0'
         },
         {
@@ -1558,7 +1556,7 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'A',
-            arabicText: 'ـه' + '\u200d', // non-joiner
+            arabicText: 'ه' + '\u200d', // non-joiner
             code: 'A0'
         },
         {
@@ -1592,7 +1590,7 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'e',
-            arabicText: 'ه',
+            arabicText: 'ه' + '\u200d',
             code: 'e0'
         },
         {
@@ -1619,7 +1617,7 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'E',
-            arabicText: 'ه',
+            arabicText: 'ه' + '\u200d',
             code: 'E0'
         },
         {
