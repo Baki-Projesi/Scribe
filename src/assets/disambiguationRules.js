@@ -984,6 +984,179 @@ export const englishKeyboardDisambiguations = {
             arabicText: 'ء',
             code: '\'3'
         }
+    ],
+    'e\'': [
+        {
+            turkishText: 'e\'',
+            arabicText: 'أ',
+            code: 'eHamza'
+        }
+    ],
+    'E\'': [
+        {
+            turkishText: 'e\'',
+            arabicText: 'أ',
+            code: 'eHamza'
+        }
+    ],
+    'u\'': [
+        {
+            turkishText: 'u\'',
+            arabicText: 'ؤ',
+            code: 'uHamza'
+        }
+    ],
+    'U\'': [
+        {
+            turkishText: 'u\'',
+            arabicText: 'ؤ',
+            code: 'uHamza'
+        }
+    ],
+    'a\'': [
+        {
+            turkishText: 'a\'',
+            arabicText: 'أ',
+            code: 'aHamza1'
+        },
+        {
+            turkishText: 'a\'',
+            arabicText: 'آ',
+            code: 'aHamza2'
+        }
+    ],
+    'A\'': [
+        {
+            turkishText: 'a\'',
+            arabicText: 'أ',
+            code: 'aHamza1'
+        },
+        {
+            turkishText: 'a\'',
+            arabicText: 'آ',
+            code: 'aHamza2'
+        }
+    ],
+    'i\'': [
+        {
+            turkishText: 'i\'',
+            arabicText: 'ٸ',
+            code: 'iHamza'
+        }
+    ],
+    'I\'': [
+        {
+            turkishText: 'i\'',
+            arabicText: 'ٸ',
+            code: 'iHamza'
+        }
+    ],
+    'yi': [ // does this need a capital case?
+        {
+            turkishText: 'yi',
+            arabicText: 'ٸ',
+            code: 'iHamza'
+        }
+    ],
+    '\'e': [
+        {
+            turkishText: '\'e',
+            arabicText: 'أ',
+            code: 'hamzaE'
+        }
+    ],
+    '\'E': [
+        {
+            turkishText: '\'e',
+            arabicText: 'أ',
+            code: 'hamzaE'
+        }
+    ],
+    '\'a': [
+        {
+            turkishText: '\'a',
+            arabicText: 'أ',
+            code: 'hamzaA1'
+        },
+        {
+            turkishText: '\'a',
+            arabicText: 'آ',
+            code: 'hamzaA2'
+        },
+        {
+            turkishText: '\'a',
+            arabicText: 'اء',
+            code: 'hamzaA3'
+        }
+    ],
+    '\'A': [
+        {
+            turkishText: '\'a',
+            arabicText: 'أ',
+            code: 'hamzaA1'
+        },
+        {
+            turkishText: '\'a',
+            arabicText: 'آ',
+            code: 'hamzaA2'
+        },
+        {
+            turkishText: '\'a',
+            arabicText: 'اء',
+            code: 'hamzaA3'
+        }
+    ],
+    '\'i': [
+        {
+            turkishText: '\'i',
+            arabicText: 'ٸ',
+            code: 'hamzaI'
+        }
+    ],
+    '\'I': [
+        {
+            turkishText: '\'i',
+            arabicText: 'ٸ',
+            code: 'hamzaI'
+        }
+    ],
+    'an': [
+        {
+            turkishText: 'an',
+            arabicText: 'ـً',
+            code: 'e6'
+        },
+        {
+            turkishText: 'an',
+            arabicText: 'ـًاً',
+            code: '' // ask Tash
+        }
+    ],
+    'en': [
+        {
+            turkishText: 'en',
+            arabicText: 'ـً',
+            code: 'e7'
+        },
+        {
+            turkishText: 'en',
+            arabicText: 'ـًا',
+            code: '' // ask Tash
+        }
+    ],
+    'un': [
+        {
+            turkishText: 'un',
+            arabicText: 'ـٌ',
+            code: 'e8'
+        }
+    ],
+    'in': [
+        {
+            turkishText: 'un',
+            arabicText: 'ــٍ',
+            code: 'e9'
+        }
     ]
 }
 
@@ -1997,5 +2170,179 @@ export const turkishKeyboardDisambiguations = {
             arabicText: 'ء',
             code: '\'3'
         }
+    ],
+    'e\'': [
+        {
+            turkishText: 'e\'',
+            arabicText: 'أ',
+            code: 'eHamza'
+        }
+    ],
+    'E\'': [
+        {
+            turkishText: 'e\'',
+            arabicText: 'أ',
+            code: 'eHamza'
+        }
+    ],
+    'u\'': [
+        {
+            turkishText: 'u\'',
+            arabicText: 'ؤ',
+            code: 'uHamza'
+        }
+    ],
+    'U\'': [
+        {
+            turkishText: 'u\'',
+            arabicText: 'ؤ',
+            code: 'uHamza'
+        }
+    ],
+    'a\'': [
+        {
+            turkishText: 'a\'',
+            arabicText: 'أ',
+            code: 'aHamza1'
+        },
+        {
+            turkishText: 'a\'',
+            arabicText: 'آ',
+            code: 'aHamza2'
+        }
+    ],
+    'A\'': [
+        {
+            turkishText: 'a\'',
+            arabicText: 'أ',
+            code: 'aHamza1'
+        },
+        {
+            turkishText: 'a\'',
+            arabicText: 'آ',
+            code: 'aHamza2'
+        }
+    ],
+    'i\'': [
+        {
+            turkishText: 'i\'',
+            arabicText: 'ٸ',
+            code: 'iHamza'
+        }
+    ],
+    'I\'': [
+        {
+            turkishText: 'i\'',
+            arabicText: 'ٸ',
+            code: 'iHamza'
+        }
+    ],
+    'yi': [ // does this need a capital case?
+        {
+            turkishText: 'yi',
+            arabicText: 'ٸ',
+            code: 'iHamza'
+        }
+    ],
+    '\'e': [
+        {
+            turkishText: '\'e',
+            arabicText: 'أ',
+            code: 'hamzaE'
+        }
+    ],
+    '\'E': [
+        {
+            turkishText: '\'e',
+            arabicText: 'أ',
+            code: 'hamzaE'
+        }
+    ],
+    '\'a': [
+        {
+            turkishText: '\'a',
+            arabicText: 'أ',
+            code: 'hamzaA1'
+        },
+        {
+            turkishText: '\'a',
+            arabicText: 'آ',
+            code: 'hamzaA2'
+        },
+        {
+            turkishText: '\'a',
+            arabicText: 'اء',
+            code: 'hamzaA3'
+        }
+    ],
+    '\'A': [
+        {
+            turkishText: '\'a',
+            arabicText: 'أ',
+            code: 'hamzaA1'
+        },
+        {
+            turkishText: '\'a',
+            arabicText: 'آ',
+            code: 'hamzaA2'
+        },
+        {
+            turkishText: '\'a',
+            arabicText: 'اء',
+            code: 'hamzaA3'
+        }
+    ],
+    '\'i': [
+        {
+            turkishText: '\'i',
+            arabicText: 'ٸ',
+            code: 'hamzaI'
+        }
+    ],
+    '\'I': [
+        {
+            turkishText: '\'i',
+            arabicText: 'ٸ',
+            code: 'hamzaI'
+        }
+    ],
+    'an': [
+        {
+            turkishText: 'an',
+            arabicText: 'ـً',
+            code: 'e6'
+        },
+        {
+            turkishText: 'an',
+            arabicText: 'ـًاً',
+            code: '' // ask Tash
+        }
+    ],
+    'en': [
+        {
+            turkishText: 'en',
+            arabicText: 'ـً',
+            code: 'e7'
+        },
+        {
+            turkishText: 'en',
+            arabicText: 'ـًا',
+            code: '' // ask Tash
+        }
+    ],
+    'un': [
+        {
+            turkishText: 'un',
+            arabicText: 'ـٌ',
+            code: 'e8'
+        }
+    ],
+    'in': [
+        {
+            turkishText: 'un',
+            arabicText: 'ــٍ',
+            code: 'e9'
+        }
     ]
+
 }
