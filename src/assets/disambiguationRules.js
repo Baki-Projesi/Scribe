@@ -511,7 +511,7 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'a',
-            arabicText: 'ه' + '\u200d', // non-joiner
+            arabicText: 'ه' + '\u200c', // non-joiner
             code: 'a0'
         },
         {
@@ -545,7 +545,7 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'A',
-            arabicText: 'ه' + '\u200d', // non-joiner
+            arabicText: 'ه' + '\u200c', // non-joiner
             code: 'A0'
         },
         {
@@ -579,7 +579,7 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'e',
-            arabicText: 'ه' + '\u200d',
+            arabicText: 'ه' + '\u200c',
             code: 'e0'
         },
         {
@@ -606,7 +606,7 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'E',
-            arabicText: 'ه' + '\u200d',
+            arabicText: 'ه' + '\u200c',
             code: 'E0'
         },
         {
@@ -1522,7 +1522,7 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'a',
-            arabicText: 'ه' + '\u200d', // non-joiner
+            arabicText: 'ه' + '\u200c', // non-joiner
             code: 'a0'
         },
         {
@@ -1556,7 +1556,7 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'A',
-            arabicText: 'ه' + '\u200d', // non-joiner
+            arabicText: 'ه' + '\u200c', // non-joiner
             code: 'A0'
         },
         {
@@ -1590,7 +1590,7 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'e',
-            arabicText: 'ه' + '\u200d',
+            arabicText: 'ه' + '\u200c',
             code: 'e0'
         },
         {
@@ -1617,7 +1617,7 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'E',
-            arabicText: 'ه' + '\u200d',
+            arabicText: 'ه' + '\u200c',
             code: 'E0'
         },
         {
