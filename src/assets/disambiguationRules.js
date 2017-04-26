@@ -226,6 +226,12 @@ export const englishKeyboardDisambiguations = {
             code: 'k3'
         },
         {
+            turkishText: 'k -> g',
+            representedText: 'g',
+            arabicText: 'ك',
+            code: 'kg'
+        },
+        {
             turkishText: 'ke',
             representedText: 'ki',
             arabicText: 'كه' + '\u200c',
@@ -242,6 +248,12 @@ export const englishKeyboardDisambiguations = {
             turkishText: 'Ḳ',
             arabicText: 'ق',
             code: 'K3'
+        },
+        {
+            turkishText: 'K -> G',
+            representedText: 'G',
+            arabicText: 'ك',
+            code: 'KG'
         },
         {
             turkishText: 'Ke',
@@ -1250,6 +1262,12 @@ export const turkishKeyboardDisambiguations = {
             code: 'k3'
         },
         {
+            turkishText: 'k -> g',
+            representedText: 'g',
+            arabicText: 'ك',
+            code: 'kg'
+        },
+        {
             turkishText: 'ke',
             representedText: 'ki',
             arabicText: 'كه' + '\u200c',
@@ -1266,6 +1284,12 @@ export const turkishKeyboardDisambiguations = {
             turkishText: 'Ḳ',
             arabicText: 'ق',
             code: 'K3'
+        },
+        {
+            turkishText: 'K -> G',
+            representedText: 'G',
+            arabicText: 'ك',
+            code: 'KG'
         },
         {
             turkishText: 'Ke',
