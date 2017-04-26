@@ -633,13 +633,13 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'ā',
-            representedText: 'a',
+            //representedText: 'a',
             arabicText: 'ا',
             code: 'a1'
         },
         {
             turkishText: 'ā',
-            representedText: 'a',
+            //representedText: 'a',
             arabicText: 'آ',
             code: 'a2'
         },
@@ -667,13 +667,13 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'Ā',
-            representedText: 'A',
+            //representedText: 'A',
             arabicText: 'ا',
             code: 'A1'
         },
         {
             turkishText: 'Ā',
-            representedText: 'A',
+            //representedText: 'A',
             arabicText: 'آ',
             code: 'A2'
         },
@@ -755,7 +755,7 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'ī',
-            representedText: 'i',
+            //representedText: 'i',
             arabicText: 'ي',
             code: 'i1'
         },
@@ -818,7 +818,7 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'Ī',
-            representedText: 'İ',
+            //representedText: 'İ',
             arabicText: 'ي',
             code: 'I1'
         },
@@ -881,7 +881,7 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'ō',
-            representedText: 'o',
+            //representedText: 'o',
             arabicText: 'و',
             code: 'o1'
         },
@@ -929,7 +929,7 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'Ō',
-            representedText: 'O',
+            //representedText: 'O',
             arabicText: 'ﻮ',
             code: 'O1'
         },
@@ -992,7 +992,7 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'ū',
-            representedText: 'u',
+            //representedText: 'u',
             arabicText: 'و',
             code: 'u1'
         },
@@ -1060,7 +1060,7 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'Ū',
-            representedText: 'U',
+            //representedText: 'U',
             arabicText: 'و',
             code: 'U1'
         },
@@ -1959,13 +1959,13 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'ā',
-            representedText: 'a',
+            //representedText: 'a',
             arabicText: 'ا',
             code: 'a1'
         },
         {
             turkishText: 'ā',
-            representedText: 'a',
+            //representedText: 'a',
             arabicText: 'آ',
             code: 'a2'
         },
@@ -1993,13 +1993,13 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'Ā',
-            representedText: 'A',
+            //representedText: 'A',
             arabicText: 'ا',
             code: 'A1'
         },
         {
             turkishText: 'Ā',
-            representedText: 'A',
+            //representedText: 'A',
             arabicText: 'آ',
             code: 'A2'
         },
@@ -2081,7 +2081,7 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'ī',
-            representedText: 'i',
+            //representedText: 'i',
             arabicText: 'ي',
             code: 'i1'
         },
@@ -2114,7 +2114,7 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'Ī',
-            representedText: 'İ',
+            //representedText: 'İ',
             arabicText: 'ي',
             code: 'I1'
         },
@@ -2206,7 +2206,7 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'ō',
-            representedText: 'o',
+            //representedText: 'o',
             arabicText: 'ﻮ',
             code: 'o1'
         },
@@ -2234,7 +2234,7 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'Ō',
-            representedText: 'O',
+            //representedText: 'O',
             arabicText: 'ﻮ',
             code: 'O1'
         },
@@ -2316,7 +2316,7 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'ū',
-            representedText: 'u',
+            //representedText: 'u',
             arabicText: 'و',
             code: 'u1'
         },
@@ -2354,7 +2354,7 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'Ū',
-            representedText: 'U',
+            //representedText: 'U',
             arabicText: 'و',
             code: 'U1'
         },
