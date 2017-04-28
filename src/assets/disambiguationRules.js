@@ -239,7 +239,7 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'h',
-            arabicText: 'أ',
+            arabicText: 'ۀ',
             code: 'hhamza'
         },
         {
@@ -281,7 +281,7 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'H',
-            arabicText: 'أ',
+            arabicText: 'ۀ',
             code: 'Hhamza'
         },
         {
@@ -1613,7 +1613,7 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'h',
-            arabicText: 'أ',
+            arabicText: 'ۀ',
             code: 'hhamza'
         },
         {
@@ -1655,7 +1655,7 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'H',
-            arabicText: 'أ',
+            arabicText: 'ۀ',
             code: 'Hhamza'
         },
         {
