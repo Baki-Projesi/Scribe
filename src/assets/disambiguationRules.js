@@ -945,6 +945,12 @@ export const englishKeyboardDisambiguations = {
             code: 'i1'
         },
         {
+            turkishText: 'ī',
+            //representedText: 'i',
+            arabicText: 'اي',
+            code: 'i16'
+        },
+        {
             turkishText: 'i',
             arabicText: 'ﺍ',
             code: 'i4'
@@ -1021,6 +1027,12 @@ export const englishKeyboardDisambiguations = {
             //representedText: 'İ',
             arabicText: 'ي',
             code: 'I1'
+        },
+        {
+            turkishText: 'Ī',
+            //representedText: 'i',
+            arabicText: 'اي',
+            code: 'I16'
         },
         {
             turkishText: 'İ',
@@ -2363,6 +2375,12 @@ export const turkishKeyboardDisambiguations = {
             code: 'i1'
         },
         {
+            turkishText: 'ī',
+            //representedText: 'i',
+            arabicText: 'اي',
+            code: 'i16'
+        },
+        {
             turkishText: 'i',
             arabicText: 'ﺍ',
             code: 'i4'
@@ -2404,6 +2422,12 @@ export const turkishKeyboardDisambiguations = {
             //representedText: 'İ',
             arabicText: 'ي',
             code: 'I1'
+        },
+        {
+            turkishText: 'Ī',
+            //representedText: 'i',
+            arabicText: 'اي',
+            code: 'I16'
         },
         {
             turkishText: 'İ',
