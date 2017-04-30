@@ -1,0 +1,16 @@
+@keyframes flash {
+    0% {
+        background-color: Red;
+        opacity:1;
+    }
+    100% {
+        background-color: #777;
+    }
+}
+    
+.flash {
+    animation-name: demo;
+    animation-duration: 350ms;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in-out;
+} 
