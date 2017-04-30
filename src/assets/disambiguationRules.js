@@ -2538,7 +2538,7 @@ export const turkishKeyboardDisambiguations = {
         {
             turkishText: 'ō',
             //representedText: 'o',
-            arabicText: 'ﻮ',
+            arabicText: 'و',
             code: 'o1'
         },
         {
@@ -2566,7 +2566,7 @@ export const turkishKeyboardDisambiguations = {
         {
             turkishText: 'Ō',
             //representedText: 'O',
-            arabicText: 'ﻮ',
+            arabicText: 'و',
             code: 'O1'
         },
         {
