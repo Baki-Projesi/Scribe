@@ -167,6 +167,7 @@ export default class Transcribe extends Component {
     //This is passed a value from _keyBindingFn, either a special string or the default
     _handleKeyCommand(command) {
         if (command === 'require-dropdown') {
+            console.log(command)
             //TODO: remove className .flash and add it back to <Dropdown />
             // https://github.com/facebook/react/issues/7142
             // https://facebook.github.io/react/docs/animation.html
@@ -336,7 +337,13 @@ export default class Transcribe extends Component {
             this.state.disambiguationOptions[choiceIndex]
         );
         const entityKey = contentStateWithEntity.getLastCreatedEntityKey();
-        let newSelectionState = adjustSelectionOffset(editorState.getSelection(), -1, 0);
+        let newSelectionState;
+
+        if (chosenText.length > 1) {
+            let str = new Array(chosenText.length + 1).join(' ');
+            contentStateWithEntity = Modifier.insertText(contentStateWithEntity, editorState.getSelection(), str);
+        }
+        newSelectionState = adjustSelectionOffset(editorState.getSelection(), -1, (-1 + chosenText.length));
 
         //Replace the typed text with the displayText
         contentStateWithEntity = Modifier.replaceText(contentStateWithEntity, newSelectionState, displayText, null, entityKey);
@@ -352,7 +359,7 @@ export default class Transcribe extends Component {
             entityKey
         );
 
-        newSelectionState = adjustSelectionOffset(newSelectionState, 1, 0);
+        newSelectionState = adjustSelectionOffset(newSelectionState, chosenText.length, 0);
         newEditorState = EditorState.set(newEditorState, { selection: newSelectionState });
 
         return {
