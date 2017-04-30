@@ -24,17 +24,30 @@ export default class OutputBox extends Component {
     }
 
     //translate a single content block by building up a string of entity entries
-    translate(contentState, currentBlockKey, language) {
+    translate(contentState, currentBlockKey, outputLang, sourceLang) {
         const block = contentState.getBlockForKey(currentBlockKey);
         const charList = block.getCharacterList();
         let outputText = "";
 
-        charList.forEach(function (charMeta) {
+        // charList.forEach(function (charMeta) {
+        //     let key = charMeta.getEntity();
+        //     if (key && contentState.getEntity(key).type === "DISAMBIGUATION") {
+        //         outputText += contentState.getEntity(key).data[language];
+        //     }
+        // });
+
+        for (let i = 0; i < charList.length; i++) {
+            let charMeta = charList.get(i);
             let key = charMeta.getEntity();
             if (key && contentState.getEntity(key).type === "DISAMBIGUATION") {
-                outputText += contentState.getEntity(key).data[language];
+                let outputStr = contentState.getEntity(key).data[outputLang];
+                let sourceStr = contentState.getEntity(key).data[sourceLang];
+                outputText += outputStr;
+                if (sourceStr.length > 1) {
+                    i += sourceStr.length;
+                }
             }
-        });
+        }
 
         return outputText;
     }
@@ -54,7 +67,7 @@ export default class OutputBox extends Component {
                 contentBlocks[newProps.startKey] = newProps.contentState.getBlockForKey(newProps.startKey).text;
             }
 
-            contentBlocks[newProps.startKey] = this.translate(newProps.contentState, newProps.startKey, 'arabicText');
+            contentBlocks[newProps.startKey] = this.translate(newProps.contentState, newProps.startKey, 'arabicText', 'turkishText');
         }
 
         this.setState({ contentBlocks: contentBlocks });
