@@ -27,6 +27,11 @@ export const englishKeyboardDisambiguations = {
             arabicText: 'بّ',
             code: 'bb7'
         },
+        {
+            turkishText: 'b', // sheddah
+            arabicText: 'ذ',
+            code: 'test'
+        }
     ],
     'B': [
         {
@@ -1428,6 +1433,179 @@ export const englishKeyboardDisambiguations = {
             turkishText: 'ş',
             arabicText: 'ش',
             code: 'sh'
+        }
+    ],
+    'Sh': [
+        {
+            turkishText: 'Ş',
+            arabicText: 'ش',
+            code: 'Sh'
+        }
+    ],
+    'ad-d': [
+        {
+            turkishText: 'ad-d',
+            arabicText: 'الد',
+            code: 'dSun'
+        },
+        {
+            turkishText: 'aḍ-ḍ',
+            arabicText: 'الض',
+            code: 'ddotSun'
+        }
+    ],
+    'Ad-d': [
+        {
+            turkishText: 'Ad-d',
+            arabicText: 'الد',
+            code: 'DSun'
+        },
+        {
+            turkishText: 'Aḍ-ḍ',
+            arabicText: 'الض',
+            code: 'DdotSun'
+        }
+    ],
+    'adh-dh': [
+        {
+            turkishText: 'adh-dh',
+            arabicText: 'الذ',
+            code: 'dhSun'
+        }
+    ],
+    'Adh-dh': [
+        {
+            turkishText: 'Adh-dh',
+            arabicText: 'الذ',
+            code: 'DhSun'
+        }
+    ],
+    'an-n': [
+        {
+            turkishText: 'an-n',
+            arabicText: 'الن',
+            code: 'nSun'
+        }
+    ],
+    'An-n': [
+        {
+            turkishText: 'An-n',
+            arabicText: 'الن',
+            code: 'NSun'
+        }
+    ],
+    'ar-r': [
+        {
+            turkishText: 'ar-r',
+            arabicText: 'الر',
+            code: 'rSun'
+        }
+    ],
+    'Ar-r': [
+        {
+            turkishText: 'Ar-r',
+            arabicText: 'الر',
+            code: 'RSun'
+        }
+    ],
+    'as-s': [
+        {
+            turkishText: 'as-s',
+            arabicText: 'الس',
+            code: 'sSun'
+        },
+        {
+            turkishText: 'aṣ-ṣ',
+            arabicText: 'الص',
+            code: 'sdotSun'
+        }
+    ],
+    'As-s': [
+        {
+            turkishText: 'As-s',
+            arabicText: 'الس',
+            code: 'SSun'
+        },
+        {
+            turkishText: 'Aṣ-ṣ',
+            arabicText: 'الص',
+            code: 'SdotSun'
+        }
+    ],
+    'ash-sh': [
+        {
+            turkishText: 'ash-sh',
+            arabicText: 'الش',
+            code: 'shSun'
+        }
+    ],
+    'Ash-sh': [
+        {
+            turkishText: 'Ash-sh',
+            arabicText: 'الش',
+            code: 'ShSun'
+        }
+    ],
+    'at-t': [
+        {
+            turkishText: 'at-t',
+            arabicText: 'الت',
+            code: 'tSun'
+        },
+        {
+            turkishText: 'aṭ-ṭ',
+            arabicText: 'الط',
+            code: 'tdotSun'
+        }
+    ],
+    'At-t': [
+        {
+            turkishText: 'At-t',
+            arabicText: 'الت',
+            code: 'TSun'
+        },
+        {
+            turkishText: 'Aṭ-ṭ',
+            arabicText: 'الط',
+            code: 'TdotSun'
+        }
+    ],
+    'ath-th': [
+        {
+            turkishText: 'ath-th',
+            arabicText: 'الث',
+            code: 'thSun'
+        }
+    ],
+    'Ath-th': [
+        {
+            turkishText: 'Ath-th',
+            arabicText: 'الث',
+            code: 'ThSun'
+        }
+    ],
+    'az-z': [
+        {
+            turkishText: 'az-z',
+            arabicText: 'الز',
+            code: 'zSun'
+        },
+        {
+            turkishText: 'aẓ-ẓ',
+            arabicText: 'الظ',
+            code: 'zdotSun'
+        }
+    ],
+    'Az-z': [
+        {
+            turkishText: 'Az-z',
+            arabicText: 'الز',
+            code: 'ZSun'
+        },
+        {
+            turkishText: 'Aẓ-ẓ',
+            arabicText: 'الظ',
+            code: 'ZdotSun'
         }
     ]
 }
@@ -2896,6 +3074,179 @@ export const turkishKeyboardDisambiguations = {
             turkishText: 'ş',
             arabicText: 'ش',
             code: 'sh'
+        }
+    ],
+    'Sh': [
+        {
+            turkishText: 'Ş',
+            arabicText: 'ش',
+            code: 'Sh'
+        }
+    ],
+    'ad-d': [
+        {
+            turkishText: 'ad-d',
+            arabicText: 'الد',
+            code: 'dSun'
+        },
+        {
+            turkishText: 'aḍ-ḍ',
+            arabicText: 'الض',
+            code: 'ddotSun'
+        }
+    ],
+    'Ad-d': [
+        {
+            turkishText: 'Ad-d',
+            arabicText: 'الد',
+            code: 'DSun'
+        },
+        {
+            turkishText: 'Aḍ-ḍ',
+            arabicText: 'الض',
+            code: 'DdotSun'
+        }
+    ],
+    'adh-dh': [
+        {
+            turkishText: 'adh-dh',
+            arabicText: 'الذ',
+            code: 'dhSun'
+        }
+    ],
+    'Adh-dh': [
+        {
+            turkishText: 'Adh-dh',
+            arabicText: 'الذ',
+            code: 'DhSun'
+        }
+    ],
+    'an-n': [
+        {
+            turkishText: 'an-n',
+            arabicText: 'الن',
+            code: 'nSun'
+        }
+    ],
+    'An-n': [
+        {
+            turkishText: 'An-n',
+            arabicText: 'الن',
+            code: 'NSun'
+        }
+    ],
+    'ar-r': [
+        {
+            turkishText: 'ar-r',
+            arabicText: 'الر',
+            code: 'rSun'
+        }
+    ],
+    'Ar-r': [
+        {
+            turkishText: 'Ar-r',
+            arabicText: 'الر',
+            code: 'RSun'
+        }
+    ],
+    'as-s': [
+        {
+            turkishText: 'as-s',
+            arabicText: 'الس',
+            code: 'sSun'
+        },
+        {
+            turkishText: 'aṣ-ṣ',
+            arabicText: 'الص',
+            code: 'sdotSun'
+        }
+    ],
+    'As-s': [
+        {
+            turkishText: 'As-s',
+            arabicText: 'الس',
+            code: 'SSun'
+        },
+        {
+            turkishText: 'Aṣ-ṣ',
+            arabicText: 'الص',
+            code: 'SdotSun'
+        }
+    ],
+    'ash-sh': [
+        {
+            turkishText: 'ash-sh',
+            arabicText: 'الش',
+            code: 'shSun'
+        }
+    ],
+    'Ash-sh': [
+        {
+            turkishText: 'Ash-sh',
+            arabicText: 'الش',
+            code: 'ShSun'
+        }
+    ],
+    'at-t': [
+        {
+            turkishText: 'at-t',
+            arabicText: 'الت',
+            code: 'tSun'
+        },
+        {
+            turkishText: 'aṭ-ṭ',
+            arabicText: 'الط',
+            code: 'tdotSun'
+        }
+    ],
+    'At-t': [
+        {
+            turkishText: 'At-t',
+            arabicText: 'الت',
+            code: 'TSun'
+        },
+        {
+            turkishText: 'Aṭ-ṭ',
+            arabicText: 'الط',
+            code: 'TdotSun'
+        }
+    ],
+    'ath-th': [
+        {
+            turkishText: 'ath-th',
+            arabicText: 'الث',
+            code: 'thSun'
+        }
+    ],
+    'Ath-th': [
+        {
+            turkishText: 'Ath-th',
+            arabicText: 'الث',
+            code: 'ThSun'
+        }
+    ],
+    'az-z': [
+        {
+            turkishText: 'az-z',
+            arabicText: 'الز',
+            code: 'zSun'
+        },
+        {
+            turkishText: 'aẓ-ẓ',
+            arabicText: 'الظ',
+            code: 'zdotSun'
+        }
+    ],
+    'Az-z': [
+        {
+            turkishText: 'Az-z',
+            arabicText: 'الز',
+            code: 'ZSun'
+        },
+        {
+            turkishText: 'Aẓ-ẓ',
+            arabicText: 'الظ',
+            code: 'ZdotSun'
         }
     ]
 }
