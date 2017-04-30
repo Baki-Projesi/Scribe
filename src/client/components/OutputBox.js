@@ -36,7 +36,7 @@ export default class OutputBox extends Component {
         //     }
         // });
 
-        for (let i = 0; i < charList.length; i++) {
+        for (let i = 0; i < charList.count(); i++) {
             let charMeta = charList.get(i);
             let key = charMeta.getEntity();
             if (key && contentState.getEntity(key).type === "DISAMBIGUATION") {
@@ -44,7 +44,7 @@ export default class OutputBox extends Component {
                 let sourceStr = contentState.getEntity(key).data[sourceLang];
                 outputText += outputStr;
                 if (sourceStr.length > 1) {
-                    i += sourceStr.length;
+                    i += sourceStr.length - 1;
                 }
             }
         }
