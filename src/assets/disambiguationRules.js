@@ -1398,6 +1398,37 @@ export const englishKeyboardDisambiguations = {
             arabicText: 'ــٍ',
             code: 'e9'
         }
+    ],
+    '-i': [
+        {
+            turkishText: '-i',
+            arabicText: '',
+            code: 'izafet1'
+        },
+        {
+            turkishText: '-ı',
+            arabicText: '',
+            code: 'izafet2'
+        }
+    ],
+    '-u': [
+        {
+            turkishText: '-u',
+            arabicText: '',
+            code: 'izafet3'
+        },
+        {
+            turkishText: '-ü',
+            arabicText: '',
+            code: 'izafet4'
+        }
+    ],
+    'sh': [
+        {
+            turkishText: 'ş',
+            arabicText: 'ش',
+            code: 'sh'
+        }
     ]
 }
 
@@ -2835,6 +2866,36 @@ export const turkishKeyboardDisambiguations = {
             arabicText: 'ــٍ',
             code: 'e9'
         }
+    ],
+    '-i': [
+        {
+            turkishText: '-i',
+            arabicText: '',
+            code: 'izafet1'
+        },
+        {
+            turkishText: '-ı',
+            arabicText: '',
+            code: 'izafet2'
+        }
+    ],
+    '-u': [
+        {
+            turkishText: '-u',
+            arabicText: '',
+            code: 'izafet3'
+        },
+        {
+            turkishText: '-ü',
+            arabicText: '',
+            code: 'izafet4'
+        }
+    ],
+    'sh': [
+        {
+            turkishText: 'ş',
+            arabicText: 'ش',
+            code: 'sh'
+        }
     ]
-
 }
