@@ -340,7 +340,7 @@ export default class Transcribe extends Component {
         let newSelectionState;
 
         if (chosenText.length > 1) {
-            let str = new Array(chosenText.length + 1).join(' ');
+            let str = new Array(chosenText.length).join(' ');
             contentStateWithEntity = Modifier.insertText(contentStateWithEntity, editorState.getSelection(), str);
         }
         newSelectionState = adjustSelectionOffset(editorState.getSelection(), -1, (-1 + chosenText.length));
