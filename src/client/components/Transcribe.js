@@ -19,6 +19,7 @@ import {
 } from 'draft-js';
 import findWithRegex from '../utils/findWithRegex';
 import { adjustSelectionOffset } from '../utils/selectionStateHelpers';
+import groupByKey from '../utils/groupByKey';
 import decorateComponentWithProps from 'decorate-component-with-props';
 import AmbiguousCharacter from './AmbiguousCharacter';
 import DisambiguatedCharacter from './DisambiguatedCharacter';
@@ -115,7 +116,7 @@ export default class Transcribe extends Component {
         this.removeComment = this._removeComment.bind(this);
         this.keyBindingFn = this._keyBindingFn.bind(this);
         this.toggleCheckboxValue = this._toggleCheckboxValue.bind(this);
-        this.handleKeyCommand = this._handleKeyCommand.bind(this)
+        this.handleKeyCommand = this._handleKeyCommand.bind(this);
     }
 
     //captures global key events, results of this function (a special command string) are passed to KeyCommand() before the window interprets them
@@ -129,24 +130,29 @@ export default class Transcribe extends Component {
             return 'editor-newline';
         }
 
-        if (e.which !== 8 && e.which !== 46) {
-            if (this.state.showDropdown) { // backspace, delete
+        if (e.which !== 8 && e.which !== 46) { // backspace, delete
+            if (this.state.showDropdown) {
                 let str = 'dropdown-';
                 const keyCodeBase = 48;
-                const numOptions = this.state.disambiguationOptions.length;
+                const numOptions = Array.isArray(this.state.disambiguationOptions)
+                    ? this.state.disambiguationOptions.length
+                    : Object.keys(this.state.disambiguationOptions).length;
                 const optionMap = {};
                 for (let i = 1; i < numOptions + 1; i++) {
                     optionMap[keyCodeBase + i] = (str + i); //numkeys 1-9
                     optionMap[(keyCodeBase * 2) + i] = (str + i); // numpad 1-9
                 }
 
-                if ((e.which >= 49 && e.which <= 57) || (e.which >= 97 && e.which <= 105) && optionMap[e.which]) {
+                if ((e.which >= 49 && e.which <= 49 + numOptions) || (e.which >= 97 && e.which <= 97 + numOptions) && optionMap[e.which]) {
                     return optionMap[e.which];
-                } else {
+                } else if (this.state.dropDownCount < 2) {
                     //If anything besides Backspace or a number is chosen,
-                    // use default disambiguation choice and have the editor  the normal keypress
+                    // use default disambiguation choice and have the editor use the normal keypress
                     let newState = Object.assign(this.state, this._confirmDisambiguation(0, this.state.editorState));
                     this.setState(newState);
+                } else {
+                    //double dropdown -> require a choice; no default until category chosen
+                    return 'require-dropdown';
                 }
             } else if (this.state.disambiguationOptions && this.state.disambiguationOptions[0].code === 'sp') {
                 //we don't show dropdown for spaces, but they need an entity anyways
@@ -154,14 +160,17 @@ export default class Transcribe extends Component {
                 this.setState(newState);
             }
         }
-        
+
         return getDefaultKeyBinding(e);
     }
 
     //This is passed a value from _keyBindingFn, either a special string or the default
     _handleKeyCommand(command) {
-        if (command === 'editor-space') {
-
+        if (command === 'require-dropdown') {
+            console.log(command)
+            //TODO: remove className .flash and add it back to <Dropdown />
+            // https://github.com/facebook/react/issues/7142
+            // https://facebook.github.io/react/docs/animation.html
         }
         if (command === 'editor-newline') {
             let newState = this.state;
@@ -184,7 +193,12 @@ export default class Transcribe extends Component {
         if (command.startsWith('dropdown') && this.state.disambiguationOptions) {
             let choice = Number(command.charAt(command.length - 1));
             let newState = this.state.editorState;
-            newState = this._confirmDisambiguation(choice - 1, this.state.editorState);
+
+            if (this.state.dropDownCount < 2) {
+                newState = this._confirmDisambiguation(choice - 1, this.state.editorState);
+            } else {
+                newState = this._confirmVowelCategory(choice - 1, this.state.editorState);
+            }
 
             this.setState(newState);
             return 'handled';
@@ -276,7 +290,7 @@ export default class Transcribe extends Component {
     //TODO: move into dropdown positioned under cursor
     _promptForDisambiguation(current) {
         let charRules = this.state.usingTurkishKeyboard ? turkishKeyboardDisambiguations : englishKeyboardDisambiguations;
-        let showDropdown = false, disambiguationOptions;
+        let showDropdown = false, dropDownCount = 0, disambiguationOptions;
         if (current.startOffset > 0) {
             const previousChar = current.currentBlock.getText().charAt(current.startOffset - 1);
 
@@ -286,13 +300,20 @@ export default class Transcribe extends Component {
                 //previous character isn't a disambiguated character entity
                 if (charRules[previousChar] !== undefined) {
                     showDropdown = previousChar !== ' ';
-                    disambiguationOptions = charRules[previousChar]
+                    if (charRules[previousChar].length > 9) {
+                        disambiguationOptions = groupByKey(charRules[previousChar]);
+                        dropDownCount = 2;
+                    } else {
+                        disambiguationOptions = charRules[previousChar];
+                        dropDownCount = 1;
+                    }
                 }
             }
         }
 
         Object.assign(current, {
             showDropdown: showDropdown,
+            dropDownCount: dropDownCount,
             disambiguationOptions: disambiguationOptions,
             //showCommentInput: false
         });
@@ -302,13 +323,13 @@ export default class Transcribe extends Component {
 
     //this is called during handleKeyCommand when it detects a dropdown choice.
     _confirmDisambiguation(choiceIndex, editorState) {
-        var choosenText;
+        var chosenText;
         if (this.state.disambiguationOptions[choiceIndex].representedText !== undefined) {
-            choosenText = this.state.disambiguationOptions[choiceIndex].representedText;
+            chosenText = this.state.disambiguationOptions[choiceIndex].representedText;
         } else {
-            choosenText = this.state.disambiguationOptions[choiceIndex].turkishText;
+            chosenText = this.state.disambiguationOptions[choiceIndex].turkishText;
         }
-        const displayText = choosenText;
+        const displayText = chosenText;
         const contentState = editorState.getCurrentContent();
         let contentStateWithEntity = contentState.createEntity(
             'DISAMBIGUATION',
@@ -316,7 +337,13 @@ export default class Transcribe extends Component {
             this.state.disambiguationOptions[choiceIndex]
         );
         const entityKey = contentStateWithEntity.getLastCreatedEntityKey();
-        let newSelectionState = adjustSelectionOffset(editorState.getSelection(), -1, 0);
+        let newSelectionState;
+
+        if (chosenText.length > 1) {
+            let str = new Array(chosenText.length + 1).join(' ');
+            contentStateWithEntity = Modifier.insertText(contentStateWithEntity, editorState.getSelection(), str);
+        }
+        newSelectionState = adjustSelectionOffset(editorState.getSelection(), -1, (-1 + chosenText.length));
 
         //Replace the typed text with the displayText
         contentStateWithEntity = Modifier.replaceText(contentStateWithEntity, newSelectionState, displayText, null, entityKey);
@@ -332,13 +359,27 @@ export default class Transcribe extends Component {
             entityKey
         );
 
-        newSelectionState = adjustSelectionOffset(newSelectionState, 1, 0);
+        newSelectionState = adjustSelectionOffset(newSelectionState, chosenText.length, 0);
         newEditorState = EditorState.set(newEditorState, { selection: newSelectionState });
 
         return {
+            dropDownCount: this.state.dropDownCount - 1,
             editorState: newEditorState,
             showDropdown: false,
             disambiguationOptions: null
+        }
+    }
+
+    _confirmVowelCategory(choiceIndex, editorState) {
+        let keyArr = Object.keys(this.state.disambiguationOptions), key;
+        for (let i = 0; i <= choiceIndex; i++) {
+            key = keyArr[i];
+        }
+
+        return {
+            dropDownCount: this.state.dropDownCount - 1,
+            disambiguationOptions: this.state.disambiguationOptions[key],
+            editorState: editorState
         }
     }
 
