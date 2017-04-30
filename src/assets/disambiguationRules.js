@@ -26,11 +26,6 @@ export const englishKeyboardDisambiguations = {
             turkishText: 'pp', // sheddah
             arabicText: 'بّ',
             code: 'bb7'
-        },
-        {
-            turkishText: 'b', // sheddah
-            arabicText: 'ذ',
-            code: 'test'
         }
     ],
     'B': [
@@ -1357,6 +1352,76 @@ export const englishKeyboardDisambiguations = {
             turkishText: 'ˀ', // is this necessary?
             arabicText: 'ء',
             code: '\'3'
+        }
+    ],
+    '0': [
+        {
+            turkishText: '0',
+            arabicText: '٠‎',
+            code: '0'
+        }
+    ],
+    '1': [
+        {
+            turkishText: '1',
+            arabicText: '۱‎',
+            code: '1'
+        }
+    ],
+    '2': [
+        {
+            turkishText: '2',
+            arabicText: '۲‎',
+            code: '2'
+        }
+    ],
+    '3': [
+        {
+            turkishText: '3',
+            arabicText: '٣‎',
+            code: '3'
+        }
+    ],
+    '4': [
+        {
+            turkishText: '4',
+            arabicText: '٤‎',
+            code: '4'
+        }
+    ],
+    '5': [
+        {
+            turkishText: '5',
+            arabicText: '۵‎',
+            code: '5'
+        }
+    ],
+    '6': [
+        {
+            turkishText: '6',
+            arabicText: '٦‎',
+            code: '6'
+        }
+    ],
+    '7': [
+        {
+            turkishText: '7',
+            arabicText: '٧‎',
+            code: '7'
+        }
+    ],
+    '8': [
+        {
+            turkishText: '8',
+            arabicText: '٨‎',
+            code: '8'
+        }
+    ],
+    '9': [
+        {
+            turkishText: '9',
+            arabicText: '٩‎',
+            code: '9'
         }
     ],
     'yi': [ // does this need a capital case?
@@ -2998,6 +3063,76 @@ export const turkishKeyboardDisambiguations = {
             turkishText: 'ˀ', // is this necessary?
             arabicText: 'ء',
             code: '\'3'
+        }
+    ],
+    '0': [
+        {
+            turkishText: '0',
+            arabicText: '٠‎',
+            code: '0'
+        }
+    ],
+    '1': [
+        {
+            turkishText: '1',
+            arabicText: '۱‎',
+            code: '1'
+        }
+    ],
+    '2': [
+        {
+            turkishText: '2',
+            arabicText: '۲‎',
+            code: '2'
+        }
+    ],
+    '3': [
+        {
+            turkishText: '3',
+            arabicText: '٣‎',
+            code: '3'
+        }
+    ],
+    '4': [
+        {
+            turkishText: '4',
+            arabicText: '٤‎',
+            code: '4'
+        }
+    ],
+    '5': [
+        {
+            turkishText: '5',
+            arabicText: '۵‎',
+            code: '5'
+        }
+    ],
+    '6': [
+        {
+            turkishText: '6',
+            arabicText: '٦‎',
+            code: '6'
+        }
+    ],
+    '7': [
+        {
+            turkishText: '7',
+            arabicText: '٧‎',
+            code: '7'
+        }
+    ],
+    '8': [
+        {
+            turkishText: '8',
+            arabicText: '٨‎',
+            code: '8'
+        }
+    ],
+    '9': [
+        {
+            turkishText: '9',
+            arabicText: '٩‎',
+            code: '9'
         }
     ],
     'yi': [ // does this need a capital case?
