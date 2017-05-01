@@ -19,7 +19,8 @@ import {
 } from 'draft-js';
 import findWithRegex from '../utils/findWithRegex';
 import { adjustSelectionOffset } from '../utils/selectionStateHelpers';
-import groupByKey from '../utils/groupByKey';
+import getCurrentWordBuffer from '../utils/getCurrentWordBuffer';
+import { convertKeyGroupToDisambiguationArray, groupByTurkishKey } from '../utils/groupByKey';
 import decorateComponentWithProps from 'decorate-component-with-props';
 import AmbiguousCharacter from './AmbiguousCharacter';
 import DisambiguatedCharacter from './DisambiguatedCharacter';
@@ -76,7 +77,8 @@ export default class Transcribe extends Component {
             currentBlock: initEditorState.getCurrentContent().getBlockForKey(initEditorState.getSelection().getStartKey()),
             showCommentInput: false,
             commentContent: '',
-            usingTurkishKeyboard: false
+            usingTurkishKeyboard: false,
+            characterBuffer: ''
         };
 
         this.logState = () => {
@@ -132,11 +134,13 @@ export default class Transcribe extends Component {
 
         if (e.which !== 8 && e.which !== 46) { // backspace, delete
             if (this.state.showDropdown) {
+                let characterBuffer = getCurrentWordBuffer(
+                    this.state.editorState.getCurrentContent().getBlockForKey(this.state.editorState.getSelection().getStartKey()),
+                    this.state.editorState.getSelection().getStartOffset());
+                let charRules = this.state.usingTurkishKeyboard ? turkishKeyboardDisambiguations : englishKeyboardDisambiguations;
                 let str = 'dropdown-';
                 const keyCodeBase = 48;
-                const numOptions = Array.isArray(this.state.disambiguationOptions)
-                    ? this.state.disambiguationOptions.length
-                    : Object.keys(this.state.disambiguationOptions).length;
+                const numOptions = this.state.disambiguationOptions.length;
                 const optionMap = {};
                 for (let i = 1; i < numOptions + 1; i++) {
                     optionMap[keyCodeBase + i] = (str + i); //numkeys 1-9
@@ -144,17 +148,27 @@ export default class Transcribe extends Component {
                 }
 
                 if ((e.which >= 49 && e.which <= 49 + numOptions) || (e.which >= 97 && e.which <= 97 + numOptions) && optionMap[e.which]) {
-                    return optionMap[e.which];
-                } else if (this.state.dropDownCount < 2) {
+                    return optionMap[e.which]; //e.g. 'dropdown-2'
+                }
+                else if (charRules[characterBuffer + e.key] !== undefined) {
+                    //If they type another character that could be a combination, 
+                    console.log('potential combo');
+                }
+                else if (this.state.dropDownCount < 2) {
                     //If anything besides Backspace or a number is chosen,
                     // use default disambiguation choice and have the editor use the normal keypress
                     let newState = Object.assign(this.state, this._confirmDisambiguation(0, this.state.editorState));
                     this.setState(newState);
-                } else {
+                }
+                else {
                     //double dropdown -> require a choice; no default until category chosen
+                    
+                    //TODO: allow combination to override require-dropdown
                     return 'require-dropdown';
                 }
-            } else if (this.state.disambiguationOptions && this.state.disambiguationOptions[0].code === 'sp') {
+            } else if (this.state.disambiguationOptions &&
+                this.state.disambiguationOptions.length > 0 &&
+                this.state.disambiguationOptions[0].code === 'sp') {
                 //we don't show dropdown for spaces, but they need an entity anyways
                 let newState = Object.assign(this.state, this._confirmDisambiguation(0, this.state.editorState));
                 this.setState(newState);
@@ -194,9 +208,11 @@ export default class Transcribe extends Component {
             let choice = Number(command.charAt(command.length - 1));
             let newState = this.state.editorState;
 
-            if (this.state.dropDownCount < 2) {
+            if (this.state.dropDownCount < 2 ||
+                (this.state.combinationOptions && this.state.combinationOptions.length - choice > -1)) {
                 newState = this._confirmDisambiguation(choice - 1, this.state.editorState);
-            } else {
+            }
+            else {
                 newState = this._confirmVowelCategory(choice - 1, this.state.editorState);
             }
 
@@ -290,21 +306,37 @@ export default class Transcribe extends Component {
     //TODO: move into dropdown positioned under cursor
     _promptForDisambiguation(current) {
         let charRules = this.state.usingTurkishKeyboard ? turkishKeyboardDisambiguations : englishKeyboardDisambiguations;
-        let showDropdown = false, dropDownCount = 0, disambiguationOptions;
+        let showDropdown = false,
+            dropDownCount = 0,
+            disambiguationOptions = [],
+            characterBuffer = this.state.characterBuffer,
+            combinationOptions = [],
+            disambiguationGroupData;
+
         if (current.startOffset > 0) {
             const previousChar = current.currentBlock.getText().charAt(current.startOffset - 1);
+            characterBuffer = getCurrentWordBuffer(current.currentBlock, current.startOffset);
 
-            //TODO: find a better way to check if the previous character has disambiguation metadata
             const previousEntity = current.currentBlock.getEntityAt(current.startOffset - 1);
             if (previousEntity === null) {
-                //previous character isn't a disambiguated character entity
-                if (charRules[previousChar] !== undefined) {
+
+                //check buffer to see if we have a combination match to offer
+                if (charRules[characterBuffer] && characterBuffer.length > 1) {
+                    combinationOptions = charRules[characterBuffer];
+                    disambiguationOptions = disambiguationOptions.concat(combinationOptions);
+                    dropDownCount = 1;
+                }
+
+                //add disambiguation options based on previous typed char
+                if (characterBuffer.length === 1 || charRules[previousChar] !== undefined) {
                     showDropdown = previousChar !== ' ';
-                    if (charRules[previousChar].length > 9) {
-                        disambiguationOptions = groupByKey(charRules[previousChar]);
+                    if (charRules[previousChar].length + combinationOptions.length > 9) {
+                        //more than 9 options in total, need to group single-char options
+                        disambiguationGroupData = groupByTurkishKey(charRules[previousChar]);
+                        disambiguationOptions = disambiguationOptions.concat(convertKeyGroupToDisambiguationArray(disambiguationGroupData));
                         dropDownCount = 2;
                     } else {
-                        disambiguationOptions = charRules[previousChar];
+                        disambiguationOptions = disambiguationOptions.concat(charRules[previousChar]);
                         dropDownCount = 1;
                     }
                 }
@@ -312,9 +344,12 @@ export default class Transcribe extends Component {
         }
 
         Object.assign(current, {
+            combinationOptions: combinationOptions,
+            disambiguationGroupData: disambiguationGroupData,
             showDropdown: showDropdown,
             dropDownCount: dropDownCount,
             disambiguationOptions: disambiguationOptions,
+            characterBuffer: characterBuffer
             //showCommentInput: false
         });
 
@@ -323,7 +358,7 @@ export default class Transcribe extends Component {
 
     //this is called during handleKeyCommand when it detects a dropdown choice.
     _confirmDisambiguation(choiceIndex, editorState) {
-        var chosenText;
+        let chosenText;
         if (this.state.disambiguationOptions[choiceIndex].representedText !== undefined) {
             chosenText = this.state.disambiguationOptions[choiceIndex].representedText;
         } else {
@@ -339,11 +374,17 @@ export default class Transcribe extends Component {
         const entityKey = contentStateWithEntity.getLastCreatedEntityKey();
         let newSelectionState;
 
-        if (chosenText.length > 1) {
-            let str = new Array(chosenText.length).join(' ');
-            contentStateWithEntity = Modifier.insertText(contentStateWithEntity, editorState.getSelection(), str);
+        if (this.state.combinationOptions && this.state.combinationOptions.length - choiceIndex > -1) {
+            //user chose a combination, need to replace text backwards
+            newSelectionState = adjustSelectionOffset(editorState.getSelection(), 0 - chosenText.length, 0);
+        } else {
+            if (chosenText.length > 1) {
+                //user chose a double-consonant, need to add text forwards
+                let str = new Array(chosenText.length).join(' ');
+                contentStateWithEntity = Modifier.insertText(contentStateWithEntity, editorState.getSelection(), str);
+            }
+            newSelectionState = adjustSelectionOffset(editorState.getSelection(), -1, (-1 + chosenText.length));
         }
-        newSelectionState = adjustSelectionOffset(editorState.getSelection(), -1, (-1 + chosenText.length));
 
         //Replace the typed text with the displayText
         contentStateWithEntity = Modifier.replaceText(contentStateWithEntity, newSelectionState, displayText, null, entityKey);
@@ -371,14 +412,14 @@ export default class Transcribe extends Component {
     }
 
     _confirmVowelCategory(choiceIndex, editorState) {
-        let keyArr = Object.keys(this.state.disambiguationOptions), key;
+        let keyArr = Object.keys(this.state.disambiguationGroupData), key;
         for (let i = 0; i <= choiceIndex; i++) {
             key = keyArr[i];
         }
 
         return {
             dropDownCount: this.state.dropDownCount - 1,
-            disambiguationOptions: this.state.disambiguationOptions[key],
+            disambiguationOptions: this.state.disambiguationGroupData[key],
             editorState: editorState
         }
     }
