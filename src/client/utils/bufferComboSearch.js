@@ -8,7 +8,6 @@ export default function findCombination(buffer, charRules) {
         }
 
         _buffer = _buffer.substring(1);
-        console.log(_buffer);
     }
 
     return results;
