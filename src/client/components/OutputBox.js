@@ -29,13 +29,6 @@ export default class OutputBox extends Component {
         const charList = block.getCharacterList();
         let outputText = "";
 
-        // charList.forEach(function (charMeta) {
-        //     let key = charMeta.getEntity();
-        //     if (key && contentState.getEntity(key).type === "DISAMBIGUATION") {
-        //         outputText += contentState.getEntity(key).data[language];
-        //     }
-        // });
-
         for (let i = 0; i < charList.count(); i++) {
             let charMeta = charList.get(i);
             let key = charMeta.getEntity();

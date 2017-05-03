@@ -153,7 +153,7 @@ export default class Transcribe extends Component {
                     return optionMap[e.which]; //e.g. 'dropdown-2'
                 }
                 else if (comboOptions.length > 0) {
-                    //If they type another character that could be a combination, 
+                    //If they type another character that could be a combination 
                     console.log('potential combo');
                 }
                 else if (this.state.dropDownCount < 2) {
@@ -323,14 +323,14 @@ export default class Transcribe extends Component {
             if (previousEntity === null) {
 
                 //check buffer to see if we have a combination match to offer
-                let combinationOptions = bufferComboSearch(characterBuffer, charRules);
-                if (combinationOptions.length > 0) {
+                combinationOptions = bufferComboSearch(characterBuffer, charRules);
+                if (combinationOptions.length > 0 && characterBuffer.length > 1) {
                     disambiguationOptions = disambiguationOptions.concat(combinationOptions);
                     dropDownCount = 1;
                 }
 
                 //add disambiguation options based on previous typed char
-                if (characterBuffer.length === 1 || charRules[previousChar] !== undefined) {
+                if (charRules[previousChar] !== undefined) {
                     showDropdown = previousChar !== ' ';
                     if (charRules[previousChar].length + combinationOptions.length > 9) {
                         //more than 9 options in total, need to group single-char options
