@@ -153,10 +153,10 @@ export default class Transcribe extends Component {
                 if ((e.which >= 49 && e.which <= 49 + numOptions) || (e.which >= 97 && e.which <= 97 + numOptions) && optionMap[e.which]) {
                     return optionMap[e.which]; //e.g. 'dropdown-2'
                 }
-                else if (comboOptions.length > 0) {
-                    //If they type another character that could be a combination 
-                    console.log('potential combo');
-                }
+                // else if (comboOptions.length > 0) {
+                //     //If they type another character that could be a combination 
+                //     console.log('potential combo');
+                // }
                 else {
                     //If anything besides Backspace or a number is chosen,
                     // use default disambiguation choice and have the editor use the normal keypress
@@ -210,7 +210,7 @@ export default class Transcribe extends Component {
 
             if (choice === 1 || // first choice always default
             this.state.dropDownCount < 2 || // no grouping
-                (this.state.combinationOptions && this.state.combinationOptions.length - choice > 0)) //choice is a combination
+                (this.state.combinationOptions && this.state.combinationOptions.length + 1 >= choice)) //chose a combination
             {
                 newState = this._confirmDisambiguation(choice - 1, this.state.editorState);
             }
