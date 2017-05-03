@@ -795,6 +795,11 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'a',
+            arabicText: 'ۀ' + '\u200c', // non-joiner
+            code: 'ahamza4'
+        },
+        {
+            turkishText: 'a',
             arabicText: 'َ',
             code: 'a10'
         }
@@ -844,6 +849,11 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'A',
+            arabicText: 'ۀ' + '\u200c', // non-joiner
+            code: 'Ahamza4'
+        },
+        {
+            turkishText: 'A',
             arabicText: 'َ',
             code: 'A10'
         }
@@ -881,6 +891,11 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'e',
+            arabicText: 'ۀ' + '\u200c', // non-joiner
+            code: 'ehamza1'
+        },
+        {
+            turkishText: 'e',
             arabicText: 'َ',
             code: 'e10'
         }
@@ -915,6 +930,11 @@ export const englishKeyboardDisambiguations = {
             turkishText: 'E',
             arabicText: 'أ',
             code: 'Ehamza'
+        },
+        {
+            turkishText: 'E',
+            arabicText: 'ۀ' + '\u200c', // non-joiner
+            code: 'Ehamza1'
         },
         {
             turkishText: 'E',
@@ -2509,6 +2529,11 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'a',
+            arabicText: 'ۀ' + '\u200c', // non-joiner
+            code: 'ahamza4'
+        },
+        {
+            turkishText: 'a',
             arabicText: 'َ',
             code: 'a10'
         }
@@ -2558,6 +2583,11 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'A',
+            arabicText: 'ۀ' + '\u200c', // non-joiner
+            code: 'Ahamza4'
+        },
+        {
+            turkishText: 'A',
             arabicText: 'َ',
             code: 'A10'
         }
@@ -2595,6 +2625,11 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'e',
+            arabicText: 'ۀ' + '\u200c', // non-joiner
+            code: 'ehamza1'
+        },
+        {
+            turkishText: 'e',
             arabicText: 'َ',
             code: 'e10'
         }
@@ -2629,6 +2664,11 @@ export const turkishKeyboardDisambiguations = {
             turkishText: 'E',
             arabicText: 'أ',
             code: 'Ehamza'
+        },
+        {
+            turkishText: 'E',
+            arabicText: 'ۀ' + '\u200c', // non-joiner
+            code: 'Ehamza1'
         },
         {
             turkishText: 'E',
