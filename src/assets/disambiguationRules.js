@@ -779,6 +779,11 @@ export const englishKeyboardDisambiguations = {
             code: 'a2'
         },
         {
+            turkishText: 'ā',
+            arabicText: 'ى',
+            code: 'a13'
+        },
+        {
             turkishText: 'a',
             arabicText: 'أ',
             code: 'ahamza'
@@ -831,6 +836,11 @@ export const englishKeyboardDisambiguations = {
             //representedText: 'A',
             arabicText: 'آ',
             code: 'A2'
+        },
+        {
+            turkishText: 'Ā',
+            arabicText: 'ى',
+            code: 'A13'
         },
         {
             turkishText: 'A',
@@ -2513,6 +2523,11 @@ export const turkishKeyboardDisambiguations = {
             code: 'a2'
         },
         {
+            turkishText: 'ā',
+            arabicText: 'ى',
+            code: 'a13'
+        },
+        {
             turkishText: 'a',
             arabicText: 'أ',
             code: 'ahamza'
@@ -2565,6 +2580,11 @@ export const turkishKeyboardDisambiguations = {
             //representedText: 'A',
             arabicText: 'آ',
             code: 'A2'
+        },
+        {
+            turkishText: 'Ā',
+            arabicText: 'ى',
+            code: 'A13'
         },
         {
             turkishText: 'A',
