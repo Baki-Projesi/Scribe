@@ -25,6 +25,7 @@ import decorateComponentWithProps from 'decorate-component-with-props';
 import AmbiguousCharacter from './AmbiguousCharacter';
 import DisambiguatedCharacter from './DisambiguatedCharacter';
 import { englishKeyboardDisambiguations, turkishKeyboardDisambiguations } from '../../assets/disambiguationRules';
+import bufferComboSearch from '../utils/bufferComboSearch';
 
 const store = {
     mostRecentAmbiguousCharCoords: null
@@ -138,6 +139,7 @@ export default class Transcribe extends Component {
                     this.state.editorState.getCurrentContent().getBlockForKey(this.state.editorState.getSelection().getStartKey()),
                     this.state.editorState.getSelection().getStartOffset());
                 let charRules = this.state.usingTurkishKeyboard ? turkishKeyboardDisambiguations : englishKeyboardDisambiguations;
+                let comboOptions = bufferComboSearch(characterBuffer + e.key, charRules);
                 let str = 'dropdown-';
                 const keyCodeBase = 48;
                 const numOptions = this.state.disambiguationOptions.length;
@@ -150,7 +152,7 @@ export default class Transcribe extends Component {
                 if ((e.which >= 49 && e.which <= 49 + numOptions) || (e.which >= 97 && e.which <= 97 + numOptions) && optionMap[e.which]) {
                     return optionMap[e.which]; //e.g. 'dropdown-2'
                 }
-                else if (charRules[characterBuffer + e.key] !== undefined) {
+                else if (comboOptions.length > 0) {
                     //If they type another character that could be a combination, 
                     console.log('potential combo');
                 }
@@ -162,7 +164,7 @@ export default class Transcribe extends Component {
                 }
                 else {
                     //double dropdown -> require a choice; no default until category chosen
-                    
+
                     //TODO: allow combination to override require-dropdown
                     return 'require-dropdown';
                 }
@@ -321,8 +323,8 @@ export default class Transcribe extends Component {
             if (previousEntity === null) {
 
                 //check buffer to see if we have a combination match to offer
-                if (charRules[characterBuffer] && characterBuffer.length > 1) {
-                    combinationOptions = charRules[characterBuffer];
+                let combinationOptions = bufferComboSearch(characterBuffer, charRules);
+                if (combinationOptions.length > 0) {
                     disambiguationOptions = disambiguationOptions.concat(combinationOptions);
                     dropDownCount = 1;
                 }
