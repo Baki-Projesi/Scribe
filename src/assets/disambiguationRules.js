@@ -1444,38 +1444,44 @@ export const englishKeyboardDisambiguations = {
     'an': [
         {
             turkishText: 'an',
-            arabicText: 'ـً',
+            //arabicText: 'ـً',
+            arabicText: 'ً',
             code: 'e6'
         },
         {
             turkishText: 'an',
-            arabicText: 'ـًاً',
+            //arabicText: 'ـًاً',
+            arabicText: 'ًا',
             code: 'atanwin'
         }
     ],
     'en': [
         {
             turkishText: 'en',
-            arabicText: 'ـً',
+            //arabicText: 'ـً',
+            arabicText: 'ً',
             code: 'e7'
         },
         {
             turkishText: 'en',
-            arabicText: 'ـًا',
+            //arabicText: 'ـًا',
+            arabicText: 'ًا',
             code: 'etanwin'
         }
     ],
     'un': [
         {
             turkishText: 'un',
-            arabicText: 'ـٌ',
+            //arabicText: 'ـٌ',
+            arabicText: 'ٌ',
             code: 'e8'
         }
     ],
     'in': [
         {
-            turkishText: 'un',
-            arabicText: 'ــٍ',
+            turkishText: 'in',
+            //arabicText: 'ــٍ',
+            arabicText: 'ٍ',
             code: 'e9'
         }
     ],
@@ -3181,38 +3187,44 @@ export const turkishKeyboardDisambiguations = {
     'an': [
         {
             turkishText: 'an',
-            arabicText: 'ـً',
+            //arabicText: 'ـً',
+            arabicText: 'ً',
             code: 'e6'
         },
         {
             turkishText: 'an',
-            arabicText: 'ـًاً',
+            //arabicText: 'ـًاً',
+            arabicText: 'ًا',
             code: 'atanwin'
         }
     ],
     'en': [
         {
             turkishText: 'en',
-            arabicText: 'ـً',
+            //arabicText: 'ـً',
+            arabicText: 'ً',
             code: 'e7'
         },
         {
             turkishText: 'en',
-            arabicText: 'ـًا',
+            //arabicText: 'ـًا',
+            arabicText: 'ًا',
             code: 'etanwin'
         }
     ],
     'un': [
         {
             turkishText: 'un',
-            arabicText: 'ـٌ',
+            //arabicText: 'ـٌ',
+            arabicText: 'ٌ',
             code: 'e8'
         }
     ],
     'in': [
         {
-            turkishText: 'un',
-            arabicText: 'ــٍ',
+            turkishText: 'in',
+            //arabicText: 'ــٍ',
+            arabicText: 'ٍ',
             code: 'e9'
         }
     ],
