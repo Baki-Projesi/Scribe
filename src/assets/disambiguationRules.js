@@ -1690,12 +1690,12 @@ export const englishKeyboardDisambiguations = {
             code: 'Allah'
         }
     ],
-    'llilah': [
+    'lillah': [
         {
-            turkishText: 'llilah',
+            turkishText: 'lillah',
             //arabicText: 'ٱللَّهِ',
             arabicText: 'لله',
-            code: 'llilah'
+            code: 'lillah'
         }
     ]
 
@@ -3427,12 +3427,12 @@ export const turkishKeyboardDisambiguations = {
             code: 'Allah'
         }
     ],
-    'llilah': [
+    'lillah': [
         {
-            turkishText: 'llilah',
+            turkishText: 'lillah',
             //arabicText: 'ٱللَّهِ',
             arabicText: 'لله',
-            code: 'llilah'
+            code: 'lillah'
         }
     ]
 }
