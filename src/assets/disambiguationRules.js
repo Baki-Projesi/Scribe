@@ -665,7 +665,7 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'y',
-            arabicText: 'ی' + '\u200c',
+            arabicText: '\u06cc', // Farsi yeh
             code: 'y1'
         },
         {
@@ -682,7 +682,7 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'Y',
-            arabicText: 'ی' + '\u200c',
+            arabicText: '\u06cc', // Farsi yeh
             code: 'Y1'
         }
     ],
@@ -871,7 +871,7 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'e',
-            arabicText: 'ی' + '\u200c',
+            arabicText: '\u06cc', // Farsi yeh
             code: 'e12'
         },
         {
@@ -908,7 +908,7 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'E',
-            arabicText: 'ی' + '\u200c',
+            arabicText: '\u06cc', // Farsi yeh
             code: 'E12'
         },
         {
@@ -957,7 +957,7 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'i',
-            arabicText: 'ی' + '\u200c',
+            arabicText: '\u06cc', // Farsi yeh
             code: 'i14'
         },
         {
@@ -1002,7 +1002,7 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'ı',
-            arabicText: 'ی' + '\u200c',
+            arabicText: '\u06cc', // Farsi yeh
             code: 'i15'
         },
         {
@@ -1046,7 +1046,7 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'İ',
-            arabicText: 'ی' + '\u200c',
+            arabicText: '\u06cc', // Farsi yeh
             code: 'i14'
         },
         {
@@ -1096,7 +1096,7 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'I',
-            arabicText: 'ی' + '\u200c',
+            arabicText: '\u06cc', // Farsi yeh
             code: 'I15'
         },
         {
@@ -2395,7 +2395,7 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'y',
-            arabicText: 'ی' + '\u200c',
+            arabicText: '\u06cc', // Farsi yeh
             code: 'y1'
         },
         {
@@ -2412,7 +2412,7 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'Y',
-            arabicText: 'ی' + '\u200c',
+            arabicText: '\u06cc', // Farsi yeh
             code: 'Y1'
         }
     ],
@@ -2601,7 +2601,7 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'e',
-            arabicText: 'ی' + '\u200c',
+            arabicText: '\u06cc', // Farsi yeh
             code: 'e12'
         },
         {
@@ -2638,7 +2638,7 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'E',
-            arabicText: 'ی' + '\u200c',
+            arabicText: '\u06cc', // Farsi yeh
             code: 'E12'
         },
         {
@@ -2687,7 +2687,7 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'i',
-            arabicText: 'ی' + '\u200c',
+            arabicText: '\u06cc', // Farsi yeh
             code: 'i14'
         },
         {
@@ -2741,7 +2741,7 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'İ',
-            arabicText: 'ی' + '\u200c',
+            arabicText: '\u06cc', // Farsi yeh
             code: 'I14'
         },
         {
@@ -2788,7 +2788,7 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'ı',
-            arabicText: 'ی' + '\u200c',
+            arabicText: '\u06cc', // Farsi yeh
             code: 'i15'
         },
         {
@@ -2825,7 +2825,7 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'I',
-            arabicText: 'ی' + '\u200c',
+            arabicText: '\u06cc', // Farsi yeh
             code: 'I15'
         },
         {
