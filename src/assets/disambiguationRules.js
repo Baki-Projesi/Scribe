@@ -187,17 +187,7 @@ export const englishKeyboardDisambiguations = {
             turkishText: 'ġġ', // sheddah
             arabicText: 'غّ',
             code: 'gg4'
-        }/*,
-        {
-            turkishText: 'ğğ', // sheddah
-            arabicText: 'غّ',
-            code: 'gg5'
-        },
-        {
-            turkishText: 'kk', // sheddah
-            arabicText: 'كّ',
-            code: 'gg7'
-        }*/
+        }
     ],
     'G': [
         {
@@ -238,11 +228,6 @@ export const englishKeyboardDisambiguations = {
             code: 'h5'
         },
         {
-            turkishText: 'h',
-            arabicText: 'ۀ',
-            code: 'hhamza'
-        },
-        {
             turkishText: 'ḫʷ', // need to be able to string both of these characters together in Latin
             arabicText: 'خو',
             code: 'hw'
@@ -278,11 +263,6 @@ export const englishKeyboardDisambiguations = {
             turkishText: 'Ḫ',
             arabicText: 'خ',
             code: 'H5'
-        },
-        {
-            turkishText: 'H',
-            arabicText: 'ۀ',
-            code: 'Hhamza'
         },
         {
             turkishText: 'Ḫᵂ', // need to be able to string both of these characters together in Latin
@@ -768,15 +748,18 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'ā',
-            //representedText: 'a',
             arabicText: 'ا',
             code: 'a1'
         },
         {
             turkishText: 'ā',
-            //representedText: 'a',
             arabicText: 'آ',
             code: 'a2'
+        },
+        {
+            turkishText: 'a',
+            arabicText: '\u06cc', // Farsi yeh
+            code: 'a13'
         },
         {
             turkishText: 'a',
@@ -794,7 +777,7 @@ export const englishKeyboardDisambiguations = {
             code: 'ahamza3'
         },
         {
-            turkishText: 'a',
+            turkishText: 'a', // special
             arabicText: 'َ',
             code: 'a10'
         }
@@ -817,15 +800,18 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'Ā',
-            //representedText: 'A',
             arabicText: 'ا',
             code: 'A1'
         },
         {
             turkishText: 'Ā',
-            //representedText: 'A',
             arabicText: 'آ',
             code: 'A2'
+        },
+        {
+            turkishText: 'A',
+            arabicText: '\u06cc', // Farsi yeh
+            code: 'A13'
         },
         {
             turkishText: 'A',
@@ -843,7 +829,7 @@ export const englishKeyboardDisambiguations = {
             code: 'Ahamza3'
         },
         {
-            turkishText: 'A',
+            turkishText: 'A', // special
             arabicText: 'َ',
             code: 'A10'
         }
@@ -860,7 +846,7 @@ export const englishKeyboardDisambiguations = {
             code: 'e0'
         },
         {
-            turkishText: 'ė',
+            turkishText: 'ė', // special?
             arabicText: 'ي',
             code: 'e1'
         },
@@ -871,17 +857,17 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'e',
-            arabicText: '\u06cc', // Farsi yeh
-            code: 'e12'
-        },
-        {
-            turkishText: 'e',
             arabicText: 'أ',
             code: 'ehamza'
         },
         {
             turkishText: 'e',
-            arabicText: 'َ',
+            arabicText: 'ۀ' + '\u200c',
+            code: 'ehamza1'
+        },
+        {
+            turkishText: 'e', // special
+            arabicText: 'َ', 
             code: 'e10'
         }
     ],
@@ -898,7 +884,7 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'ė', // ? No capital E with diacritic in chart
-            arabicText: 'ي',
+            arabicText: 'ي', // special?
             code: 'E1'
         },
         {
@@ -908,16 +894,16 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'E',
-            arabicText: '\u06cc', // Farsi yeh
-            code: 'E12'
-        },
-        {
-            turkishText: 'E',
             arabicText: 'أ',
             code: 'Ehamza'
         },
         {
             turkishText: 'E',
+            arabicText: 'ۀ' + '\u200c',
+            code: 'Ehamza1'
+        },
+        {
+            turkishText: 'E', // special
             arabicText: 'َ',
             code: 'E10'
         }
@@ -929,7 +915,7 @@ export const englishKeyboardDisambiguations = {
             code: 'i11'
         },
         {
-            turkishText: 'i',
+            turkishText: 'i', // special?
             arabicText: 'ي',
             code: 'i6'
         },
@@ -939,16 +925,19 @@ export const englishKeyboardDisambiguations = {
             code: 'i2'
         },
         {
-            turkishText: 'ī',
-            //representedText: 'i',
+            turkishText: 'ī', // special?
             arabicText: 'ي',
             code: 'i1'
         },
         {
             turkishText: 'ī',
-            //representedText: 'i',
             arabicText: 'اي',
             code: 'i16'
+        },
+        {
+            turkishText: 'ī',
+            arabicText: 'ى',
+            code: 'i18'
         },
         {
             turkishText: 'i',
@@ -966,14 +955,9 @@ export const englishKeyboardDisambiguations = {
             code: 'ihamza'
         },
         {
-            turkishText: 'i',
+            turkishText: 'i', // special
             arabicText: 'ِ', // kasrah
             code: 'i10'
-        },
-        {
-            turkishText: 'i',
-            arabicText: 'ه' + '\u200c',
-            code: 'i17'
         },
         {
             turkishText: 'ı',
@@ -981,7 +965,7 @@ export const englishKeyboardDisambiguations = {
             code: 'i12'
         },
         {
-            turkishText: 'ı',
+            turkishText: 'ı', // special?
             arabicText: 'ي',
             code: 'i7'
         },
@@ -1006,7 +990,7 @@ export const englishKeyboardDisambiguations = {
             code: 'i15'
         },
         {
-            turkishText: 'ı',
+            turkishText: 'ı', // special
             arabicText: 'ِ', // kasrah
             code: 'i0'
         }
@@ -1018,7 +1002,7 @@ export const englishKeyboardDisambiguations = {
             code: 'I11'
         },
         {
-            turkishText: 'İ',
+            turkishText: 'İ', // special?
             arabicText: 'ي',
             code: 'I6'
         },
@@ -1028,16 +1012,19 @@ export const englishKeyboardDisambiguations = {
             code: 'I2'
         },
         {
-            turkishText: 'Ī',
-            //representedText: 'İ',
+            turkishText: 'Ī', // special?
             arabicText: 'ي',
             code: 'I1'
         },
         {
             turkishText: 'Ī',
-            //representedText: 'i',
             arabicText: 'اي',
             code: 'I16'
+        },
+        {
+            turkishText: 'Ī',
+            arabicText: 'ى',
+            code: 'I18'
         },
         {
             turkishText: 'İ',
@@ -1055,17 +1042,12 @@ export const englishKeyboardDisambiguations = {
             code: 'Ihamza'
         },
         {
-            turkishText: 'İ',
+            turkishText: 'İ', // special
             arabicText: 'ِ', // kasrah
             code: 'I10'
         },
         {
-            turkishText: 'İ',
-            arabicText: 'ه' + '\u200c',
-            code: 'I17'
-        },
-        {
-            turkishText: 'İ',
+            turkishText: 'İ', // special
             arabicText: 'ِ', // kasrah
             code: 'I10'
         },
@@ -1075,7 +1057,7 @@ export const englishKeyboardDisambiguations = {
             code: 'I12'
         },
         {
-            turkishText: 'I',
+            turkishText: 'I', // special?
             arabicText: 'ي',
             code: 'I7'
         },
@@ -1100,7 +1082,7 @@ export const englishKeyboardDisambiguations = {
             code: 'I15'
         },
         {
-            turkishText: 'I',
+            turkishText: 'I', // special
             arabicText: 'ِ', // kasrah
             code: 'I0'
         }
@@ -1118,7 +1100,6 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'ō',
-            //representedText: 'o',
             arabicText: 'و',
             code: 'o1'
         },
@@ -1166,7 +1147,6 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'Ō',
-            //representedText: 'O',
             arabicText: 'ﻮ',
             code: 'O1'
         },
@@ -1218,18 +1198,17 @@ export const englishKeyboardDisambiguations = {
             code: 'u6'
         },
         {
-            turkishText: 'ü',
+            turkishText: 'ü', // special
             arabicText: 'ُ', // ḍammah
             code: 'u0'
         },
         {
-            turkishText: 'u',
+            turkishText: 'u', // special
             arabicText: 'ُ', // ḍammah
             code: 'u10'
         },
         {
             turkishText: 'ū',
-            //representedText: 'u',
             arabicText: 'و',
             code: 'u1'
         },
@@ -1291,18 +1270,17 @@ export const englishKeyboardDisambiguations = {
             code: 'U6'
         },
         {
-            turkishText: 'Ü',
+            turkishText: 'Ü', // special
             arabicText: 'ُ', // ḍammah
             code: 'U0'
         },
         {
-            turkishText: 'U',
+            turkishText: 'U', // special
             arabicText: 'ُ', // ḍammah
             code: 'U10'
         },
         {
             turkishText: 'Ū',
-            //representedText: 'U',
             arabicText: 'و',
             code: 'U1'
         },
@@ -1439,6 +1417,23 @@ export const englishKeyboardDisambiguations = {
             turkishText: 'yi',
             arabicText: 'ٸ',
             code: 'iHamza'
+        },
+        {
+            turkishText: 'yı',
+            arabicText: 'ٸ',
+            code: 'iHamza1'
+        },
+        {
+            turkishText: 'yi',
+            arabicText: 'ٸ',
+            arabicText: 'ۀ',
+            code: 'iHamza2'
+        },
+        {
+            turkishText: 'yı',
+            arabicText: 'ٸ',
+            arabicText: 'ۀ',
+            code: 'iHamza3'
         }
     ],
     'an': [
@@ -1599,6 +1594,16 @@ export const englishKeyboardDisambiguations = {
             turkishText: 'aṣ-ṣ',
             arabicText: 'الص',
             code: 'sdotSun'
+        },
+        {
+            turkishText: 'aŝ-ŝ',
+            arabicText: 'الث',
+            code: 'shatSun'
+        },
+        {
+            turkishText: 'aş-ş',
+            arabicText: 'الش',
+            code: 'scSun'
         }
     ],
     'As-s': [
@@ -1611,6 +1616,16 @@ export const englishKeyboardDisambiguations = {
             turkishText: 'Aṣ-ṣ',
             arabicText: 'الص',
             code: 'SdotSun'
+        },
+        {
+            turkishText: 'Aŝ-ŝ',
+            arabicText: 'الث',
+            code: 'ShatSun'
+        },
+        {
+            turkishText: 'Aş-ş',
+            arabicText: 'الش',
+            code: 'ScSun'
         }
     ],
     'ash-sh': [
@@ -1675,6 +1690,16 @@ export const englishKeyboardDisambiguations = {
             turkishText: 'aẓ-ẓ',
             arabicText: 'الظ',
             code: 'zdotSun'
+        },
+        {
+            turkishText: 'aẕ-ẕ',
+            arabicText: 'الذ',
+            code: 'zlineSun'
+        },
+        {
+            turkishText: 'aż-ż',
+            arabicText: 'الظ',
+            code: 'zdot2Sun'
         }
     ],
     'Az-z': [
@@ -1687,6 +1712,16 @@ export const englishKeyboardDisambiguations = {
             turkishText: 'Aẓ-ẓ',
             arabicText: 'الظ',
             code: 'ZdotSun'
+        },
+        {
+            turkishText: 'Aẕ-ẕ',
+            arabicText: 'الذ',
+            code: 'ZlineSun'
+        },
+        {
+            turkishText: 'Aż-ż',
+            arabicText: 'الظ',
+            code: 'Zdot2Sun'
         }
     ],
     'Allah': [
@@ -1929,12 +1964,7 @@ export const turkishKeyboardDisambiguations = {
             turkishText: 'ğğ', // sheddah
             arabicText: 'كّ',
             code: 'gg6'
-        }/*,
-        {
-            turkishText: 'ğğ',
-            arabicText: 'غّ',
-            code: 'gg5'
-        }*/
+        }
     ],
     'Ğ': [
         {
@@ -1968,11 +1998,6 @@ export const turkishKeyboardDisambiguations = {
             turkishText: 'ẖ',
             arabicText: 'خ',
             code: 'h5'
-        },
-        {
-            turkishText: 'h',
-            arabicText: 'ۀ',
-            code: 'hhamza'
         },
         {
             turkishText: 'ḫʷ', // need to be able to string both of these characters together in Latin
@@ -2010,11 +2035,6 @@ export const turkishKeyboardDisambiguations = {
             turkishText: 'Ḫ',
             arabicText: 'خ',
             code: 'H5'
-        },
-        {
-            turkishText: 'H',
-            arabicText: 'ۀ',
-            code: 'Hhamza'
         },
         {
             turkishText: 'Ḫᵂ', // need to be able to string both of these characters together in Latin
@@ -2504,15 +2524,18 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'ā',
-            //representedText: 'a',
             arabicText: 'ا',
             code: 'a1'
         },
         {
             turkishText: 'ā',
-            //representedText: 'a',
             arabicText: 'آ',
             code: 'a2'
+        },
+        {
+            turkishText: 'a',
+            arabicText: '\u06cc', // Farsi yeh
+            code: 'a13'
         },
         {
             turkishText: 'a',
@@ -2553,15 +2576,18 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'Ā',
-            //representedText: 'A',
             arabicText: 'ا',
             code: 'A1'
         },
         {
             turkishText: 'Ā',
-            //representedText: 'A',
             arabicText: 'آ',
             code: 'A2'
+        },
+        {
+            turkishText: 'A',
+            arabicText: '\u06cc', // Farsi yeh
+            code: 'A13'
         },
         {
             turkishText: 'A',
@@ -2607,13 +2633,13 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'e',
-            arabicText: '\u06cc', // Farsi yeh
-            code: 'e12'
+            arabicText: 'أ',
+            code: 'ehamza'
         },
         {
             turkishText: 'e',
-            arabicText: 'أ',
-            code: 'ehamza'
+            arabicText: 'ۀ' + '\u200c',
+            code: 'ehamza1'
         },
         {
             turkishText: 'e',
@@ -2644,13 +2670,13 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'E',
-            arabicText: '\u06cc', // Farsi yeh
-            code: 'E12'
+            arabicText: 'أ',
+            code: 'Ehamza'
         },
         {
             turkishText: 'E',
-            arabicText: 'أ',
-            code: 'Ehamza'
+            arabicText: 'ۀ' + '\u200c',
+            code: 'Ehamza1'
         },
         {
             turkishText: 'E',
@@ -2676,15 +2702,18 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'ī',
-            //representedText: 'i',
             arabicText: 'ي',
             code: 'i1'
         },
         {
             turkishText: 'ī',
-            //representedText: 'i',
             arabicText: 'اي',
             code: 'i16'
+        },
+        {
+            turkishText: 'ī',
+            arabicText: 'ى',
+            code: 'i18'
         },
         {
             turkishText: 'i',
@@ -2705,11 +2734,6 @@ export const turkishKeyboardDisambiguations = {
             turkishText: 'i',
             arabicText: 'ِ', // kasrah
             code: 'i10'
-        },
-        {
-            turkishText: 'i',
-            arabicText: 'ه' + '\u200c',
-            code: 'i17'
         }
     ],
     'İ': [
@@ -2730,15 +2754,18 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'Ī',
-            //representedText: 'İ',
             arabicText: 'ي',
             code: 'I1'
         },
         {
             turkishText: 'Ī',
-            //representedText: 'i',
             arabicText: 'اي',
             code: 'I16'
+        },
+        {
+            turkishText: 'Ī',
+            arabicText: 'ى',
+            code: 'I18'
         },
         {
             turkishText: 'İ',
@@ -2759,11 +2786,6 @@ export const turkishKeyboardDisambiguations = {
             turkishText: 'İ',
             arabicText: 'ِ', // kasrah
             code: 'I10'
-        },
-        {
-            turkishText: 'İ',
-            arabicText: 'ه' + '\u200c',
-            code: 'I17'
         }
     ],
     'ı': [
@@ -3177,11 +3199,30 @@ export const turkishKeyboardDisambiguations = {
             code: '9'
         }
     ],
-    'yi': [ // does this need a capital case?
+    'yi': [
         {
             turkishText: 'yi',
             arabicText: 'ٸ',
             code: 'iHamza'
+        },
+        {
+            turkishText: 'yi',
+            arabicText: 'ٸ',
+            arabicText: 'ۀ',
+            code: 'iHamza2'
+        }
+    ],
+    'yı': [ 
+        {
+            turkishText: 'yı',
+            arabicText: 'ٸ',
+            code: 'iHamza1'
+        },
+        {
+            turkishText: 'yı',
+            arabicText: 'ٸ',
+            arabicText: 'ۀ',
+            code: 'iHamza3'
         }
     ],
     'an': [
@@ -3342,6 +3383,11 @@ export const turkishKeyboardDisambiguations = {
             turkishText: 'aṣ-ṣ',
             arabicText: 'الص',
             code: 'sdotSun'
+        },
+        {
+            turkishText: 'aŝ-ŝ',
+            arabicText: 'الث',
+            code: 'shatSun'
         }
     ],
     'As-s': [
@@ -3354,6 +3400,25 @@ export const turkishKeyboardDisambiguations = {
             turkishText: 'Aṣ-ṣ',
             arabicText: 'الص',
             code: 'SdotSun'
+        },
+        {
+            turkishText: 'Aŝ-ŝ',
+            arabicText: 'الث',
+            code: 'ShatSun'
+        }
+    ],
+    'aş-ş': [
+        {
+            turkishText: 'aş-ş',
+            arabicText: 'الش',
+            code: 'scSun'
+        }
+    ],
+    'Aş-ş': [
+        {
+            turkishText: 'Aş-ş',
+            arabicText: 'الش',
+            code: 'ScSun'
         }
     ],
     'ash-sh': [
@@ -3418,6 +3483,16 @@ export const turkishKeyboardDisambiguations = {
             turkishText: 'aẓ-ẓ',
             arabicText: 'الظ',
             code: 'zdotSun'
+        },
+        {
+            turkishText: 'aẕ-ẕ',
+            arabicText: 'الذ',
+            code: 'zlineSun'
+        },
+        {
+            turkishText: 'aż-ż',
+            arabicText: 'الظ',
+            code: 'zdot2Sun'
         }
     ],
     'Az-z': [
@@ -3430,6 +3505,16 @@ export const turkishKeyboardDisambiguations = {
             turkishText: 'Aẓ-ẓ',
             arabicText: 'الظ',
             code: 'ZdotSun'
+        },
+        {
+            turkishText: 'Aẕ-ẕ',
+            arabicText: 'الذ',
+            code: 'ZlineSun'
+        },
+        {
+            turkishText: 'Aż-ż',
+            arabicText: 'الظ',
+            code: 'Zdot2Sun'
         }
     ],
     'Allah': [
