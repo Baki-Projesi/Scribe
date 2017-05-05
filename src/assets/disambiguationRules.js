@@ -1594,6 +1594,16 @@ export const englishKeyboardDisambiguations = {
             turkishText: 'aṣ-ṣ',
             arabicText: 'الص',
             code: 'sdotSun'
+        },
+        {
+            turkishText: 'aŝ-ŝ',
+            arabicText: 'الث',
+            code: 'shatSun'
+        },
+        {
+            turkishText: 'aş-ş',
+            arabicText: 'الش',
+            code: 'scSun'
         }
     ],
     'As-s': [
@@ -1606,6 +1616,16 @@ export const englishKeyboardDisambiguations = {
             turkishText: 'Aṣ-ṣ',
             arabicText: 'الص',
             code: 'SdotSun'
+        },
+        {
+            turkishText: 'Aŝ-ŝ',
+            arabicText: 'الث',
+            code: 'ShatSun'
+        },
+        {
+            turkishText: 'Aş-ş',
+            arabicText: 'الش',
+            code: 'ScSun'
         }
     ],
     'ash-sh': [
@@ -1670,6 +1690,16 @@ export const englishKeyboardDisambiguations = {
             turkishText: 'aẓ-ẓ',
             arabicText: 'الظ',
             code: 'zdotSun'
+        },
+        {
+            turkishText: 'aẕ-ẕ',
+            arabicText: 'الذ',
+            code: 'zlineSun'
+        },
+        {
+            turkishText: 'aż-ż',
+            arabicText: 'الظ',
+            code: 'zdot2Sun'
         }
     ],
     'Az-z': [
@@ -1682,6 +1712,16 @@ export const englishKeyboardDisambiguations = {
             turkishText: 'Aẓ-ẓ',
             arabicText: 'الظ',
             code: 'ZdotSun'
+        },
+        {
+            turkishText: 'Aẕ-ẕ',
+            arabicText: 'الذ',
+            code: 'ZlineSun'
+        },
+        {
+            turkishText: 'Aż-ż',
+            arabicText: 'الظ',
+            code: 'Zdot2Sun'
         }
     ],
     'Allah': [
@@ -3343,6 +3383,11 @@ export const turkishKeyboardDisambiguations = {
             turkishText: 'aṣ-ṣ',
             arabicText: 'الص',
             code: 'sdotSun'
+        },
+        {
+            turkishText: 'aŝ-ŝ',
+            arabicText: 'الث',
+            code: 'shatSun'
         }
     ],
     'As-s': [
@@ -3355,6 +3400,25 @@ export const turkishKeyboardDisambiguations = {
             turkishText: 'Aṣ-ṣ',
             arabicText: 'الص',
             code: 'SdotSun'
+        },
+        {
+            turkishText: 'Aŝ-ŝ',
+            arabicText: 'الث',
+            code: 'ShatSun'
+        }
+    ],
+    'aş-ş': [
+        {
+            turkishText: 'aş-ş',
+            arabicText: 'الش',
+            code: 'scSun'
+        }
+    ],
+    'Aş-ş': [
+        {
+            turkishText: 'Aş-ş',
+            arabicText: 'الش',
+            code: 'ScSun'
         }
     ],
     'ash-sh': [
@@ -3419,6 +3483,16 @@ export const turkishKeyboardDisambiguations = {
             turkishText: 'aẓ-ẓ',
             arabicText: 'الظ',
             code: 'zdotSun'
+        },
+        {
+            turkishText: 'aẕ-ẕ',
+            arabicText: 'الذ',
+            code: 'zlineSun'
+        },
+        {
+            turkishText: 'aż-ż',
+            arabicText: 'الظ',
+            code: 'zdot2Sun'
         }
     ],
     'Az-z': [
@@ -3431,6 +3505,16 @@ export const turkishKeyboardDisambiguations = {
             turkishText: 'Aẓ-ẓ',
             arabicText: 'الظ',
             code: 'ZdotSun'
+        },
+        {
+            turkishText: 'Aẕ-ẕ',
+            arabicText: 'الذ',
+            code: 'ZlineSun'
+        },
+        {
+            turkishText: 'Aż-ż',
+            arabicText: 'الظ',
+            code: 'Zdot2Sun'
         }
     ],
     'Allah': [
