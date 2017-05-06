@@ -861,7 +861,7 @@ export const englishKeyboardDisambiguations = {
             code: 'ehamza'
         },
         {
-            turkishText: 'e',
+            turkishText: 'yi',
             arabicText: 'ۀ' + '\u200c',
             code: 'ehamza1'
         },
@@ -898,7 +898,7 @@ export const englishKeyboardDisambiguations = {
             code: 'Ehamza'
         },
         {
-            turkishText: 'E',
+            turkishText: 'Yi',
             arabicText: 'ۀ' + '\u200c',
             code: 'Ehamza1'
         },
@@ -2637,7 +2637,7 @@ export const turkishKeyboardDisambiguations = {
             code: 'ehamza'
         },
         {
-            turkishText: 'e',
+            turkishText: 'yi',
             arabicText: 'ۀ' + '\u200c',
             code: 'ehamza1'
         },
@@ -2674,7 +2674,7 @@ export const turkishKeyboardDisambiguations = {
             code: 'Ehamza'
         },
         {
-            turkishText: 'E',
+            turkishText: 'Yi',
             arabicText: 'ۀ' + '\u200c',
             code: 'Ehamza1'
         },
