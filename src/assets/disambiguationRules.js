@@ -640,7 +640,7 @@ export const englishKeyboardDisambiguations = {
     'y': [
         {
             turkishText: 'y', // default
-            arabicText: 'ي',
+            arabicText: 'ي', // special
             code: 'y'
         },
         {
@@ -657,7 +657,7 @@ export const englishKeyboardDisambiguations = {
     'Y': [
         {
             turkishText: 'Y', // default
-            arabicText: 'ي',
+            arabicText: 'ي', // special
             code: 'Y'
         },
         {
@@ -846,7 +846,7 @@ export const englishKeyboardDisambiguations = {
             code: 'e0'
         },
         {
-            turkishText: 'ė', // special?
+            turkishText: 'ė', // special
             arabicText: 'ي',
             code: 'e1'
         },
@@ -884,7 +884,7 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'ė', // ? No capital E with diacritic in chart
-            arabicText: 'ي', // special?
+            arabicText: 'ي', // special
             code: 'E1'
         },
         {
@@ -915,7 +915,7 @@ export const englishKeyboardDisambiguations = {
             code: 'i11'
         },
         {
-            turkishText: 'i', // special?
+            turkishText: 'i', // special
             arabicText: 'ي',
             code: 'i6'
         },
@@ -925,7 +925,7 @@ export const englishKeyboardDisambiguations = {
             code: 'i2'
         },
         {
-            turkishText: 'ī', // special?
+            turkishText: 'ī', // special
             arabicText: 'ي',
             code: 'i1'
         },
@@ -965,7 +965,7 @@ export const englishKeyboardDisambiguations = {
             code: 'i12'
         },
         {
-            turkishText: 'ı', // special?
+            turkishText: 'ı', // special
             arabicText: 'ي',
             code: 'i7'
         },
@@ -1002,7 +1002,7 @@ export const englishKeyboardDisambiguations = {
             code: 'I11'
         },
         {
-            turkishText: 'İ', // special?
+            turkishText: 'İ', // special
             arabicText: 'ي',
             code: 'I6'
         },
@@ -1012,7 +1012,7 @@ export const englishKeyboardDisambiguations = {
             code: 'I2'
         },
         {
-            turkishText: 'Ī', // special?
+            turkishText: 'Ī', // special
             arabicText: 'ي',
             code: 'I1'
         },
@@ -1057,7 +1057,7 @@ export const englishKeyboardDisambiguations = {
             code: 'I12'
         },
         {
-            turkishText: 'I', // special?
+            turkishText: 'I', // special
             arabicText: 'ي',
             code: 'I7'
         },
@@ -2416,7 +2416,7 @@ export const turkishKeyboardDisambiguations = {
     'y': [
         {
             turkishText: 'y', // default
-            arabicText: 'ي',
+            arabicText: 'ي', // special
             code: 'y'
         },
         {
@@ -2433,7 +2433,7 @@ export const turkishKeyboardDisambiguations = {
     'Y': [
         {
             turkishText: 'Y', // default
-            arabicText: 'ي',
+            arabicText: 'ي', // special
             code: 'Y'
         },
         {
@@ -2618,11 +2618,11 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'e',
-            arabicText: 'ه' + '\u200c',
+            arabicText: 'ه' + '\u200c' + '\u2009',
             code: 'e0'
         },
         {
-            turkishText: 'ė',
+            turkishText: 'ė', // special
             arabicText: 'ي',
             code: 'e1'
         },
@@ -2660,7 +2660,7 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'ė', // ? No E with a diacritic
-            arabicText: 'ي',
+            arabicText: 'ي', // special
             code: 'E1'
         },
         {
@@ -2692,7 +2692,7 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'i',
-            arabicText: 'ي',
+            arabicText: 'ي', // special
             code: 'i6'
         },
         {
@@ -2702,7 +2702,7 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'ī',
-            arabicText: 'ي',
+            arabicText: 'ي', // special
             code: 'i1'
         },
         {
@@ -2744,7 +2744,7 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'İ',
-            arabicText: 'ي',
+            arabicText: 'ي', // special
             code: 'I6'
         },
         {
@@ -2754,7 +2754,7 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'Ī',
-            arabicText: 'ي',
+            arabicText: 'ي', // special
             code: 'I1'
         },
         {
@@ -2796,7 +2796,7 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'ı',
-            arabicText: 'ي',
+            arabicText: 'ي', // special
             code: 'i7'
         },
         {
@@ -2833,7 +2833,7 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'I',
-            arabicText: 'ي',
+            arabicText: 'ي', // special
             code: 'I7'
         },
         {
