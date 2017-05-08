@@ -639,14 +639,14 @@ export const englishKeyboardDisambiguations = {
     ],
     'y': [
         {
-            turkishText: 'y', // default
-            arabicText: 'ي', // special
-            code: 'y'
-        },
-        {
             turkishText: 'y',
             arabicText: '\u06cc', // Farsi yeh
             code: 'y1'
+        },
+        {
+            turkishText: 'y', // default
+            arabicText: 'ي', // special
+            code: 'y'
         },
         {
             turkishText: 'yy', // sheddah
@@ -656,14 +656,14 @@ export const englishKeyboardDisambiguations = {
     ],
     'Y': [
         {
-            turkishText: 'Y', // default
-            arabicText: 'ي', // special
-            code: 'Y'
-        },
-        {
             turkishText: 'Y',
             arabicText: '\u06cc', // Farsi yeh
             code: 'Y1'
+        },
+        {
+            turkishText: 'Y', // default
+            arabicText: 'ي', // special
+            code: 'Y'
         }
     ],
     'z': [
@@ -2415,14 +2415,14 @@ export const turkishKeyboardDisambiguations = {
     ],
     'y': [
         {
-            turkishText: 'y', // default
-            arabicText: 'ي', // special
-            code: 'y'
-        },
-        {
             turkishText: 'y',
             arabicText: '\u06cc', // Farsi yeh
             code: 'y1'
+        },
+        {
+            turkishText: 'y', // default
+            arabicText: 'ي', // special
+            code: 'y'
         },
         {
             turkishText: 'yy', // sheddah
@@ -2432,14 +2432,14 @@ export const turkishKeyboardDisambiguations = {
     ],
     'Y': [
         {
-            turkishText: 'Y', // default
-            arabicText: 'ي', // special
-            code: 'Y'
-        },
-        {
             turkishText: 'Y',
             arabicText: '\u06cc', // Farsi yeh
             code: 'Y1'
+        },
+        {
+            turkishText: 'Y', // default
+            arabicText: 'ي', // special
+            code: 'Y'
         }
     ],
     'z': [
