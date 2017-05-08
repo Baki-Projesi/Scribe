@@ -403,11 +403,6 @@ export const englishKeyboardDisambiguations = {
             turkishText: 'nn', // sheddah
             arabicText: 'نّ',
             code: 'nn'
-        },
-        {
-            turkishText: 'ññ', // sheddah
-            arabicText: 'كّ',
-            code: 'nn6'
         }
     ],
     'N': [
@@ -2177,11 +2172,6 @@ export const turkishKeyboardDisambiguations = {
             turkishText: 'nn', // sheddah
             arabicText: 'نّ',
             code: 'nn'
-        },
-        {
-            turkishText: 'ññ', // sheddah
-            arabicText: 'كّ',
-            code: 'nn6'
         }
     ],
     'N': [
