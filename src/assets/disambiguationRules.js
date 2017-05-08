@@ -1436,6 +1436,13 @@ export const englishKeyboardDisambiguations = {
             code: 'iHamza3'
         }
     ],
+    'eyi': [
+        {
+            turkishText: 'eyi',
+            arabicText: 'ۀ' + '\u200c' + '\u2009' + '\u06cc',
+            code: 'eyi'
+        }
+    ],
     'an': [
         {
             turkishText: 'an',
@@ -1925,12 +1932,7 @@ export const turkishKeyboardDisambiguations = {
             turkishText: 'ġġ', // default
             arabicText: 'غّ',
             code: 'gg4'
-        }/*,
-        {
-            turkishText: 'kk',
-            arabicText: 'كّ',
-            code: 'gg7'
-        }*/
+        }
     ],
     'G': [
         {
@@ -3223,6 +3225,13 @@ export const turkishKeyboardDisambiguations = {
             arabicText: 'ٸ',
             arabicText: 'ۀ',
             code: 'iHamza3'
+        }
+    ],
+    'eyi': [
+        {
+            turkishText: 'eyi',
+            arabicText: 'ۀ' + '\u200c' + '\u2009' + '\u06cc',
+            code: 'eyi'
         }
     ],
     'an': [
