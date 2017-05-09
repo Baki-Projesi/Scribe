@@ -721,11 +721,6 @@ export const englishKeyboardDisambiguations = {
             code: 'tt7'
         },
         {
-            turkishText: 'tt', // sheddah
-            arabicText: 'دّ',
-            code: 'ttd7'
-        },
-        {
             turkishText: 'tt', 
             arabicText: 'ت',
             code: 'tt8'
@@ -2693,11 +2688,6 @@ export const turkishKeyboardDisambiguations = {
             turkishText: 'tt', // sheddah
             arabicText: 'ةّ',
             code: 'tt7'
-        },
-        {
-            turkishText: 'tt', // sheddah
-            arabicText: 'دّ',
-            code: 'ttd7'
         },
         {
             turkishText: 'tt', 
