@@ -7,7 +7,7 @@ export default class OutputBox extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            contentBlocks: {}
+            contentBlocks: []
         }
     }
 
@@ -44,6 +44,32 @@ export default class OutputBox extends Component {
 
         return outputText;
     }
+
+    //TODO: incoming content block array is IN ORDER. The map we are using is not in order, causing bugs
+    //  if (currentKey != newKey) -> sacrifice performance for ordering -> loop through array to find key
+    //  else insert new block in similar index
+
+
+    //incoming state = map / array
+    // currentState = array
+    // 1. go through incoming state
+    
+
+    manageContentBlocks(oldblockArray, newBlockArray, currentBlockKey) {
+        reference_object = {};
+        //convert into obj for lookup perf
+        for (var i = 0; i < newBlockArray.length; i++) {
+            reference_object[newBlockArray[i]] = i;
+        }
+
+        var array = ["bob", "dan", "steven", "corbin"];
+        array.sort(function (a, b) {
+            return reference_object[a] - reference_object[b];
+        });
+
+        console.log(array);
+    }
+
 
     componentWillReceiveProps(nextProps) {
         const currentProps = this.props.transcribeState;
