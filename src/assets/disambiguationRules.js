@@ -1,16 +1,45 @@
+/*
+dropdownOrder:
+-1 - not in the dropdown
+0 - default
+1 - combinations (other than tanwin and special cases)
+2 - remaining single characters
+3 - double characters and sheddah
+4 - special characters
+5 - ?
+
+needsDisambiguation:
+true - dropdown present
+false - no dropdown needed
+
+comboCategory:
+'tanwin'
+'hamza'
+'izafet'
+'special'
+'sun'
+null
+*/
+
 export const englishKeyboardDisambiguations = {
     ' ': [
         {
             turkishText: ' ',
             arabicText: ' ',
-            code: 'sp'
+            code: 'sp',
+            dropdownOrder: -1,
+            needsDisambiguation: false,
+            comboCategory: null
         }
     ],
     'b': [
         {
             turkishText: 'b', // default
             arabicText: 'ب',
-            code: 'b'
+            code: 'b',
+            dropdownOrder: 0,
+            needsDisambiguation: true,
+            comboCategory: null
         },
         {
             turkishText: 'p', // at the end of the word, automatically p
@@ -948,6 +977,11 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'a',
+            arabicText: 'ى', // alef maksura
+            code: 'a14'
+        },
+        {
+            turkishText: 'a',
             arabicText: 'أ',
             code: 'ahamza'
         },
@@ -1000,6 +1034,11 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'A',
+            arabicText: 'ى', // alef maksura
+            code: 'A14'
+        },
+        {
+            turkishText: 'A',
             arabicText: 'أ',
             code: 'Ahamza'
         },
@@ -1042,6 +1081,11 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'e',
+            arabicText: 'ى', // alef maksura
+            code: 'e12'
+        },
+        {
+            turkishText: 'e',
             arabicText: 'أ',
             code: 'ehamza'
         },
@@ -1076,6 +1120,11 @@ export const englishKeyboardDisambiguations = {
             turkishText: 'E',
             arabicText: 'ا',
             code: 'E5'
+        },
+        {
+            turkishText: 'E',
+            arabicText: 'ى', // alef maksura
+            code: 'E12'
         },
         {
             turkishText: 'E',
@@ -2917,6 +2966,11 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'a',
+            arabicText: 'ى', // alef maksura
+            code: 'a14'
+        },
+        {
+            turkishText: 'a',
             arabicText: 'أ',
             code: 'ahamza'
         },
@@ -2969,6 +3023,11 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'A',
+            arabicText: 'ى', // alef maksura
+            code: 'A14'
+        },
+        {
+            turkishText: 'A',
             arabicText: 'أ',
             code: 'Ahamza'
         },
@@ -3011,6 +3070,11 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'e',
+            arabicText: 'ى', // alef maksura
+            code: 'e12'
+        },
+        {
+            turkishText: 'e',
             arabicText: 'أ',
             code: 'ehamza'
         },
@@ -3045,6 +3109,11 @@ export const turkishKeyboardDisambiguations = {
             turkishText: 'E',
             arabicText: 'ا',
             code: 'E5'
+        },
+        {
+            turkishText: 'E',
+            arabicText: 'ى', // alef maksura
+            code: 'E12'
         },
         {
             turkishText: 'E',
