@@ -7,7 +7,7 @@ export default class OutputBox extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            contentBlocks: []
+            contentBlocks: [] //example item -> {key: 'abc', block: 'test text'}
         }
     }
 
@@ -23,11 +23,25 @@ export default class OutputBox extends Component {
         return obj1;
     }
 
+    //This has poor theoretical performance, but on average it should be O(n) + 1 time 
+    //    given the user generally adds a new line to the end
+    newTranslate(newBlockArray, outputLang, sourceLang) {
+        let oldblockArray = this.state.contentBlocks;
+        for (var i = 0; i < newBlockArray.length; i++) {
+            var textA = newBlockArray[i].getText(); //fix?
+            var textB = oldBlockArray[i].turkishText;
+            if (textA !== textB) {
+                oldblockArray[i] = this.translate(newBlockArray[i], 'arabicText', 'turkishText');
+            }
+        }
+    }
+
+
+
     //translate a single content block by building up a string of entity entries
-    translate(contentState, currentBlockKey, outputLang, sourceLang) {
-        const block = contentState.getBlockForKey(currentBlockKey);
+    translate(block, outputLang, sourceLang) {
         const charList = block.getCharacterList();
-        let outputText = "";
+        let result = {}, outputText = "", sourceText = "";
 
         for (let i = 0; i < charList.count(); i++) {
             let charMeta = charList.get(i);
@@ -41,8 +55,21 @@ export default class OutputBox extends Component {
                 }
             }
         }
+        
+        result.outputText = outputText;
+        return result;
+    }
 
-        return outputText;
+    //Searches content blcok
+    findContentBlock(blockArray, key) {
+        let result = null;
+        blockArray.forEach(function (block) {
+            if (block.getKey() === key) {
+                result = block;
+            }
+        })
+
+        return result;
     }
 
     //TODO: incoming content block array is IN ORDER. The map we are using is not in order, causing bugs
@@ -53,10 +80,10 @@ export default class OutputBox extends Component {
     //incoming state = map / array
     // currentState = array
     // 1. go through incoming state
-    
+
 
     manageContentBlocks(oldblockArray, newBlockArray, currentBlockKey) {
-        reference_object = {};
+        let reference_object = {};
         //convert into obj for lookup perf
         for (var i = 0; i < newBlockArray.length; i++) {
             reference_object[newBlockArray[i]] = i;
