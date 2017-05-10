@@ -22,6 +22,12 @@ comboCategory:
 'sheddah'
 'charCombo' - special combo option tied to one character
 null
+
+charLanguage:
+'arabic'
+'persian'
+'turkish'
+null
 */
 
 export const englishKeyboardDisambiguations = {
@@ -2457,6 +2463,14 @@ export const englishKeyboardDisambiguations = {
             dropdownOrder: 2,
             needsDisambiguation: true,
             comboCategory: null
+        },
+        {
+            turkishText: 'ʿ',
+            arabicText: '\u0671', // alef wasla
+            code: '\'4',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: null
         }
     ],
     '0': [
@@ -4655,6 +4669,14 @@ export const turkishKeyboardDisambiguations = {
             turkishText: 'ˀ', // is this necessary?
             arabicText: 'ء',
             code: '\'3'
+        },
+        {
+            turkishText: 'ʿ',
+            arabicText: '\u0671', // alef wasla
+            code: '\'4',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: null
         }
     ],
     '0': [
