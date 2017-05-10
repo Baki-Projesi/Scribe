@@ -63,17 +63,20 @@ export default class InputBox extends Component {
     }
 
     render() {
-        // let commentInput, dropdown;
-        //
-        // //TODO: move to hovering tooltip near cursor
+        let commentInput;
         if (this.props.showCommentInput) {
-            var commentInput = <CommentPopup
-                onCommentChange={this.props.onCommentChange}
-                value={this.props.commentContent}
-                onCommentInputKeyDown={this.onCommentInputKeyDown}
-            />
+            commentInput =
+            <div>
+                <CommentPopup 
+                    onCommentChange={this.props.onCommentChange} 
+                    onKeyDown={this.props.onCommentInputKeyDown}
+                    value={this.props.commentVal}
+                    confirmComment={this.props.confirmComment}
+                    removeComment={this.props.removeComment}
+                />
+                
+            </div>;
         }
-        //
         if (this.props.showDropdown) {
             var dropdown = <Dropdown
                 coordinates={this.props.store.mostRecentAmbiguousCharCoords}
@@ -81,16 +84,9 @@ export default class InputBox extends Component {
             />
         }
         return (
-            <div>
-                <div>
-                    {/*<button onMouseDown={this.removeComment}>
-                        Remove Comment
-                </button>*/}
-                </div>
+            <div className={'inputBox-editor'}>
                 {commentInput}
-
                 {dropdown}
-
                 <div className={'editor'} onClick={this.focus}>
                     <Editor
                         editorState={this.props.editorState}
@@ -100,11 +96,7 @@ export default class InputBox extends Component {
                         ref="editor"
                     />
                 </div>
-
             </div>
-        );
+        )
     }
 }
-
-
-//These will eventually be put in their own files

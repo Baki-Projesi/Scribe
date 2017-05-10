@@ -9,6 +9,8 @@
     "classnames": "^2.2.5",
     "decorate-component-with-props": "^1.0.2",
     "draft-js": "^0.10.0",
+    "draft-js-linkify-plugin": "^2.0.0-beta10",
+    "draft-js-plugins-editor": "^2.0.0-beta10",
     "express": "^4.14.1",
     "morgan": "^1.8.0",
     "mysql": "^2.13.0",

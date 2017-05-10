@@ -37,11 +37,19 @@ textarea {
     padding: 10;
 }
 
-button {
+.inputBox-editor {
+    display: flex;
+    width: 33%;
+}
+
+.editor {
+    display: inline-flex;
+    width: 100%;
 
 }
 
 .comment {
-    color: '#3b5998';
+    opacity: 0.5;
+    background-color: '#ff9e91';
     text-Decoration: 'underline';
 }
