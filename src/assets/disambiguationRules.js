@@ -1883,7 +1883,7 @@ export const englishKeyboardDisambiguations = {
             comboCategory: null
         },
         {
-            turkishText: 'ı', // special
+            turkishText: 'ı',
             arabicText: 'ي',
             code: 'i7',
             dropdownOrder: 4,
@@ -2079,7 +2079,7 @@ export const englishKeyboardDisambiguations = {
     ],
     'o': [
         {
-            turkishText: 'o', // default
+            turkishText: 'o',
             arabicText: '', // not represented in Arabic
             code: 'o10',
             dropdownOrder: 0,
@@ -2153,7 +2153,7 @@ export const englishKeyboardDisambiguations = {
     ],
     'O': [
         {
-            turkishText: 'O', // default
+            turkishText: 'O',
             arabicText: '', // not represented in Arabic
             code: 'O10',
             dropdownOrder: 0,
@@ -2748,7 +2748,8 @@ export const englishKeyboardDisambiguations = {
     'liʿl': [
         {
             turkishText: 'liʿl', // delete apostrophe?
-            arabicText: 'لل',
+            //arabicText: 'لل',
+            arabicText: 'لا ل',
             code: 'li\'l',
             dropdownOrder: 1,
             needsDisambiguation: true,
@@ -2758,7 +2759,8 @@ export const englishKeyboardDisambiguations = {
     'Liʿl': [ 
         {
             turkishText: 'Liʿl', // delete apostrophe?
-            arabicText: 'لل',
+            //arabicText: 'لل',
+            arabicText: 'لا ل',
             code: 'Li\'l',
             dropdownOrder: 1,
             needsDisambiguation: true,
@@ -4897,7 +4899,8 @@ export const turkishKeyboardDisambiguations = {
     'liʿl': [
         {
             turkishText: 'liʿl', // delete apostrophe?
-            arabicText: 'لل',
+            //arabicText: 'لل',
+            arabicText: 'لا ل',
             code: 'li\'l',
             dropdownOrder: 1,
             needsDisambiguation: true,
@@ -4907,7 +4910,8 @@ export const turkishKeyboardDisambiguations = {
     'Liʿl': [ 
         {
             turkishText: 'Liʿl', // delete apostrophe?
-            arabicText: 'لل',
+            //arabicText: 'لل',
+            arabicText: 'لا ل',
             code: 'Li\'l',
             dropdownOrder: 1,
             needsDisambiguation: true,
