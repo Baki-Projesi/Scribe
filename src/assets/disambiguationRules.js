@@ -1658,10 +1658,18 @@ export const englishKeyboardDisambiguations = {
             needsDisambiguation: true,
             comboCategory: null
         },
-        {
+        /*{
             turkishText: 'e',
             arabicText: 'ى', // alef maksura
             code: 'e12',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: null
+        },*/
+        {
+            turkishText: 'e',
+            arabicText: '\u06cc', // Farsi ya
+            code: 'e13',
             dropdownOrder: 2,
             needsDisambiguation: true,
             comboCategory: null
@@ -1724,10 +1732,18 @@ export const englishKeyboardDisambiguations = {
             needsDisambiguation: true,
             comboCategory: null
         },
-        {
+        /*{
             turkishText: 'E',
             arabicText: 'ى', // alef maksura
             code: 'E12',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: null
+        },*/
+        {
+            turkishText: 'E',
+            arabicText: '\u06cc', // Farsi ya
+            code: 'E13',
             dropdownOrder: 2,
             needsDisambiguation: true,
             comboCategory: null
@@ -4117,10 +4133,18 @@ export const turkishKeyboardDisambiguations = {
             arabicText: 'ا',
             code: 'e5'
         },
-        {
+        /*{
             turkishText: 'e',
             arabicText: 'ى', // alef maksura
             code: 'e12'
+        },*/
+        {
+            turkishText: 'e',
+            arabicText: '\u06cc', // Farsi ya
+            code: 'e13',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: null
         },
         {
             turkishText: 'e',
@@ -4159,10 +4183,18 @@ export const turkishKeyboardDisambiguations = {
             arabicText: 'ا',
             code: 'E5'
         },
-        {
+        /*{
             turkishText: 'E',
             arabicText: 'ى', // alef maksura
             code: 'E12'
+        },*/
+        {
+            turkishText: 'E',
+            arabicText: '\u06cc', // Farsi ya
+            code: 'E13',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: null
         },
         {
             turkishText: 'E',
