@@ -1,4 +1,11 @@
 /*
+TODO:
+- fix 'eyi' issue
+- fix double letter issue, ie 'tt'
+
+*/
+
+/*
 dropdownOrder:
 -1 - not in the dropdown
 0 - default
@@ -1501,7 +1508,7 @@ export const englishKeyboardDisambiguations = {
             comboCategory: null
         },
         {
-            turkishText: 'a',
+            turkishText: 'ā', 
             arabicText: 'ى', // alef maksura
             code: 'a14',
             dropdownOrder: 2,
@@ -1591,7 +1598,7 @@ export const englishKeyboardDisambiguations = {
             comboCategory: null
         },
         {
-            turkishText: 'A',
+            turkishText: 'Ā',
             arabicText: 'ى', // alef maksura
             code: 'A14',
             dropdownOrder: 2,
@@ -1664,14 +1671,14 @@ export const englishKeyboardDisambiguations = {
             needsDisambiguation: true,
             comboCategory: null
         },
-        /*{
+        {
             turkishText: 'e',
             arabicText: 'ى', // alef maksura
             code: 'e12',
             dropdownOrder: 2,
             needsDisambiguation: true,
             comboCategory: null
-        },*/
+        },
         {
             turkishText: 'e',
             arabicText: '\u06cc', // Farsi ya
@@ -1738,14 +1745,14 @@ export const englishKeyboardDisambiguations = {
             needsDisambiguation: true,
             comboCategory: null
         },
-        /*{
+        {
             turkishText: 'E',
             arabicText: 'ى', // alef maksura
             code: 'E12',
             dropdownOrder: 2,
             needsDisambiguation: true,
             comboCategory: null
-        },*/
+        },
         {
             turkishText: 'E',
             arabicText: '\u06cc', // Farsi ya
@@ -2726,6 +2733,26 @@ export const englishKeyboardDisambiguations = {
             turkishText: 'Ş',
             arabicText: 'ش',
             code: 'Sh',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: null
+        }
+    ],
+    'liʿl': [
+        {
+            turkishText: 'liʿl', // delete apostrophe?
+            arabicText: 'لل',
+            code: 'li\'l',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: null
+        }
+    ],
+    'Liʿl': [ 
+        {
+            turkishText: 'Liʿl', // delete apostrophe?
+            arabicText: 'لل',
+            code: 'Li\'l',
             dropdownOrder: 1,
             needsDisambiguation: true,
             comboCategory: null
@@ -4044,7 +4071,7 @@ export const turkishKeyboardDisambiguations = {
             code: 'a13'
         },
         {
-            turkishText: 'a',
+            turkishText: 'ā',
             arabicText: 'ى', // alef maksura
             code: 'a14'
         },
@@ -4101,7 +4128,7 @@ export const turkishKeyboardDisambiguations = {
             code: 'A13'
         },
         {
-            turkishText: 'A',
+            turkishText: 'Ā',
             arabicText: 'ى', // alef maksura
             code: 'A14'
         },
@@ -4147,11 +4174,11 @@ export const turkishKeyboardDisambiguations = {
             arabicText: 'ا',
             code: 'e5'
         },
-        /*{
+        {
             turkishText: 'e',
             arabicText: 'ى', // alef maksura
             code: 'e12'
-        },*/
+        },
         {
             turkishText: 'e',
             arabicText: '\u06cc', // Farsi ya
@@ -4197,11 +4224,11 @@ export const turkishKeyboardDisambiguations = {
             arabicText: 'ا',
             code: 'E5'
         },
-        /*{
+        {
             turkishText: 'E',
             arabicText: 'ى', // alef maksura
             code: 'E12'
-        },*/
+        },
         {
             turkishText: 'E',
             arabicText: '\u06cc', // Farsi ya
@@ -4785,13 +4812,11 @@ export const turkishKeyboardDisambiguations = {
     'an': [
         {
             turkishText: 'an',
-            //arabicText: 'ـً',
             arabicText: 'ً',
             code: 'e6'
         },
         {
             turkishText: 'an',
-            //arabicText: 'ـًاً',
             arabicText: 'ًا',
             code: 'atanwin'
         }
@@ -4799,13 +4824,11 @@ export const turkishKeyboardDisambiguations = {
     'en': [
         {
             turkishText: 'en',
-            //arabicText: 'ـً',
             arabicText: 'ً',
             code: 'e7'
         },
         {
             turkishText: 'en',
-            //arabicText: 'ـًا',
             arabicText: 'ًا',
             code: 'etanwin'
         }
@@ -4813,7 +4836,6 @@ export const turkishKeyboardDisambiguations = {
     'un': [
         {
             turkishText: 'un',
-            //arabicText: 'ـٌ',
             arabicText: 'ٌ',
             code: 'e8'
         }
@@ -4821,7 +4843,6 @@ export const turkishKeyboardDisambiguations = {
     'in': [
         {
             turkishText: 'in',
-            //arabicText: 'ــٍ',
             arabicText: 'ٍ',
             code: 'e9'
         }
@@ -4862,6 +4883,26 @@ export const turkishKeyboardDisambiguations = {
             turkishText: 'Ş',
             arabicText: 'ش',
             code: 'Sh'
+        }
+    ],
+    'liʿl': [
+        {
+            turkishText: 'liʿl', // delete apostrophe?
+            arabicText: 'لل',
+            code: 'li\'l',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: null
+        }
+    ],
+    'Liʿl': [ 
+        {
+            turkishText: 'Liʿl', // delete apostrophe?
+            arabicText: 'لل',
+            code: 'Li\'l',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: null
         }
     ],
     'ad-d': [
