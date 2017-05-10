@@ -1,8 +1,13 @@
 /*
 TODO:
+Codes:
 - fix 'eyi' issue
 - fix double letter issue, ie 'tt'
+- double dropdown creates duplicates if the default is the same as the sole item in the double dropdown, ie h1 and h2
+- identify Turkish, Arabic, or Persian
 
+UI:
+- make it clear which box is for text entry and which is output
 */
 
 /*
@@ -1701,7 +1706,8 @@ export const englishKeyboardDisambiguations = {
             code: 'ehamza1',
             dropdownOrder: 2,
             needsDisambiguation: true,
-            comboCategory: 'hamza'
+            comboCategory: 'hamza',
+            charLanguage: 'arabic'
         },
         {
             turkishText: 'e',
@@ -1775,7 +1781,8 @@ export const englishKeyboardDisambiguations = {
             code: 'Ehamza1',
             dropdownOrder: 2,
             needsDisambiguation: true,
-            comboCategory: 'hamza'
+            comboCategory: 'hamza',
+            charLanguage: 'arabic'
         },
         {
             turkishText: 'E',
@@ -4195,7 +4202,8 @@ export const turkishKeyboardDisambiguations = {
         {
             turkishText: 'yi',
             arabicText: 'ۀ' + '\u200c' + '\u2009',
-            code: 'ehamza1'
+            code: 'ehamza1',
+            charLanguage: 'arabic'
         },
         {
             turkishText: 'e',
@@ -4245,7 +4253,8 @@ export const turkishKeyboardDisambiguations = {
         {
             turkishText: 'Yi',
             arabicText: 'ۀ' + '\u200c' + '\u2009',
-            code: 'Ehamza1'
+            code: 'Ehamza1',
+            charLanguage: 'arabic'
         },
         {
             turkishText: 'E',
