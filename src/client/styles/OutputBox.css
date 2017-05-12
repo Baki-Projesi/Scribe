@@ -3,10 +3,11 @@
     word-wrap: normal; 
     width: 100%;
     overflow-wrap: break-word;
+    display: block;
 }
 
 p {
-    margin: 0.25em;
+    margin: 0.1em;
 }
 
 
@@ -14,7 +15,6 @@ p {
 .outputbox-display {
     margin-right: 1em;
     text-align: right;
-    display: inline-flex;
     width: 33%;
     border: 1px solid #ccc;
     background-color: white;

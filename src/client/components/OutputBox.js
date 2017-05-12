@@ -79,9 +79,9 @@ export default class OutputBox extends Component {
         })
 
         return (
-            <div className={'outputbox-display'}>
+            <p className={'outputbox-display'}>
                 {textBlocks}
-            </div>
+            </p>
         );
     }
 }
