@@ -378,7 +378,7 @@ export default class Transcribe extends Component {
         const entityKey = contentStateWithEntity.getLastCreatedEntityKey();
         let newSelectionState;
 
-        if (this.state.combinationOptions && this.state.combinationOptions.length - choiceIndex > -1) {
+        if (this.state.combinationOptions && this.state.combinationOptions.length > 0 && this.state.combinationOptions.length - choiceIndex > -1) {
             //user chose a combination, need to replace text backwards
             newSelectionState = adjustSelectionOffset(editorState.getSelection(), 0 - chosenText.length, 0);
         } else {
