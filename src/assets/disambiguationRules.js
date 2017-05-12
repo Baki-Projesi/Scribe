@@ -3074,7 +3074,7 @@ export const englishKeyboardDisambiguations = {
             charLanguage: 'arabic'
         },
         {
-            turkishText: 'lil',
+            turkishText: 'lil' + '\ufeff',
             arabicText: 'لل',
             code: 'lil',
             dropdownOrder: 1,
@@ -3094,7 +3094,7 @@ export const englishKeyboardDisambiguations = {
             charLanguage: 'arabic'
         },
         {
-            turkishText: 'Lil',
+            turkishText: 'Lil' + '\ufeff',
             arabicText: 'لل',
             code: 'Lil',
             dropdownOrder: 1,
@@ -6556,7 +6556,7 @@ export const turkishKeyboardDisambiguations = {
             charLanguage: 'arabic'
         },
         {
-            turkishText: 'lil',
+            turkishText: 'lil' + '\ufeff',
             arabicText: 'لل',
             code: 'lil',
             dropdownOrder: 1,
@@ -6567,7 +6567,7 @@ export const turkishKeyboardDisambiguations = {
     ],
     'Liʿl': [ 
         {
-            turkishText: 'Liʿl',
+            turkishText: 'Liʿl' + '\ufeff',
             arabicText: 'لال',
             code: 'Li\'l',
             dropdownOrder: 1,
