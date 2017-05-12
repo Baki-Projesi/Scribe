@@ -23,6 +23,7 @@ import CommentPopup from './CommentPopup';
 import Dropdown from './DropDown';
 import AmbiguousCharacter from './AmbiguousCharacter';
 import DisambiguatedCharacter from './DisambiguatedCharacter';
+import Comment from './Comment';
 
 
 /*
@@ -35,9 +36,17 @@ import DisambiguatedCharacter from './DisambiguatedCharacter';
 
 export default class InputBox extends Component {
     constructor(props, context) {
-      super(props, context);
-      this.focus = () => this.refs.editor.focus();
-
+        super(props, context);
+        const { editorState,
+            handleKeyCommand,
+            onChange,
+            onInputTextChange,
+            keyBindingFn,
+            showDropdown,
+            disambiguationOptions,
+            showCommentInput,
+            store } = this.props;
+        this.focus = () => this.refs.editor.focus();
     }
 
 
@@ -99,4 +108,5 @@ export default class InputBox extends Component {
             </div>
         )
     }
+
 }

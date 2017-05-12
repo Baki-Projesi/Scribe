@@ -19,12 +19,16 @@ import {
 } from 'draft-js';
 import findWithRegex from '../utils/findWithRegex';
 import { adjustSelectionOffset } from '../utils/selectionStateHelpers';
+import getCurrentWordBuffer from '../utils/getCurrentWordBuffer';
+import { convertKeyGroupToDisambiguationArray, groupByTurkishKey } from '../utils/groupByKey';
 import decorateComponentWithProps from 'decorate-component-with-props';
 import CommentPopup from './CommentPopup';
 import DisplayComment from './DisplayComment'
 import AmbiguousCharacter from './AmbiguousCharacter';
 import DisambiguatedCharacter from './DisambiguatedCharacter';
-import {englishKeyboardDisambiguations, turkishKeyboardDisambiguations} from '../../assets/disambiguationRules';
+import { englishKeyboardDisambiguations, turkishKeyboardDisambiguations } from '../../assets/disambiguationRules';
+import bufferComboSearch from '../utils/bufferComboSearch';
+import needsDropdown from '../utils/needsDropdown';
 
 const store = {
     mostRecentAmbiguousCharCoords: null
@@ -47,71 +51,77 @@ const commentProps = {
     }
 
 export default class Transcribe extends Component {
+    constructor(props, context) {
+        super(props, context);
 
-  constructor(props, context) {
-      super(props, context);
+        const decorator = new CompositeDecorator([
+            {
+                strategy: this.findCommentEntities,
+                component: decorateComponentWithProps(Comment, commentProps)
+            },
+            {
+                strategy: this.findDisambiguatedCharacterEntities,
+                component: decorateComponentWithProps(DisambiguatedCharacter, disambiguatedCharProps)
+            },
+            {
+                strategy: this.findAmbiguousEnglishCharacters,
+                component: decorateComponentWithProps(AmbiguousCharacter, ambiguousCharacterProps)
+            }
+        ]);
+        const initEditorState = EditorState.createEmpty(decorator);
+        this.state = {
+            editorState: initEditorState,
+            contentState: initEditorState.getCurrentContent(),
+            oldSelectionState: initEditorState.getSelection(),
+            startKey: initEditorState.getSelection().getStartKey(),
+            startOffset: initEditorState.getSelection().getStartOffset(),
+            endKey: initEditorState.getSelection().getEndKey(),
+            endOffset: initEditorState.getSelection().getEndOffset(),
+            currentBlock: initEditorState.getCurrentContent().getBlockForKey(initEditorState.getSelection().getStartKey()),
+            showCommentInput: false,
+            commentContent: '',
+            usingTurkishKeyboard: false,
+            characterBuffer: ''
+        };
 
-      const decorator = new CompositeDecorator([
-          {
-              strategy: this.findDisambiguatedCharacterEntities,
-              component: decorateComponentWithProps(DisambiguatedCharacter, disambiguatedCharProps)
-          },
-          {
-              strategy: this.findCommentEntities,
-              component: DisplayComment
-          },
-          {
-              strategy: this.findAmbiguousCharacters,
-              component: decorateComponentWithProps(AmbiguousCharacter, ambiguousCharacterProps)
-          },
-          
-      ]);
+        this.logState = () => {
+            const content = this.state.editorState.getCurrentContent();
+            console.log(convertToRaw(content));
+        };
 
-      this.state = {
-          editorState: EditorState.createEmpty(decorator),
-          showCommentInput: false,
-          commentVal: '',
-      };
+        this.focus = () => this.refs.editor.focus();
 
-      this.logState = () => {
-          const content = this.state.editorState.getCurrentContent();
-          console.log(convertToRaw(content));
-      };
+        this.onChange = (editorState) => {
+            let newState, current = {
+                editorState: editorState,
+                contentState: editorState.getCurrentContent(),
+                oldSelectionState: editorState.getSelection(),
+                startKey: editorState.getSelection().getStartKey(),
+                startOffset: editorState.getSelection().getStartOffset(),
+                endKey: editorState.getSelection().getEndKey(),
+                endOffset: editorState.getSelection().getEndOffset(),
+                currentBlock: editorState.getCurrentContent().getBlockForKey(editorState.getSelection().getStartKey())
+            }
 
-      this.focus = () => this.refs.editor.focus();
+            if (current.oldSelectionState.isCollapsed()) {
+                // Selection is just the cursor w/ no characters highlighted
+                newState = this._promptForDisambiguation(current);
+            } else {
+                // At least one character highlighted
+                newState = this._promptForComment(current);
+            }
+            this.setState(newState);
+        }
 
-      this.onChange = (editorState) => {
-          let newState, current = {
-              editorState: editorState,
-              contentState: editorState.getCurrentContent(),
-              oldSelectionState: editorState.getSelection(),
-              startKey: editorState.getSelection().getStartKey(),
-              startOffset: editorState.getSelection().getStartOffset(),
-              endOffset: editorState.getSelection().getEndOffset(),
-              currentBlock: editorState.getCurrentContent().getBlockForKey(editorState.getSelection().getStartKey())
-          }
+        //  this.onCommentChange = (e) => this.setState({ commentContent: e.target.value });
 
-          if (current.oldSelectionState.isCollapsed()) {
-              // Selection is just the cursor w/ no characters highlighted
-              newState = this._promptForDisambiguation(current);
-          } else {
-              // At least one character highlighted
-              newState = this._promptForComment(current);
-          }
-
-          this.setState(newState);
-      }
-
-      this.onCommentChange = (e) => {
-          this.setState({ commentVal: e.target.value })
-      };
-
-      this.promptForComment = this._promptForComment.bind(this);
-      this.confirmComment = this._confirmComment.bind(this);
-      this.onCommentInputKeyDown = this._onCommentInputKeyDown.bind(this);
-      this.removeComment = this._removeComment.bind(this);
-      this.keyBindingFn = this._keyBindingFn.bind(this);
-      this.handleKeyCommand = this._handleKeyCommand.bind(this)
+        this.promptForComment = this._promptForComment.bind(this);
+        this.confirmComment = this._confirmComment.bind(this);
+        this.onCommentInputKeyDown = this._onCommentInputKeyDown.bind(this);
+        this.removeComment = this._removeComment.bind(this);
+        this.keyBindingFn = this._keyBindingFn.bind(this);
+        this.toggleCheckboxValue = this._toggleCheckboxValue.bind(this);
+        this.handleKeyCommand = this._handleKeyCommand.bind(this);
     }
 
     //captures global key events, results of this function (a special command string) are passed to KeyCommand() before the window interprets them
@@ -121,22 +131,48 @@ export default class Transcribe extends Component {
             return 'editor-save';
         }
 
-        if (this.state.showDropdown && e.which !== 8 && e.which !== 46) { // backspace, delete
-            let str = 'dropdown-';
-            const keyCodeBase = 48;
-            const numOptions = this.state.disambiguationOptions.length;
-            const optionMap = {};
-            for (let i = 1; i < numOptions + 1; i++) {
-                optionMap[keyCodeBase + i] = (str + i); //numkeys 1-9
-                optionMap[(keyCodeBase * 2) + i] = (str + i); // numpad 1-9
-            }
+        if (e.which === 13) {
+            return 'editor-newline';
+        }
 
-            if ((e.which >= 49 && e.which <= 57) || (e.which >= 97 && e.which <= 105) && optionMap[e.which]) {
-                return optionMap[e.which];
-            } else {
-                //If anything besides Backspace or a number is chosen,
-                // use default disambiguation choice and have the editor  the normal keypress
-                this._confirmDisambiguation(0);
+        if (e.which !== 8 && e.which !== 46) { // backspace, delete
+            if (this.state.showDropdown) {
+                let characterBuffer = getCurrentWordBuffer(
+                    this.state.editorState.getCurrentContent().getBlockForKey(this.state.editorState.getSelection().getStartKey()),
+                    this.state.editorState.getSelection().getStartOffset());
+                let charRules = this.state.usingTurkishKeyboard ? turkishKeyboardDisambiguations : englishKeyboardDisambiguations;
+                let comboOptions = bufferComboSearch(characterBuffer + e.key, charRules);
+                let str = 'dropdown-';
+                const keyCodeBase = 48;
+                const numOptions = this.state.disambiguationOptions.length;
+                const optionMap = {};
+                for (let i = 1; i < numOptions + 1; i++) {
+                    optionMap[keyCodeBase + i] = (str + i); //numkeys 1-9
+                    optionMap[(keyCodeBase * 2) + i] = (str + i); // numpad 1-9
+                }
+
+                if ((e.which >= 49 && e.which <= 49 + numOptions) || (e.which >= 97 && e.which <= 97 + numOptions) && optionMap[e.which]) {
+                    return optionMap[e.which]; //e.g. 'dropdown-2'
+                }
+                // else if (comboOptions.length > 0) {
+                //     //If they type another character that could be a combination 
+                //     console.log('potential combo');
+                // }
+                else {
+                    //If anything besides Backspace or a number is chosen,
+                    // use default disambiguation choice and have the editor use the normal keypress
+                    let newState = Object.assign(this.state, this._confirmDisambiguation(0, this.state.editorState));
+                    this.setState(newState);
+                }
+            } else if (this.state.disambiguationOptions &&
+                this.state.disambiguationOptions.length > 0 &&
+                this.state.disambiguationOptions[0].code === 'sp') {
+                //we don't show dropdown for spaces, but they need an entity anyways
+                let newState = Object.assign(this.state, this._confirmDisambiguation(0, this.state.editorState));
+                this.setState(newState);
+            } else if (!needsDropdown(e.key)) {
+                //arabic numbers don't need dropdowns, translate them immediately
+
             }
         }
 
@@ -145,17 +181,45 @@ export default class Transcribe extends Component {
 
     //This is passed a value from _keyBindingFn, either a special string or the default
     _handleKeyCommand(command) {
+        if (command === 'require-dropdown') {
+            console.log(command)
+            //TODO: remove className .flash and add it back to <Dropdown />
+            // https://github.com/facebook/react/issues/7142
+            // https://facebook.github.io/react/docs/animation.html
+        }
+        if (command === 'editor-newline') {
+            let newState = this.state;
+            if (this.state.showDropdown) {
+                newState = Object.assign(this.state, this._confirmDisambiguation(0, this.state.editorState));
+            }
+            newState.editorState = this.keyCommandInsertNewline(this.state.editorState);
+            this.setState(newState);
+
+            return 'handled';
+        }
         if (command === 'editor-save') {
             /*
                 API CALL TO SAVE HERE
             */
             console.log('API save draft called');
+
             return 'handled';
         }
         if (command.startsWith('dropdown') && this.state.disambiguationOptions) {
             let choice = Number(command.charAt(command.length - 1));
-            this._confirmDisambiguation(choice - 1);
+            let newState = this.state.editorState;
 
+            if (choice === 1 || // first choice always default
+            this.state.dropDownCount < 2 || // no grouping
+                (this.state.combinationOptions && this.state.combinationOptions.length + 1 >= choice)) //chose a combination
+            {
+                newState = this._confirmDisambiguation(choice - 1, this.state.editorState);
+            }
+            else {
+                newState = this._confirmVowelCategory(choice, this.state.editorState);
+            }
+
+            this.setState(newState);
             return 'handled';
         }
 
@@ -235,6 +299,7 @@ export default class Transcribe extends Component {
     _onCommentInputKeyDown(e) {
         if (e.which === 13) {
             this._confirmComment(e);
+
         }
     }
 
@@ -263,35 +328,68 @@ export default class Transcribe extends Component {
 
     //TODO: move into dropdown positioned under cursor
     _promptForDisambiguation(current) {
-        const charRules = englishKeyboardDisambiguations;
-        let showDropdown = false, disambiguationOptions;
+        let charRules = this.state.usingTurkishKeyboard ? turkishKeyboardDisambiguations : englishKeyboardDisambiguations;
+        let showDropdown = false,
+            dropDownCount = 0,
+            disambiguationOptions = [],
+            characterBuffer = this.state.characterBuffer,
+            combinationOptions = [],
+            disambiguationGroupData;
+
         if (current.startOffset > 0) {
             const previousChar = current.currentBlock.getText().charAt(current.startOffset - 1);
+            characterBuffer = getCurrentWordBuffer(current.currentBlock, current.startOffset);
 
-            //TODO: find a better way to check if the previous character has disambiguation metadata
             const previousEntity = current.currentBlock.getEntityAt(current.startOffset - 1);
             if (previousEntity === null) {
-                //previous character isn't a disambiguated character entity
+
+                //check buffer to see if we have a combination match to offer
+                combinationOptions = bufferComboSearch(characterBuffer, charRules);
+                if (combinationOptions.length > 0 && characterBuffer.length > 1) {
+                    disambiguationOptions = disambiguationOptions.concat(combinationOptions);
+                    dropDownCount = 1;
+                }
+
+                //add disambiguation options based on previous typed char
                 if (charRules[previousChar] !== undefined) {
-                    showDropdown = true;
-                    disambiguationOptions = charRules[previousChar]
+                    showDropdown = previousChar !== ' ';
+                    if (charRules[previousChar].length + combinationOptions.length > 9) {
+                        //more than 9 options in total, need to group single-char options
+
+                        disambiguationGroupData = groupByTurkishKey(charRules[previousChar]);
+                        disambiguationOptions = disambiguationOptions.concat(convertKeyGroupToDisambiguationArray(disambiguationGroupData));
+                        disambiguationOptions.unshift(charRules[previousChar][0]); //add default option for quick typing
+                        dropDownCount = 2;
+                    } else {
+                        disambiguationOptions = disambiguationOptions.concat(charRules[previousChar]);
+                        dropDownCount = 1;
+                    }
                 }
             }
         }
 
         Object.assign(current, {
+            combinationOptions: combinationOptions,
+            disambiguationGroupData: disambiguationGroupData,
             showDropdown: showDropdown,
+            dropDownCount: dropDownCount,
             disambiguationOptions: disambiguationOptions,
-            showCommentInput: false
+            showCommentInput: false,
+            characterBuffer: characterBuffer
         });
 
         return current;
     }
 
     //this is called during handleKeyCommand when it detects a dropdown choice.
-    _confirmDisambiguation(choiceIndex) {
-        const displayText = this.state.disambiguationOptions[choiceIndex].turkishText;
-        const editorState = this.state.editorState;
+    _confirmDisambiguation(choiceIndex, editorState) {
+        let chosenText;
+        if (this.state.disambiguationOptions[choiceIndex].representedText !== undefined) {
+            chosenText = this.state.disambiguationOptions[choiceIndex].representedText;
+        } else {
+            chosenText = this.state.disambiguationOptions[choiceIndex].turkishText;
+        }
+        const displayText = chosenText;
         const contentState = editorState.getCurrentContent();
         let contentStateWithEntity = contentState.createEntity(
             'DISAMBIGUATION',
@@ -299,7 +397,19 @@ export default class Transcribe extends Component {
             this.state.disambiguationOptions[choiceIndex]
         );
         const entityKey = contentStateWithEntity.getLastCreatedEntityKey();
-        let newSelectionState = adjustSelectionOffset(editorState.getSelection(), -1, 0);
+        let newSelectionState;
+
+        if (this.state.combinationOptions && this.state.combinationOptions.length - choiceIndex > -1) {
+            //user chose a combination, need to replace text backwards
+            newSelectionState = adjustSelectionOffset(editorState.getSelection(), 0 - chosenText.length, 0);
+        } else {
+            if (chosenText.length > 1) {
+                //user chose a double-consonant, need to add text forwards
+                let str = new Array(chosenText.length).join(' ');
+                contentStateWithEntity = Modifier.insertText(contentStateWithEntity, editorState.getSelection(), str);
+            }
+            newSelectionState = adjustSelectionOffset(editorState.getSelection(), -1, (-1 + chosenText.length));
+        }
 
         //Replace the typed text with the displayText
         contentStateWithEntity = Modifier.replaceText(contentStateWithEntity, newSelectionState, displayText, null, entityKey);
@@ -315,14 +425,79 @@ export default class Transcribe extends Component {
             entityKey
         );
 
-        newSelectionState = adjustSelectionOffset(newSelectionState, 1, 0);
+        newSelectionState = adjustSelectionOffset(newSelectionState, chosenText.length, 0);
         newEditorState = EditorState.set(newEditorState, { selection: newSelectionState });
 
-        this.setState({
+        return {
+            dropDownCount: this.state.dropDownCount - 1,
             editorState: newEditorState,
             showDropdown: false,
             disambiguationOptions: null
+        }
+    }
+
+    _confirmVowelCategory(choiceIndex, editorState) {
+        let key = this.state.disambiguationOptions[choiceIndex - 1].turkishText;
+
+        return {
+            dropDownCount: this.state.dropDownCount - 1,
+            disambiguationOptions: this.state.disambiguationGroupData[key],
+            editorState: editorState
+        }
+    }
+
+    keyCommandInsertNewline(editorState) {
+        var contentState = Modifier.splitBlock(
+            editorState.getCurrentContent(),
+            editorState.getSelection(),
+        );
+        return EditorState.push(editorState, contentState, 'split-block');
+    }
+
+    _toggleCheckboxValue() {
+        let usingTurkishKeyboard = !this.state.usingTurkishKeyboard;
+        let editorState = this.state.editorState;
+        if (usingTurkishKeyboard) {
+            editorState = this.enableTurkishKeyboardDecorations(editorState);
+        } else {
+            editorState = this.enableEnglishKeyboardDecorations(editorState);
+        }
+        this.setState({
+            usingTurkishKeyboard: usingTurkishKeyboard,
+            editorState: editorState
         });
+    }
+
+    enableEnglishKeyboardDecorations(editorState, rules) {
+        const decor = new CompositeDecorator([{
+            strategy: this.findCommentEntities,
+            component: decorateComponentWithProps(Comment, commentProps)
+        },
+        {
+            strategy: this.findDisambiguatedCharacterEntities,
+            component: decorateComponentWithProps(DisambiguatedCharacter, disambiguatedCharProps)
+        },
+        {
+            strategy: this.findAmbiguousEnglishCharacters,
+            component: decorateComponentWithProps(AmbiguousCharacter, ambiguousCharacterProps)
+        }]);
+        return EditorState.set(editorState, { decorator: decor });
+    }
+
+    enableTurkishKeyboardDecorations(editorState, rules) {
+        const decor = new CompositeDecorator([{
+            strategy: this.findCommentEntities,
+            component: decorateComponentWithProps(Comment, commentProps)
+        },
+        {
+            strategy: this.findDisambiguatedCharacterEntities,
+            component: decorateComponentWithProps(DisambiguatedCharacter, disambiguatedCharProps)
+        },
+        {
+            strategy: this.findAmbiguousTurkishCharacters,
+            component: decorateComponentWithProps(AmbiguousCharacter, ambiguousCharacterProps)
+        }]);
+        return EditorState.set(editorState, { decorator: decor });
     }
 
     //Searches through a block of content (newLine separated) and finds embedded COMMENT entities
@@ -355,10 +530,15 @@ export default class Transcribe extends Component {
         );
     }
 
-    //Decorates ambiguous characters based on current ruleset
-    findAmbiguousCharacters(contentBlock, callback, contentState) {
-        //TODO: use this.props.charRules ('this' needs to be bound though)
+    //Decorates ambiguous characters based on english keyboard ruleset
+    findAmbiguousEnglishCharacters(contentBlock, callback, contentState) {
         const regex = new RegExp(Object.keys(englishKeyboardDisambiguations).join("|"), 'g');
+        findWithRegex(regex, contentBlock, callback);
+    }
+
+    //Decorates ambiguous characters based on turkish keyboard ruleset
+    findAmbiguousTurkishCharacters(contentBlock, callback, contentState) {
+        const regex = new RegExp(Object.keys(turkishKeyboardDisambiguations).join("|"), 'g');
         findWithRegex(regex, contentBlock, callback);
     }
 
@@ -366,29 +546,37 @@ export default class Transcribe extends Component {
         const {inputText, } = this.state;
         return (
             <div id="tool-window">
-                <InputBox
-                    onInputTextChange={this.onInputTextChange}
-                    editorState={this.state.editorState}
-                    onChange={this.onChange}
-                    handleKeyCommand={this.handleKeyCommand}
-                    keyBindingFn={this.keyBindingFn}
-                    showDropdown={this.state.showDropdown}
-                    disambiguationOptions={this.state.disambiguationOptions}
-                    store={store}
-                    showCommentInput={this.state.showCommentInput}
-                    commentVal={this.state.commentVal}
-                    onCommentChange={this.onCommentChange}
-                    confirmComment={this.confirmComment}
-                    onCommentInputKeyDown={this.onCommentInputKeyDown}
-                    removeComment={this.removeComment}
+                <div className={'tool-window_inputs'}>
+                    <InputBox
+                        onInputTextChange={this.onInputTextChange}
+                        editorState={this.state.editorState}
+                        onChange={this.onChange}
+                        handleKeyCommand={this.handleKeyCommand}
+                        keyBindingFn={this.keyBindingFn}
+                        showDropdown={this.state.showDropdown}
+                        disambiguationOptions={this.state.disambiguationOptions}
+                        store={store}
+                        showCommentInput={this.state.showCommentInput}
+                        commentVal={this.state.commentVal}
+                        onCommentChange={this.onCommentChange}
+                        confirmComment={this.confirmComment}
+                        onCommentInputKeyDown={this.onCommentInputKeyDown}
+                        removeComment={this.removeComment}
                     />
+                    <OutputBox
+                        transcribeState={this.state}
+                    />
+                </div>
+
                 <input
                     onClick={this.logState}
-                    className={'buttons'}
-                    type="button"
-                    value="Log State to Console"
-                    />
-                  <OutputBox inputText={inputText} />
+                    className="turkish_keyboard_checkbox"
+                    onChange={this.toggleCheckboxValue}
+                    id="turkish_keyboard_checkbox"
+                    ref="turkish_keyboard_checkbox"
+                    type="checkbox"
+                />
+                <label htmlFor="turkish_keyboard_checkbox">I'm using a Turkish keyboard</label>
             </div>
         );
     }

@@ -1,3 +1,10 @@
 #tool-window {
-    padding: 40px;
+    padding: 2em;
+    padding-bottom: .5em;
+    height: 90vh;;
+}
+
+.tool-window_inputs {
+    display: flex;
+    height: 90%;
 }

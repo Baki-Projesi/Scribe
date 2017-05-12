@@ -7,7 +7,7 @@ export default class DisambiguatedCharacter extends Component {
     render() {
         const styles = {
             disambiguatedcharacter: {
-                color: 'dodgerblue'
+                color: 'black'
             }
         }
         return (
