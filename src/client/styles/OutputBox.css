@@ -1,7 +1,31 @@
 .outputLine {
     font-size: 28px;
+    word-wrap: normal; 
+    width: 100%;
+    overflow-wrap: break-word;
 }
 
 p {
     margin: 0.25em;
 }
+
+
+
+.outputbox-display {
+    margin-right: 1em;
+    text-align: right;
+    display: inline-flex;
+    width: 33%;
+    border: 1px solid #ccc;
+    background-color: white;
+    padding-right: 1em;
+    max-height: 70vh;
+
+
+}
+
+/*.editor {
+    display: inline-flex;
+    width: 100%;
+
+}*/

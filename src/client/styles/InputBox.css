@@ -31,18 +31,35 @@ textarea {
 
 .editor {
     border: 1px solid #ccc;
-    margin: auto;
+    background-color: white;
+    font-size: 20px;
     cursor: 'text';
     min-height: 80px;
     max-width: 600px;
+    max-height: 80vh;
+
     padding: 10;
+    margin-right: 1em;
+    width: 100%;
+    height: 80%;
+    padding: 1em;
+
+
 }
 
-button {
-
+.inputBox-editor {
+    display: inline-flex;
+    width: 33%;
+    text-align: left;
 }
+
+/*#textbox {
+    width: 100vw;
+    height: 100vh;
+}*/
 
 .comment {
-    color: '#3b5998';
+    opacity: 0.5;
+    background-color: '#ff9e91';
     text-Decoration: 'underline';
 }

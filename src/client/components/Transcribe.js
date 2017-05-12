@@ -22,6 +22,8 @@ import { adjustSelectionOffset } from '../utils/selectionStateHelpers';
 import getCurrentWordBuffer from '../utils/getCurrentWordBuffer';
 import { convertKeyGroupToDisambiguationArray, groupByTurkishKey } from '../utils/groupByKey';
 import decorateComponentWithProps from 'decorate-component-with-props';
+import CommentPopup from './CommentPopup';
+import DisplayComment from './DisplayComment'
 import AmbiguousCharacter from './AmbiguousCharacter';
 import DisambiguatedCharacter from './DisambiguatedCharacter';
 import { englishKeyboardDisambiguations, turkishKeyboardDisambiguations } from '../../assets/disambiguationRules';
@@ -49,7 +51,6 @@ const commentProps = {
     }
 
 export default class Transcribe extends Component {
-
     constructor(props, context) {
         super(props, context);
 
@@ -227,44 +228,56 @@ export default class Transcribe extends Component {
 
     //TODO: move comment prompt into a floating tooltip
     _promptForComment(current) {
-        const blockWithCommentAtBeginning = current.contentState.getBlockForKey(current.startKey);
-        const commentKey = blockWithCommentAtBeginning.getEntityAt(current.startOffset);
+        const {editorState} = this.state;
+        const selection = editorState.getSelection();
+        if (!selection.isCollapsed()) {
+            const contentState = editorState.getCurrentContent();
+            const startKey = editorState.getSelection().getStartKey();
+            const startOffset = editorState.getSelection().getStartOffset();
+            const blockWithCommentAtBeginning = contentState.getBlockForKey(startKey);
+            const commentKey = blockWithCommentAtBeginning.getEntityAt(startOffset);
 
-        let commentText = '';
-        if (commentKey) {
-            commentText = current.contentState.getEntity(commentKey).getData().commentText;
+            let commentContent = ""
+            if (commentKey) {
+                const commentInstance = contentState.getEntity(commentKey);
+                commentContent = commentInstance.getData().val;
+                console.log(commentKey)
+                console.log(commentInstance)
+
+            }
+
+            // add positioning code here
+            Object.assign(current, {
+                showCommentInput: true,
+                showDropdown: false,
+                // commentPopupPosition: position,
+                commentVal: commentContent, // might not need comma here
+            });
+
         }
 
-        let commentPopupHeight = 44, position, relativeParent;
-        // const relativeParent = getRelativeParentElement(this.toolbar.parentElement);
-        const relativeRect = relativeParent ? relativeParent.getBoundingClientRect() : document.body.getBoundingClientRect();
-        const selectionRect = getVisibleSelectionRect(window);
-        position = {
-            //top: (selectionRect.top - relativeRect.top) - commentPopupHeight,
-            //left: (selectionRect.left - relativeRect.left) + (selectionRect.width / 2),
-            //transform: 'translate(-50%) scale(1)',
-            //transition: 'transform 0.15s cubic-bezier(.3,1.2,.2,1)',
-        };
 
-        Object.assign(current, {
-            showCommentInput: true,
-            commentPopupPosition: position,
-            commentContent: commentText,
-            //showDropdown: false
-        });
-
+        // let commentPopupHeight = 44, position, relativeParent;
+        // // const relativeParent = getRelativeParentElement(this.toolbar.parentElement);
+        // const relativeRect = relativeParent ? relativeParent.getBoundingClientRect() : document.body.getBoundingClientRect();
+        // const selectionRect = getVisibleSelectionRect(window);
+        // position = {
+        //     top: (selectionRect.top - relativeRect.top) - commentPopupHeight,
+        //     left: (selectionRect.left - relativeRect.left) + (selectionRect.width / 2),
+        //     transform: 'translate(-50%) scale(1)',
+        //     transition: 'transform 0.15s cubic-bezier(.3,1.2,.2,1)',
+        // };
         return current;
 
     }
 
     _confirmComment(e) {
-        e.preventDefault();
-        const { editorState, commentContent } = this.state;
+        const {editorState, commentVal} = this.state;
         const contentState = editorState.getCurrentContent();
         const contentStateWithEntity = contentState.createEntity(
-            'COMMENT',
-            'IMMUTABLE',
-            { comment: commentContent }
+          'COMMENT',
+          'MUTABLE',
+          {val: commentVal}
         );
 
         const entityKey = contentStateWithEntity.getLastCreatedEntityKey();
@@ -277,10 +290,8 @@ export default class Transcribe extends Component {
                 entityKey
             ),
             showCommentInput: false,
-            commentContent: '',
-        }, () => {
-            setTimeout(() => this.refs.editor.focus(), 0);
-        });
+            commentVal: '',
+        })
     }
 
 
@@ -295,12 +306,22 @@ export default class Transcribe extends Component {
     //Removes comment from selection
     _removeComment(e) {
         e.preventDefault();
+
         const { editorState } = this.state;
+        const contentState = editorState.getCurrentContent();
         const selection = editorState.getSelection();
+        const startKey = selection.getStartKey();
+        const startOffset = editorState.getSelection().getStartOffset();
+        const blockWithCommentAtBeginning = contentState.getBlockForKey(startKey);
+        const commentKey = blockWithCommentAtBeginning.getEntityAt(startOffset);
+        console.log(commentKey)
+
+        var newContent = RichUtils.toggleLink(editorState, selection, commentKey)
 
         if (!selection.isCollapsed()) {
             this.setState({
-                editorState: RichUtils.toggleLink(editorState, selection, null),
+                editorState: EditorState.push(editorState, newContent, 'apply-entity'),
+                showCommentInput: false,   
             });
         }
     }
@@ -353,8 +374,8 @@ export default class Transcribe extends Component {
             showDropdown: showDropdown,
             dropDownCount: dropDownCount,
             disambiguationOptions: disambiguationOptions,
+            showCommentInput: false,
             characterBuffer: characterBuffer
-            //showCommentInput: false
         });
 
         return current;
@@ -481,6 +502,7 @@ export default class Transcribe extends Component {
 
     //Searches through a block of content (newLine separated) and finds embedded COMMENT entities
     findCommentEntities(contentBlock, callback, contentState) {
+
         contentBlock.findEntityRanges(
             (character) => {
                 const entityKey = character.getEntity();
@@ -490,6 +512,7 @@ export default class Transcribe extends Component {
                 );
             },
             callback
+        //     // specify props
         );
     }
 
@@ -520,31 +543,40 @@ export default class Transcribe extends Component {
     }
 
     render() {
+        const {inputText, } = this.state;
         return (
             <div id="tool-window">
-                <InputBox
-                    onInputTextChange={this.onInputTextChange}
-                    editorState={this.state.editorState}
-                    onChange={this.onChange}
-                    handleKeyCommand={this.handleKeyCommand}
-                    keyBindingFn={this.keyBindingFn}
-                    showDropdown={this.state.showDropdown}
-                    disambiguationOptions={this.state.disambiguationOptions}
-                    store={store}
-                    showCommentInput={this.state.showCommentInput}
-                />
+                <div className={'tool-window_inputs'}>
+                    <InputBox
+                        onInputTextChange={this.onInputTextChange}
+                        editorState={this.state.editorState}
+                        onChange={this.onChange}
+                        handleKeyCommand={this.handleKeyCommand}
+                        keyBindingFn={this.keyBindingFn}
+                        showDropdown={this.state.showDropdown}
+                        disambiguationOptions={this.state.disambiguationOptions}
+                        store={store}
+                        showCommentInput={this.state.showCommentInput}
+                        commentVal={this.state.commentVal}
+                        onCommentChange={this.onCommentChange}
+                        confirmComment={this.confirmComment}
+                        onCommentInputKeyDown={this.onCommentInputKeyDown}
+                        removeComment={this.removeComment}
+                    />
+                    <OutputBox
+                        transcribeState={this.state}
+                    />
+                </div>
+
                 <input
                     onClick={this.logState}
-                    className={'checkboxes'}
+                    className="turkish_keyboard_checkbox"
                     onChange={this.toggleCheckboxValue}
                     id="turkish_keyboard_checkbox"
                     ref="turkish_keyboard_checkbox"
                     type="checkbox"
                 />
                 <label htmlFor="turkish_keyboard_checkbox">I'm using a Turkish keyboard</label>
-                <OutputBox
-                    transcribeState={this.state}
-                />
             </div>
         );
     }
