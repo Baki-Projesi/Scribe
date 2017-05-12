@@ -3065,10 +3065,18 @@ export const englishKeyboardDisambiguations = {
     ],
     'liʿl': [
         {
-            turkishText: 'liʿl', // delete apostrophe?
-            //arabicText: 'لل',
-            arabicText: 'لا ل',
+            turkishText: 'liʿl',
+            arabicText: 'لال',
             code: 'li\'l',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: null,
+            charLanguage: 'arabic'
+        },
+        {
+            turkishText: 'lil',
+            arabicText: 'لل',
+            code: 'lil',
             dropdownOrder: 1,
             needsDisambiguation: true,
             comboCategory: null,
@@ -3077,10 +3085,18 @@ export const englishKeyboardDisambiguations = {
     ],
     'Liʿl': [ 
         {
-            turkishText: 'Liʿl', // delete apostrophe?
-            //arabicText: 'لل',
-            arabicText: 'لا ل',
+            turkishText: 'Liʿl',
+            arabicText: 'لال',
             code: 'Li\'l',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: null,
+            charLanguage: 'arabic'
+        },
+        {
+            turkishText: 'Lil',
+            arabicText: 'لل',
+            code: 'Lil',
             dropdownOrder: 1,
             needsDisambiguation: true,
             comboCategory: null,
@@ -6531,10 +6547,18 @@ export const turkishKeyboardDisambiguations = {
     ],
     'liʿl': [
         {
-            turkishText: 'liʿl', // delete apostrophe?
-            //arabicText: 'لل',
-            arabicText: 'لا ل',
+            turkishText: 'liʿl',
+            arabicText: 'لال',
             code: 'li\'l',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: null,
+            charLanguage: 'arabic'
+        },
+        {
+            turkishText: 'lil',
+            arabicText: 'لل',
+            code: 'lil',
             dropdownOrder: 1,
             needsDisambiguation: true,
             comboCategory: null,
@@ -6543,10 +6567,18 @@ export const turkishKeyboardDisambiguations = {
     ],
     'Liʿl': [ 
         {
-            turkishText: 'Liʿl', // delete apostrophe?
-            //arabicText: 'لل',
-            arabicText: 'لا ل',
+            turkishText: 'Liʿl',
+            arabicText: 'لال',
             code: 'Li\'l',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: null,
+            charLanguage: 'arabic'
+        },
+        {
+            turkishText: 'Lil',
+            arabicText: 'لل',
+            code: 'Lil',
             dropdownOrder: 1,
             needsDisambiguation: true,
             comboCategory: null,
