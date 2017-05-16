@@ -1897,10 +1897,19 @@ export const englishKeyboardDisambiguations = {
             charLanguage: null
         },
         {
-            turkishText: 'yi',
+            turkishText: 'eyi',
             arabicText: 'ۀ' + '\u200c' + '\u2009',
             code: 'ehamza1',
-            dropdownOrder: 2,
+            dropdownOrder: 3,
+            needsDisambiguation: true,
+            comboCategory: 'hamza',
+            charLanguage: 'arabic'
+        },
+        {
+            turkishText: 'e-i',
+            arabicText: 'ۀ' + '\u200c' + '\u2009',
+            code: 'ehamza2',
+            dropdownOrder: 3,
             needsDisambiguation: true,
             comboCategory: 'hamza',
             charLanguage: 'arabic'
@@ -1980,10 +1989,19 @@ export const englishKeyboardDisambiguations = {
             charLanguage: null
         },
         {
-            turkishText: 'Yi',
+            turkishText: 'Eyi',
             arabicText: 'ۀ' + '\u200c' + '\u2009',
             code: 'Ehamza1',
-            dropdownOrder: 2,
+            dropdownOrder: 3,
+            needsDisambiguation: true,
+            comboCategory: 'hamza',
+            charLanguage: 'arabic'
+        },
+        {
+            turkishText: 'E-i',
+            arabicText: 'ۀ' + '\u200c' + '\u2009',
+            code: 'Ehamza2',
+            dropdownOrder: 3,
             needsDisambiguation: true,
             comboCategory: 'hamza',
             charLanguage: 'arabic'
@@ -5377,13 +5395,22 @@ export const turkishKeyboardDisambiguations = {
             charLanguage: null
         },
         {
-            turkishText: 'yi',
+            turkishText: 'eyi',
             arabicText: 'ۀ' + '\u200c' + '\u2009',
             code: 'ehamza1',
             charLanguage: 'arabic',
             dropdownOrder: 3,
             needsDisambiguation: true,
-            comboCategory: 'charCombo',
+            comboCategory: 'hamza',
+            charLanguage: 'arabic'
+        },
+        {
+            turkishText: 'e-i',
+            arabicText: 'ۀ' + '\u200c' + '\u2009',
+            code: 'ehamza2',
+            dropdownOrder: 3,
+            needsDisambiguation: true,
+            comboCategory: 'hamza',
             charLanguage: 'arabic'
         },
         {
@@ -5461,12 +5488,21 @@ export const turkishKeyboardDisambiguations = {
             charLanguage: null
         },
         {
-            turkishText: 'Yi',
+            turkishText: 'Eyi',
             arabicText: 'ۀ' + '\u200c' + '\u2009',
             code: 'Ehamza1',
             dropdownOrder: 3,
             needsDisambiguation: true,
-            comboCategory: 'charCombo',
+            comboCategory: 'hamza',
+            charLanguage: 'arabic'
+        },
+        {
+            turkishText: 'E-i',
+            arabicText: 'ۀ' + '\u200c' + '\u2009',
+            code: 'Ehamza2',
+            dropdownOrder: 3,
+            needsDisambiguation: true,
+            comboCategory: 'hamza',
             charLanguage: 'arabic'
         },
         {
