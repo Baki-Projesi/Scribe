@@ -2,7 +2,6 @@
 TODO:
 Codes:
 - fix 'eyi' issue
-- fix double letter issue, ie 'tt'
 - double dropdown creates duplicates if the default is the same as the sole item in the double dropdown, ie h1 and h2
 - identify Turkish, Arabic, or Persian
 
@@ -3043,7 +3042,7 @@ export const englishKeyboardDisambiguations = {
     ],
     'sh': [
         {
-            turkishText: 'ş',
+            turkishText: 'ş' + '\ufeff',
             arabicText: 'ش',
             code: 'sh',
             dropdownOrder: 1,
@@ -3054,7 +3053,7 @@ export const englishKeyboardDisambiguations = {
     ],
     'Sh': [
         {
-            turkishText: 'Ş',
+            turkishText: 'Ş' + '\ufeff',
             arabicText: 'ش',
             code: 'Sh',
             dropdownOrder: 1,
@@ -6525,7 +6524,7 @@ export const turkishKeyboardDisambiguations = {
     ],
     'sh': [
         {
-            turkishText: 'ş',
+            turkishText: 'ş' + '\ufeff',
             arabicText: 'ش',
             code: 'sh',
             dropdownOrder: 1,
@@ -6536,7 +6535,7 @@ export const turkishKeyboardDisambiguations = {
     ],
     'Sh': [
         {
-            turkishText: 'Ş',
+            turkishText: 'Ş' + '\ufeff',
             arabicText: 'ش',
             code: 'Sh',
             dropdownOrder: 1,
