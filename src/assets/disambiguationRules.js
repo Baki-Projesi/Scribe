@@ -2,7 +2,6 @@
 TODO:
 Codes:
 - fix 'eyi' issue
-- fix double letter issue, ie 'tt'
 - double dropdown creates duplicates if the default is the same as the sole item in the double dropdown, ie h1 and h2
 - identify Turkish, Arabic, or Persian
 
@@ -1898,10 +1897,19 @@ export const englishKeyboardDisambiguations = {
             charLanguage: null
         },
         {
-            turkishText: 'yi',
+            turkishText: 'eyi',
             arabicText: 'ۀ' + '\u200c' + '\u2009',
             code: 'ehamza1',
-            dropdownOrder: 2,
+            dropdownOrder: 3,
+            needsDisambiguation: true,
+            comboCategory: 'hamza',
+            charLanguage: 'arabic'
+        },
+        {
+            turkishText: 'e-i',
+            arabicText: 'ۀ' + '\u200c' + '\u2009',
+            code: 'ehamza2',
+            dropdownOrder: 3,
             needsDisambiguation: true,
             comboCategory: 'hamza',
             charLanguage: 'arabic'
@@ -1981,10 +1989,19 @@ export const englishKeyboardDisambiguations = {
             charLanguage: null
         },
         {
-            turkishText: 'Yi',
+            turkishText: 'Eyi',
             arabicText: 'ۀ' + '\u200c' + '\u2009',
             code: 'Ehamza1',
-            dropdownOrder: 2,
+            dropdownOrder: 3,
+            needsDisambiguation: true,
+            comboCategory: 'hamza',
+            charLanguage: 'arabic'
+        },
+        {
+            turkishText: 'E-i',
+            arabicText: 'ۀ' + '\u200c' + '\u2009',
+            code: 'Ehamza2',
+            dropdownOrder: 3,
             needsDisambiguation: true,
             comboCategory: 'hamza',
             charLanguage: 'arabic'
@@ -3043,7 +3060,7 @@ export const englishKeyboardDisambiguations = {
     ],
     'sh': [
         {
-            turkishText: 'ş',
+            turkishText: 'ş' + '\ufeff',
             arabicText: 'ش',
             code: 'sh',
             dropdownOrder: 1,
@@ -3054,7 +3071,7 @@ export const englishKeyboardDisambiguations = {
     ],
     'Sh': [
         {
-            turkishText: 'Ş',
+            turkishText: 'Ş' + '\ufeff',
             arabicText: 'ش',
             code: 'Sh',
             dropdownOrder: 1,
@@ -5378,13 +5395,22 @@ export const turkishKeyboardDisambiguations = {
             charLanguage: null
         },
         {
-            turkishText: 'yi',
+            turkishText: 'eyi',
             arabicText: 'ۀ' + '\u200c' + '\u2009',
             code: 'ehamza1',
             charLanguage: 'arabic',
             dropdownOrder: 3,
             needsDisambiguation: true,
-            comboCategory: 'charCombo',
+            comboCategory: 'hamza',
+            charLanguage: 'arabic'
+        },
+        {
+            turkishText: 'e-i',
+            arabicText: 'ۀ' + '\u200c' + '\u2009',
+            code: 'ehamza2',
+            dropdownOrder: 3,
+            needsDisambiguation: true,
+            comboCategory: 'hamza',
             charLanguage: 'arabic'
         },
         {
@@ -5462,12 +5488,21 @@ export const turkishKeyboardDisambiguations = {
             charLanguage: null
         },
         {
-            turkishText: 'Yi',
+            turkishText: 'Eyi',
             arabicText: 'ۀ' + '\u200c' + '\u2009',
             code: 'Ehamza1',
             dropdownOrder: 3,
             needsDisambiguation: true,
-            comboCategory: 'charCombo',
+            comboCategory: 'hamza',
+            charLanguage: 'arabic'
+        },
+        {
+            turkishText: 'E-i',
+            arabicText: 'ۀ' + '\u200c' + '\u2009',
+            code: 'Ehamza2',
+            dropdownOrder: 3,
+            needsDisambiguation: true,
+            comboCategory: 'hamza',
             charLanguage: 'arabic'
         },
         {
@@ -6525,7 +6560,7 @@ export const turkishKeyboardDisambiguations = {
     ],
     'sh': [
         {
-            turkishText: 'ş',
+            turkishText: 'ş' + '\ufeff',
             arabicText: 'ش',
             code: 'sh',
             dropdownOrder: 1,
@@ -6536,7 +6571,7 @@ export const turkishKeyboardDisambiguations = {
     ],
     'Sh': [
         {
-            turkishText: 'Ş',
+            turkishText: 'Ş' + '\ufeff',
             arabicText: 'ش',
             code: 'Sh',
             dropdownOrder: 1,
