@@ -3156,6 +3156,26 @@ export const englishKeyboardDisambiguations = {
             needsDisambiguation: true,
             comboCategory: 'sun',
             charLanguage: 'arabic'
+        }  
+    ],
+    'ʿd-d': [
+        {
+            turkishText: 'ʿd-d',
+            arabicText: '\u0671' + 'لد', // alef wasla
+            code: 'dSun1',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: 'sun',
+            charLanguage: 'arabic'
+        },
+        {
+            turkishText: 'ʿḍ-ḍ',
+            arabicText: '\u0671' + 'لض', // alef wasla
+            code: 'ddotSun1',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: 'sun',
+            charLanguage: 'arabic'
         }
     ],
     'Ad-d': [
@@ -3189,6 +3209,17 @@ export const englishKeyboardDisambiguations = {
             charLanguage: 'arabic'
         }
     ],
+    'ʿdh-dh': [
+        {
+            turkishText: 'ʿdh-dh',
+            arabicText: '\u0671' + 'لذ', // alef wasla
+            code: 'dhSun1',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: 'sun',
+            charLanguage: 'arabic'
+        }
+    ],
     'Adh-dh': [
         {
             turkishText: 'Adh-dh',
@@ -3211,6 +3242,17 @@ export const englishKeyboardDisambiguations = {
             charLanguage: 'arabic'
         }
     ],
+    'ʿn-n': [
+        {
+            turkishText: 'ʿn-n',
+            arabicText: '\u0671' + 'لن', // alef wasla
+            code: 'nSun1',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: 'sun',
+            charLanguage: 'arabic'
+        }
+    ],
     'An-n': [
         {
             turkishText: 'An-n',
@@ -3227,6 +3269,17 @@ export const englishKeyboardDisambiguations = {
             turkishText: 'ar-r',
             arabicText: 'الر',
             code: 'rSun',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: 'sun',
+            charLanguage: 'arabic'
+        }
+    ],
+    'ʿr-r': [
+        {
+            turkishText: 'ʿr-r',
+            arabicText: '\u0671' + 'لر', // alef wasla
+            code: 'rSun1',
             dropdownOrder: 1,
             needsDisambiguation: true,
             comboCategory: 'sun',
@@ -3282,6 +3335,44 @@ export const englishKeyboardDisambiguations = {
             charLanguage: 'arabic'
         }
     ],
+    'ʿs-s': [
+        {
+            turkishText: 'ʿs-s',
+            arabicText: '\u0671' + 'لس', // alef wasla
+            code: 'sSun1',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: 'sun',
+            charLanguage: 'arabic'
+        },
+        {
+            turkishText: 'ʿṣ-ṣ',
+            arabicText: '\u0671' + 'لص', // alef wasla
+            code: 'sdotSun1',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: 'sun',
+            charLanguage: 'arabic'
+        },
+        {
+            turkishText: 'ʿŝ-ŝ',
+            arabicText: '\u0671' + 'لث', // alef wasla
+            code: 'shatSun1',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: 'sun',
+            charLanguage: 'arabic'
+        },
+        {
+            turkishText: 'ʿş-ş',
+            arabicText: '\u0671' + 'لش', // alef wasla
+            code: 'scSun1',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: 'sun',
+            charLanguage: 'arabic'
+        }
+    ],
     'As-s': [
         {
             turkishText: 'As-s',
@@ -3331,6 +3422,17 @@ export const englishKeyboardDisambiguations = {
             charLanguage: 'arabic'
         }
     ],
+    'ʿsh-sh': [
+        {
+            turkishText: 'ʿsh-sh',
+            arabicText: '\u0671' + 'لش', // alef wasla
+            code: 'shSun1',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: 'sun',
+            charLanguage: 'arabic'
+        }
+    ],
     'Ash-sh': [
         {
             turkishText: 'Ash-sh',
@@ -3362,6 +3464,26 @@ export const englishKeyboardDisambiguations = {
             charLanguage: 'arabic'
         }
     ],
+    'ʿt-t': [
+        {
+            turkishText: 'ʿt-t',
+            arabicText: '\u0671' + 'لت', // alef wasla
+            code: 'tSun1',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: 'sun',
+            charLanguage: 'arabic'
+        },
+        {
+            turkishText: 'ʿṭ-ṭ',
+            arabicText: '\u0671' + 'لط', // alef wasla
+            code: 'tdotSun1',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: 'sun',
+            charLanguage: 'arabic'
+        }
+    ],
     'At-t': [
         {
             turkishText: 'At-t',
@@ -3387,6 +3509,17 @@ export const englishKeyboardDisambiguations = {
             turkishText: 'ath-th',
             arabicText: 'الث',
             code: 'thSun',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: 'sun',
+            charLanguage: 'arabic'
+        }
+    ],
+    'ʿth-th': [
+        {
+            turkishText: 'ʿth-th',
+            arabicText: '\u0671' + 'لث', // alef wasla
+            code: 'thSun1',
             dropdownOrder: 1,
             needsDisambiguation: true,
             comboCategory: 'sun',
@@ -3436,6 +3569,44 @@ export const englishKeyboardDisambiguations = {
             turkishText: 'aż-ż',
             arabicText: 'الظ',
             code: 'zdot2Sun',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: 'sun',
+            charLanguage: 'arabic'
+        }
+    ],
+    'ʿz-z': [
+        {
+            turkishText: 'ʿz-z',
+            arabicText: '\u0671' + 'لز', // alef wasla
+            code: 'zSun1',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: 'sun',
+            charLanguage: 'arabic'
+        },
+        {
+            turkishText: 'ʿẓ-ẓ',
+            arabicText: '\u0671' + 'لظ', // alef wasla
+            code: 'zdotSun1',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: 'sun',
+            charLanguage: 'arabic'
+        },
+        {
+            turkishText: 'ʿẕ-ẕ',
+            arabicText: '\u0671' + 'لذ', // alef wasla
+            code: 'zlineSun1',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: 'sun',
+            charLanguage: 'arabic'
+        },
+        {
+            turkishText: 'ʿż-ż',
+            arabicText: '\u0671' + 'لظ', // alef wasla
+            code: 'zdot2Sun1',
             dropdownOrder: 1,
             needsDisambiguation: true,
             comboCategory: 'sun',
@@ -6676,6 +6847,26 @@ export const turkishKeyboardDisambiguations = {
             charLanguage: 'arabic'
         }
     ],
+    'ʿd-d': [
+        {
+            turkishText: 'ʿd-d',
+            arabicText: '\u0671' + 'لد', // alef wasla
+            code: 'dSun1',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: 'sun',
+            charLanguage: 'arabic'
+        },
+        {
+            turkishText: 'ʿḍ-ḍ',
+            arabicText: '\u0671' + 'لض', // alef wasla
+            code: 'ddotSun1',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: 'sun',
+            charLanguage: 'arabic'
+        }
+    ],
     'Ad-d': [
         {
             turkishText: 'Ad-d',
@@ -6707,6 +6898,17 @@ export const turkishKeyboardDisambiguations = {
             charLanguage: 'arabic'
         }
     ],
+    'ʿdh-dh': [
+        {
+            turkishText: 'ʿdh-dh',
+            arabicText: '\u0671' + 'لذ', // alef wasla
+            code: 'dhSun1',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: 'sun',
+            charLanguage: 'arabic'
+        }
+    ],
     'Adh-dh': [
         {
             turkishText: 'Adh-dh',
@@ -6729,6 +6931,17 @@ export const turkishKeyboardDisambiguations = {
             charLanguage: 'arabic'
         }
     ],
+    'ʿn-n': [
+        {
+            turkishText: 'ʿn-n',
+            arabicText: '\u0671' + 'لن', // alef wasla
+            code: 'nSun1',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: 'sun',
+            charLanguage: 'arabic'
+        }
+    ],
     'An-n': [
         {
             turkishText: 'An-n',
@@ -6745,6 +6958,17 @@ export const turkishKeyboardDisambiguations = {
             turkishText: 'ar-r',
             arabicText: 'الر',
             code: 'rSun',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: 'sun',
+            charLanguage: 'arabic'
+        }
+    ],
+    'ʿr-r': [
+        {
+            turkishText: 'ʿr-r',
+            arabicText: '\u0671' + 'لر', // alef wasla
+            code: 'rSun1',
             dropdownOrder: 1,
             needsDisambiguation: true,
             comboCategory: 'sun',
@@ -6791,6 +7015,35 @@ export const turkishKeyboardDisambiguations = {
             charLanguage: 'arabic'
         }
     ],
+    'ʿs-s': [
+        {
+            turkishText: 'ʿs-s',
+            arabicText: '\u0671' + 'لس', // alef wasla
+            code: 'sSun1',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: 'sun',
+            charLanguage: 'arabic'
+        },
+        {
+            turkishText: 'ʿṣ-ṣ',
+            arabicText: '\u0671' + 'لص', // alef wasla
+            code: 'sdotSun1',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: 'sun',
+            charLanguage: 'arabic'
+        },
+        {
+            turkishText: 'ʿŝ-ŝ',
+            arabicText: '\u0671' + 'لث', // alef wasla
+            code: 'shatSun1',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: 'sun',
+            charLanguage: 'arabic'
+        }
+    ],
     'As-s': [
         {
             turkishText: 'As-s',
@@ -6831,6 +7084,17 @@ export const turkishKeyboardDisambiguations = {
             charLanguage: 'arabic'
         }
     ],
+    'ʿş-ş': [
+        {
+            turkishText: 'ʿş-ş',
+            arabicText: '\u0671' + 'لش', // alef wasla
+            code: 'scSun1',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: 'sun',
+            charLanguage: 'arabic'
+        }
+    ],
     'Aş-ş': [
         {
             turkishText: 'Aş-ş',
@@ -6847,6 +7111,17 @@ export const turkishKeyboardDisambiguations = {
             turkishText: 'ash-sh',
             arabicText: 'الش',
             code: 'shSun',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: 'sun',
+            charLanguage: 'arabic'
+        }
+    ],
+    'ʿsh-sh': [
+        {
+            turkishText: 'ʿsh-sh',
+            arabicText: '\u0671' + 'لش', // alef wasla
+            code: 'shSun1',
             dropdownOrder: 1,
             needsDisambiguation: true,
             comboCategory: 'sun',
@@ -6884,6 +7159,26 @@ export const turkishKeyboardDisambiguations = {
             charLanguage: 'arabic'
         }
     ],
+    'ʿt-t': [
+        {
+            turkishText: 'ʿt-t',
+            arabicText: '\u0671' + 'لت', // alef wasla
+            code: 'tSun1',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: 'sun',
+            charLanguage: 'arabic'
+        },
+        {
+            turkishText: 'ʿṭ-ṭ',
+            arabicText: '\u0671' + 'لط', // alef wasla
+            code: 'tdotSun1',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: 'sun',
+            charLanguage: 'arabic'
+        }
+    ],
     'At-t': [
         {
             turkishText: 'At-t',
@@ -6909,6 +7204,17 @@ export const turkishKeyboardDisambiguations = {
             turkishText: 'ath-th',
             arabicText: 'الث',
             code: 'thSun',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: 'sun',
+            charLanguage: 'arabic'
+        }
+    ],
+    'ʿth-th': [
+        {
+            turkishText: 'ʿth-th',
+            arabicText: '\u0671' + 'لث', // alef wasla
+            code: 'thSun1',
             dropdownOrder: 1,
             needsDisambiguation: true,
             comboCategory: 'sun',
@@ -6958,6 +7264,44 @@ export const turkishKeyboardDisambiguations = {
             turkishText: 'aż-ż',
             arabicText: 'الظ',
             code: 'zdot2Sun',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: 'sun',
+            charLanguage: 'arabic'
+        }
+    ],
+    'ʿz-z': [
+        {
+            turkishText: 'ʿz-z',
+            arabicText: '\u0671' + 'لز', // alef wasla
+            code: 'zSun1',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: 'sun',
+            charLanguage: 'arabic'
+        },
+        {
+            turkishText: 'ʿẓ-ẓ',
+            arabicText: '\u0671' + 'لظ', // alef wasla
+            code: 'zdotSun1',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: 'sun',
+            charLanguage: 'arabic'
+        },
+        {
+            turkishText: 'ʿẕ-ẕ',
+            arabicText: '\u0671' + 'لذ', // alef wasla
+            code: 'zlineSun1',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: 'sun',
+            charLanguage: 'arabic'
+        },
+        {
+            turkishText: 'ʿż-ż',
+            arabicText: '\u0671' + 'لظ', // alef wasla
+            code: 'zdot2Sun1',
             dropdownOrder: 1,
             needsDisambiguation: true,
             comboCategory: 'sun',
