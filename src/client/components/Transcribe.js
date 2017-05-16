@@ -29,6 +29,7 @@ import DisambiguatedCharacter from './DisambiguatedCharacter';
 import { englishKeyboardDisambiguations, turkishKeyboardDisambiguations } from '../../assets/disambiguationRules';
 import bufferComboSearch from '../utils/bufferComboSearch';
 import needsDropdown from '../utils/needsDropdown';
+import generateDraftStateObject from '../utils/generateDraftStateObject';
 
 const store = {
     mostRecentAmbiguousCharCoords: null
@@ -69,20 +70,7 @@ export default class Transcribe extends Component {
             }
         ]);
         const initEditorState = EditorState.createEmpty(decorator);
-        this.state = {
-            editorState: initEditorState,
-            contentState: initEditorState.getCurrentContent(),
-            oldSelectionState: initEditorState.getSelection(),
-            startKey: initEditorState.getSelection().getStartKey(),
-            startOffset: initEditorState.getSelection().getStartOffset(),
-            endKey: initEditorState.getSelection().getEndKey(),
-            endOffset: initEditorState.getSelection().getEndOffset(),
-            currentBlock: initEditorState.getCurrentContent().getBlockForKey(initEditorState.getSelection().getStartKey()),
-            showCommentInput: false,
-            commentContent: '',
-            usingTurkishKeyboard: false,
-            characterBuffer: ''
-        };
+        this.state = generateDraftStateObject(initEditorState);
 
         this.logState = () => {
             const content = this.state.editorState.getCurrentContent();
@@ -92,16 +80,7 @@ export default class Transcribe extends Component {
         this.focus = () => this.refs.editor.focus();
 
         this.onChange = (editorState) => {
-            let newState, current = {
-                editorState: editorState,
-                contentState: editorState.getCurrentContent(),
-                oldSelectionState: editorState.getSelection(),
-                startKey: editorState.getSelection().getStartKey(),
-                startOffset: editorState.getSelection().getStartOffset(),
-                endKey: editorState.getSelection().getEndKey(),
-                endOffset: editorState.getSelection().getEndOffset(),
-                currentBlock: editorState.getCurrentContent().getBlockForKey(editorState.getSelection().getStartKey())
-            }
+            let newState, current = generateDraftStateObject(editorState);
 
             if (current.oldSelectionState.isCollapsed()) {
                 // Selection is just the cursor w/ no characters highlighted
@@ -193,6 +172,7 @@ export default class Transcribe extends Component {
                 newState = Object.assign(this.state, this._confirmDisambiguation(0, this.state.editorState));
             }
             newState.editorState = this.keyCommandInsertNewline(this.state.editorState);
+            newState = generateDraftStateObject(newState.editorState);
             this.setState(newState);
 
             return 'handled';

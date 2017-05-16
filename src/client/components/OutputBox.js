@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { convertToRaw } from 'draft-js';
+import { List, Record } from 'immutable';
+import { convertToRaw, ContentBlock } from 'draft-js';
 import '../styles/OutputBox.css';
 
 export default class OutputBox extends Component {
@@ -7,63 +8,114 @@ export default class OutputBox extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            contentBlocks: {}
+            cursorBlockIndex: 0,
+            contentBlocks: [] //example item -> {key: 'abc', block: 'test text'}
         }
     }
 
-    //reduces obj1 by only keeping the values that match keys with obj2
-    reduceObj(obj1, obj2) {
+    //returns the index of the block with given key as if
+    // the map was an array of blocks (maps do have inherent ordering)
+    findIndexOfBlock(blockKey, contentBlockArray) {
+        let index = -1, result = null;
+        if (contentBlockArray) {
+            contentBlockArray.forEach(function (block) { //TODO: fix performance (break after found)
+                let key = block.hasOwnProperty("_map") ? block.getKey() : block.key;
+                index++;
+                if (key === blockKey) {
+                    result = index;
+                }
+            });
+        }
 
-        Object.keys(obj1).forEach(function (key) {
-            if (!obj2.getBlockForKey(key)) {
-                delete obj1[key];
-            }
-        });
-
-        return obj1;
+        return result !== null ? result : -1;
     }
 
     //translate a single content block by building up a string of entity entries
-    translate(contentState, currentBlockKey, outputLang, sourceLang) {
-        const block = contentState.getBlockForKey(currentBlockKey);
-        const charList = block.getCharacterList();
-        let outputText = "";
+    translate(contentBlocks, translationIndexes, contentState) {
+        translationIndexes.forEach(function (index) {
 
-        for (let i = 0; i < charList.count(); i++) {
-            let charMeta = charList.get(i);
-            let key = charMeta.getEntity();
-            if (key && contentState.getEntity(key).type === "DISAMBIGUATION") {
-                let outputStr = contentState.getEntity(key).data[outputLang];
-                let sourceStr = contentState.getEntity(key).data[sourceLang];
-                outputText += outputStr;
-                if (sourceStr.length > 1) {
-                    i += sourceStr.length - 1;
+            const charList = contentState.getBlockForKey(contentBlocks[index].key).getCharacterList();
+            let result = contentBlocks[index], outputText = "", sourceText = "";
+
+            //build up the translated string
+            for (let i = 0; i < charList.count(); i++) {
+                let charMeta = charList.get(i);
+                let key = charMeta.getEntity();
+                if (key && contentState.getEntity(key).type === "DISAMBIGUATION") {
+                    let outputStr = contentState.getEntity(key).data["arabicText"];
+                    let sourceStr = contentState.getEntity(key).data["turkishText"];
+                    outputText += outputStr;
+                    if (sourceStr.length > 1) {
+                        i += sourceStr.length - 1;
+                    }
                 }
             }
-        }
 
-        return outputText;
+            result.outputText = outputText;
+            //replace content block with newly translated block at index
+            contentBlocks[index] = result;
+
+        });
+
+        return contentBlocks;
     }
 
+    //Insert a new content block in the array by shifting everything down one
+    insertNewContentBlock(contentBlockArray, key, newCursorIndex) {
+        if (newCursorIndex > contentBlockArray.length) {
+            newCursorIndex = contentBlockArray.length;
+        }
+
+        let block = {
+            key: key,
+            outputText: ''
+        }
+
+        contentBlockArray.splice(newCursorIndex, 0, block);
+        return contentBlockArray;
+    }
+
+
+    //is called on every editor onChange()
     componentWillReceiveProps(nextProps) {
         const currentProps = this.props.transcribeState;
         const newProps = nextProps.transcribeState;
-        let { contentBlocks } = this.state;
-        if (newProps.contentState.getBlocksAsArray().length !== currentProps.contentState.getBlocksAsArray().length) {
-            //different number of blocks between input/output, may be from mass deletion or copy/paste
-            contentBlocks = this.reduceObj(contentBlocks, newProps.contentState);
-        }
-        if (newProps.editorState.getSelection().isCollapsed()) {
+        let { contentBlocks, cursorBlockIndex } = this.state;
+        let translationIndexes = [],
+            newCursorBlockIndex = cursorBlockIndex,
+            newContentBlocks = contentBlocks,
+            newBlockLength = newProps.contentState.getBlocksAsArray().length;
 
-            if (this.state.contentBlocks[newProps.startKey] === undefined) {
-                //new content block detected
-                contentBlocks[newProps.startKey] = newProps.contentState.getBlockForKey(newProps.startKey).text;
+        //find the index of the block user's cursor is on
+        if (newProps.startKey !== currentProps.startKey) {
+            let idx = this.findIndexOfBlock(newProps.startKey, newProps.contentState.getBlocksAsArray());
+            if (idx === -1) {
+                translationIndexes.push(cursorBlockIndex);
+                newCursorBlockIndex = cursorBlockIndex + 1; //they added a new block
+            } else {
+                newCursorBlockIndex = idx;
             }
-
-            contentBlocks[newProps.startKey] = this.translate(newProps.contentState, newProps.startKey, 'arabicText', 'turkishText');
         }
 
-        this.setState({ contentBlocks: contentBlocks });
+        //we're always going to look at least the current line
+        translationIndexes.push(newCursorBlockIndex);
+
+        if (contentBlocks.length < newBlockLength) {
+            //user added new block (from enter key press)
+            translationIndexes.push(cursorBlockIndex);
+            newContentBlocks = this.insertNewContentBlock(newContentBlocks, newProps.startKey, newCursorBlockIndex);
+        } 
+        else if (contentBlocks.length > newBlockLength) {
+            //user deleted some amount of blocks, remove them from array
+            newContentBlocks.splice(newCursorBlockIndex + 1, this.findIndexOfBlock(currentProps.endKey, contentBlocks) - newCursorBlockIndex);
+        }
+
+        newContentBlocks = this.translate(newContentBlocks, translationIndexes, newProps.contentState);
+
+        this.setState({
+            cursorBlockIndex: newCursorBlockIndex,
+            contentBlocks: newContentBlocks
+        });
     }
 
     componentWillUnmount() {
@@ -73,9 +125,8 @@ export default class OutputBox extends Component {
     render() {
         const { contentBlocks } = this.state;
         const textBlocks = [];
-        Object.keys(contentBlocks).forEach(function (blockKey) {
-            const block = contentBlocks[blockKey];
-            textBlocks.push(<p className="outputLine" key={blockKey}>{block}</p>);
+        contentBlocks.forEach(function (contentBlock) {
+            textBlocks.push(<p className="outputLine" key={contentBlock.key}>{contentBlock.outputText}</p>);
         })
 
         return (
