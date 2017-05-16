@@ -52,7 +52,6 @@ export default class OutputBox extends Component {
             }
 
             result.outputText = outputText;
-            result.outputText = "[" + result.key + "]" + result.outputText;
             //replace content block with newly translated block at index
             contentBlocks[index] = result;
 
@@ -101,11 +100,7 @@ export default class OutputBox extends Component {
         //we're always going to look at least the current line
         translationIndexes.push(newCursorBlockIndex);
 
-        //create an empty block if it doesn't exist
-        if (!newContentBlocks[newCursorBlockIndex]) {
-            newContentBlocks = this.insertNewContentBlock(newContentBlocks, newProps.startKey, newCursorBlockIndex);
-        }
-        else if (contentBlocks.length < newBlockLength) {
+        if (contentBlocks.length < newBlockLength) {
             //user added new block (from enter key press)
             translationIndexes.push(cursorBlockIndex);
             newContentBlocks = this.insertNewContentBlock(newContentBlocks, newProps.startKey, newCursorBlockIndex);
