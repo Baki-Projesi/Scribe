@@ -1915,6 +1915,15 @@ export const englishKeyboardDisambiguations = {
             charLanguage: 'arabic'
         },
         {
+            turkishText: 'ʿ',
+            arabicText: '\u0671', // alef wasla
+            code: 'e14',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: null,
+            charLanguage: 'arabic'
+        },
+        {
             turkishText: 'e',
             arabicText: 'َ', 
             code: 'e10',
@@ -2004,6 +2013,15 @@ export const englishKeyboardDisambiguations = {
             dropdownOrder: 3,
             needsDisambiguation: true,
             comboCategory: 'hamza',
+            charLanguage: 'arabic'
+        },
+        {
+            turkishText: 'ʿ',
+            arabicText: '\u0671', // alef wasla
+            code: 'E14',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: null,
             charLanguage: 'arabic'
         },
         {
@@ -5414,6 +5432,15 @@ export const turkishKeyboardDisambiguations = {
             charLanguage: 'arabic'
         },
         {
+            turkishText: 'ʿ',
+            arabicText: '\u0671', // alef wasla
+            code: 'e14',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: null,
+            charLanguage: 'arabic'
+        },
+        {
             turkishText: 'e',
             arabicText: 'َ',
             code: 'e10',
@@ -5503,6 +5530,15 @@ export const turkishKeyboardDisambiguations = {
             dropdownOrder: 3,
             needsDisambiguation: true,
             comboCategory: 'hamza',
+            charLanguage: 'arabic'
+        },
+        {
+            turkishText: 'ʿ',
+            arabicText: '\u0671', // alef wasla
+            code: 'e14',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: null,
             charLanguage: 'arabic'
         },
         {
