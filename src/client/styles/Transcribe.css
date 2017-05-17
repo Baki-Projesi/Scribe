@@ -1,10 +1,20 @@
 #tool-window {
     padding: 2em;
     padding-bottom: .5em;
-    height: 90vh;;
+    height: 85vh;
 }
 
 .tool-window_inputs {
     display: flex;
     height: 90%;
+}
+
+.mdl-checkbox {
+    width: 25%;
+    float: left;
+    margin: 1em;
+
+}
+
+.mdl-checkbox__input {
 }

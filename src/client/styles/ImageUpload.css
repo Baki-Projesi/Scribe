@@ -5,13 +5,14 @@ h3 {
 .fileInput {
   cursor: pointer;
   width: 90%;
+  padding-bottom: 1em;
 }
 
   
 .imgPreview {
   text-align: center;
   height: 70vh;
-  width: 95%;
+  width: 100%;
   border-left: 1px solid gray;
   border-right: 1px solid gray;
   border-top: 5px solid gray;
@@ -54,7 +55,7 @@ h3 {
   width: 500px;
 }
 
-/*.mdl-button--file input {
+.mdl-button--file input {
   cursor: pointer;
   height: 100%;
   right: 0;
@@ -71,4 +72,5 @@ h3 {
 }
 .mdl-textfield--file .mdl-button--file {
   right: 0;
-}*/
+}
+
