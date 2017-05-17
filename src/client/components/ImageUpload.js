@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import classNames from 'classnames';
 import '../styles/ImageUpload.css';
-import { Button, Card, CardText } from 'react-mdl';
-
- 
+import { Button, Card, CardText } from 'react-mdl'; 
 
 export default class ImageUpload extends React.Component {
   constructor(props) {
@@ -42,25 +40,21 @@ export default class ImageUpload extends React.Component {
       ximagePreview = (<div className="previewText">Select an image to view</div>);
     }
 
+    console.log(this.state.file)
     return (
       <div className="previewComponent">
+
+        <div className="imgPreview">
+          {ximagePreview}
+        </div>
+
         <form onSubmit={(e)=>this._handleSubmit(e)}>
-
-            {/*<div classNmae="mdl-textfield mdl-js-textfield mdl-textfield--file">
-                <input className="mdl-textfield__input" placeholder="File" type="text" id="uploadFile" readonly/>
-                <div className="mdl-button mdl-button--primary mdl-button--icon mdl-button--file" >
-                    <i className="material-icons"></i><input type="file" id="uploadBtn"/> 
+                <div className="mdl-textfield mdl-js-textfield mdl-textfield--file fileInput">
+                    <input className="mdl-textfield__input" placeholder="File" value={this.state.file.name} type="text" readOnly/>
+                    <div className="mdl-button mdl-button--primary mdl-button--icon mdl-button--file">
+                        <i className="material-icons">attach_file</i><input type="file" onChange={(e)=>this._handleImageChange(e)} />
+                    </div>
                 </div>
-            </div>*/}
-
-            {/*<div class="mdl-file mdl-js-file mdl-file--floating-label">
-                <input type="file" name="avatar" id="avatar" />
-                <label class="mdl-file__label" for="avatar">Avatar</label>
-            </div>*/}
-
-            <input className="fileInput"
-              type="file" 
-              onChange={(e)=>this._handleImageChange(e)} />
             {/*<button className="submitButton" 
               type="submit" 
               onClick={(e)=>this._handleSubmit(e)}>Upload Image</button>*/}
@@ -68,11 +62,6 @@ export default class ImageUpload extends React.Component {
 
 
         {/*<Button raised ripple>Button</Button>*/}
-
-
-        <div className="imgPreview">
-          {ximagePreview}
-        </div>
       </div>
     )
   }

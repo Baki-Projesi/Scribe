@@ -8,3 +8,12 @@
     display: flex;
     height: 90%;
 }
+
+.mdl-checkbox {
+    width: 20%;
+    float: left;
+}
+
+.mdl-checkbox__input {
+    color: red;
+}

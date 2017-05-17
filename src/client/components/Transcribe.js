@@ -570,16 +570,20 @@ export default class Transcribe extends Component {
                         transcribeState={this.state}
                     />
                 </div>
+                <div>
+                    <label htmlFor="turkish_keyboard_checkbox" className="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+                        <input
+                            onClick={this.logState}
+                            className="turkish_keyboard_checkbox mdl-checkbox__input"
+                            onChange={this.toggleCheckboxValue}
+                            id="turkish_keyboard_checkbox"
+                            ref="turkish_keyboard_checkbox"
+                            type="checkbox"
+                        />
+                        I'm using a Turkish keyboard
+                    </label>
 
-                <input
-                    onClick={this.logState}
-                    className="turkish_keyboard_checkbox"
-                    onChange={this.toggleCheckboxValue}
-                    id="turkish_keyboard_checkbox"
-                    ref="turkish_keyboard_checkbox"
-                    type="checkbox"
-                />
-                <label htmlFor="turkish_keyboard_checkbox">I'm using a Turkish keyboard</label>
+                </div>
             </div>
         );
     }

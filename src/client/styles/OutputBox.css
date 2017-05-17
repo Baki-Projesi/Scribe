@@ -13,8 +13,6 @@ p {
 
 
 .outputbox-display {
-    margin-right: 1em;
-    margin-left: 1em;
     text-align: right;
     width: 33%;
     border: 1px solid #ccc;
@@ -26,7 +24,5 @@ p {
 }
 
 /*.editor {
-    display: inline-flex;
-    width: 100%;
-
+    padding: 0;
 }*/
