@@ -88,7 +88,7 @@ function editOnKeyDown(editor, e) {
       e.preventDefault();
       // The top-level component may manually handle newline insertion. If
       // no special handling is performed, fall through to command handling.
-      if (editor.props.handleReturn && isEventHandled(editor.props.handleReturn(e))) {
+      if (editor.props.handleReturn && isEventHandled(editor.props.handleReturn(e, editorState))) {
         return;
       }
       break;
@@ -135,7 +135,7 @@ function editOnKeyDown(editor, e) {
   e.preventDefault();
 
   // Allow components higher up the tree to handle the command first.
-  if (editor.props.handleKeyCommand && isEventHandled(editor.props.handleKeyCommand(command))) {
+  if (editor.props.handleKeyCommand && isEventHandled(editor.props.handleKeyCommand(command, editorState))) {
     return;
   }
 

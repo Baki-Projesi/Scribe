@@ -16,6 +16,7 @@ var EditorState = require('./EditorState');
 var ReactDOM = require('react-dom');
 
 var getDraftEditorSelection = require('./getDraftEditorSelection');
+var invariant = require('fbjs/lib/invariant');
 
 function editOnSelect(editor) {
   if (editor._blockSelectEvents || editor._latestEditorState !== editor.props.editorState) {
@@ -23,7 +24,10 @@ function editOnSelect(editor) {
   }
 
   var editorState = editor.props.editorState;
-  var documentSelection = getDraftEditorSelection(editorState, ReactDOM.findDOMNode(editor.refs.editorContainer).firstChild);
+  var editorNode = ReactDOM.findDOMNode(editor.refs.editorContainer);
+  !editorNode ? process.env.NODE_ENV !== 'production' ? invariant(false, 'Missing editorNode') : invariant(false) : void 0;
+  !(editorNode.firstChild instanceof HTMLElement) ? process.env.NODE_ENV !== 'production' ? invariant(false, 'editorNode.firstChild is not an HTMLElement') : invariant(false) : void 0;
+  var documentSelection = getDraftEditorSelection(editorState, editorNode.firstChild);
   var updatedSelectionState = documentSelection.selectionState;
 
   if (updatedSelectionState !== editorState.getSelection()) {

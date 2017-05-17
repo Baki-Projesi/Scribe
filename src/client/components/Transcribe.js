@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import LanguageTabBar from "./LanguageTabBar";
 import OutputBox from './OutputBox';
 import InputBox from './InputBox';
+import ImageUpload from './ImageUpload';
 import '../styles/Transcribe.css';
 import {
     Editor,
@@ -543,6 +544,8 @@ export default class Transcribe extends Component {
                         onCommentInputKeyDown={this.onCommentInputKeyDown}
                         removeComment={this.removeComment}
                     />
+                    <ImageUpload />
+
                     <OutputBox
                         transcribeState={this.state}
                     />

@@ -1,5 +1,5 @@
 .outputLine {
-    font-size: 28px;
+    font-size: 22px;
     word-wrap: normal; 
     width: 100%;
     overflow-wrap: break-word;
@@ -14,11 +14,12 @@ p {
 
 .outputbox-display {
     margin-right: 1em;
+    margin-left: 1em;
     text-align: right;
     width: 33%;
     border: 1px solid #ccc;
     background-color: white;
-    padding-right: 1em;
+    padding: 1em;
     max-height: 70vh;
 
 

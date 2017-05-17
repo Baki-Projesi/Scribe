@@ -70,8 +70,9 @@ function editOnPaste(editor, e) {
   var textBlocks = [];
   var text = data.getText();
   var html = data.getHTML();
+  var editorState = editor._latestEditorState;
 
-  if (editor.props.handlePastedText && isEventHandled(editor.props.handlePastedText(text, html))) {
+  if (editor.props.handlePastedText && isEventHandled(editor.props.handlePastedText(text, html, editorState))) {
     return;
   }
 
@@ -129,7 +130,6 @@ function editOnPaste(editor, e) {
   }
 
   if (textBlocks.length) {
-    var editorState = editor._latestEditorState;
     var character = CharacterMetadata.create({
       style: editorState.getCurrentInlineStyle(),
       entity: getEntityKeyForSelection(editorState.getCurrentContent(), editorState.getSelection())
