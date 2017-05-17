@@ -9,12 +9,11 @@
     height: 90%;
 }
 
-.mdl-checkbox {
+.keyboardSelect {
     width: 25%;
     float: left;
     margin: 1em;
+    text-align: left;
 
 }
 
-.mdl-checkbox__input {
-}

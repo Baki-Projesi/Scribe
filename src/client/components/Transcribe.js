@@ -455,8 +455,15 @@ export default class Transcribe extends Component {
         return EditorState.push(editorState, contentState, 'split-block');
     }
 
-    _toggleCheckboxValue() {
-        let usingTurkishKeyboard = !this.state.usingTurkishKeyboard;
+    _toggleCheckboxValue(value) {
+        console.log(value)
+        // will have to come back to this once we have more keyboards
+        var usingTurkishKeyboard;
+        if (value == "Turkish Keyboard") {
+            usingTurkishKeyboard = true;
+        } else {
+            usingTurkishKeyboard = false;
+        }
         let editorState = this.state.editorState;
         if (usingTurkishKeyboard) {
             editorState = this.enableTurkishKeyboardDecorations(editorState);
@@ -545,6 +552,12 @@ export default class Transcribe extends Component {
 
     render() {
         const {inputText, } = this.state;
+        let whichKeyboard = "";
+        if (!this.state.usingTurkishKeyboard) {
+            whichKeyboard = "English Keyboard"
+        } else {
+            whichKeyboard = "Turkish Keyboard"
+        }
         return (
             <div id="tool-window">
                 <div className={'tool-window_inputs'}>
@@ -571,16 +584,19 @@ export default class Transcribe extends Component {
                     />
                 </div>
                 <div>
-                    <label htmlFor="turkish_keyboard_checkbox" className="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
-                        <input
-                            onClick={this.logState}
-                            className="turkish_keyboard_checkbox mdl-checkbox__input"
-                            onChange={this.toggleCheckboxValue}
-                            id="turkish_keyboard_checkbox"
-                            ref="turkish_keyboard_checkbox"
-                            type="checkbox"
-                        />
-                        I'm using a Turkish keyboard
+                    <label htmlFor="turkish_keyboard_checkbox" className="keyboardSelect">
+                        <button id="demo-menu-top-left"
+                                className="mdl-button mdl-js-button mdl-button--icon">
+                            <i className="material-icons">more_vert</i>
+                        </button>
+                        <span>{whichKeyboard}</span>
+
+
+                        <ul className="mdl-menu mdl-menu--top-left mdl-js-menu mdl-js-ripple-effect"
+                            data-mdl-for="demo-menu-top-left">
+                                <li className="mdl-menu__item" onClick={this.toggleCheckboxValue.bind(this, "Turkish Keyboard")}>Turkish Keyboard</li>
+                                <li className="mdl-menu__item" onClick={this.toggleCheckboxValue.bind(this, "English Keyboard")}>English Keyboard</li>
+                        </ul>        
                     </label>
 
                 </div>
