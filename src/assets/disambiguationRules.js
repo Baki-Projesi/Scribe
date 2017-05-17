@@ -2944,7 +2944,6 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'yi',
-            arabicText: 'ٸ',
             arabicText: 'ۀ',
             code: 'iHamza2',
             dropdownOrder: 1,
@@ -2954,7 +2953,6 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'yı',
-            arabicText: 'ٸ',
             arabicText: 'ۀ',
             code: 'iHamza3',
             dropdownOrder: 1,
@@ -5569,9 +5567,6 @@ export const turkishKeyboardDisambiguations = {
             dropdownOrder: 2,
             needsDisambiguation: true,
             comboCategory: null,
-            dropdownOrder: 2,
-            needsDisambiguation: true,
-            comboCategory: null,
             charLanguage: 'arabic'
         },
         {
@@ -6622,7 +6617,6 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'yi',
-            arabicText: 'ٸ',
             arabicText: 'ۀ',
             code: 'iHamza2',
             dropdownOrder: 1,
@@ -6643,7 +6637,6 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'yı',
-            arabicText: 'ٸ',
             arabicText: 'ۀ',
             code: 'iHamza3',
             dropdownOrder: 1,
