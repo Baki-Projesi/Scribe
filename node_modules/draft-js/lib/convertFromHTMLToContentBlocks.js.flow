@@ -381,7 +381,10 @@ function genFragment(entityMap: EntityMap, node: Node, inlineStyle: DraftInlineS
       entityId = undefined;
     }
 
-    const { chunk: generatedChunk, entityMap: maybeUpdatedEntityMap } = genFragment(newEntityMap, child, inlineStyle, lastList, inBlock, blockTags, depth, blockRenderMap, entityId || inEntity);
+    const {
+      chunk: generatedChunk,
+      entityMap: maybeUpdatedEntityMap
+    } = genFragment(newEntityMap, child, inlineStyle, lastList, inBlock, blockTags, depth, blockRenderMap, entityId || inEntity);
 
     newChunk = generatedChunk;
     newEntityMap = maybeUpdatedEntityMap;
