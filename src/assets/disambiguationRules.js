@@ -2804,7 +2804,7 @@ export const englishKeyboardDisambiguations = {
             charLanguage: null
         },
         {
-            turkishText: 'ʿ',
+            turkishText: 'ʾ',
             arabicText: '\u2009' + '\u200c' + '\u0671' + '\u200c', // alef wasla
             code: '\'4',
             dropdownOrder: 2,
@@ -3991,7 +3991,29 @@ export const englishKeyboardDisambiguations = {
             charLanguage: 'arabic'
         }
     ],
-    'Allah': [
+    'ʾllāh': [
+        {
+            turkishText: 'ʾllāh',
+            arabicText: 'ﷲ',
+            code: '\'llah',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: null,
+            charLanguage: null
+        }
+    ],
+    'allāh': [
+        {
+            turkishText: 'allāh',
+            arabicText: 'ﷲ',
+            code: 'allah',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: null,
+            charLanguage: null
+        }
+    ],
+    'Allāh': [
         {
             turkishText: 'Allāh',
             arabicText: 'ﷲ',
@@ -4002,7 +4024,7 @@ export const englishKeyboardDisambiguations = {
             charLanguage: null
         }
     ],
-    'lillah': [
+    'lillāh': [
         {
             turkishText: 'lillāh',
             arabicText: 'لله',
@@ -8027,7 +8049,29 @@ export const turkishKeyboardDisambiguations = {
             charLanguage: 'arabic'
         }
     ],
-    'Allah': [
+    'ʾllāh': [
+        {
+            turkishText: 'ʾllāh',
+            arabicText: 'ﷲ',
+            code: '\'llah',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: null,
+            charLanguage: null
+        }
+    ],
+    'allāh': [
+        {
+            turkishText: 'allāh',
+            arabicText: 'ﷲ',
+            code: 'allah',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: null,
+            charLanguage: null
+        }
+    ],
+    'Allāh': [
         {
             turkishText: 'Allāh',
             arabicText: 'ﷲ',
@@ -8038,7 +8082,7 @@ export const turkishKeyboardDisambiguations = {
             charLanguage: null
         }
     ],
-    'lillah': [
+    'lillāh': [
         {
             turkishText: 'lillāh',
             arabicText: 'لله',
