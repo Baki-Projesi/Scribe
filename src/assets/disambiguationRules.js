@@ -1714,15 +1714,6 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'a',
-            arabicText: 'اء',
-            code: 'ahamza3',
-            dropdownOrder: 2,
-            needsDisambiguation: true,
-            comboCategory: 'hamza',
-            charLanguage: null
-        },
-        {
-            turkishText: 'a',
             arabicText: 'َ',
             code: 'a10',
             dropdownOrder: 4,
@@ -1808,15 +1799,6 @@ export const englishKeyboardDisambiguations = {
             turkishText: 'A',
             arabicText: 'آ',
             code: 'Ahamza2',
-            dropdownOrder: 2,
-            needsDisambiguation: true,
-            comboCategory: 'hamza',
-            charLanguage: null
-        },
-        {
-            turkishText: 'A',
-            arabicText: 'اء',
-            code: 'Ahamza3',
             dropdownOrder: 2,
             needsDisambiguation: true,
             comboCategory: 'hamza',
@@ -2807,15 +2789,6 @@ export const englishKeyboardDisambiguations = {
             turkishText: 'ˀa',
             arabicText: 'آ',
             code: '\'11',
-            dropdownOrder: 2,
-            needsDisambiguation: true,
-            comboCategory: 'hamza',
-            charLanguage: null
-        },
-        {
-            turkishText: 'ˀa',
-            arabicText: 'اء',
-            code: '\'12',
             dropdownOrder: 2,
             needsDisambiguation: true,
             comboCategory: 'hamza',
@@ -5814,15 +5787,6 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'a',
-            arabicText: 'اء',
-            code: 'ahamza3',
-            dropdownOrder: 2,
-            needsDisambiguation: true,
-            comboCategory: null,
-            charLanguage: null
-        },
-        {
-            turkishText: 'a',
             arabicText: 'َ',
             code: 'a10',
             dropdownOrder: 4,
@@ -5908,15 +5872,6 @@ export const turkishKeyboardDisambiguations = {
             turkishText: 'A',
             arabicText: 'آ',
             code: 'Ahamza2',
-            dropdownOrder: 2,
-            needsDisambiguation: true,
-            comboCategory: null,
-            charLanguage: null
-        },
-        {
-            turkishText: 'A',
-            arabicText: 'اء',
-            code: 'Ahamza3',
             dropdownOrder: 2,
             needsDisambiguation: true,
             comboCategory: null,
@@ -6907,15 +6862,6 @@ export const turkishKeyboardDisambiguations = {
             turkishText: 'ˀa',
             arabicText: 'آ',
             code: '\'11',
-            dropdownOrder: 2,
-            needsDisambiguation: true,
-            comboCategory: 'hamza',
-            charLanguage: null
-        },
-        {
-            turkishText: 'ˀa',
-            arabicText: 'اء',
-            code: '\'12',
             dropdownOrder: 2,
             needsDisambiguation: true,
             comboCategory: 'hamza',
