@@ -1915,7 +1915,7 @@ export const englishKeyboardDisambiguations = {
             charLanguage: 'arabic'
         },
         {
-            turkishText: '\'',
+            turkishText: 'ʾ',
             arabicText: '\u2009' + '\u200c' + '\u0671' + '\u200c', // alef wasla
             code: 'e14',
             dropdownOrder: 2,
@@ -2016,7 +2016,7 @@ export const englishKeyboardDisambiguations = {
             charLanguage: 'arabic'
         },
         {
-            turkishText: '\'',
+            turkishText: 'ʾ',
             arabicText: '\u2009' + '\u200c' + '\u0671' + '\u200c', // alef wasla
             code: 'E14',
             dropdownOrder: 2,
@@ -2777,10 +2777,19 @@ export const englishKeyboardDisambiguations = {
     ],
     '\'': [
         {
+            turkishText: 'ʾ',
+            arabicText: '',
+            code: 'hamza',
+            dropdownOrder: 0,
+            needsDisambiguation: true,
+            comboCategory: 'hamza',
+            charLanguage: null
+        },
+        {
             turkishText: 'ʿ',
             arabicText: 'ع',
             code: '\'2',
-            dropdownOrder: 0,
+            dropdownOrder: 2,
             needsDisambiguation: true,
             comboCategory: null,
             charLanguage: null
@@ -2791,74 +2800,11 @@ export const englishKeyboardDisambiguations = {
             code: '\'3',
             dropdownOrder: 2,
             needsDisambiguation: true,
-            comboCategory: 'hamza',
+            comboCategory: null,
             charLanguage: null
         },
         {
-            turkishText: 'ˀa',
-            arabicText: 'أ',
-            code: '\'10',
-            dropdownOrder: 2,
-            needsDisambiguation: true,
-            comboCategory: 'hamza',
-            charLanguage: null
-        },
-        {
-            turkishText: 'ˀa',
-            arabicText: 'آ',
-            code: '\'11',
-            dropdownOrder: 2,
-            needsDisambiguation: true,
-            comboCategory: 'hamza',
-            charLanguage: null
-        },
-        {
-            turkishText: 'ˀa',
-            arabicText: 'اء',
-            code: '\'12',
-            dropdownOrder: 2,
-            needsDisambiguation: true,
-            comboCategory: 'hamza',
-            charLanguage: null
-        },
-        {
-            turkishText: 'ˀe',
-            arabicText: 'أ',
-            code: '\'6',
-            dropdownOrder: 2,
-            needsDisambiguation: true,
-            comboCategory: 'hamza',
-            charLanguage: null
-        },
-        {
-            turkishText: 'ˀi',
-            arabicText: 'ٸ',
-            code: '\'7',
-            dropdownOrder: 2,
-            needsDisambiguation: true,
-            comboCategory: 'hamza',
-            charLanguage: null
-        },
-        {
-            turkishText: 'ˀo',
-            arabicText: 'ٶ',
-            code: '\'8',
-            dropdownOrder: 2,
-            needsDisambiguation: true,
-            comboCategory: 'hamza',
-            charLanguage: null
-        },
-        {
-            turkishText: 'ˀu',
-            arabicText: 'ٶ',
-            code: '\'9',
-            dropdownOrder: 2,
-            needsDisambiguation: true,
-            comboCategory: 'hamza',
-            charLanguage: null
-        },
-        {
-            turkishText: '\'',
+            turkishText: 'ʾ',
             arabicText: '\u2009' + '\u200c' + '\u0671' + '\u200c', // alef wasla
             code: '\'4',
             dropdownOrder: 2,
@@ -3150,9 +3096,9 @@ export const englishKeyboardDisambiguations = {
             charLanguage: null
         }
     ],
-    'li\'l': [
+    'liʾl': [
         {
-            turkishText: 'li\'l',
+            turkishText: 'liʾl',
             arabicText: 'لال',
             code: 'li\'l',
             dropdownOrder: 1,
@@ -3170,9 +3116,9 @@ export const englishKeyboardDisambiguations = {
             charLanguage: 'arabic'
         }
     ],
-    'Li\'l': [ 
+    'Liʾl': [ 
         {
-            turkishText: 'Li\'l',
+            turkishText: 'Liʾl',
             arabicText: 'لال',
             code: 'Li\'l',
             dropdownOrder: 1,
@@ -3230,9 +3176,9 @@ export const englishKeyboardDisambiguations = {
             charLanguage: 'arabic'
         }  
     ],
-    '\'d-d': [
+    'ʾd-d': [
         {
-            turkishText: '\'d-d',
+            turkishText: 'ʾd-d',
             arabicText: '\u2009' + '\u200c' + '\u0671' + 'لد', // alef wasla
             code: 'dSun1',
             dropdownOrder: 1,
@@ -3241,7 +3187,7 @@ export const englishKeyboardDisambiguations = {
             charLanguage: 'arabic'
         },
         {
-            turkishText: '\'ḍ-ḍ',
+            turkishText: 'ʾḍ-ḍ',
             arabicText: '\u2009' + '\u200c' + '\u0671' + 'لض', // alef wasla
             code: 'ddotSun1',
             dropdownOrder: 1,
@@ -3312,9 +3258,9 @@ export const englishKeyboardDisambiguations = {
             charLanguage: 'arabic'
         }
     ],
-    '\'dh-dh': [
+    'ʾdh-dh': [
         {
-            turkishText: '\'dh-dh',
+            turkishText: 'ʾdh-dh',
             arabicText: '\u2009' + '\u200c' + '\u0671' + 'لذ', // alef wasla
             code: 'dhSun1',
             dropdownOrder: 1,
@@ -3367,9 +3313,9 @@ export const englishKeyboardDisambiguations = {
             charLanguage: 'arabic'
         }
     ],
-    '\'n-n': [
+    'ʾn-n': [
         {
-            turkishText: '\'n-n',
+            turkishText: 'ʾn-n',
             arabicText: '\u2009' + '\u200c' + '\u0671' + 'لن', // alef wasla
             code: 'nSun1',
             dropdownOrder: 1,
@@ -3422,9 +3368,9 @@ export const englishKeyboardDisambiguations = {
             charLanguage: 'arabic'
         }
     ],
-    '\'r-r': [
+    'ʾr-r': [
         {
-            turkishText: '\'r-r',
+            turkishText: 'ʾr-r',
             arabicText: '\u2009' + '\u200c' + '\u0671' + 'لر', // alef wasla
             code: 'rSun1',
             dropdownOrder: 1,
@@ -3531,9 +3477,9 @@ export const englishKeyboardDisambiguations = {
             charLanguage: 'arabic'
         }
     ],
-    '\'s-s': [
+    'ʾs-s': [
         {
-            turkishText: '\'s-s',
+            turkishText: 'ʾs-s',
             arabicText: '\u2009' + '\u200c' + '\u0671' + 'لس', // alef wasla
             code: 'sSun1',
             dropdownOrder: 1,
@@ -3542,7 +3488,7 @@ export const englishKeyboardDisambiguations = {
             charLanguage: 'arabic'
         },
         {
-            turkishText: '\'ṣ-ṣ',
+            turkishText: 'ʾṣ-ṣ',
             arabicText: '\u2009' + '\u200c' + '\u0671' + 'لص', // alef wasla
             code: 'sdotSun1',
             dropdownOrder: 1,
@@ -3551,7 +3497,7 @@ export const englishKeyboardDisambiguations = {
             charLanguage: 'arabic'
         },
         {
-            turkishText: '\'ŝ-ŝ',
+            turkishText: 'ʾŝ-ŝ',
             arabicText: '\u2009' + '\u200c' + '\u0671' + 'لث', // alef wasla
             code: 'shatSun1',
             dropdownOrder: 1,
@@ -3560,7 +3506,7 @@ export const englishKeyboardDisambiguations = {
             charLanguage: 'arabic'
         },
         {
-            turkishText: '\'ş-ş',
+            turkishText: 'ʾş-ş',
             arabicText: '\u2009' + '\u200c' + '\u0671' + 'لش', // alef wasla
             code: 'scSun1',
             dropdownOrder: 1,
@@ -3667,9 +3613,9 @@ export const englishKeyboardDisambiguations = {
             charLanguage: 'arabic'
         }
     ],
-    '\'sh-sh': [
+    'ʾsh-sh': [
         {
-            turkishText: '\'sh-sh',
+            turkishText: 'ʾsh-sh',
             arabicText: '\u2009' + '\u200c' + '\u0671' + 'لش', // alef wasla
             code: 'shSun1',
             dropdownOrder: 1,
@@ -3740,9 +3686,9 @@ export const englishKeyboardDisambiguations = {
             charLanguage: 'arabic'
         }
     ],
-    '\'t-t': [
+    'ʾt-t': [
         {
-            turkishText: '\'t-t',
+            turkishText: 'ʾt-t',
             arabicText: '\u2009' + '\u200c' + '\u0671' + 'لت', // alef wasla
             code: 'tSun1',
             dropdownOrder: 1,
@@ -3751,7 +3697,7 @@ export const englishKeyboardDisambiguations = {
             charLanguage: 'arabic'
         },
         {
-            turkishText: '\'ṭ-ṭ',
+            turkishText: 'ʾṭ-ṭ',
             arabicText: '\u2009' + '\u200c' + '\u0671' + 'لط', // alef wasla
             code: 'tdotSun1',
             dropdownOrder: 1,
@@ -3822,9 +3768,9 @@ export const englishKeyboardDisambiguations = {
             charLanguage: 'arabic'
         }
     ],
-    '\'th-th': [
+    'ʾth-th': [
         {
-            turkishText: '\'th-th',
+            turkishText: 'ʾth-th',
             arabicText: '\u2009' + '\u200c' + '\u0671' + 'لث', // alef wasla
             code: 'thSun1',
             dropdownOrder: 1,
@@ -3931,9 +3877,9 @@ export const englishKeyboardDisambiguations = {
             charLanguage: 'arabic'
         }
     ],
-    '\'z-z': [
+    'ʾz-z': [
         {
-            turkishText: '\'z-z',
+            turkishText: 'ʾz-z',
             arabicText: '\u2009' + '\u200c' + '\u0671' + 'لز', // alef wasla
             code: 'zSun1',
             dropdownOrder: 1,
@@ -3942,7 +3888,7 @@ export const englishKeyboardDisambiguations = {
             charLanguage: 'arabic'
         },
         {
-            turkishText: '\'ẓ-ẓ',
+            turkishText: 'ʾẓ-ẓ',
             arabicText: '\u2009' + '\u200c' + '\u0671' + 'لظ', // alef wasla
             code: 'zdotSun1',
             dropdownOrder: 1,
@@ -3951,7 +3897,7 @@ export const englishKeyboardDisambiguations = {
             charLanguage: 'arabic'
         },
         {
-            turkishText: '\'ẕ-ẕ',
+            turkishText: 'ʾẕ-ẕ',
             arabicText: '\u2009' + '\u200c' + '\u0671' + 'لذ', // alef wasla
             code: 'zlineSun1',
             dropdownOrder: 1,
@@ -3960,7 +3906,7 @@ export const englishKeyboardDisambiguations = {
             charLanguage: 'arabic'
         },
         {
-            turkishText: '\'ż-ż',
+            turkishText: 'ʾż-ż',
             arabicText: '\u2009' + '\u200c' + '\u0671' + 'لظ', // alef wasla
             code: 'zdot2Sun1',
             dropdownOrder: 1,
@@ -4045,9 +3991,9 @@ export const englishKeyboardDisambiguations = {
             charLanguage: 'arabic'
         }
     ],
-    '\'llāh': [
+    'ʾllāh': [
         {
-            turkishText: '\'llāh',
+            turkishText: 'ʾllāh',
             arabicText: 'ﷲ',
             code: '\'llah',
             dropdownOrder: 1,
@@ -6016,7 +5962,7 @@ export const turkishKeyboardDisambiguations = {
             charLanguage: 'arabic'
         },
         {
-            turkishText: '\'',
+            turkishText: 'ʾ',
             arabicText: '\u2009' + '\u200c' + '\u0671' + '\u200c', // alef wasla
             code: 'e14',
             dropdownOrder: 2,
@@ -6117,7 +6063,7 @@ export const turkishKeyboardDisambiguations = {
             charLanguage: 'arabic'
         },
         {
-            turkishText: '\'',
+            turkishText: 'ʾ',
             arabicText: '\u2009' + '\u200c' + '\u0671' + '\u200c', // alef wasla
             code: 'e14',
             dropdownOrder: 2,
@@ -6877,10 +6823,19 @@ export const turkishKeyboardDisambiguations = {
     ],
     '\'': [
         {
+            turkishText: 'ʾ',
+            arabicText: '',
+            code: 'hamza',
+            dropdownOrder: 0,
+            needsDisambiguation: true,
+            comboCategory: null,
+            charLanguage: null
+        },
+        {
             turkishText: 'ʿ',
             arabicText: 'ع',
             code: '\'2',
-            dropdownOrder: 0,
+            dropdownOrder: 2,
             needsDisambiguation: true,
             comboCategory: null,
             charLanguage: null
@@ -6891,74 +6846,11 @@ export const turkishKeyboardDisambiguations = {
             code: '\'3',
             dropdownOrder: 2,
             needsDisambiguation: true,
-            comboCategory: 'hamza',
+            comboCategory: null,
             charLanguage: null
         },
         {
-            turkishText: 'ˀa',
-            arabicText: 'أ',
-            code: '\'10',
-            dropdownOrder: 2,
-            needsDisambiguation: true,
-            comboCategory: 'hamza',
-            charLanguage: null
-        },
-        {
-            turkishText: 'ˀa',
-            arabicText: 'آ',
-            code: '\'11',
-            dropdownOrder: 2,
-            needsDisambiguation: true,
-            comboCategory: 'hamza',
-            charLanguage: null
-        },
-        {
-            turkishText: 'ˀa',
-            arabicText: 'اء',
-            code: '\'12',
-            dropdownOrder: 2,
-            needsDisambiguation: true,
-            comboCategory: 'hamza',
-            charLanguage: null
-        },
-        {
-            turkishText: 'ˀe',
-            arabicText: 'أ',
-            code: '\'6',
-            dropdownOrder: 2,
-            needsDisambiguation: true,
-            comboCategory: 'hamza',
-            charLanguage: null
-        },
-        {
-            turkishText: 'ˀi',
-            arabicText: 'ٸ',
-            code: '\'7',
-            dropdownOrder: 2,
-            needsDisambiguation: true,
-            comboCategory: 'hamza',
-            charLanguage: null
-        },
-        {
-            turkishText: 'ˀo',
-            arabicText: 'ٶ',
-            code: '\'8',
-            dropdownOrder: 2,
-            needsDisambiguation: true,
-            comboCategory: 'hamza',
-            charLanguage: null
-        },
-        {
-            turkishText: 'ˀu',
-            arabicText: 'ٶ',
-            code: '\'9',
-            dropdownOrder: 2,
-            needsDisambiguation: true,
-            comboCategory: 'hamza',
-            charLanguage: null
-        },
-        {
-            turkishText: '\'',
+            turkishText: 'ʾ',
             arabicText: '\u2009' + '\u200c' + '\u0671' + '\u200c', // alef wasla
             code: '\'4',
             dropdownOrder: 2,
@@ -7252,9 +7144,9 @@ export const turkishKeyboardDisambiguations = {
             charLanguage: null
         }
     ],
-    'li\'l': [
+    'liʾl': [
         {
-            turkishText: 'li\'l',
+            turkishText: 'liʾl',
             arabicText: 'لال',
             code: 'li\'l',
             dropdownOrder: 1,
@@ -7272,9 +7164,9 @@ export const turkishKeyboardDisambiguations = {
             charLanguage: 'arabic'
         }
     ],
-    'Li\'l': [ 
+    'Liʾl': [ 
         {
-            turkishText: 'Li\'l' + '\ufeff',
+            turkishText: 'Liʾl' + '\ufeff',
             arabicText: 'لال',
             code: 'Li\'l',
             dropdownOrder: 1,
@@ -7332,9 +7224,9 @@ export const turkishKeyboardDisambiguations = {
             charLanguage: 'arabic'
         }
     ],
-    '\'d-d': [
+    'ʾd-d': [
         {
-            turkishText: '\'d-d',
+            turkishText: 'ʾd-d',
             arabicText: '\u2009' + '\u200c' + '\u0671' + 'لد', // alef wasla
             code: 'dSun1',
             dropdownOrder: 1,
@@ -7343,7 +7235,7 @@ export const turkishKeyboardDisambiguations = {
             charLanguage: 'arabic'
         },
         {
-            turkishText: '\'ḍ-ḍ',
+            turkishText: 'ʾḍ-ḍ',
             arabicText: '\u2009' + '\u200c' + '\u0671' + 'لض', // alef wasla
             code: 'ddotSun1',
             dropdownOrder: 1,
@@ -7414,9 +7306,9 @@ export const turkishKeyboardDisambiguations = {
             charLanguage: 'arabic'
         }
     ],
-    '\'dh-dh': [
+    'ʾdh-dh': [
         {
-            turkishText: '\'dh-dh',
+            turkishText: 'ʾdh-dh',
             arabicText: '\u2009' + '\u200c' + '\u0671' + 'لذ', // alef wasla
             code: 'dhSun1',
             dropdownOrder: 1,
@@ -7469,9 +7361,9 @@ export const turkishKeyboardDisambiguations = {
             charLanguage: 'arabic'
         }
     ],
-    '\'n-n': [
+    'ʾn-n': [
         {
-            turkishText: '\'n-n',
+            turkishText: 'ʾn-n',
             arabicText: '\u2009' + '\u200c' + '\u0671' + 'لن', // alef wasla
             code: 'nSun1',
             dropdownOrder: 1,
@@ -7524,9 +7416,9 @@ export const turkishKeyboardDisambiguations = {
             charLanguage: 'arabic'
         }
     ],
-    '\'r-r': [
+    'ʾr-r': [
         {
-            turkishText: '\'r-r',
+            turkishText: 'ʾr-r',
             arabicText: '\u2009' + '\u200c' + '\u0671' + 'لر', // alef wasla
             code: 'rSun1',
             dropdownOrder: 1,
@@ -7615,9 +7507,9 @@ export const turkishKeyboardDisambiguations = {
             charLanguage: 'arabic'
         }
     ],
-    '\'s-s': [
+    'ʾs-s': [
         {
-            turkishText: '\'s-s',
+            turkishText: 'ʾs-s',
             arabicText: '\u2009' + '\u200c' + '\u0671' + 'لس', // alef wasla
             code: 'sSun1',
             dropdownOrder: 1,
@@ -7626,7 +7518,7 @@ export const turkishKeyboardDisambiguations = {
             charLanguage: 'arabic'
         },
         {
-            turkishText: '\'ṣ-ṣ',
+            turkishText: 'ʾṣ-ṣ',
             arabicText: '\u2009' + '\u200c' + '\u0671' + 'لص', // alef wasla
             code: 'sdotSun1',
             dropdownOrder: 1,
@@ -7635,7 +7527,7 @@ export const turkishKeyboardDisambiguations = {
             charLanguage: 'arabic'
         },
         {
-            turkishText: '\'ŝ-ŝ',
+            turkishText: 'ʾŝ-ŝ',
             arabicText: '\u2009' + '\u200c' + '\u0671' + 'لث', // alef wasla
             code: 'shatSun1',
             dropdownOrder: 1,
@@ -7724,9 +7616,9 @@ export const turkishKeyboardDisambiguations = {
             charLanguage: 'arabic'
         }
     ],
-    '\'ş-ş': [
+    'ʾş-ş': [
         {
-            turkishText: '\'ş-ş',
+            turkishText: 'ʾş-ş',
             arabicText: '\u2009' + '\u200c' + '\u0671' + 'لش', // alef wasla
             code: 'scSun1',
             dropdownOrder: 1,
@@ -7779,9 +7671,9 @@ export const turkishKeyboardDisambiguations = {
             charLanguage: 'arabic'
         }
     ],
-    '\'sh-sh': [
+    'ʾsh-sh': [
         {
-            turkishText: '\'sh-sh',
+            turkishText: 'ʾsh-sh',
             arabicText: '\u2009' + '\u200c' + '\u0671' + 'لش', // alef wasla
             code: 'shSun1',
             dropdownOrder: 1,
@@ -7852,9 +7744,9 @@ export const turkishKeyboardDisambiguations = {
             charLanguage: 'arabic'
         }
     ],
-    '\'t-t': [
+    'ʾt-t': [
         {
-            turkishText: '\'t-t',
+            turkishText: 'ʾt-t',
             arabicText: '\u2009' + '\u200c' + '\u0671' + 'لت', // alef wasla
             code: 'tSun1',
             dropdownOrder: 1,
@@ -7863,7 +7755,7 @@ export const turkishKeyboardDisambiguations = {
             charLanguage: 'arabic'
         },
         {
-            turkishText: '\'ṭ-ṭ',
+            turkishText: 'ʾṭ-ṭ',
             arabicText: '\u2009' + '\u200c' + '\u0671' + 'لط', // alef wasla
             code: 'tdotSun1',
             dropdownOrder: 1,
@@ -7934,9 +7826,9 @@ export const turkishKeyboardDisambiguations = {
             charLanguage: 'arabic'
         }
     ],
-    '\'th-th': [
+    'ʾth-th': [
         {
-            turkishText: '\'th-th',
+            turkishText: 'ʾth-th',
             arabicText: '\u2009' + '\u200c' + '\u0671' + 'لث', // alef wasla
             code: 'thSun1',
             dropdownOrder: 1,
@@ -8043,9 +7935,9 @@ export const turkishKeyboardDisambiguations = {
             charLanguage: 'arabic'
         }
     ],
-    '\'z-z': [
+    'ʾz-z': [
         {
-            turkishText: '\'z-z',
+            turkishText: 'ʾz-z',
             arabicText: '\u2009' + '\u200c' + '\u0671' + 'لز', // alef wasla
             code: 'zSun1',
             dropdownOrder: 1,
@@ -8054,7 +7946,7 @@ export const turkishKeyboardDisambiguations = {
             charLanguage: 'arabic'
         },
         {
-            turkishText: '\'ẓ-ẓ',
+            turkishText: 'ʾẓ-ẓ',
             arabicText: '\u2009' + '\u200c' + '\u0671' + 'لظ', // alef wasla
             code: 'zdotSun1',
             dropdownOrder: 1,
@@ -8063,7 +7955,7 @@ export const turkishKeyboardDisambiguations = {
             charLanguage: 'arabic'
         },
         {
-            turkishText: '\'ẕ-ẕ',
+            turkishText: 'ʾẕ-ẕ',
             arabicText: '\u2009' + '\u200c' + '\u0671' + 'لذ', // alef wasla
             code: 'zlineSun1',
             dropdownOrder: 1,
@@ -8072,7 +7964,7 @@ export const turkishKeyboardDisambiguations = {
             charLanguage: 'arabic'
         },
         {
-            turkishText: '\'ż-ż',
+            turkishText: 'ʾż-ż',
             arabicText: '\u2009' + '\u200c' + '\u0671' + 'لظ', // alef wasla
             code: 'zdot2Sun1',
             dropdownOrder: 1,
@@ -8157,9 +8049,9 @@ export const turkishKeyboardDisambiguations = {
             charLanguage: 'arabic'
         }
     ],
-    '\'llāh': [
+    'ʾllāh': [
         {
-            turkishText: '\'llāh',
+            turkishText: 'ʾllāh',
             arabicText: 'ﷲ',
             code: '\'llah',
             dropdownOrder: 1,
