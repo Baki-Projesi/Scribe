@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import LanguageTabBar from "./LanguageTabBar";
 import OutputBox from './OutputBox';
 import InputBox from './InputBox';
+import ImageUpload from './ImageUpload';
 import '../styles/Transcribe.css';
 import {
     Editor,
@@ -19,10 +20,17 @@ import {
 } from 'draft-js';
 import findWithRegex from '../utils/findWithRegex';
 import { adjustSelectionOffset } from '../utils/selectionStateHelpers';
+import getCurrentWordBuffer from '../utils/getCurrentWordBuffer';
+import { convertKeyGroupToDisambiguationArray, groupByTurkishKey } from '../utils/groupByKey';
 import decorateComponentWithProps from 'decorate-component-with-props';
+import CommentPopup from './CommentPopup';
+import DisplayComment from './DisplayComment'
 import AmbiguousCharacter from './AmbiguousCharacter';
 import DisambiguatedCharacter from './DisambiguatedCharacter';
 import { englishKeyboardDisambiguations, turkishKeyboardDisambiguations } from '../../assets/disambiguationRules';
+import bufferComboSearch from '../utils/bufferComboSearch';
+import needsDropdown from '../utils/needsDropdown';
+import generateDraftStateObject from '../utils/generateDraftStateObject';
 
 const store = {
     mostRecentAmbiguousCharCoords: null
@@ -45,7 +53,6 @@ const commentProps = {
     }
 
 export default class Transcribe extends Component {
-
     constructor(props, context) {
         super(props, context);
 
@@ -64,19 +71,7 @@ export default class Transcribe extends Component {
             }
         ]);
         const initEditorState = EditorState.createEmpty(decorator);
-        this.state = {
-            editorState: initEditorState,
-            contentState: initEditorState.getCurrentContent(),
-            oldSelectionState: initEditorState.getSelection(),
-            startKey: initEditorState.getSelection().getStartKey(),
-            startOffset: initEditorState.getSelection().getStartOffset(),
-            endKey: initEditorState.getSelection().getEndKey(),
-            endOffset: initEditorState.getSelection().getEndOffset(),
-            currentBlock: initEditorState.getCurrentContent().getBlockForKey(initEditorState.getSelection().getStartKey()),
-            showCommentInput: false,
-            commentContent: '',
-            usingTurkishKeyboard: false
-        };
+        this.state = generateDraftStateObject(initEditorState);
 
         this.logState = () => {
             const content = this.state.editorState.getCurrentContent();
@@ -86,16 +81,7 @@ export default class Transcribe extends Component {
         this.focus = () => this.refs.editor.focus();
 
         this.onChange = (editorState) => {
-            let newState, current = {
-                editorState: editorState,
-                contentState: editorState.getCurrentContent(),
-                oldSelectionState: editorState.getSelection(),
-                startKey: editorState.getSelection().getStartKey(),
-                startOffset: editorState.getSelection().getStartOffset(),
-                endKey: editorState.getSelection().getEndKey(),
-                endOffset: editorState.getSelection().getEndOffset(),
-                currentBlock: editorState.getCurrentContent().getBlockForKey(editorState.getSelection().getStartKey())
-            }
+            let newState, current = generateDraftStateObject(editorState);
 
             if (current.oldSelectionState.isCollapsed()) {
                 // Selection is just the cursor w/ no characters highlighted
@@ -115,7 +101,7 @@ export default class Transcribe extends Component {
         this.removeComment = this._removeComment.bind(this);
         this.keyBindingFn = this._keyBindingFn.bind(this);
         this.toggleCheckboxValue = this._toggleCheckboxValue.bind(this);
-        this.handleKeyCommand = this._handleKeyCommand.bind(this)
+        this.handleKeyCommand = this._handleKeyCommand.bind(this);
     }
 
     //captures global key events, results of this function (a special command string) are passed to KeyCommand() before the window interprets them
@@ -129,8 +115,13 @@ export default class Transcribe extends Component {
             return 'editor-newline';
         }
 
-        if (e.which !== 8 && e.which !== 46) {
-            if (this.state.showDropdown) { // backspace, delete
+        if (e.which !== 8 && e.which !== 46) { // backspace, delete
+            if (this.state.showDropdown) {
+                let characterBuffer = getCurrentWordBuffer(
+                    this.state.editorState.getCurrentContent().getBlockForKey(this.state.editorState.getSelection().getStartKey()),
+                    this.state.editorState.getSelection().getStartOffset());
+                let charRules = this.state.usingTurkishKeyboard ? turkishKeyboardDisambiguations : englishKeyboardDisambiguations;
+                let comboOptions = bufferComboSearch(characterBuffer + e.key, charRules);
                 let str = 'dropdown-';
                 const keyCodeBase = 48;
                 const numOptions = this.state.disambiguationOptions.length;
@@ -140,28 +131,41 @@ export default class Transcribe extends Component {
                     optionMap[(keyCodeBase * 2) + i] = (str + i); // numpad 1-9
                 }
 
-                if ((e.which >= 49 && e.which <= 57) || (e.which >= 97 && e.which <= 105) && optionMap[e.which]) {
-                    return optionMap[e.which];
-                } else {
+                if ((e.which >= 49 && e.which <= 49 + numOptions) || (e.which >= 97 && e.which <= 97 + numOptions) && optionMap[e.which]) {
+                    return optionMap[e.which]; //e.g. 'dropdown-2'
+                }
+                // else if (comboOptions.length > 0) {
+                //     //If they type another character that could be a combination 
+                //     console.log('potential combo');
+                // }
+                else {
                     //If anything besides Backspace or a number is chosen,
-                    // use default disambiguation choice and have the editor  the normal keypress
+                    // use default disambiguation choice and have the editor use the normal keypress
                     let newState = Object.assign(this.state, this._confirmDisambiguation(0, this.state.editorState));
                     this.setState(newState);
                 }
-            } else if (this.state.disambiguationOptions && this.state.disambiguationOptions[0].code === 'sp') {
+            } else if (this.state.disambiguationOptions &&
+                this.state.disambiguationOptions.length > 0 &&
+                this.state.disambiguationOptions[0].code === 'sp') {
                 //we don't show dropdown for spaces, but they need an entity anyways
                 let newState = Object.assign(this.state, this._confirmDisambiguation(0, this.state.editorState));
                 this.setState(newState);
+            } else if (!needsDropdown(e.key)) {
+                //arabic numbers don't need dropdowns, translate them immediately
+
             }
         }
-        
+
         return getDefaultKeyBinding(e);
     }
 
     //This is passed a value from _keyBindingFn, either a special string or the default
     _handleKeyCommand(command) {
-        if (command === 'editor-space') {
-
+        if (command === 'require-dropdown') {
+            console.log(command)
+            //TODO: remove className .flash and add it back to <Dropdown />
+            // https://github.com/facebook/react/issues/7142
+            // https://facebook.github.io/react/docs/animation.html
         }
         if (command === 'editor-newline') {
             let newState = this.state;
@@ -169,6 +173,7 @@ export default class Transcribe extends Component {
                 newState = Object.assign(this.state, this._confirmDisambiguation(0, this.state.editorState));
             }
             newState.editorState = this.keyCommandInsertNewline(this.state.editorState);
+            newState = generateDraftStateObject(newState.editorState);
             this.setState(newState);
 
             return 'handled';
@@ -184,7 +189,16 @@ export default class Transcribe extends Component {
         if (command.startsWith('dropdown') && this.state.disambiguationOptions) {
             let choice = Number(command.charAt(command.length - 1));
             let newState = this.state.editorState;
-            newState = this._confirmDisambiguation(choice - 1, this.state.editorState);
+
+            if (choice === 1 || // first choice always default
+            this.state.dropDownCount < 2 || // no grouping
+                (this.state.combinationOptions && this.state.combinationOptions.length + 1 >= choice)) //chose a combination
+            {
+                newState = this._confirmDisambiguation(choice - 1, this.state.editorState);
+            }
+            else {
+                newState = this._confirmVowelCategory(choice, this.state.editorState);
+            }
 
             this.setState(newState);
             return 'handled';
@@ -195,44 +209,56 @@ export default class Transcribe extends Component {
 
     //TODO: move comment prompt into a floating tooltip
     _promptForComment(current) {
-        const blockWithCommentAtBeginning = current.contentState.getBlockForKey(current.startKey);
-        const commentKey = blockWithCommentAtBeginning.getEntityAt(current.startOffset);
+        const {editorState} = this.state;
+        const selection = editorState.getSelection();
+        if (!selection.isCollapsed()) {
+            const contentState = editorState.getCurrentContent();
+            const startKey = editorState.getSelection().getStartKey();
+            const startOffset = editorState.getSelection().getStartOffset();
+            const blockWithCommentAtBeginning = contentState.getBlockForKey(startKey);
+            const commentKey = blockWithCommentAtBeginning.getEntityAt(startOffset);
 
-        let commentText = '';
-        if (commentKey) {
-            commentText = current.contentState.getEntity(commentKey).getData().commentText;
+            let commentContent = ""
+            if (commentKey) {
+                const commentInstance = contentState.getEntity(commentKey);
+                commentContent = commentInstance.getData().val;
+                console.log(commentKey)
+                console.log(commentInstance)
+
+            }
+
+            // add positioning code here
+            Object.assign(current, {
+                showCommentInput: true,
+                showDropdown: false,
+                // commentPopupPosition: position,
+                commentVal: commentContent, // might not need comma here
+            });
+
         }
 
-        let commentPopupHeight = 44, position, relativeParent;
-        // const relativeParent = getRelativeParentElement(this.toolbar.parentElement);
-        const relativeRect = relativeParent ? relativeParent.getBoundingClientRect() : document.body.getBoundingClientRect();
-        const selectionRect = getVisibleSelectionRect(window);
-        position = {
-            //top: (selectionRect.top - relativeRect.top) - commentPopupHeight,
-            //left: (selectionRect.left - relativeRect.left) + (selectionRect.width / 2),
-            //transform: 'translate(-50%) scale(1)',
-            //transition: 'transform 0.15s cubic-bezier(.3,1.2,.2,1)',
-        };
 
-        Object.assign(current, {
-            showCommentInput: true,
-            commentPopupPosition: position,
-            commentContent: commentText,
-            //showDropdown: false
-        });
-
+        // let commentPopupHeight = 44, position, relativeParent;
+        // // const relativeParent = getRelativeParentElement(this.toolbar.parentElement);
+        // const relativeRect = relativeParent ? relativeParent.getBoundingClientRect() : document.body.getBoundingClientRect();
+        // const selectionRect = getVisibleSelectionRect(window);
+        // position = {
+        //     top: (selectionRect.top - relativeRect.top) - commentPopupHeight,
+        //     left: (selectionRect.left - relativeRect.left) + (selectionRect.width / 2),
+        //     transform: 'translate(-50%) scale(1)',
+        //     transition: 'transform 0.15s cubic-bezier(.3,1.2,.2,1)',
+        // };
         return current;
 
     }
 
     _confirmComment(e) {
-        e.preventDefault();
-        const { editorState, commentContent } = this.state;
+        const {editorState, commentVal} = this.state;
         const contentState = editorState.getCurrentContent();
         const contentStateWithEntity = contentState.createEntity(
-            'COMMENT',
-            'IMMUTABLE',
-            { comment: commentContent }
+          'COMMENT',
+          'MUTABLE',
+          {val: commentVal}
         );
 
         const entityKey = contentStateWithEntity.getLastCreatedEntityKey();
@@ -245,10 +271,8 @@ export default class Transcribe extends Component {
                 entityKey
             ),
             showCommentInput: false,
-            commentContent: '',
-        }, () => {
-            setTimeout(() => this.refs.editor.focus(), 0);
-        });
+            commentVal: '',
+        })
     }
 
 
@@ -263,12 +287,22 @@ export default class Transcribe extends Component {
     //Removes comment from selection
     _removeComment(e) {
         e.preventDefault();
+
         const { editorState } = this.state;
+        const contentState = editorState.getCurrentContent();
         const selection = editorState.getSelection();
+        const startKey = selection.getStartKey();
+        const startOffset = editorState.getSelection().getStartOffset();
+        const blockWithCommentAtBeginning = contentState.getBlockForKey(startKey);
+        const commentKey = blockWithCommentAtBeginning.getEntityAt(startOffset);
+        console.log(commentKey)
+
+        var newContent = RichUtils.toggleLink(editorState, selection, commentKey)
 
         if (!selection.isCollapsed()) {
             this.setState({
-                editorState: RichUtils.toggleLink(editorState, selection, null),
+                editorState: EditorState.push(editorState, newContent, 'apply-entity'),
+                showCommentInput: false,   
             });
         }
     }
@@ -276,25 +310,53 @@ export default class Transcribe extends Component {
     //TODO: move into dropdown positioned under cursor
     _promptForDisambiguation(current) {
         let charRules = this.state.usingTurkishKeyboard ? turkishKeyboardDisambiguations : englishKeyboardDisambiguations;
-        let showDropdown = false, disambiguationOptions;
+        let showDropdown = false,
+            dropDownCount = 0,
+            disambiguationOptions = [],
+            characterBuffer = this.state.characterBuffer,
+            combinationOptions = [],
+            disambiguationGroupData;
+
         if (current.startOffset > 0) {
             const previousChar = current.currentBlock.getText().charAt(current.startOffset - 1);
+            characterBuffer = getCurrentWordBuffer(current.currentBlock, current.startOffset);
 
-            //TODO: find a better way to check if the previous character has disambiguation metadata
             const previousEntity = current.currentBlock.getEntityAt(current.startOffset - 1);
             if (previousEntity === null) {
-                //previous character isn't a disambiguated character entity
+
+                //check buffer to see if we have a combination match to offer
+                combinationOptions = bufferComboSearch(characterBuffer, charRules);
+                if (combinationOptions.length > 0 && characterBuffer.length > 1) {
+                    disambiguationOptions = disambiguationOptions.concat(combinationOptions);
+                    dropDownCount = 1;
+                }
+
+                //add disambiguation options based on previous typed char
                 if (charRules[previousChar] !== undefined) {
                     showDropdown = previousChar !== ' ';
-                    disambiguationOptions = charRules[previousChar]
+                    if (charRules[previousChar].length + combinationOptions.length > 9) {
+                        //more than 9 options in total, need to group single-char options
+
+                        disambiguationGroupData = groupByTurkishKey(charRules[previousChar]);
+                        disambiguationOptions = disambiguationOptions.concat(convertKeyGroupToDisambiguationArray(disambiguationGroupData));
+                        disambiguationOptions.unshift(charRules[previousChar][0]); //add default option for quick typing
+                        dropDownCount = 2;
+                    } else {
+                        disambiguationOptions = disambiguationOptions.concat(charRules[previousChar]);
+                        dropDownCount = 1;
+                    }
                 }
             }
         }
 
         Object.assign(current, {
+            combinationOptions: combinationOptions,
+            disambiguationGroupData: disambiguationGroupData,
             showDropdown: showDropdown,
+            dropDownCount: dropDownCount,
             disambiguationOptions: disambiguationOptions,
-            //showCommentInput: false
+            showCommentInput: false,
+            characterBuffer: characterBuffer
         });
 
         return current;
@@ -302,13 +364,13 @@ export default class Transcribe extends Component {
 
     //this is called during handleKeyCommand when it detects a dropdown choice.
     _confirmDisambiguation(choiceIndex, editorState) {
-        var choosenText;
+        let chosenText;
         if (this.state.disambiguationOptions[choiceIndex].representedText !== undefined) {
-            choosenText = this.state.disambiguationOptions[choiceIndex].representedText;
+            chosenText = this.state.disambiguationOptions[choiceIndex].representedText;
         } else {
-            choosenText = this.state.disambiguationOptions[choiceIndex].turkishText;
+            chosenText = this.state.disambiguationOptions[choiceIndex].turkishText;
         }
-        const displayText = choosenText;
+        const displayText = chosenText;
         const contentState = editorState.getCurrentContent();
         let contentStateWithEntity = contentState.createEntity(
             'DISAMBIGUATION',
@@ -316,7 +378,19 @@ export default class Transcribe extends Component {
             this.state.disambiguationOptions[choiceIndex]
         );
         const entityKey = contentStateWithEntity.getLastCreatedEntityKey();
-        let newSelectionState = adjustSelectionOffset(editorState.getSelection(), -1, 0);
+        let newSelectionState;
+
+        if (this.state.combinationOptions && this.state.combinationOptions.length > 0 && this.state.combinationOptions.length - choiceIndex > -1) {
+            //user chose a combination, need to replace text backwards
+            newSelectionState = adjustSelectionOffset(editorState.getSelection(), 0 - chosenText.length, 0);
+        } else {
+            if (chosenText.length > 1) {
+                //user chose a double-consonant, need to add text forwards
+                let str = new Array(chosenText.length).join(' ');
+                contentStateWithEntity = Modifier.insertText(contentStateWithEntity, editorState.getSelection(), str);
+            }
+            newSelectionState = adjustSelectionOffset(editorState.getSelection(), -1, (-1 + chosenText.length));
+        }
 
         //Replace the typed text with the displayText
         contentStateWithEntity = Modifier.replaceText(contentStateWithEntity, newSelectionState, displayText, null, entityKey);
@@ -332,13 +406,24 @@ export default class Transcribe extends Component {
             entityKey
         );
 
-        newSelectionState = adjustSelectionOffset(newSelectionState, 1, 0);
+        newSelectionState = adjustSelectionOffset(newSelectionState, chosenText.length, 0);
         newEditorState = EditorState.set(newEditorState, { selection: newSelectionState });
 
         return {
+            dropDownCount: this.state.dropDownCount - 1,
             editorState: newEditorState,
             showDropdown: false,
             disambiguationOptions: null
+        }
+    }
+
+    _confirmVowelCategory(choiceIndex, editorState) {
+        let key = this.state.disambiguationOptions[choiceIndex - 1].turkishText;
+
+        return {
+            dropDownCount: this.state.dropDownCount - 1,
+            disambiguationOptions: this.state.disambiguationGroupData[key],
+            editorState: editorState
         }
     }
 
@@ -350,8 +435,15 @@ export default class Transcribe extends Component {
         return EditorState.push(editorState, contentState, 'split-block');
     }
 
-    _toggleCheckboxValue() {
-        let usingTurkishKeyboard = !this.state.usingTurkishKeyboard;
+    _toggleCheckboxValue(value) {
+        console.log(value)
+        // will have to come back to this once we have more keyboards
+        var usingTurkishKeyboard;
+        if (value == "Turkish Keyboard") {
+            usingTurkishKeyboard = true;
+        } else {
+            usingTurkishKeyboard = false;
+        }
         let editorState = this.state.editorState;
         if (usingTurkishKeyboard) {
             editorState = this.enableTurkishKeyboardDecorations(editorState);
@@ -398,6 +490,7 @@ export default class Transcribe extends Component {
 
     //Searches through a block of content (newLine separated) and finds embedded COMMENT entities
     findCommentEntities(contentBlock, callback, contentState) {
+
         contentBlock.findEntityRanges(
             (character) => {
                 const entityKey = character.getEntity();
@@ -407,6 +500,7 @@ export default class Transcribe extends Component {
                 );
             },
             callback
+        //     // specify props
         );
     }
 
@@ -437,31 +531,55 @@ export default class Transcribe extends Component {
     }
 
     render() {
+        const {inputText, } = this.state;
+        let whichKeyboard = "";
+        if (!this.state.usingTurkishKeyboard) {
+            whichKeyboard = "English Keyboard"
+        } else {
+            whichKeyboard = "Turkish Keyboard"
+        }
         return (
             <div id="tool-window">
-                <InputBox
-                    onInputTextChange={this.onInputTextChange}
-                    editorState={this.state.editorState}
-                    onChange={this.onChange}
-                    handleKeyCommand={this.handleKeyCommand}
-                    keyBindingFn={this.keyBindingFn}
-                    showDropdown={this.state.showDropdown}
-                    disambiguationOptions={this.state.disambiguationOptions}
-                    store={store}
-                    showCommentInput={this.state.showCommentInput}
-                />
-                <input
-                    onClick={this.logState}
-                    className={'checkboxes'}
-                    onChange={this.toggleCheckboxValue}
-                    id="turkish_keyboard_checkbox"
-                    ref="turkish_keyboard_checkbox"
-                    type="checkbox"
-                />
-                <label htmlFor="turkish_keyboard_checkbox">I'm using a Turkish keyboard</label>
-                <OutputBox
-                    transcribeState={this.state}
-                />
+                <div className={'tool-window_inputs'}>
+                    <InputBox
+                        onInputTextChange={this.onInputTextChange}
+                        editorState={this.state.editorState}
+                        onChange={this.onChange}
+                        handleKeyCommand={this.handleKeyCommand}
+                        keyBindingFn={this.keyBindingFn}
+                        showDropdown={this.state.showDropdown}
+                        disambiguationOptions={this.state.disambiguationOptions}
+                        store={store}
+                        showCommentInput={this.state.showCommentInput}
+                        commentVal={this.state.commentVal}
+                        onCommentChange={this.onCommentChange}
+                        confirmComment={this.confirmComment}
+                        onCommentInputKeyDown={this.onCommentInputKeyDown}
+                        removeComment={this.removeComment}
+                    />
+                    <ImageUpload />
+
+                    <OutputBox
+                        transcribeState={this.state}
+                    />
+                </div>
+                <div>
+                    <label htmlFor="turkish_keyboard_checkbox" className="keyboardSelect">
+                        <button id="demo-menu-top-left"
+                                className="mdl-button mdl-js-button mdl-button--icon">
+                            <i className="material-icons">more_vert</i>
+                        </button>
+                        <span>{whichKeyboard}</span>
+
+
+                        <ul className="mdl-menu mdl-menu--top-left mdl-js-menu mdl-js-ripple-effect"
+                            data-mdl-for="demo-menu-top-left">
+                                <li className="mdl-menu__item" onClick={this.toggleCheckboxValue.bind(this, "Turkish Keyboard")}>Turkish Keyboard</li>
+                                <li className="mdl-menu__item" onClick={this.toggleCheckboxValue.bind(this, "English Keyboard")}>English Keyboard</li>
+                        </ul>        
+                    </label>
+
+                </div>
             </div>
         );
     }

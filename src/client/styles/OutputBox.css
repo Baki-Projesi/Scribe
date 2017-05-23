@@ -1,7 +1,28 @@
 .outputLine {
-    font-size: 28px;
+    font-size: 22px;
+    word-wrap: normal; 
+    width: 100%;
+    overflow-wrap: break-word;
+    display: block;
 }
 
 p {
-    margin: 0.25em;
+    margin: 0.1em;
 }
+
+
+
+.outputbox-display {
+    text-align: right;
+    width: 33%;
+    border: 1px solid #ccc;
+    background-color: white;
+    padding: 1em;
+    max-height: 70vh;
+
+
+}
+
+/*.editor {
+    padding: 0;
+}*/

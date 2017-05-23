@@ -1,3 +1,19 @@
 #tool-window {
-    padding: 40px;
+    padding: 2em;
+    padding-bottom: .5em;
+    height: 85vh;
 }
+
+.tool-window_inputs {
+    display: flex;
+    height: 90%;
+}
+
+.keyboardSelect {
+    width: 25%;
+    float: left;
+    margin: 1em;
+    text-align: left;
+
+}
+

@@ -1,6 +1,9 @@
 #node cache
 /node_modules/.cache/*
 
+#node modules
+/node_modules
+
 #ds store
 .DS_Store
 

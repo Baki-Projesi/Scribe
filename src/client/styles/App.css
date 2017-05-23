@@ -2,23 +2,24 @@
   text-align: center;
 }
 
-#title-nav {
+
+.title-nav {
   text-align: left;
-  margin-top: 8px;
+  margin: 0;
+  margin-bottom: 15px;
 }
 
 .App-header {
   background-color: #E85059;
-  height: 40px;
-  padding: 20px;
+  height: 35px;
+  padding: 15px;
   color: white;
 }
 
 .App-intro {
-  font-size: large;
+  /*font-size: large;*/
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+h2 {
+  font-size: 2em;
 }

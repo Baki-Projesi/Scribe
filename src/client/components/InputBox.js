@@ -47,40 +47,55 @@ export default class InputBox extends Component {
             showCommentInput,
             store } = this.props;
         this.focus = () => this.refs.editor.focus();
-
-
     }
 
 
+
+    //Pressing enter saves the comment
+    _onCommentInputKeyDown(e) {
+        if (e.which === 13) {
+            this._confirmComment(e);
+        }
+    }
+
+    //Removes comment from selection
+    _removeComment(e) {
+        e.preventDefault();
+        const { editorState } = this.state;
+        const selection = editorState.getSelection();
+
+        if (!selection.isCollapsed()) {
+            this.setState({
+                editorState: RichUtils.toggleLink(editorState, selection, null),
+            });
+        }
+    }
+
     render() {
-        // let commentInput, dropdown;
-        //
-        // //TODO: move to hovering tooltip near cursor
-        // if (this.props.showCommentInput) {
-        //     var commentInput = <CommentPopup
-        //         onCommentChange={this.onCommentChange}
-        //         value={this.state.commentContent}
-        //         onCommentInputKeyDown={this.onCommentInputKeyDown}
-        //         confirmComment={this.confirmComment}
-        //     />
-        // }
-        //
+        let commentInput;
+        if (this.props.showCommentInput) {
+            commentInput =
+            <div>
+                <CommentPopup 
+                    onCommentChange={this.props.onCommentChange} 
+                    onKeyDown={this.props.onCommentInputKeyDown}
+                    value={this.props.commentVal}
+                    confirmComment={this.props.confirmComment}
+                    removeComment={this.props.removeComment}
+                />
+                
+            </div>;
+        }
         if (this.props.showDropdown) {
             var dropdown = <Dropdown
                 coordinates={this.props.store.mostRecentAmbiguousCharCoords}
                 options={this.props.disambiguationOptions}
             />
         }
-        // {commentInput}
         return (
-            <div>
-                <div>
-                    {/*<button onMouseDown={this.removeComment}>
-                        Remove Comment
-                </button>*/}
-                </div>
+            <div className={'inputBox-editor'}>
+                {commentInput}
                 {dropdown}
-
                 <div className={'editor'} onClick={this.focus}>
                     <Editor
                         editorState={this.props.editorState}
@@ -91,6 +106,7 @@ export default class InputBox extends Component {
                     />
                 </div>
             </div>
-        );
+        )
     }
+
 }
