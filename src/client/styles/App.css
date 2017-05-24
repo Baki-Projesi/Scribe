@@ -1,25 +1,17 @@
 .App {
   text-align: center;
+  height: 100vh;
 }
 
 
 .title-nav {
-  text-align: left;
-  margin: 0;
-  margin-bottom: 15px;
 }
 
 .App-header {
   background-color: #E85059;
-  height: 35px;
-  padding: 15px;
+  font-size: 1.8em;
+  padding: 18px;
   color: white;
-}
+  text-align: left;
 
-.App-intro {
-  /*font-size: large;*/
-}
-
-h2 {
-  font-size: 2em;
 }

@@ -1,12 +1,11 @@
 #tool-window {
     padding: 2em;
     padding-bottom: .5em;
-    height: 85vh;
 }
 
 .tool-window_inputs {
     display: flex;
-    height: 90%;
+    /*height: 90%;*/
 }
 
 .keyboardSelect {

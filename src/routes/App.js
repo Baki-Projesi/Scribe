@@ -9,7 +9,7 @@ export default class App extends Component {
     return (
       <div className="App">
         <div className="App-header">
-          <h2 className="title-nav">The Baki Project</h2>
+         The Baki Project
         </div>
         <Transcribe />
       </div>
