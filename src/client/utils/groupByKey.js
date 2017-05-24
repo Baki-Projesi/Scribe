@@ -19,17 +19,31 @@ export function groupByTurkishKey(arr) {
     return results;
 }
 
-export function convertKeyGroupToDisambiguationArray(obj) {
+export function convertKeyGroupToDisambiguationArray(obj, groupString) {
     const results = [];
     let code = 0;
     Object.keys(obj).forEach(function (key) {
         let option = {};
-        option.turkishText = key;
-        option.arabicText = "...";
+        option.turkishText = groupString ? gorupString : key;
+        option.representedText = "...";
         option.code = code;
+        option.secondDropdownOptions = obj[key];
         code++;
         results.push(option);
     });
 
     return results;
 }
+
+// function newGroupByKey(rulesArray) {
+
+// }
+
+// //options in the dropdown that have subOptionData will need to 
+// function makeDropdownGroup(rulesArray, groupString) {
+//     const result = {};
+//     result.representedText = groupString;
+//     result.subOptionData = rulesArray;
+//     result.code = genCode();
+//     return result;
+// }
