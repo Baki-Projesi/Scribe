@@ -2028,12 +2028,12 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'i',
-            arabicText: 'ي',
-            code: 'i6',
-            dropdownOrder: 4,
+            arabicText: '\u06cc', // Farsi yeh
+            code: 'i14',
+            dropdownOrder: 2,
             needsDisambiguation: true,
-            comboCategory: 'special',
-            charLanguage: null
+            comboCategory: null,
+            charLanguage: 'arabic'
         },
         {
             turkishText: 'i',
@@ -2082,20 +2082,20 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'i',
-            arabicText: '\u06cc', // Farsi yeh
-            code: 'i14',
-            dropdownOrder: 2,
-            needsDisambiguation: true,
-            comboCategory: null,
-            charLanguage: 'arabic'
-        },
-        {
-            turkishText: 'i',
             arabicText: 'ٸ',
             code: 'ihamza',
             dropdownOrder: 2,
             needsDisambiguation: true,
             comboCategory: 'hamza',
+            charLanguage: null
+        },
+        {
+            turkishText: 'i',
+            arabicText: 'ي',
+            code: 'i6',
+            dropdownOrder: 4,
+            needsDisambiguation: true,
+            comboCategory: 'special',
             charLanguage: null
         },
         {
@@ -2118,12 +2118,12 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'ı',
-            arabicText: 'ي',
-            code: 'i7',
-            dropdownOrder: 4,
+            arabicText: '\u06cc', // Farsi yeh
+            code: 'i15',
+            dropdownOrder: 2,
             needsDisambiguation: true,
-            comboCategory: 'special',
-            charLanguage: null
+            comboCategory: null,
+            charLanguage: 'arabic'
         },
         {
             turkishText: 'ı',
@@ -2154,12 +2154,12 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'ı',
-            arabicText: '\u06cc', // Farsi yeh
-            code: 'i15',
-            dropdownOrder: 2,
+            arabicText: 'ي',
+            code: 'i7',
+            dropdownOrder: 4,
             needsDisambiguation: true,
-            comboCategory: null,
-            charLanguage: 'arabic'
+            comboCategory: 'special',
+            charLanguage: null
         },
         {
             turkishText: 'ı',
@@ -2183,12 +2183,12 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'İ',
-            arabicText: 'ي',
-            code: 'I6',
-            dropdownOrder: 4,
+            arabicText: '\u06cc', // Farsi yeh
+            code: 'i14',
+            dropdownOrder: 2,
             needsDisambiguation: true,
-            comboCategory: 'special',
-            charLanguage: null
+            comboCategory: null,
+            charLanguage: 'arabic'
         },
         {
             turkishText: 'İ',
@@ -2237,13 +2237,13 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'İ',
-            arabicText: '\u06cc', // Farsi yeh
-            code: 'i14',
-            dropdownOrder: 2,
+            arabicText: 'ي',
+            code: 'I6',
+            dropdownOrder: 4,
             needsDisambiguation: true,
-            comboCategory: null,
-            charLanguage: 'arabic'
-        },
+            comboCategory: 'special',
+            charLanguage: null
+        },        
         {
             turkishText: 'İ',
             arabicText: 'ٸ',
@@ -2281,13 +2281,13 @@ export const englishKeyboardDisambiguations = {
             charLanguage: null
         },
         {
-            turkishText: 'I', 
-            arabicText: 'ي',
-            code: 'I7',
-            dropdownOrder: 4,
+            turkishText: 'I',
+            arabicText: '\u06cc', // Farsi yeh
+            code: 'I15',
+            dropdownOrder: 2,
             needsDisambiguation: true,
-            comboCategory: 'special',
-            charLanguage: null
+            comboCategory: null,
+            charLanguage: 'arabic'
         },
         {
             turkishText: 'I',
@@ -2317,13 +2317,13 @@ export const englishKeyboardDisambiguations = {
             charLanguage: null
         },
         {
-            turkishText: 'I',
-            arabicText: '\u06cc', // Farsi yeh
-            code: 'I15',
-            dropdownOrder: 2,
+            turkishText: 'I', 
+            arabicText: 'ي',
+            code: 'I7',
+            dropdownOrder: 4,
             needsDisambiguation: true,
-            comboCategory: null,
-            charLanguage: 'arabic'
+            comboCategory: 'special',
+            charLanguage: null
         },
         {
             turkishText: 'I', 
@@ -2365,6 +2365,24 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'o',
+            arabicText: 'و',
+            code: 'o6',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: null,
+            charLanguage: null
+        },
+        {
+            turkishText: 'ö',
+            arabicText: 'و',
+            code: 'o7',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: null,
+            charLanguage: null
+        },
+        {
+            turkishText: 'o',
             arabicText: 'او',
             code: 'o2',
             dropdownOrder: 2,
@@ -2394,24 +2412,6 @@ export const englishKeyboardDisambiguations = {
             turkishText: 'ö',
             arabicText: 'ﺍ',
             code: 'o5',
-            dropdownOrder: 2,
-            needsDisambiguation: true,
-            comboCategory: null,
-            charLanguage: null
-        },
-        {
-            turkishText: 'o',
-            arabicText: 'و',
-            code: 'o6',
-            dropdownOrder: 2,
-            needsDisambiguation: true,
-            comboCategory: null,
-            charLanguage: null
-        },
-        {
-            turkishText: 'ö',
-            arabicText: 'و',
-            code: 'o7',
             dropdownOrder: 2,
             needsDisambiguation: true,
             comboCategory: null,
@@ -2448,6 +2448,24 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'O',
+            arabicText: 'و',
+            code: 'O6',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: null,
+            charLanguage: null
+        },
+        {
+            turkishText: 'Ö',
+            arabicText: 'و',
+            code: 'O7',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: null,
+            charLanguage: null
+        },
+        {
+            turkishText: 'O',
             arabicText: 'او',
             code: 'O2',
             dropdownOrder: 2,
@@ -2477,24 +2495,6 @@ export const englishKeyboardDisambiguations = {
             turkishText: 'Ö',
             arabicText: 'ﺍ',
             code: 'O5',
-            dropdownOrder: 2,
-            needsDisambiguation: true,
-            comboCategory: null,
-            charLanguage: null
-        },
-        {
-            turkishText: 'O',
-            arabicText: 'و',
-            code: 'O6',
-            dropdownOrder: 2,
-            needsDisambiguation: true,
-            comboCategory: null,
-            charLanguage: null
-        },
-        {
-            turkishText: 'Ö',
-            arabicText: 'و',
-            code: 'O7',
             dropdownOrder: 2,
             needsDisambiguation: true,
             comboCategory: null,
@@ -6102,12 +6102,12 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'i',
-            arabicText: 'ي',
-            code: 'i6',
-            dropdownOrder: 4,
+            arabicText: '\u06cc', // Farsi yeh
+            code: 'i14',
+            dropdownOrder: 2,
             needsDisambiguation: true,
-            comboCategory: 'special',
-            charLanguage: null
+            comboCategory: null,
+            charLanguage: 'arabic'
         },
         {
             turkishText: 'i',
@@ -6156,12 +6156,12 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'i',
-            arabicText: '\u06cc', // Farsi yeh
-            code: 'i14',
-            dropdownOrder: 2,
+            arabicText: 'ي',
+            code: 'i6',
+            dropdownOrder: 4,
             needsDisambiguation: true,
-            comboCategory: null,
-            charLanguage: 'arabic'
+            comboCategory: 'special',
+            charLanguage: null
         },
         {
             turkishText: 'i',
@@ -6194,12 +6194,12 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'İ',
-            arabicText: 'ي', // special
-            code: 'I6',
-            dropdownOrder: 4,
+            arabicText: '\u06cc', // Farsi yeh
+            code: 'I14',
+            dropdownOrder: 2,
             needsDisambiguation: true,
-            comboCategory: 'special',
-            charLanguage: null
+            comboCategory: null,
+            charLanguage: 'arabic'
         },
         {
             turkishText: 'İ',
@@ -6248,12 +6248,12 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'İ',
-            arabicText: '\u06cc', // Farsi yeh
-            code: 'I14',
-            dropdownOrder: 2,
+            arabicText: 'ي',
+            code: 'I6',
+            dropdownOrder: 4,
             needsDisambiguation: true,
-            comboCategory: null,
-            charLanguage: 'arabic'
+            comboCategory: 'special',
+            charLanguage: null
         },
         {
             turkishText: 'İ',
@@ -6286,12 +6286,12 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'ı',
-            arabicText: 'ي', // special
-            code: 'i7',
-            dropdownOrder: 4,
+            arabicText: '\u06cc', // Farsi yeh
+            code: 'i15',
+            dropdownOrder: 2,
             needsDisambiguation: true,
-            comboCategory: 'special',
-            charLanguage: null
+            comboCategory: null,
+            charLanguage: 'arabic'
         },
         {
             turkishText: 'ı',
@@ -6322,12 +6322,12 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'ı',
-            arabicText: '\u06cc', // Farsi yeh
-            code: 'i15',
-            dropdownOrder: 2,
+            arabicText: 'ي',
+            code: 'i7',
+            dropdownOrder: 4,
             needsDisambiguation: true,
-            comboCategory: null,
-            charLanguage: 'arabic'
+            comboCategory: 'special',
+            charLanguage: null
         },
         {
             turkishText: 'ı',
@@ -6351,12 +6351,12 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'I',
-            arabicText: 'ي', 
-            code: 'I7',
+            arabicText: '\u06cc', // Farsi yeh
+            code: 'I15',
             dropdownOrder: 2,
             needsDisambiguation: true,
-            comboCategory: 'special',
-            charLanguage: null
+            comboCategory: null,
+            charLanguage: 'arabic'
         },
         {
             turkishText: 'I',
@@ -6387,12 +6387,12 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'I',
-            arabicText: '\u06cc', // Farsi yeh
-            code: 'I15',
+            arabicText: 'ي', 
+            code: 'I7',
             dropdownOrder: 2,
             needsDisambiguation: true,
-            comboCategory: null,
-            charLanguage: 'arabic'
+            comboCategory: 'special',
+            charLanguage: null
         },
         {
             turkishText: 'I',
