@@ -6156,20 +6156,20 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'i',
-            arabicText: 'ي',
-            code: 'i6',
-            dropdownOrder: 4,
-            needsDisambiguation: true,
-            comboCategory: 'special',
-            charLanguage: null
-        },
-        {
-            turkishText: 'i',
             arabicText: 'ٸ',
             code: 'ihamza',
             dropdownOrder: 2,
             needsDisambiguation: true,
             comboCategory: null,
+            charLanguage: null
+        },
+        {
+            turkishText: 'i',
+            arabicText: 'ي',
+            code: 'i6',
+            dropdownOrder: 4,
+            needsDisambiguation: true,
+            comboCategory: 'special',
             charLanguage: null
         },
         {
