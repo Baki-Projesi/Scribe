@@ -24,7 +24,7 @@ export function convertKeyGroupToDisambiguationArray(obj, groupString) {
     let code = 0;
     Object.keys(obj).forEach(function (key) {
         let option = {};
-        option.turkishText = groupString ? gorupString : key;
+        option.turkishText = groupString ? groupString : key;
         option.representedText = "...";
         option.code = code;
         option.secondDropdownOptions = obj[key];
@@ -35,15 +35,43 @@ export function convertKeyGroupToDisambiguationArray(obj, groupString) {
     return results;
 }
 
-// function newGroupByKey(rulesArray) {
+export function orderRules(rulesArray) {
+    let resultArray = [];
 
-// }
+    let defaultChar = [],
+        combos = [],
+        singleChars = [],
+        doubleChars = [],
+        specials = [],
+        simpleChars = [];
 
-// //options in the dropdown that have subOptionData will need to 
-// function makeDropdownGroup(rulesArray, groupString) {
-//     const result = {};
-//     result.representedText = groupString;
-//     result.subOptionData = rulesArray;
-//     result.code = genCode();
-//     return result;
-// }
+    rulesArray.forEach(function (rule) {
+        if (rule.dropdownOrder === 0) {
+            defaultChar[0] = rule;
+        }
+        if (rule.dropdownOrder === 1) {
+            combos.push(rule);
+        }
+        if (rule.dropdownOrder === 2) {
+            singleChars.push(rule);
+        }
+        if (rule.dropdownOrder === 3) {
+            doubleChars.push(rule);
+        }
+        if (rule.dropdownOrder === 4) {
+            specials.push(rule);
+        }
+
+    }, this);
+
+    if (rulesArray.length > 9) {
+        let allChars = singleChars.concat(doubleChars);
+        simpleChars = convertKeyGroupToDisambiguationArray(groupByTurkishKey(allChars));
+    } else {
+        simpleChars = singleChars.concat(doubleChars);
+    }
+
+    specials = convertKeyGroupToDisambiguationArray(groupByTurkishKey(specials), 'SPECIALS');
+
+    return resultArray.concat(defaultChar, combos, simpleChars, specials);
+}

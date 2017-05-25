@@ -1,4 +1,6 @@
-function orderRules(rulesArray, charactergroupings) {
+import { convertKeyGroupToDisambiguationArray, groupByTurkishKey } from '../groupByKey';
+
+export default function orderRules(rulesArray) {
     let resultArray = [];
 
     let defaultChar = [],
@@ -34,7 +36,7 @@ function orderRules(rulesArray, charactergroupings) {
         simpleChars = singleChars.concat(doubleChars);
     }
 
-    specials = convertKeyGroupToDisambiguationArray(groupByTurkishKey(specials, 'SPECIALS'));
+    specials = convertKeyGroupToDisambiguationArray(groupByTurkishKey(specials), 'SPECIALS');
 
     return resultArray.concat(defaultChar, combos, simpleChars, specials);
 }
@@ -49,25 +51,25 @@ function orderRules(rulesArray, charactergroupings) {
 // }
 
 
-function chooseDisambiguationOption(choiceIndex) {
-    let i = 0;
-    let keys = Object.keys(disambiguationOptions);
-    for (let k = 0; k < keys.length; k++) {
-        let key = keys[k]; //e.g. 'combos'
-        let rulesArray = disambiguationOptions[key];
-        rulesArray.forEach(function (rule) {
-            if (i === choiceIndex) {
-                return rule;
-            }
-            i++;
-        });
-    }
-}
+// function chooseDisambiguationOption(choiceIndex) {
+//     let i = 0;
+//     let keys = Object.keys(disambiguationOptions);
+//     for (let k = 0; k < keys.length; k++) {
+//         let key = keys[k]; //e.g. 'combos'
+//         let rulesArray = disambiguationOptions[key];
+//         rulesArray.forEach(function (rule) {
+//             if (i === choiceIndex) {
+//                 return rule;
+//             }
+//             i++;
+//         });
+//     }
+// }
 
-function combineExtraChars(singleChars, doubleChars) {
-    let allChars = singleChars.concat(doubleChars);
-    return convertKeyGroupToDisambiguationArray(groupByTurkishKey(allChars));
-}
+// function combineExtraChars(singleChars, doubleChars) {
+//     let allChars = singleChars.concat(doubleChars);
+//     return convertKeyGroupToDisambiguationArray(groupByTurkishKey(allChars));
+// }
 
 /*
 Show the defult -order 0- on top always 

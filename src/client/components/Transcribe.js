@@ -21,7 +21,7 @@ import {
 import findWithRegex from '../utils/findWithRegex';
 import { adjustSelectionOffset } from '../utils/selectionStateHelpers';
 import getCurrentWordBuffer from '../utils/getCurrentWordBuffer';
-import { convertKeyGroupToDisambiguationArray, groupByTurkishKey } from '../utils/groupByKey';
+import { convertKeyGroupToDisambiguationArray, groupByTurkishKey, orderRules } from '../utils/groupByKey';
 import decorateComponentWithProps from 'decorate-component-with-props';
 import CommentPopup from './CommentPopup';
 import DisplayComment from './DisplayComment'
@@ -311,7 +311,7 @@ export default class Transcribe extends Component {
     _promptForDisambiguation(current) {
         let charRules = this.state.usingTurkishKeyboard ? turkishKeyboardDisambiguations : englishKeyboardDisambiguations;
         let showDropdown = false,
-            dropDownCount = 0,
+            // dropDownCount = 0,
             disambiguationOptions = [],
             characterBuffer = this.state.characterBuffer,
             combinationOptions = [],
@@ -328,23 +328,13 @@ export default class Transcribe extends Component {
                 combinationOptions = bufferComboSearch(characterBuffer, charRules);
                 if (combinationOptions.length > 0 && characterBuffer.length > 1) {
                     disambiguationOptions = disambiguationOptions.concat(combinationOptions);
-                    dropDownCount = 1;
+                    // dropDownCount = 1;
                 }
 
-                //add disambiguation options based on previous typed char
                 if (charRules[previousChar] !== undefined) {
-                    showDropdown = previousChar !== ' ';
-                    if (charRules[previousChar].length + combinationOptions.length > 9) {
-                        //more than 9 options in total, need to group single-char options
-
-                        disambiguationGroupData = groupByTurkishKey(charRules[previousChar]);
-                        disambiguationOptions = disambiguationOptions.concat(convertKeyGroupToDisambiguationArray(disambiguationGroupData));
-                        disambiguationOptions.unshift(charRules[previousChar][0]); //add default option for quick typing
-                        dropDownCount = 2;
-                    } else {
-                        disambiguationOptions = disambiguationOptions.concat(charRules[previousChar]);
-                        dropDownCount = 1;
-                    }
+                    //generate dropdown options using the merged array of char rules and combo options
+                    disambiguationOptions = orderRules(charRules[previousChar].concat(combinationOptions));
+                    
                 }
             }
         }
@@ -353,7 +343,7 @@ export default class Transcribe extends Component {
             combinationOptions: combinationOptions,
             disambiguationGroupData: disambiguationGroupData,
             showDropdown: showDropdown,
-            dropDownCount: dropDownCount,
+            // dropDownCount: dropDownCount,
             disambiguationOptions: disambiguationOptions,
             showCommentInput: false,
             characterBuffer: characterBuffer

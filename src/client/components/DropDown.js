@@ -23,16 +23,16 @@ export default class DropDown extends Component {
     }
 
     let dropdownOptions;
-    if (this.props.options) {
-      if (Array.isArray(this.props.options)) {
+    if (this.props.options && Array.isArray(this.props.options)) {
         dropdownOptions = this.props.options.map((option) =>
-          <li key={option.code}>{option.turkishText + ' ➞ ' + option.arabicText}</li>);
-      } else {
-        dropdownOptions = Object.keys(this.props.options).map((k) =>
-          <li key={k}> {k + ' ➞  ...' }</li>
+          <li key={option.code}> {
+            option.turkishText + ' ➞ ' +
+              option.representedText ?
+              option.representedText :
+              option.arabicText
+          }</li>
         );
-      }
-    }  
+    }
     return (
       <div style={dropDownStyles.dropDownBox}>
         <ol style={dropDownStyles.orderedList}>
