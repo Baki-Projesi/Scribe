@@ -121,7 +121,6 @@ export default class Transcribe extends Component {
                     this.state.editorState.getCurrentContent().getBlockForKey(this.state.editorState.getSelection().getStartKey()),
                     this.state.editorState.getSelection().getStartOffset());
                 let charRules = this.state.usingTurkishKeyboard ? turkishKeyboardDisambiguations : englishKeyboardDisambiguations;
-                let comboOptions = bufferComboSearch(characterBuffer + e.key, charRules);
                 let str = 'dropdown-';
                 const keyCodeBase = 48;
                 const numOptions = this.state.disambiguationOptions.length;
@@ -134,10 +133,6 @@ export default class Transcribe extends Component {
                 if ((e.which >= 49 && e.which <= 49 + numOptions) || (e.which >= 97 && e.which <= 97 + numOptions) && optionMap[e.which]) {
                     return optionMap[e.which]; //e.g. 'dropdown-2'
                 }
-                // else if (comboOptions.length > 0) {
-                //     //If they type another character that could be a combination 
-                //     console.log('potential combo');
-                // }
                 else {
                     //If anything besides Backspace or a number is chosen,
                     // use default disambiguation choice and have the editor use the normal keypress
@@ -189,17 +184,7 @@ export default class Transcribe extends Component {
         if (command.startsWith('dropdown') && this.state.disambiguationOptions) {
             let choice = Number(command.charAt(command.length - 1));
             let newState = this.state.editorState;
-
-            if (choice === 1 || // first choice always default
-            this.state.dropDownCount < 2 || // no grouping
-                (this.state.combinationOptions && this.state.combinationOptions.length + 1 >= choice)) //chose a combination
-            {
-                newState = this._confirmDisambiguation(choice - 1, this.state.editorState);
-            }
-            else {
-                newState = this._confirmVowelCategory(choice, this.state.editorState);
-            }
-
+            newState = this._confirmDisambiguation(choice - 1, this.state.editorState);
             this.setState(newState);
             return 'handled';
         }
@@ -209,7 +194,7 @@ export default class Transcribe extends Component {
 
     //TODO: move comment prompt into a floating tooltip
     _promptForComment(current) {
-        const {editorState} = this.state;
+        const { editorState } = this.state;
         const selection = editorState.getSelection();
         if (!selection.isCollapsed()) {
             const contentState = editorState.getCurrentContent();
@@ -253,12 +238,12 @@ export default class Transcribe extends Component {
     }
 
     _confirmComment(e) {
-        const {editorState, commentVal} = this.state;
+        const { editorState, commentVal } = this.state;
         const contentState = editorState.getCurrentContent();
         const contentStateWithEntity = contentState.createEntity(
-          'COMMENT',
-          'MUTABLE',
-          {val: commentVal}
+            'COMMENT',
+            'MUTABLE',
+            { val: commentVal }
         );
 
         const entityKey = contentStateWithEntity.getLastCreatedEntityKey();
@@ -302,7 +287,7 @@ export default class Transcribe extends Component {
         if (!selection.isCollapsed()) {
             this.setState({
                 editorState: EditorState.push(editorState, newContent, 'apply-entity'),
-                showCommentInput: false,   
+                showCommentInput: false,
             });
         }
     }
@@ -311,7 +296,6 @@ export default class Transcribe extends Component {
     _promptForDisambiguation(current) {
         let charRules = this.state.usingTurkishKeyboard ? turkishKeyboardDisambiguations : englishKeyboardDisambiguations;
         let showDropdown = false,
-            // dropDownCount = 0,
             disambiguationOptions = [],
             characterBuffer = this.state.characterBuffer,
             combinationOptions = [],
@@ -328,13 +312,12 @@ export default class Transcribe extends Component {
                 combinationOptions = bufferComboSearch(characterBuffer, charRules);
                 if (combinationOptions.length > 0 && characterBuffer.length > 1) {
                     disambiguationOptions = disambiguationOptions.concat(combinationOptions);
-                    // dropDownCount = 1;
                 }
 
                 if (charRules[previousChar] !== undefined) {
                     //generate dropdown options using the merged array of char rules and combo options
                     disambiguationOptions = orderRules(charRules[previousChar].concat(combinationOptions));
-                    
+                    showDropdown = true; //TODO: you shouldn't need this anymore
                 }
             }
         }
@@ -343,7 +326,6 @@ export default class Transcribe extends Component {
             combinationOptions: combinationOptions,
             disambiguationGroupData: disambiguationGroupData,
             showDropdown: showDropdown,
-            // dropDownCount: dropDownCount,
             disambiguationOptions: disambiguationOptions,
             showCommentInput: false,
             characterBuffer: characterBuffer
@@ -354,6 +336,14 @@ export default class Transcribe extends Component {
 
     //this is called during handleKeyCommand when it detects a dropdown choice.
     _confirmDisambiguation(choiceIndex, editorState) {
+        //== USER CHOSE NON-FINAL OPTION ==//
+        if (this.state.disambiguationOptions[choiceIndex].secondDropdownOptions) {
+            return {
+                disambiguationOptions: this.state.disambiguationOptions[choiceIndex].secondDropdownOptions
+            }
+        }
+
+        //== USER CHOSE FINAL OPTION, CREATE ENTITY ==//
         let chosenText;
         if (this.state.disambiguationOptions[choiceIndex].representedText !== undefined) {
             chosenText = this.state.disambiguationOptions[choiceIndex].representedText;
@@ -400,20 +390,9 @@ export default class Transcribe extends Component {
         newEditorState = EditorState.set(newEditorState, { selection: newSelectionState });
 
         return {
-            dropDownCount: this.state.dropDownCount - 1,
             editorState: newEditorState,
             showDropdown: false,
             disambiguationOptions: null
-        }
-    }
-
-    _confirmVowelCategory(choiceIndex, editorState) {
-        let key = this.state.disambiguationOptions[choiceIndex - 1].turkishText;
-
-        return {
-            dropDownCount: this.state.dropDownCount - 1,
-            disambiguationOptions: this.state.disambiguationGroupData[key],
-            editorState: editorState
         }
     }
 
@@ -490,7 +469,7 @@ export default class Transcribe extends Component {
                 );
             },
             callback
-        //     // specify props
+            //     // specify props
         );
     }
 
@@ -521,7 +500,7 @@ export default class Transcribe extends Component {
     }
 
     render() {
-        const {inputText, } = this.state;
+        const { inputText, } = this.state;
         let whichKeyboard = "";
         if (!this.state.usingTurkishKeyboard) {
             whichKeyboard = "English Keyboard"
@@ -556,7 +535,7 @@ export default class Transcribe extends Component {
                 <div>
                     <label htmlFor="turkish_keyboard_checkbox" className="keyboardSelect">
                         <button id="demo-menu-top-left"
-                                className="mdl-button mdl-js-button mdl-button--icon">
+                            className="mdl-button mdl-js-button mdl-button--icon">
                             <i className="material-icons">more_vert</i>
                         </button>
                         <span>{whichKeyboard}</span>
@@ -564,9 +543,9 @@ export default class Transcribe extends Component {
 
                         <ul className="mdl-menu mdl-menu--top-left mdl-js-menu mdl-js-ripple-effect"
                             data-mdl-for="demo-menu-top-left">
-                                <li className="mdl-menu__item" onClick={this.toggleCheckboxValue.bind(this, "Turkish Keyboard")}>Turkish Keyboard</li>
-                                <li className="mdl-menu__item" onClick={this.toggleCheckboxValue.bind(this, "English Keyboard")}>English Keyboard</li>
-                        </ul>        
+                            <li className="mdl-menu__item" onClick={this.toggleCheckboxValue.bind(this, "Turkish Keyboard")}>Turkish Keyboard</li>
+                            <li className="mdl-menu__item" onClick={this.toggleCheckboxValue.bind(this, "English Keyboard")}>English Keyboard</li>
+                        </ul>
                     </label>
 
                 </div>

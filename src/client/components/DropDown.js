@@ -1,6 +1,20 @@
 import React, { Component } from 'react';
 export default class DropDown extends Component {
 
+  generateDropdownString(option) {
+    let result = option.turkishText;
+    if (result === "SPECIALS")
+      return result;
+
+    result = result + " ➞ ";
+    if (option.representedText)
+      result = result + option.representedText;
+    else
+      result = result + option.arabicText;
+
+    return result;
+  }
+
   render() {
     const top = this.props.coordinates ? this.props.coordinates.top : 0;
     const left = this.props.coordinates ? this.props.coordinates.left : 0;
@@ -22,16 +36,13 @@ export default class DropDown extends Component {
       }
     }
 
-    let dropdownOptions;
+    let dropdownOptions, k = 0;
     if (this.props.options && Array.isArray(this.props.options)) {
-        dropdownOptions = this.props.options.map((option) =>
-          <li key={option.code}> {
-            option.turkishText + ' ➞ ' +
-              option.representedText ?
-              option.representedText :
-              option.arabicText
-          }</li>
-        );
+      dropdownOptions = this.props.options.map((option) =>
+        <li key={k++}>
+          {this.generateDropdownString(option)}
+        </li>
+      );
     }
     return (
       <div style={dropDownStyles.dropDownBox}>

@@ -35,6 +35,16 @@ export function convertKeyGroupToDisambiguationArray(obj, groupString) {
     return results;
 }
 
+export function convertSpecialGroupToArray(specialRulesArray, groupString) {
+    const result = {};
+    let secondDropdownOptions = [];
+    result.turkishText = groupString;
+    result.representedText = "";
+    result.secondDropdownOptions = specialRulesArray;
+
+    return result;
+}
+
 export function orderRules(rulesArray) {
     let resultArray = [];
 
@@ -71,7 +81,7 @@ export function orderRules(rulesArray) {
         simpleChars = singleChars.concat(doubleChars);
     }
 
-    specials = convertKeyGroupToDisambiguationArray(groupByTurkishKey(specials), 'SPECIALS');
+    specials = convertSpecialGroupToArray(specials, 'SPECIALS'); //group by specials, not turkishkey
 
     return resultArray.concat(defaultChar, combos, simpleChars, specials);
 }
