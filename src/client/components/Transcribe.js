@@ -116,19 +116,16 @@ export default class Transcribe extends Component {
         }
 
         if (e.which !== 8 && e.which !== 46) { // backspace, delete
+            let charRules = this.state.usingTurkishKeyboard ? turkishKeyboardDisambiguations : englishKeyboardDisambiguations;
+            const numOptions = this.state.disambiguationOptions.length;
+
             if (this.state.showDropdown) {
                 let characterBuffer = getCurrentWordBuffer(
                     this.state.editorState.getCurrentContent().getBlockForKey(this.state.editorState.getSelection().getStartKey()),
                     this.state.editorState.getSelection().getStartOffset());
-                let charRules = this.state.usingTurkishKeyboard ? turkishKeyboardDisambiguations : englishKeyboardDisambiguations;
-                let str = 'dropdown-';
-                const keyCodeBase = 48;
-                const numOptions = this.state.disambiguationOptions.length;
-                const optionMap = {};
-                for (let i = 1; i < numOptions + 1; i++) {
-                    optionMap[keyCodeBase + i] = (str + i); //numkeys 1-9
-                    optionMap[(keyCodeBase * 2) + i] = (str + i); // numpad 1-9
-                }
+
+                let comboOptions = bufferComboSearch(characterBuffer + e.key, charRules);
+                const optionMap = this._generateOptionMap();
 
                 if ((e.which >= 49 && e.which <= 49 + numOptions) || (e.which >= 97 && e.which <= 97 + numOptions) && optionMap[e.which]) {
                     return optionMap[e.which]; //e.g. 'dropdown-2'
@@ -137,21 +134,40 @@ export default class Transcribe extends Component {
                     //If anything besides Backspace or a number is chosen,
                     // use default disambiguation choice and have the editor use the normal keypress
                     let newState = Object.assign(this.state, this._confirmDisambiguation(0, this.state.editorState));
+
+                    if (e.which === 32) {
+                        //create space entity right away
+                        newState = Object.assign(newState, this._addChoicelessEntity(' ', charRules, newState.editorState));
+                    }
+
                     this.setState(newState);
                 }
-            } else if (this.state.disambiguationOptions &&
-                this.state.disambiguationOptions.length > 0 &&
-                this.state.disambiguationOptions[0].code === 'sp') {
-                //we don't show dropdown for spaces, but they need an entity anyways
-                let newState = Object.assign(this.state, this._confirmDisambiguation(0, this.state.editorState));
-                this.setState(newState);
-            } else if (!needsDropdown(e.key)) {
-                //arabic numbers don't need dropdowns, translate them immediately
+            }
 
+            else {
+                //no dropdown active
+                if (charRules[e.key] && charRules[e.key].needsDisambiguation === false) {
+                    let newState = Object.assign(this.state, this._addChoicelessEntity(e.key, charRules, this.state.editorState));
+                    this.setState(newState);
+                }
             }
         }
 
         return getDefaultKeyBinding(e);
+
+    }
+
+    _generateOptionMap() {
+        let str = 'dropdown-';
+        const keyCodeBase = 48;
+        const numOptions = this.state.disambiguationOptions.length;
+        const optionMap = {};
+        for (let i = 1; i < numOptions + 1; i++) {
+            optionMap[keyCodeBase + i] = (str + i); //numkeys 1-9
+            optionMap[(keyCodeBase * 2) + i] = (str + i); // numpad 1-9
+        }
+
+        return optionMap;
     }
 
     //This is passed a value from _keyBindingFn, either a special string or the default
@@ -185,6 +201,7 @@ export default class Transcribe extends Component {
             let choice = Number(command.charAt(command.length - 1));
             let newState = this.state.editorState;
             newState = this._confirmDisambiguation(choice - 1, this.state.editorState);
+
             this.setState(newState);
             return 'handled';
         }
@@ -395,6 +412,48 @@ export default class Transcribe extends Component {
             disambiguationOptions: null
         }
     }
+    _addChoicelessEntity(char, charRules, editorState) {
+        if (charRules[char] && charRules[char].length > 0) {
+            const contentState = editorState.getCurrentContent(), rule = charRules[char][0];
+            let contentStateWithEntity = contentState.createEntity(
+                'DISAMBIGUATION',
+                'IMMUTABLE',
+                rule
+            );
+            const entityKey = contentStateWithEntity.getLastCreatedEntityKey();
+            let newSelectionState = adjustSelectionOffset(editorState.getSelection(), 0, rule.turkishText.length);
+
+            //Replace the typed text with the displayText
+            contentStateWithEntity = Modifier.replaceText(contentStateWithEntity, newSelectionState, rule.turkishText, null, entityKey);
+
+            let newEditorState = EditorState.set(editorState, { currentContent: contentStateWithEntity });
+            newEditorState = RichUtils.toggleLink(
+                newEditorState,
+                newSelectionState,
+                entityKey
+            );
+
+            //newSelectionState = adjustSelectionOffset(newSelectionState, rule.turkishText.length, 0);
+            newEditorState = EditorState.set(newEditorState, { selection: newSelectionState });
+
+            return {
+                dropDownCount: this.state.dropDownCount - 1,
+                editorState: newEditorState,
+                showDropdown: false,
+                disambiguationOptions: null
+            }
+        }
+    }
+
+    _confirmVowelCategory(choiceIndex, editorState) {
+        let key = this.state.disambiguationOptions[choiceIndex - 1].turkishText;
+
+        return {
+            dropDownCount: this.state.dropDownCount - 1,
+            disambiguationOptions: this.state.disambiguationGroupData[key],
+            editorState: editorState
+        }
+    }
 
     keyCommandInsertNewline(editorState) {
         var contentState = Modifier.splitBlock(
@@ -405,7 +464,7 @@ export default class Transcribe extends Component {
     }
 
     _toggleCheckboxValue(value) {
-        console.log(value)
+        this.logState();
         // will have to come back to this once we have more keyboards
         var usingTurkishKeyboard;
         if (value == "Turkish Keyboard") {
