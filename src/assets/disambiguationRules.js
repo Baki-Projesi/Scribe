@@ -2822,15 +2822,6 @@ export const englishKeyboardDisambiguations = {
             charLanguage: null
         },
         {
-            turkishText: 'oˀ',
-            arabicText: 'ٶ',
-            code: 'o\'8',
-            dropdownOrder: 2,
-            needsDisambiguation: true,
-            comboCategory: 'hamza',
-            charLanguage: null
-        },
-        {
             turkishText: 'uˀ',
             arabicText: 'ٶ',
             code: 'u\'9',
@@ -3199,17 +3190,6 @@ export const englishKeyboardDisambiguations = {
             turkishText: 'ˀi',
             arabicText: 'ٸ',
             code: '\'7',
-            dropdownOrder: 2,
-            needsDisambiguation: true,
-            comboCategory: 'hamza',
-            charLanguage: null
-        }
-    ],
-    'ˀo': [ 
-        {
-            turkishText: 'ˀo',
-            arabicText: 'ٶ',
-            code: '\'8',
             dropdownOrder: 2,
             needsDisambiguation: true,
             comboCategory: 'hamza',
@@ -6959,15 +6939,6 @@ export const turkishKeyboardDisambiguations = {
             charLanguage: null
         },
         {
-            turkishText: 'oˀ',
-            arabicText: 'ٶ',
-            code: 'o\'8',
-            dropdownOrder: 2,
-            needsDisambiguation: true,
-            comboCategory: 'hamza',
-            charLanguage: null
-        },
-        {
             turkishText: 'uˀ',
             arabicText: 'ٶ',
             code: 'u\'9',
@@ -7338,17 +7309,6 @@ export const turkishKeyboardDisambiguations = {
             turkishText: 'ˀi',
             arabicText: 'ٸ',
             code: '\'7',
-            dropdownOrder: 2,
-            needsDisambiguation: true,
-            comboCategory: 'hamza',
-            charLanguage: null
-        }
-    ],
-    'ˀo': [ 
-        {
-            turkishText: 'ˀo',
-            arabicText: 'ٶ',
-            code: '\'8',
             dropdownOrder: 2,
             needsDisambiguation: true,
             comboCategory: 'hamza',
