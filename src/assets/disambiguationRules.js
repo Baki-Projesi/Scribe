@@ -2777,60 +2777,6 @@ export const englishKeyboardDisambiguations = {
             charLanguage: null
         },
         {
-            turkishText: 'ˀa',
-            arabicText: 'أ',
-            code: '\'10',
-            dropdownOrder: 2,
-            needsDisambiguation: true,
-            comboCategory: 'hamza',
-            charLanguage: null
-        },
-        {
-            turkishText: 'ˀa',
-            arabicText: 'آ',
-            code: '\'11',
-            dropdownOrder: 2,
-            needsDisambiguation: true,
-            comboCategory: 'hamza',
-            charLanguage: null
-        },
-        {
-            turkishText: 'ˀe',
-            arabicText: 'أ',
-            code: '\'6',
-            dropdownOrder: 2,
-            needsDisambiguation: true,
-            comboCategory: 'hamza',
-            charLanguage: null
-        },
-        {
-            turkishText: 'ˀi',
-            arabicText: 'ٸ',
-            code: '\'7',
-            dropdownOrder: 2,
-            needsDisambiguation: true,
-            comboCategory: 'hamza',
-            charLanguage: null
-        },
-        {
-            turkishText: 'ˀo',
-            arabicText: 'ٶ',
-            code: '\'8',
-            dropdownOrder: 2,
-            needsDisambiguation: true,
-            comboCategory: 'hamza',
-            charLanguage: null
-        },
-        {
-            turkishText: 'ˀu',
-            arabicText: 'ٶ',
-            code: '\'9',
-            dropdownOrder: 2,
-            needsDisambiguation: true,
-            comboCategory: 'hamza',
-            charLanguage: null
-        },
-        {
             turkishText: '\'',
             arabicText: '\u2009' + '\u200c' + '\u0671' + '\u200c', // alef wasla
             code: '\'4',
@@ -2838,6 +2784,60 @@ export const englishKeyboardDisambiguations = {
             needsDisambiguation: true,
             comboCategory: null,
             charLanguage: 'arabic'
+        },
+        {
+            turkishText: 'aˀ',
+            arabicText: 'أ',
+            code: 'a\'10',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'hamza',
+            charLanguage: null
+        },
+        {
+            turkishText: 'aˀ',
+            arabicText: 'آ',
+            code: 'a\'11',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'hamza',
+            charLanguage: null
+        },
+        {
+            turkishText: 'eˀ',
+            arabicText: 'أ',
+            code: 'e\'6',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'hamza',
+            charLanguage: null
+        },
+        {
+            turkishText: 'iˀ',
+            arabicText: 'ٸ',
+            code: 'i\'7',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'hamza',
+            charLanguage: null
+        },
+        {
+            turkishText: 'oˀ',
+            arabicText: 'ٶ',
+            code: 'o\'8',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'hamza',
+            charLanguage: null
+        },
+        {
+            turkishText: 'uˀ',
+            arabicText: 'ٶ',
+            code: 'u\'9',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'hamza',
+            charLanguage: null
         }
     ],
     '0': [
@@ -3161,6 +3161,70 @@ export const englishKeyboardDisambiguations = {
             needsDisambiguation: true,
             comboCategory: null,
             charLanguage: 'arabic'
+        }
+    ],
+    'ˀa': [ 
+        {
+            turkishText: 'ˀa',
+            arabicText: 'أ',
+            code: '\'10',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'hamza',
+            charLanguage: null
+        },
+        {
+            turkishText: 'ˀa',
+            arabicText: 'آ',
+            code: '\'11',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'hamza',
+            charLanguage: null
+        }
+    ],
+    'ˀe': [ 
+        {
+            turkishText: 'ˀe',
+            arabicText: 'أ',
+            code: '\'6',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'hamza',
+            charLanguage: null
+        }
+    ],
+    'ˀi': [ 
+        {
+            turkishText: 'ˀi',
+            arabicText: 'ٸ',
+            code: '\'7',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'hamza',
+            charLanguage: null
+        }
+    ],
+    'ˀo': [ 
+        {
+            turkishText: 'ˀo',
+            arabicText: 'ٶ',
+            code: '\'8',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'hamza',
+            charLanguage: null
+        }
+    ],
+    'ˀu': [ 
+        {
+            turkishText: 'ˀu',
+            arabicText: 'ٶ',
+            code: '\'9',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'hamza',
+            charLanguage: null
         }
     ],
     'ad-d': [
@@ -6850,60 +6914,6 @@ export const turkishKeyboardDisambiguations = {
             charLanguage: null
         },
         {
-            turkishText: 'ˀa',
-            arabicText: 'أ',
-            code: '\'10',
-            dropdownOrder: 2,
-            needsDisambiguation: true,
-            comboCategory: 'hamza',
-            charLanguage: null
-        },
-        {
-            turkishText: 'ˀa',
-            arabicText: 'آ',
-            code: '\'11',
-            dropdownOrder: 2,
-            needsDisambiguation: true,
-            comboCategory: 'hamza',
-            charLanguage: null
-        },
-        {
-            turkishText: 'ˀe',
-            arabicText: 'أ',
-            code: '\'6',
-            dropdownOrder: 2,
-            needsDisambiguation: true,
-            comboCategory: 'hamza',
-            charLanguage: null
-        },
-        {
-            turkishText: 'ˀi',
-            arabicText: 'ٸ',
-            code: '\'7',
-            dropdownOrder: 2,
-            needsDisambiguation: true,
-            comboCategory: 'hamza',
-            charLanguage: null
-        },
-        {
-            turkishText: 'ˀo',
-            arabicText: 'ٶ',
-            code: '\'8',
-            dropdownOrder: 2,
-            needsDisambiguation: true,
-            comboCategory: 'hamza',
-            charLanguage: null
-        },
-        {
-            turkishText: 'ˀu',
-            arabicText: 'ٶ',
-            code: '\'9',
-            dropdownOrder: 2,
-            needsDisambiguation: true,
-            comboCategory: 'hamza',
-            charLanguage: null
-        },
-        {
             turkishText: '\'',
             arabicText: '\u2009' + '\u200c' + '\u0671' + '\u200c', // alef wasla
             code: '\'4',
@@ -6911,6 +6921,60 @@ export const turkishKeyboardDisambiguations = {
             needsDisambiguation: true,
             comboCategory: null,
             charLanguage: 'arabic'
+        },
+        {
+            turkishText: 'aˀ',
+            arabicText: 'أ',
+            code: 'a\'10',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'hamza',
+            charLanguage: null
+        },
+        {
+            turkishText: 'aˀ',
+            arabicText: 'آ',
+            code: 'a\'11',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'hamza',
+            charLanguage: null
+        },
+        {
+            turkishText: 'eˀ',
+            arabicText: 'أ',
+            code: 'e\'6',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'hamza',
+            charLanguage: null
+        },
+        {
+            turkishText: 'iˀ',
+            arabicText: 'ٸ',
+            code: 'i\'7',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'hamza',
+            charLanguage: null
+        },
+        {
+            turkishText: 'oˀ',
+            arabicText: 'ٶ',
+            code: 'o\'8',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'hamza',
+            charLanguage: null
+        },
+        {
+            turkishText: 'uˀ',
+            arabicText: 'ٶ',
+            code: 'u\'9',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'hamza',
+            charLanguage: null
         }
     ],
     '0': [
@@ -7236,6 +7300,70 @@ export const turkishKeyboardDisambiguations = {
             needsDisambiguation: true,
             comboCategory: null,
             charLanguage: 'arabic'
+        }
+    ],
+    'ˀa': [ 
+        {
+            turkishText: 'ˀa',
+            arabicText: 'أ',
+            code: '\'10',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'hamza',
+            charLanguage: null
+        },
+        {
+            turkishText: 'ˀa',
+            arabicText: 'آ',
+            code: '\'11',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'hamza',
+            charLanguage: null
+        }
+    ],
+    'ˀe': [ 
+        {
+            turkishText: 'ˀe',
+            arabicText: 'أ',
+            code: '\'6',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'hamza',
+            charLanguage: null
+        }
+    ],
+    'ˀi': [ 
+        {
+            turkishText: 'ˀi',
+            arabicText: 'ٸ',
+            code: '\'7',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'hamza',
+            charLanguage: null
+        }
+    ],
+    'ˀo': [ 
+        {
+            turkishText: 'ˀo',
+            arabicText: 'ٶ',
+            code: '\'8',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'hamza',
+            charLanguage: null
+        }
+    ],
+    'ˀu': [ 
+        {
+            turkishText: 'ˀu',
+            arabicText: 'ٶ',
+            code: '\'9',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'hamza',
+            charLanguage: null
         }
     ],
     'ad-d': [
