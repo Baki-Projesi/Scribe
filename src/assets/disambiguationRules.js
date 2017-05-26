@@ -2073,7 +2073,7 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'i',
-            arabicText: 'ا',
+            arabicText: 'إ',
             code: 'i4',
             dropdownOrder: 2,
             needsDisambiguation: true,
@@ -2145,7 +2145,7 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'ı',
-            arabicText: 'ا',
+            arabicText: 'إ',
             code: 'i5',
             dropdownOrder: 2,
             needsDisambiguation: true,
@@ -2228,7 +2228,7 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'İ',
-            arabicText: 'ا',
+            arabicText: 'إ',
             code: 'I4',
             dropdownOrder: 2,
             needsDisambiguation: true,
@@ -2309,7 +2309,7 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'I',
-            arabicText: 'ا',
+            arabicText: 'إ',
             code: 'I5',
             dropdownOrder: 2,
             needsDisambiguation: true,
@@ -6147,7 +6147,7 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'i',
-            arabicText: 'ا',
+            arabicText: 'إ',
             code: 'i4',
             dropdownOrder: 2,
             needsDisambiguation: true,
@@ -6239,7 +6239,7 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'İ',
-            arabicText: 'ا',
+            arabicText: 'إ',
             code: 'I4',
             dropdownOrder: 2,
             needsDisambiguation: true,
@@ -6313,7 +6313,7 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'ı',
-            arabicText: 'ا',
+            arabicText: 'إ',
             code: 'i5',
             dropdownOrder: 2,
             needsDisambiguation: true,
@@ -6378,7 +6378,7 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'I',
-            arabicText: 'ا',
+            arabicText: 'إ',
             code: 'I5',
             dropdownOrder: 2,
             needsDisambiguation: true,
