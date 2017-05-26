@@ -40,7 +40,6 @@ export default class ImageUpload extends React.Component {
       ximagePreview = (<div className="previewText">Select an image to view</div>);
     }
 
-    console.log(this.state.file)
     return (
       <div className="previewComponent">
 
