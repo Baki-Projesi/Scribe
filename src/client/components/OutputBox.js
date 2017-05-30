@@ -130,8 +130,11 @@ export default class OutputBox extends Component {
         })
 
         return (
-            <div className={'outputbox-display'}>
-                {textBlocks}
+            <div className={"outputbox-display"}>
+                <div className="outputbox-display_container">
+                    {textBlocks}
+                </div>
+                <p className="output-editor_label">Arabic Output</p>
             </div>
         );
     }

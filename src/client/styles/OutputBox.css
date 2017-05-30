@@ -1,5 +1,5 @@
 .outputLine {
-    font-size: 22px;
+    font-size: 24px;
     word-wrap: normal; 
     width: 100%;
     overflow-wrap: break-word;
@@ -10,19 +10,24 @@ p {
     margin: 0.1em;
 }
 
-
+.output-editor_label {
+    text-align: center;
+    margin: 5px;
+}
 
 .outputbox-display {
     text-align: right;
     width: 33%;
     border: 1px solid #ccc;
     background-color: white;
-    padding: 1em;
-    max-height: 70vh;
-
-
+    padding: 1.3em;
+    height: 74vh;
+    direction:rtl;
 }
 
-/*.editor {
-    padding: 0;
-}*/
+.outputbox-display_container {
+    height: 70vh;
+    border-bottom: 3px dashed grey;
+    overflow-y:scroll;
+}
+
