@@ -104,7 +104,7 @@ export default class OutputBox extends Component {
             //user added new block (from enter key press)
             translationIndexes.push(cursorBlockIndex);
             newContentBlocks = this.insertNewContentBlock(newContentBlocks, newProps.startKey, newCursorBlockIndex);
-        } 
+        }
         else if (contentBlocks.length > newBlockLength) {
             //user deleted some amount of blocks, remove them from array
             newContentBlocks.splice(newCursorBlockIndex + 1, this.findIndexOfBlock(currentProps.endKey, contentBlocks) - newCursorBlockIndex);
@@ -125,8 +125,12 @@ export default class OutputBox extends Component {
     render() {
         const { contentBlocks } = this.state;
         const textBlocks = [];
+        const keys = {};
         contentBlocks.forEach(function (contentBlock) {
-            textBlocks.push(<p className="outputLine" key={contentBlock.key}>{contentBlock.outputText}</p>);
+            if (!keys[contentBlock.key]) {
+                textBlocks.push(<p className="outputLine" key={contentBlock.key}>{contentBlock.outputText}</p>);
+                keys[contentBlock.key] = true;
+            }
         })
 
         return (
