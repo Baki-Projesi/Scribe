@@ -288,15 +288,6 @@ export const englishKeyboardDisambiguations = {
             charLanguage: null
         },
         {
-            turkishText: 'tt',
-            arabicText: 'دّ',
-            code: 'dd7',
-            dropdownOrder: 3,
-            needsDisambiguation: true,
-            comboCategory: 'sheddah',
-            charLanguage: null
-        },
-        {
             turkishText: 'dd',
             arabicText: 'د',
             code: 'dd8',
@@ -309,15 +300,6 @@ export const englishKeyboardDisambiguations = {
             turkishText: 'ḍḍ', 
             arabicText: 'ض',
             code: 'dd9',
-            dropdownOrder: 3,
-            needsDisambiguation: true,
-            comboCategory: 'double',
-            charLanguage: null
-        },
-        {
-            turkishText: 'tt', 
-            arabicText: 'د',
-            code: 'dd10',
             dropdownOrder: 3,
             needsDisambiguation: true,
             comboCategory: 'double',
@@ -4342,15 +4324,6 @@ export const turkishKeyboardDisambiguations = {
             charLanguage: null
         },
         {
-            turkishText: 'tt', 
-            arabicText: 'دّ',
-            code: 'dd7',
-            dropdownOrder: 2,
-            needsDisambiguation: true,
-            comboCategory: 'sheddah',
-            charLanguage: null
-        },
-        {
             turkishText: 'dd', 
             arabicText: 'د',
             code: 'dd8',
@@ -4363,15 +4336,6 @@ export const turkishKeyboardDisambiguations = {
             turkishText: 'ḍḍ', 
             arabicText: 'ض',
             code: 'dd9',
-            dropdownOrder: 2,
-            needsDisambiguation: true,
-            comboCategory: 'double',
-            charLanguage: null
-        },
-        {
-            turkishText: 'tt', 
-            arabicText: 'د',
-            code: 'dd10',
             dropdownOrder: 2,
             needsDisambiguation: true,
             comboCategory: 'double',
