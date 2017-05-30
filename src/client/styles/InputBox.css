@@ -35,6 +35,7 @@
     height: 100%;
     padding: 1em;
     word-wrap: break-word;
+    line-height: 1.2em;
 }
 
 .inputBox-editor {
