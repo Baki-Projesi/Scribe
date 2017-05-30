@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import classNames from 'classnames';
 import '../styles/ImageUpload.css';
-import { Button, Card, CardText } from 'react-mdl'; 
 
 export default class ImageUpload extends React.Component {
   constructor(props) {
@@ -47,6 +46,7 @@ export default class ImageUpload extends React.Component {
           {ximagePreview}
         </div>
 
+
         <form onSubmit={(e)=>this._handleSubmit(e)}>
                 <div className="mdl-textfield mdl-js-textfield mdl-textfield--file fileInput">
                     <input className="mdl-textfield__input" placeholder="File" value={this.state.file.name} type="text" readOnly/>
@@ -58,9 +58,6 @@ export default class ImageUpload extends React.Component {
               type="submit" 
               onClick={(e)=>this._handleSubmit(e)}>Upload Image</button>*/}
         </form>
-
-
-        {/*<Button raised ripple>Button</Button>*/}
       </div>
     )
   }

@@ -104,6 +104,7 @@ export default class InputBox extends Component {
                         keyBindingFn={this.props.keyBindingFn}
                         ref="editor"
                     />
+                    <p className="inputBox-editor_label">Transcription Input</p>
                 </div>
             </div>
         )
