@@ -36,13 +36,18 @@ export function convertKeyGroupToDisambiguationArray(obj, groupString) {
 }
 
 export function convertSpecialGroupToArray(specialRulesArray, groupString) {
-    const result = {};
-    let secondDropdownOptions = [];
-    result.turkishText = groupString;
-    result.representedText = "";
-    result.secondDropdownOptions = specialRulesArray;
+    if (specialRulesArray.length > 0) {
+        const result = {};
+        let secondDropdownOptions = [];
+        result.turkishText = groupString;
+        result.representedText = "";
+        result.secondDropdownOptions = specialRulesArray;
 
-    return result;
+        return result;
+    }
+
+    return specialRulesArray;
+
 }
 
 export function orderRules(rulesArray) {

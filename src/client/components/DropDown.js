@@ -21,6 +21,7 @@ export default class DropDown extends Component {
 
     const dropDownStyles = {
       dropDownBox: {
+        display: this.props.options && this.props.options.length > 0 ? 'auto' : 'none',
         backgroundColor: '#efefef',
         borderStyle: 'solid',
         borderColor: 'grey',
@@ -37,7 +38,7 @@ export default class DropDown extends Component {
     }
 
     let dropdownOptions, k = 0;
-    if (this.props.options && Array.isArray(this.props.options)) {
+    if (this.props.options) {
       dropdownOptions = this.props.options.map((option) =>
         <li key={k++}>
           {this.generateDropdownString(option)}
