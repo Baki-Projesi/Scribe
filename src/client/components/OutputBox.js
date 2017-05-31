@@ -78,7 +78,6 @@ export default class OutputBox extends Component {
 
     //is called on every editor onChange()
     componentWillReceiveProps(nextProps) {
-        console.log(nextProps.transcribeState);
         const currentProps = this.props.transcribeState;
         const newProps = nextProps.transcribeState;
         let { contentBlocks, cursorBlockIndex } = this.state;
