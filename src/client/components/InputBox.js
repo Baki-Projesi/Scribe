@@ -7,7 +7,7 @@ import '../styles/InputBox.css';
 import '../styles/CommentPopup.css';
 import CommentPopup from './CommentPopup';
 import Dropdown from './DropDown';
-
+import { EditorGutter } from './Draft-js-gutter';
 
 /*
     The input area contains a rich text editor that allows the typist to add comment entities to any part of the text
@@ -80,12 +80,13 @@ export default class InputBox extends Component {
                 {commentInput}
                 {dropdown}
                 <div className={'editor'} onClick={this.focus}>
-                    <Editor
+                    <EditorGutter
                         editorState={this.props.editorState}
                         onChange={this.props.onChange}
                         handleKeyCommand={this.props.handleKeyCommand}
                         keyBindingFn={this.props.keyBindingFn}
                         ref="editor"
+                        styleListItem={{color:'#a6a6a6'}}
                     />
                     <p className="inputBox-editor_label">Transcription Input</p>
                 </div>
