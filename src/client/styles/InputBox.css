@@ -2,12 +2,6 @@
     font-family: 'Georgia', 'serif';
 }
 
-.DraftEditor-root {
-    height: 70vh;
-    border-bottom: 3px dashed grey;
-    overflow-y:scroll;
-}
-
 .buttons {
     margin-bottom: 10;
     margin-top: 10;
@@ -45,8 +39,9 @@
 }
 
 .inputBox-editor_label {
+    border-top: 3px dashed grey;
     text-align: center;
-    margin-top: 5px;
+    padding-top: 5px;
 }
 
 .comment {

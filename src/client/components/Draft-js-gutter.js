@@ -31,7 +31,7 @@ export class EditorGutter extends Component {
 
     return (
         
-      <div style={Object.assign(this.props.style, {
+      <div id = "inputcontainer" style={Object.assign(this.props.style, {
           display: 'flex'
         })}>
         <ol 
