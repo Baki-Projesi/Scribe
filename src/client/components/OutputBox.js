@@ -78,6 +78,7 @@ export default class OutputBox extends Component {
 
     //is called on every editor onChange()
     componentWillReceiveProps(nextProps) {
+        console.log(nextProps.transcribeState);
         const currentProps = this.props.transcribeState;
         const newProps = nextProps.transcribeState;
         let { contentBlocks, cursorBlockIndex } = this.state;
@@ -110,7 +111,7 @@ export default class OutputBox extends Component {
             newContentBlocks.splice(newCursorBlockIndex + 1, this.findIndexOfBlock(currentProps.endKey, contentBlocks) - newCursorBlockIndex);
         }
 
-        newContentBlocks = this.translate(newContentBlocks, translationIndexes, newProps.contentState);
+        newContentBlocks = this.translate(newContentBlocks, translationIndexes, nextProps.transcribeState.editorState.getCurrentContent());
 
         this.setState({
             cursorBlockIndex: newCursorBlockIndex,
