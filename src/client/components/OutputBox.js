@@ -85,30 +85,31 @@ export default class OutputBox extends Component {
         const newProps = nextProps.transcribeState;
         let { contentBlocks, cursorBlockIndex } = this.state;
         let translationIndexes = [],
+            newStartKey = newProps.editorState.getSelection().getAnchorKey(),
+            oldStartKey = this.state.oldStartKey ? this.state.oldStartKey : currentProps.startKey,
             newCursorBlockIndex = cursorBlockIndex,
             newContentBlocks = contentBlocks,
             newBlockLength = newProps.contentState.getBlocksAsArray().length;
 
-        //find the index of the block user's cursor is on
-        if (newProps.startKey !== currentProps.startKey) {
-            let idx = this.findIndexOfBlock(newProps.startKey, newProps.editorState.getCurrentContent().getBlocksAsArray());
+        let idx = this.findIndexOfBlock(newStartKey, contentBlocks);
+        if (newStartKey !== oldStartKey) {
             if (idx === -1) {
+                //they added a new block
                 translationIndexes.push(cursorBlockIndex);
-                newCursorBlockIndex = cursorBlockIndex + 1; //they added a new block
+                newCursorBlockIndex = cursorBlockIndex + 1;
+                newContentBlocks = this.insertNewContentBlock(newContentBlocks, newStartKey, newCursorBlockIndex);
             } else {
                 newCursorBlockIndex = idx;
             }
+        }
+        else if (idx === -1) {
+            newContentBlocks = this.insertNewContentBlock(newContentBlocks, newStartKey, newCursorBlockIndex);
         }
 
         //we're always going to look at least the current line
         translationIndexes.push(newCursorBlockIndex);
 
-        if (contentBlocks.length < newBlockLength) {
-            //user added new block (from enter key press)
-            translationIndexes.push(cursorBlockIndex);
-            newContentBlocks = this.insertNewContentBlock(newContentBlocks, newProps.startKey, newCursorBlockIndex);
-        }
-        else if (contentBlocks.length > newBlockLength) {
+        if (contentBlocks.length > newBlockLength) {
             //user deleted some amount of blocks, remove them from array
             newContentBlocks.splice(newCursorBlockIndex + 1, this.findIndexOfBlock(currentProps.endKey, contentBlocks) - newCursorBlockIndex);
         }
@@ -117,12 +118,9 @@ export default class OutputBox extends Component {
 
         this.setState({
             cursorBlockIndex: newCursorBlockIndex,
-            contentBlocks: newContentBlocks
+            contentBlocks: newContentBlocks,
+            oldStartKey: newStartKey
         });
-    }
-
-    componentWillUnmount() {
-        this.translate.cancel();
     }
 
     render() {
@@ -131,7 +129,14 @@ export default class OutputBox extends Component {
         const keys = {};
         contentBlocks.forEach(function (contentBlock) {
             if (!keys[contentBlock.key]) {
-                textBlocks.push(<p className="outputLine" key={contentBlock.key}>{contentBlock.outputText}</p>);
+                let spaceText;
+                if (contentBlock.outputText === '')
+                    spaceText = <br />;
+                if (spaceText)
+                    textBlocks.push(spaceText);
+                else
+                    textBlocks.push(<p className="outputLine" key={contentBlock.key}>{contentBlock.outputText}</p>);
+
                 keys[contentBlock.key] = true;
             }
         })

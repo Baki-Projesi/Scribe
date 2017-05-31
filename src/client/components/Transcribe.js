@@ -80,7 +80,8 @@ export default class Transcribe extends Component {
                 newState = this._promptForDisambiguation(current);
             } else {
                 // At least one character highlighted
-                newState = this._promptForComment(current);
+                //newState = this._promptForComment(current);
+                newState = current; 
             }
             this.setState(newState);
         }
@@ -117,7 +118,7 @@ export default class Transcribe extends Component {
                 if ((e.which >= 49 && e.which <= 49 + numOptions) || (e.which >= 97 && e.which <= 97 + numOptions) && optionMap[e.which]) {
                     return optionMap[e.which]; //e.g. 'dropdown-2'
                 }
-                else if (e.key === " " || Number(e.key) !== NaN) {
+                else if (e.key === " " || !isNaN(Number(e.key))) {
                     //go with default option and create choiceless entity if applicable
                     return 'noDropdown-' + e.key;
                 }
