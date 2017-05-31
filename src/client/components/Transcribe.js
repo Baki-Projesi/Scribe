@@ -394,7 +394,6 @@ export default class Transcribe extends Component {
 
         //Replace the typed text with the displayText
         contentStateWithEntity = Modifier.replaceText(contentStateWithEntity, newSelectionState, displayText, null, entityKey);
-
         let newEditorState = EditorState.set(editorState, { currentContent: contentStateWithEntity });
         /* //NOTE: toggleLink is a horribly named function that actually means to apply the entity
          *   (AKA establish a link between the content and the entity map)
