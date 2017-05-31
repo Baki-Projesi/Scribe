@@ -24,10 +24,15 @@ export function convertKeyGroupToDisambiguationArray(obj, groupString) {
     let code = 0;
     Object.keys(obj).forEach(function (key) {
         let option = {};
-        option.turkishText = groupString ? groupString : key;
-        option.representedText = "...";
-        option.code = code;
-        option.secondDropdownOptions = obj[key];
+        if (obj[key].length === 1) {
+            option = obj[key][0];
+        } else {
+            option.turkishText = groupString ? groupString : key;
+            option.representedText = "...";
+            option.code = code;
+            option.secondDropdownOptions = obj[key];
+        }
+        
         code++;
         results.push(option);
     });
