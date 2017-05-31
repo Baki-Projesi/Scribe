@@ -24,6 +24,8 @@ import Dropdown from './DropDown';
 import AmbiguousCharacter from './AmbiguousCharacter';
 import DisambiguatedCharacter from './DisambiguatedCharacter';
 import Comment from './Comment';
+import { EditorGutter } from './Draft-js-gutter';
+
 
 
 /*
@@ -97,12 +99,13 @@ export default class InputBox extends Component {
                 {commentInput}
                 {dropdown}
                 <div className={'editor'} onClick={this.focus}>
-                    <Editor
+                    <EditorGutter
                         editorState={this.props.editorState}
                         onChange={this.props.onChange}
                         handleKeyCommand={this.props.handleKeyCommand}
                         keyBindingFn={this.props.keyBindingFn}
                         ref="editor"
+                        styleListItem={{color:'#a6a6a6'}}
                     />
                     <p className="inputBox-editor_label">Transcription Input</p>
                 </div>
