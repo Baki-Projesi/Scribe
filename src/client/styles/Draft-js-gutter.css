@@ -1,5 +1,5 @@
-.inputBox-editor{
-    display: flex;
-    height: 74vh;
-    width: 35%;
+#scrolling1 {
+    height: 70vh;
+    overflow-y: scroll;
 }
+
