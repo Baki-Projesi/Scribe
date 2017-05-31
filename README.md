@@ -27,28 +27,28 @@ Next Steps:
 
 ## Table of Contents
 
-Baki-RTT/
-  build/
-  node_modules/
-  public/
-    index.html
-    favicon.ico
-  src/
-    assets/
-      disambiguationRules.js
-      logo.svg
-    client/
-      components/
-      styles/
-      utils/
-    routes/
-      About.js
-      App.js
-      NotFound.js
-    server/
-      app.js
-      index.js
-    tests/
+- Baki-RTT/
+  - build/
+  - node_modules/
+  - public/
+    - index.html
+    - favicon.ico
+  - src/
+    - assets/
+      - disambiguationRules.js
+      - logo.svg
+    - client/
+      - components/
+      - styles/
+      - utils/
+    - routes/
+      - About.js
+      - App.js
+      - NotFound.js
+    - server/
+      - app.js
+      - index.js
+    - tests/
 
 ## Technology Stack
 
@@ -65,6 +65,6 @@ The technologies involved in Scribe can be broken up into three layers: client-f
 
 ## Contact Information
 
-Natasha Dietzler - ndiet@uw.edu
-Rutvi Patel - rutvi@uw.edu
-Brad Holland - bradholl@uw.edu
+- Natasha Dietzler - ndiet@uw.edu
+- Rutvi Patel - rutvi@uw.edu
+- Brad Holland - bradholl@uw.edu
