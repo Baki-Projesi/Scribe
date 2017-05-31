@@ -1,32 +1,13 @@
 import React, { Component } from 'react';
 import {
     Editor,
-    EditorState,
     RichUtils,
-    CompositeDecorator,
-    convertToRaw,
-    contentState,
-    getDefaultKeyBinding,
-    getVisibleSelectionRect,
-    hasCommandModifier,
-    KeyBindingUtil,
-    SelectionState,
-    Modifier
 } from 'draft-js';
 import '../styles/InputBox.css';
 import '../styles/CommentPopup.css';
-import DisplayComment from './DisplayComment.js'
-import getRelativeParentElement from '../utils/getRelativeParentElement';
-import { adjustSelectionOffset } from '../utils/selectionStateHelpers';
-import { englishKeyboardDisambiguations, turkishKeyboardDisambiguations } from '../../assets/disambiguationRules';
 import CommentPopup from './CommentPopup';
 import Dropdown from './DropDown';
-import AmbiguousCharacter from './AmbiguousCharacter';
-import DisambiguatedCharacter from './DisambiguatedCharacter';
-import Comment from './Comment';
 import { EditorGutter } from './Draft-js-gutter';
-
-
 
 /*
     The input area contains a rich text editor that allows the typist to add comment entities to any part of the text

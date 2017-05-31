@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 
 export default class DisplayComment extends Component {
-    constructor(props) {
-        super(props);
-    }
 
     render() {
         const styles = {

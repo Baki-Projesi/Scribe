@@ -13,10 +13,6 @@ We expect the following props:
 
 export default class CommentPopup extends Component {
 
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         return (
             <div style={this.props.position}>

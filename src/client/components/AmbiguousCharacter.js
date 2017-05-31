@@ -2,12 +2,6 @@ import React, {Component} from 'react';
 
 class AmbiguousCharacter extends Component {
 
-    // notable props are decoratedText (contains the text inside the decorator)
-    // and offsetKey (contains the key of the decorated region)
-    constructor(props) {
-        super(props);
-    }
-
     // may also use this.wrapperElement.getBoundingClientRect() for finding coordinates
     // of the decorating element
     componentDidMount() {

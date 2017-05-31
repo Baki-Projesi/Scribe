@@ -34,26 +34,29 @@ export default class OutputBox extends Component {
     translate(contentBlocks, translationIndexes, contentState) {
         translationIndexes.forEach(function (index) {
 
-            const charList = contentState.getBlockForKey(contentBlocks[index].key).getCharacterList();
-            let result = contentBlocks[index], outputText = "", sourceText = "";
+            if (contentBlocks[index]) {
+                //TODO: fix undefined indexes, shouldn't need this 'if' block
+                const charList = contentState.getBlockForKey(contentBlocks[index].key).getCharacterList();
+                let result = contentBlocks[index], outputText = "", sourceText = "";
 
-            //build up the translated string
-            for (let i = 0; i < charList.count(); i++) {
-                let charMeta = charList.get(i);
-                let key = charMeta.getEntity();
-                if (key && contentState.getEntity(key).type === "DISAMBIGUATION") {
-                    let outputStr = contentState.getEntity(key).data["arabicText"];
-                    let sourceStr = contentState.getEntity(key).data["turkishText"];
-                    outputText += outputStr;
-                    if (sourceStr.length > 1) {
-                        i += sourceStr.length - 1;
+                //build up the translated string
+                for (let i = 0; i < charList.count(); i++) {
+                    let charMeta = charList.get(i);
+                    let key = charMeta.getEntity();
+                    if (key && contentState.getEntity(key).type === "DISAMBIGUATION") {
+                        let outputStr = contentState.getEntity(key).data["arabicText"];
+                        let sourceStr = contentState.getEntity(key).data["turkishText"];
+                        outputText += outputStr;
+                        if (sourceStr.length > 1) {
+                            i += sourceStr.length - 1;
+                        }
                     }
                 }
-            }
 
-            result.outputText = outputText;
-            //replace content block with newly translated block at index
-            contentBlocks[index] = result;
+                result.outputText = outputText;
+                //replace content block with newly translated block at index
+                contentBlocks[index] = result;
+            }
 
         });
 
@@ -88,7 +91,7 @@ export default class OutputBox extends Component {
 
         //find the index of the block user's cursor is on
         if (newProps.startKey !== currentProps.startKey) {
-            let idx = this.findIndexOfBlock(newProps.startKey, newProps.contentState.getBlocksAsArray());
+            let idx = this.findIndexOfBlock(newProps.startKey, newProps.editorState.getCurrentContent().getBlocksAsArray());
             if (idx === -1) {
                 translationIndexes.push(cursorBlockIndex);
                 newCursorBlockIndex = cursorBlockIndex + 1; //they added a new block
@@ -110,7 +113,7 @@ export default class OutputBox extends Component {
             newContentBlocks.splice(newCursorBlockIndex + 1, this.findIndexOfBlock(currentProps.endKey, contentBlocks) - newCursorBlockIndex);
         }
 
-        newContentBlocks = this.translate(newContentBlocks, translationIndexes, nextProps.transcribeState.editorState.getCurrentContent());
+        newContentBlocks = this.translate(newContentBlocks, translationIndexes, newProps.editorState.getCurrentContent());
 
         this.setState({
             cursorBlockIndex: newCursorBlockIndex,
