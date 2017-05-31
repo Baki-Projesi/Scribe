@@ -14,6 +14,7 @@ export class EditorGutter extends Component {
   constructor(props) {
     super(props);
     this.state = {editorState: this.props.editorState || EditorState.createEmpty()};
+    this.focus = () => this.refs.editor.focus();
   }
 
   render() {
