@@ -1,35 +1,27 @@
 import React, { Component } from 'react';
-import LanguageTabBar from "./LanguageTabBar";
 import OutputBox from './OutputBox';
 import InputBox from './InputBox';
 import ImageUpload from './ImageUpload';
 import '../styles/Transcribe.css';
 import {
-    Editor,
     EditorState,
     RichUtils,
     CompositeDecorator,
     convertToRaw,
-    contentState,
     getDefaultKeyBinding,
-    getVisibleSelectionRect,
-    hasCommandModifier,
     KeyBindingUtil,
-    SelectionState,
     Modifier
 } from 'draft-js';
 import findWithRegex from '../utils/findWithRegex';
 import { adjustSelectionOffset } from '../utils/selectionStateHelpers';
 import getCurrentWordBuffer from '../utils/getCurrentWordBuffer';
-import { convertKeyGroupToDisambiguationArray, groupByTurkishKey, orderRules } from '../utils/groupByKey';
+import { orderRules } from '../utils/groupByKey';
 import decorateComponentWithProps from 'decorate-component-with-props';
-import CommentPopup from './CommentPopup';
 import DisplayComment from './DisplayComment'
 import AmbiguousCharacter from './AmbiguousCharacter';
 import DisambiguatedCharacter from './DisambiguatedCharacter';
 import { englishKeyboardDisambiguations, turkishKeyboardDisambiguations } from '../../assets/disambiguationRules';
 import bufferComboSearch from '../utils/bufferComboSearch';
-import needsDropdown from '../utils/needsDropdown';
 import generateDraftStateObject from '../utils/generateDraftStateObject';
 
 const store = {
@@ -120,21 +112,16 @@ export default class Transcribe extends Component {
             const numOptions = this.state.disambiguationOptions ? this.state.disambiguationOptions.length : 0;
 
             if (this.state.showDropdown) {
-                let characterBuffer = getCurrentWordBuffer(
-                    this.state.editorState.getCurrentContent().getBlockForKey(this.state.editorState.getSelection().getStartKey()),
-                    this.state.editorState.getSelection().getStartOffset());
-
-                let comboOptions = bufferComboSearch(characterBuffer + e.key, charRules);
                 const optionMap = this._generateOptionMap();
 
                 if ((e.which >= 49 && e.which <= 49 + numOptions) || (e.which >= 97 && e.which <= 97 + numOptions) && optionMap[e.which]) {
                     return optionMap[e.which]; //e.g. 'dropdown-2'
                 }
+                else if (e.key === " " || Number(e.key) !== NaN) {
+                    //go with default option and create choiceless entity if applicable
+                    return 'noDropdown-' + e.key;
+                }
                 else {
-                    //go with default option
-                    if (e.which === 32) {
-                        return 'space';
-                    }
                     this.confirmDropdownChoice(0);
                 }
             }
@@ -168,8 +155,9 @@ export default class Transcribe extends Component {
         if (command === 'handled') {
             return command;
         }
-        if (command === 'space') {
-            this.confirmDropdownWithSpace();
+        if (command.startsWith('noDropdown')) {
+            let character = command.charAt(command.length - 1);
+            this.confirmDropdownWithChoicelessEntity(character);
             return 'handled';
         }
         if (command === 'editor-newline') {
@@ -210,9 +198,9 @@ export default class Transcribe extends Component {
         this.setState(newState);
     }
 
-    confirmDropdownWithSpace() {
+    confirmDropdownWithChoicelessEntity(character) {
         let newState = Object.assign(this.state, this._confirmDisambiguation(0, this.state.editorState));
-        newState = Object.assign(newState, this._addChoicelessEntity(' ', newState.editorState));
+        newState = Object.assign(newState, this._addChoicelessEntity(character, newState.editorState));
         this.setState(newState);
     }
 
@@ -568,12 +556,8 @@ export default class Transcribe extends Component {
 
     render() {
         const { inputText, } = this.state;
-        let whichKeyboard = "";
-        if (!this.state.usingTurkishKeyboard) {
-            whichKeyboard = "English Keyboard"
-        } else {
-            whichKeyboard = "Turkish Keyboard"
-        }
+        let whichKeyboard = this.state.usingTurkishKeyboard ? "Turkish Keyboard" : "English Keyboard";
+
         return (
             <div id="tool-window">
                 <div className={'tool-window_inputs'}>
