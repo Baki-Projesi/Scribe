@@ -47,7 +47,7 @@ Next Steps:
     - client/
       - components/
         - AmbiguousCharacter.js
-          - This renders to the DOM a character that the user has not assigned metadata to yet. When the character displayed               in this way, it will be red. They user must choose an option from the dropdown menu to indicate which exact                   character they want to type. 
+            -This renders to the DOM a character that the user has not assigned metadata to yet. When the character displayed in this way, it will be red. They user must choose an option from the dropdown menu to indicate which exact character they want to type.
         - Comment.js
           - An individual comment. It will contain the text that has been associated with a particular selection of text
         - CommentPopup.js
@@ -82,12 +82,19 @@ Next Steps:
         - TranscribeFooterTools.css
       - utils/
         - bufferComboSearch.js
+           -Searches the current character buffer for string matches of mutli-character combinations in the ruleset
         - findWithRegex.js
+           -Uses regular expressions to find ambiguous characters in the input area using the ruleset
         - generateDraftStateObject.js
+           -Helper function that returns an object containing information related to the current EditorState, including current selection, content blocks, etc.
         - getCurrentWordBuffer.js
+           -Returns the current buffer of characters that follow the nearest space to the karet 
         - getRelativeParentElement.js
+           -given an element on the DOM, this function returns the nearest relative parent element.
         - groupByKey.js
+           -Set of helper functions that create groupings of disambiguation rules that eventually go to the Dropdown component
         - selectionStateHelpers.js
+           -utility functions that adjust the currrent selection using given parameters
     - routes/
       - About.js
       - App.js
