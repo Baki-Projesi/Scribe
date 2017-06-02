@@ -4,11 +4,12 @@
 TODO:
 Codes:
 - fix 'eyi' issue
-- double dropdown creates duplicates if the default is the same as the sole item in the double dropdown, ie h1 and h2
 - identify Turkish, Arabic, or Persian
 
 UI:
-- make it clear which box is for text entry and which is output
+- highlight selected option
+- change menu so the user has to select the keyboard that they are using first
+- add a menu for whether or not line numbers should be included
 */
 
 /*
