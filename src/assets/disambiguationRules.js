@@ -1,5 +1,3 @@
-/* eslint-disable */
-
 /*
 TODO:
 Codes:
@@ -2049,6 +2047,15 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'i',
+            arabicText: 'ﺍ',
+            code: 'i20',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: null,
+            charLanguage: null
+        },
+        {
+            turkishText: 'i',
             arabicText: 'إ',
             code: 'i4',
             dropdownOrder: 2,
@@ -2118,6 +2125,15 @@ export const englishKeyboardDisambiguations = {
             needsDisambiguation: true,
             comboCategory: null,
             charLanguage: 'arabic'
+        },
+        {
+            turkishText: 'ı',
+            arabicText: 'ﺍ',
+            code: 'i21',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: null,
+            charLanguage: null
         },
         {
             turkishText: 'ı',
@@ -2213,6 +2229,15 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'İ',
+            arabicText: 'ﺍ',
+            code: 'I19',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: null,
+            charLanguage: null
+        },
+        {
+            turkishText: 'İ',
             arabicText: 'إ',
             code: 'I4',
             dropdownOrder: 2,
@@ -2291,6 +2316,15 @@ export const englishKeyboardDisambiguations = {
             needsDisambiguation: true,
             comboCategory: null,
             charLanguage: 'arabic'
+        },
+        {
+            turkishText: 'I',
+            arabicText: 'ﺍ',
+            code: 'I20',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: null,
+            charLanguage: null
         },
         {
             turkishText: 'I',
@@ -6160,6 +6194,15 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'i',
+            arabicText: 'ﺍ',
+            code: 'i19',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: null,
+            charLanguage: null
+        },
+        {
+            turkishText: 'i',
             arabicText: 'إ',
             code: 'i4',
             dropdownOrder: 2,
@@ -6261,6 +6304,15 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'İ',
+            arabicText: 'ﺍ',
+            code: 'I19',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: null,
+            charLanguage: null
+        },
+        {
+            turkishText: 'İ',
             arabicText: 'إ',
             code: 'I4',
             dropdownOrder: 2,
@@ -6335,6 +6387,15 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'ı',
+            arabicText: 'ﺍ',
+            code: 'i20',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: null,
+            charLanguage: null
+        },
+        {
+            turkishText: 'ı',
             arabicText: 'إ',
             code: 'i5',
             dropdownOrder: 2,
@@ -6393,6 +6454,15 @@ export const turkishKeyboardDisambiguations = {
             turkishText: 'I',
             arabicText: 'اي',
             code: 'I3',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: null,
+            charLanguage: null
+        },
+        {
+            turkishText: 'I',
+            arabicText: 'ﺍ',
+            code: 'I20',
             dropdownOrder: 2,
             needsDisambiguation: true,
             comboCategory: null,
