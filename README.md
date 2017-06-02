@@ -48,16 +48,27 @@ Next Steps:
       - components/
         - AmbiguousCharacter.js
         - Comment.js
+          - An individual comment. It will contain the text that has been associated with a particular selection of text
         - CommentPopup.js
+          - This will be the comment input/display that will show when the user clicks to add or view a comment
         - DisambiguatedCharacter.js
+          - This is a character for which a metadata decision has been made
         - DisplayComment.js
+          - This is an alternative method for displaying the comment if a user clicks to view
         - Draft-js-gutter.js
+          - This component is a Draftjs plugin. It exports a component which takes in options from the user and adds line                 numbers to the editor. It will wrap the generic Draftjs Editor component in an "EditorGutter" which maps all of               the content blocks (each line in this case) to a number.
         - DropDown.js
+          - An individual dropdown. This is what contains the disambiguation options the user is prompted with as the type.
         - ImageUpload.js
+          - A component to let the user temporarily upload an image. It is meant to be used to compare original manuscripts               with the generated translation. It also stores the image in the temporary component's state so that we can include             it in our database in future iterations. 
         - InputBox.js
+          - This component creates the transcription input box as a whole. It calls the draft-js-gutter component and passes               style preferences as props so that the plugin can generate the appropriate draft Editor component. 
         - OutputBox.js
+          - This displays each content block in Arabic for the user. They can compare our generated output to original                     manuscripts. 
         - Transcribe.js
+          - This is a little like a parent component. It calls (ands to the DOM) the inputbos, imageUpload, and output box                 components. Taken together, this makes up the functionality of our tool. 
         - TranscribeFooterTools.js
+          - This is a component for next steps. It will generate a footer with options for the user to save, download,                     publish, and so on. 
       - styles/
         - App.css
         - COmmentPopup.css
