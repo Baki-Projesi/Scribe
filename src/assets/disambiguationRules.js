@@ -3026,6 +3026,17 @@ export const englishKeyboardDisambiguations = {
             charLanguage: null
         }
     ],
+    'ün': [
+        {
+            turkishText: 'ün',
+            arabicText: 'ٌ',
+            code: 'uumlaute8',
+            dropdownOrder: 4,
+            needsDisambiguation: true,
+            comboCategory: 'tanwin',
+            charLanguage: null
+        }
+    ],
     'in': [
         {
             turkishText: 'in',
@@ -7121,6 +7132,17 @@ export const turkishKeyboardDisambiguations = {
             turkishText: 'un',
             arabicText: 'ٌ',
             code: 'e8',
+            dropdownOrder: 4,
+            needsDisambiguation: true,
+            comboCategory: 'tanwin',
+            charLanguage: null
+        }
+    ],
+    'ün': [
+        {
+            turkishText: 'ün',
+            arabicText: 'ٌ',
+            code: 'uumlaute8',
             dropdownOrder: 4,
             needsDisambiguation: true,
             comboCategory: 'tanwin',
