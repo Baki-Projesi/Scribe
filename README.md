@@ -47,6 +47,7 @@ Next Steps:
     - client/
       - components/
         - AmbiguousCharacter.js
+          - This renders to the DOM a character that the user has not assigned metadata to yet. When the character displayed               in this way, it will be red. They user must choose an option from the dropdown menu to indicate which exact                   character they want to type. 
         - Comment.js
           - An individual comment. It will contain the text that has been associated with a particular selection of text
         - CommentPopup.js
