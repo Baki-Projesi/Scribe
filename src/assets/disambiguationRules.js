@@ -33,6 +33,7 @@ comboCategory:
 'double'
 'sheddah'
 'charCombo' - special combo option tied to one character
+'sukun' - no vowel marking for consonants
 null
 
 charLanguage:
@@ -65,12 +66,30 @@ export const englishKeyboardDisambiguations = {
             charLanguage: null
         },
         {
+            turkishText: 'b',
+            arabicText: 'بْ',
+            code: 'b2',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'sukun',
+            charLanguage: null
+        },
+        {
             turkishText: 'p', // at the end of the word, automatically p
             arabicText: 'ب',
             code: 'b7',
             dropdownOrder: 2,
             needsDisambiguation: true,
             comboCategory: null,
+            charLanguage: null
+        },
+        {
+            turkishText: 'p',
+            arabicText: 'بْ',
+            code: 'b3',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'sukun',
             charLanguage: null
         },
         {
@@ -121,12 +140,30 @@ export const englishKeyboardDisambiguations = {
             charLanguage: null
         },
         {
+            turkishText: 'B',
+            arabicText: 'بْ',
+            code: 'B2',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'sukun',
+            charLanguage: null
+        },
+        {
             turkishText: 'P',
             arabicText: 'ب',
             code: 'B7',
             dropdownOrder: 2,
             needsDisambiguation: true,
             comboCategory: null,
+            charLanguage: null
+        },
+        {
+            turkishText: 'P',
+            arabicText: 'بْ',
+            code: 'B3',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'sukun',
             charLanguage: null
         }
     ],
@@ -141,6 +178,15 @@ export const englishKeyboardDisambiguations = {
             charLanguage: null
         },
         {
+            turkishText: 'c',
+            arabicText: 'جْ',
+            code: 'c3',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'sukun',
+            charLanguage: null
+        },
+        {
             turkishText: 'ç',
             arabicText: 'چ',
             code: 'c2',
@@ -151,11 +197,29 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'ç',
+            arabicText: 'چْ',
+            code: 'c4',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'sukun',
+            charLanguage: null
+        },
+        {
+            turkishText: 'ç',
             arabicText: 'ج',
             code: 'c7',
             dropdownOrder: 2,
             needsDisambiguation: true,
             comboCategory: null,
+            charLanguage: null
+        },
+        {
+            turkishText: 'ç',
+            arabicText: 'جْ',
+            code: 'c5',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'sukun',
             charLanguage: null
         },
         {
@@ -224,6 +288,15 @@ export const englishKeyboardDisambiguations = {
             charLanguage: null
         },
         {
+            turkishText: 'C',
+            arabicText: 'جْ',
+            code: 'C1',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'sukun',
+            charLanguage: null
+        },
+        {
             turkishText: 'Ç',
             arabicText: 'چ',
             code: 'C2',
@@ -234,11 +307,29 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'Ç',
+            arabicText: 'چْ',
+            code: 'C3',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'sukun',
+            charLanguage: null
+        },
+        {
+            turkishText: 'Ç',
             arabicText: 'ج',
             code: 'C7',
             dropdownOrder: 2,
             needsDisambiguation: true,
             comboCategory: null,
+            charLanguage: null
+        },
+        {
+            turkishText: 'Ç',
+            arabicText: 'جْ',
+            code: 'C4',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'sukun',
             charLanguage: null
         }
     ],
@@ -253,6 +344,15 @@ export const englishKeyboardDisambiguations = {
             charLanguage: null
         },
         {
+            turkishText: 'd',
+            arabicText: 'دْ',
+            code: 'd1',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'sukun',
+            charLanguage: null
+        },
+        {
             turkishText: 'ḍ',
             arabicText: 'ض',
             code: 'd3',
@@ -262,12 +362,30 @@ export const englishKeyboardDisambiguations = {
             charLanguage: null
         },
         {
+            turkishText: 'ḍ',
+            arabicText: 'ضْ',
+            code: 'd2',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'sukun',
+            charLanguage: null
+        },
+        {
             turkishText: 't',
             arabicText: 'د',
             code: 'd7',
             dropdownOrder: 2,
             needsDisambiguation: true,
             comboCategory: null,
+            charLanguage: null
+        },
+        {
+            turkishText: 't',
+            arabicText: 'دْ',
+            code: 'd4',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'sukun',
             charLanguage: null
         },
         {
@@ -318,6 +436,15 @@ export const englishKeyboardDisambiguations = {
             charLanguage: null
         },
         {
+            turkishText: 'D',
+            arabicText: 'دْ',
+            code: 'D1',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'sukun',
+            charLanguage: null
+        },
+        {
             turkishText: 'Ḍ',
             arabicText: 'ض',
             code: 'D3',
@@ -327,12 +454,30 @@ export const englishKeyboardDisambiguations = {
             charLanguage: null
         },
         {
+            turkishText: 'Ḍ',
+            arabicText: 'ضْ',
+            code: 'D2',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'sukun',
+            charLanguage: null
+        },
+        {
             turkishText: 'T',
             arabicText: 'د',
             code: 'D7',
             dropdownOrder: 2,
             needsDisambiguation: true,
             comboCategory: null,
+            charLanguage: null
+        },
+        {
+            turkishText: 'T',
+            arabicText: 'دْ',
+            code: 'D4',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'sukun',
             charLanguage: null
         }
     ],
@@ -344,6 +489,15 @@ export const englishKeyboardDisambiguations = {
             dropdownOrder: 0,
             needsDisambiguation: true,
             comboCategory: null,
+            charLanguage: null
+        },
+        {
+            turkishText: 'f',
+            arabicText: 'فْ',
+            code: 'f1',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'sukun',
             charLanguage: null
         },
         {
@@ -374,6 +528,15 @@ export const englishKeyboardDisambiguations = {
             needsDisambiguation: true,
             comboCategory: null,
             charLanguage: null
+        },
+        {
+            turkishText: 'F',
+            arabicText: 'فْ',
+            code: 'F1',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'sukun',
+            charLanguage: null
         }
     ],
     'g': [
@@ -387,12 +550,30 @@ export const englishKeyboardDisambiguations = {
             charLanguage: null
         },
         {
+            turkishText: 'g',
+            arabicText: 'كْ',
+            code: 'g1',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'sukun',
+            charLanguage: null
+        },
+        {
             turkishText: 'ġ',
             arabicText: 'غ',
             code: 'g4',
             dropdownOrder: 2,
             needsDisambiguation: true,
             comboCategory: null,
+            charLanguage: null
+        },
+        {
+            turkishText: 'ġ',
+            arabicText: 'غْ',
+            code: 'g2',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'sukun',
             charLanguage: null
         },
         {
@@ -406,11 +587,29 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'ğ',
+            arabicText: 'غْ',
+            code: 'g3',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'sukun',
+            charLanguage: null
+        },
+        {
+            turkishText: 'ğ',
             arabicText: 'ك',
             code: 'g7',
             dropdownOrder: 2,
             needsDisambiguation: true,
             comboCategory: null,
+            charLanguage: null
+        },
+        {
+            turkishText: 'ğ',
+            arabicText: 'كْ',
+            code: 'g8',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'sukun',
             charLanguage: null
         },
         {
@@ -461,12 +660,30 @@ export const englishKeyboardDisambiguations = {
             charLanguage: null
         },
         {
+            turkishText: 'G',
+            arabicText: 'كْ',
+            code: 'G1',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'sukun',
+            charLanguage: null
+        },
+        {
             turkishText: 'Ġ',
             arabicText: 'غ',
             code: 'G4',
             dropdownOrder: 2,
             needsDisambiguation: true,
             comboCategory: null,
+            charLanguage: null
+        },
+        {
+            turkishText: 'Ġ',
+            arabicText: 'غْ',
+            code: 'G2',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'sukun',
             charLanguage: null
         },
         {
@@ -480,11 +697,29 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'Ğ',
+            arabicText: 'غْ',
+            code: 'G3',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'sukun',
+            charLanguage: null
+        },
+        {
+            turkishText: 'Ğ',
             arabicText: 'ك',
             code: 'G7',
             dropdownOrder: 2,
             needsDisambiguation: true,
             comboCategory: null,
+            charLanguage: null
+        },
+        {
+            turkishText: 'Ğ',
+            arabicText: 'كْ',
+            code: 'G8',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'sukun',
             charLanguage: null
         }
     ],
@@ -499,6 +734,15 @@ export const englishKeyboardDisambiguations = {
             charLanguage: null
         },
         {
+            turkishText: 'ḥ',
+            arabicText: 'حْ',
+            code: 'h1',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'sukun',
+            charLanguage: null
+        },
+        {
             turkishText: 'h',
             arabicText: 'ه',
             code: 'h',
@@ -508,12 +752,30 @@ export const englishKeyboardDisambiguations = {
             charLanguage: null
         },
         {
+            turkishText: 'h',
+            arabicText: 'هْ',
+            code: 'h2',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'sukun',
+            charLanguage: null
+        },
+        {
             turkishText: 'ẖ',
             arabicText: 'خ',
             code: 'h5',
             dropdownOrder: 2,
             needsDisambiguation: true,
             comboCategory: null,
+            charLanguage: null
+        },
+        {
+            turkishText: 'ẖ',
+            arabicText: 'خْ',
+            code: 'h4',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'sukun',
             charLanguage: null
         },
         {
@@ -591,6 +853,15 @@ export const englishKeyboardDisambiguations = {
             charLanguage: null
         },
         {
+            turkishText: 'Ḥ',
+            arabicText: 'حْ',
+            code: 'H1',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'sukun',
+            charLanguage: null
+        },
+        {
             turkishText: 'H',
             arabicText: 'ه',
             code: 'H',
@@ -600,12 +871,30 @@ export const englishKeyboardDisambiguations = {
             charLanguage: null
         },
         {
+            turkishText: 'H',
+            arabicText: 'هْ',
+            code: 'H2',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'sukun',
+            charLanguage: null
+        },
+        {
             turkishText: 'Ḫ',
             arabicText: 'خ',
             code: 'H5',
             dropdownOrder: 2,
             needsDisambiguation: true,
             comboCategory: null,
+            charLanguage: null
+        },
+        {
+            turkishText: 'Ḫ',
+            arabicText: 'خْ',
+            code: 'H4',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'sukun',
             charLanguage: null
         },
         {
@@ -626,6 +915,15 @@ export const englishKeyboardDisambiguations = {
             dropdownOrder: 0,
             needsDisambiguation: true,
             comboCategory: null,
+            charLanguage: null
+        },
+        {
+            turkishText: 'j',
+            arabicText: 'ژْ',
+            code: 'j1',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'sukun',
             charLanguage: null
         },
         {
@@ -656,6 +954,15 @@ export const englishKeyboardDisambiguations = {
             needsDisambiguation: true,
             comboCategory: null,
             charLanguage: null
+        },
+        {
+            turkishText: 'J',
+            arabicText: 'ژْ',
+            code: 'J1',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'sukun',
+            charLanguage: null
         }
     ],
     'k': [
@@ -669,6 +976,15 @@ export const englishKeyboardDisambiguations = {
             charLanguage: null
         },
         {
+            turkishText: 'k',
+            arabicText: 'كْ',
+            code: 'k1',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'sukun',
+            charLanguage: null
+        },
+        {
             turkishText: 'ḳ',
             arabicText: 'ق',
             code: 'k3',
@@ -678,12 +994,30 @@ export const englishKeyboardDisambiguations = {
             charLanguage: null
         },
         {
+            turkishText: 'ḳ',
+            arabicText: 'قْ',
+            code: 'k2',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'sukun',
+            charLanguage: null
+        },
+        {
             turkishText: 'g',
             arabicText: 'ك',
             code: 'kg',
             dropdownOrder: 2,
             needsDisambiguation: true,
             comboCategory: null,
+            charLanguage: null
+        },
+        {
+            turkishText: 'g',
+            arabicText: 'كْ',
+            code: 'k4',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'sukun',
             charLanguage: null
         },
         {
@@ -762,6 +1096,15 @@ export const englishKeyboardDisambiguations = {
             charLanguage: null
         },
         {
+            turkishText: 'K',
+            arabicText: 'كْ',
+            code: 'K1',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'sukun',
+            charLanguage: null
+        },
+        {
             turkishText: 'Ḳ',
             arabicText: 'ق',
             code: 'K3',
@@ -771,12 +1114,30 @@ export const englishKeyboardDisambiguations = {
             charLanguage: null
         },
         {
+            turkishText: 'Ḳ',
+            arabicText: 'قْ',
+            code: 'K2',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'sukun',
+            charLanguage: null
+        },
+        {
             turkishText: 'G',
             arabicText: 'ك',
             code: 'KG',
             dropdownOrder: 2,
             needsDisambiguation: true,
             comboCategory: null,
+            charLanguage: null
+        },
+        {
+            turkishText: 'G',
+            arabicText: 'كْ',
+            code: 'K4',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'sukun',
             charLanguage: null
         },
         {
@@ -798,6 +1159,15 @@ export const englishKeyboardDisambiguations = {
             dropdownOrder: 0,
             needsDisambiguation: true,
             comboCategory: null,
+            charLanguage: null
+        },
+        {
+            turkishText: 'l',
+            arabicText: 'لْ',
+            code: 'l1',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'sukun',
             charLanguage: null
         },
         {
@@ -828,6 +1198,15 @@ export const englishKeyboardDisambiguations = {
             needsDisambiguation: true,
             comboCategory: null,
             charLanguage: null
+        },
+        {
+            turkishText: 'L',
+            arabicText: 'لْ',
+            code: 'L1',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'sukun',
+            charLanguage: null
         }
     ],
     'm': [
@@ -838,6 +1217,15 @@ export const englishKeyboardDisambiguations = {
             dropdownOrder: 0,
             needsDisambiguation: true,
             comboCategory: null,
+            charLanguage: null
+        },
+        {
+            turkishText: 'm',
+            arabicText: 'مْ',
+            code: 'm1',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'sukun',
             charLanguage: null
         },
         {
@@ -868,6 +1256,15 @@ export const englishKeyboardDisambiguations = {
             needsDisambiguation: true,
             comboCategory: null,
             charLanguage: null
+        },
+        {
+            turkishText: 'M',
+            arabicText: 'مْ',
+            code: 'M1',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'sukun',
+            charLanguage: null
         }
     ],
     'n': [
@@ -881,12 +1278,30 @@ export const englishKeyboardDisambiguations = {
             charLanguage: null
         },
         {
+            turkishText: 'n',
+            arabicText: 'نْ',
+            code: 'n1',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'sukun',
+            charLanguage: null
+        },
+        {
             turkishText: 'ñ',
             arabicText: 'ك',
             code: 'n6',
             dropdownOrder: 2,
             needsDisambiguation: true,
             comboCategory: null,
+            charLanguage: null
+        },
+        {
+            turkishText: 'ñ',
+            arabicText: 'كْ',
+            code: 'n2',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'sukun',
             charLanguage: null
         },
         {
@@ -919,12 +1334,30 @@ export const englishKeyboardDisambiguations = {
             charLanguage: null
         },
         {
+            turkishText: 'N',
+            arabicText: 'نْ',
+            code: 'N1',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'sukun',
+            charLanguage: null
+        },
+        {
             turkishText: 'Ñ',
             arabicText: 'ك',
             code: 'N6',
             dropdownOrder: 2,
             needsDisambiguation: true,
             comboCategory: null,
+            charLanguage: null
+        },
+        {
+            turkishText: 'Ñ',
+            arabicText: 'كْ',
+            code: 'N2',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'sukun',
             charLanguage: null
         }
     ],
@@ -940,11 +1373,29 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'p',
+            arabicText: 'پْ',
+            code: 'p1',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'sukun',
+            charLanguage: null
+        },
+        {
+            turkishText: 'p',
             arabicText: 'ب',
             code: 'b7',
             dropdownOrder: 2,
             needsDisambiguation: true,
             comboCategory: null,
+            charLanguage: null
+        },
+        {
+            turkishText: 'p',
+            arabicText: 'بْ',
+            code: 'p2',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'sukun',
             charLanguage: null
         },
         {
@@ -996,11 +1447,29 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'P',
+            arabicText: 'پْ',
+            code: 'P1',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'sukun',
+            charLanguage: null
+        },
+        {
+            turkishText: 'P',
             arabicText: 'ب',
             code: 'B7',
             dropdownOrder: 2,
             needsDisambiguation: true,
             comboCategory: null,
+            charLanguage: null
+        },
+        {
+            turkishText: 'P',
+            arabicText: 'بْ',
+            code: 'P2',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'sukun',
             charLanguage: null
         }
     ],
@@ -1012,6 +1481,15 @@ export const englishKeyboardDisambiguations = {
             dropdownOrder: 0,
             needsDisambiguation: true,
             comboCategory: null,
+            charLanguage: null
+        },
+        {
+            turkishText: 'r',
+            arabicText: 'رْ',
+            code: 'r1',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'sukun',
             charLanguage: null
         },
         {
@@ -1042,6 +1520,15 @@ export const englishKeyboardDisambiguations = {
             needsDisambiguation: true,
             comboCategory: null,
             charLanguage: null
+        },
+        {
+            turkishText: 'R',
+            arabicText: 'رْ',
+            code: 'R1',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'sukun',
+            charLanguage: null
         }
     ],
     's': [
@@ -1055,12 +1542,30 @@ export const englishKeyboardDisambiguations = {
             charLanguage: null
         },
         {
+            turkishText: 's',
+            arabicText: 'سْ',
+            code: 's1',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'sukun',
+            charLanguage: null
+        },
+        {
             turkishText: 'ş',
             arabicText: 'ش',
             code: 's2',
             dropdownOrder: 2,
             needsDisambiguation: true,
             comboCategory: null,
+            charLanguage: null
+        },
+        {
+            turkishText: 'ş',
+            arabicText: 'شْ',
+            code: 's4',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'sukun',
             charLanguage: null
         },
         {
@@ -1073,12 +1578,30 @@ export const englishKeyboardDisambiguations = {
             charLanguage: null
         },
         {
+            turkishText: 'ṣ',
+            arabicText: 'صْ',
+            code: 's6',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'sukun',
+            charLanguage: null
+        },
+        {
             turkishText: 'ŝ',
             arabicText: 'ث',
             code: 's5',
             dropdownOrder: 2,
             needsDisambiguation: true,
             comboCategory: null,
+            charLanguage: null
+        },
+        {
+            turkishText: 'ŝ',
+            arabicText: 'ثْ',
+            code: 's7',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'sukun',
             charLanguage: null
         },
         {
@@ -1165,12 +1688,30 @@ export const englishKeyboardDisambiguations = {
             charLanguage: null
         },
         {
+            turkishText: 'S',
+            arabicText: 'سْ',
+            code: 'S1',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'sukun',
+            charLanguage: null
+        },
+        {
             turkishText: 'Ş',
             arabicText: 'ش',
             code: 'S2',
             dropdownOrder: 2,
             needsDisambiguation: true,
             comboCategory: null,
+            charLanguage: null
+        },
+        {
+            turkishText: 'Ş',
+            arabicText: 'شْ',
+            code: 'S4',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'sukun',
             charLanguage: null
         },
         {
@@ -1183,12 +1724,30 @@ export const englishKeyboardDisambiguations = {
             charLanguage: null
         },
         {
+            turkishText: 'Ṣ',
+            arabicText: 'صْ',
+            code: 'S6',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'sukun',
+            charLanguage: null
+        },
+        {
             turkishText: 'Ŝ',
             arabicText: 'ث',
             code: 'S5',
             dropdownOrder: 2,
             needsDisambiguation: true,
             comboCategory: null,
+            charLanguage: null
+        },
+        {
+            turkishText: 'Ŝ',
+            arabicText: 'ثْ',
+            code: 'S7',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'sukun',
             charLanguage: null
         }
     ],
@@ -1203,6 +1762,15 @@ export const englishKeyboardDisambiguations = {
             charLanguage: null
         },
         {
+            turkishText: 't',
+            arabicText: 'تْ',
+            code: 't1',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'sukun',
+            charLanguage: null
+        },
+        {
             turkishText: 'ṭ',
             arabicText: 'ط',
             code: 't3',
@@ -1212,12 +1780,30 @@ export const englishKeyboardDisambiguations = {
             charLanguage: null
         },
         {
+            turkishText: 'ṭ',
+            arabicText: 'طْ',
+            code: 't2',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'sukun',
+            charLanguage: null
+        },
+        {
             turkishText: 'd',
             arabicText: 'ط',
             code: 't6',
             dropdownOrder: 2,
             needsDisambiguation: true,
             comboCategory: null,
+            charLanguage: null
+        },
+        {
+            turkishText: 'd',
+            arabicText: 'طْ',
+            code: 't4',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'sukun',
             charLanguage: null
         },
         {
@@ -1231,11 +1817,29 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 't',
+            arabicText: 'ةْ',
+            code: 't5',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'sukun',
+            charLanguage: null
+        },
+        {
+            turkishText: 't',
             arabicText: 'د',
             code: 'd7',
             dropdownOrder: 2,
             needsDisambiguation: true,
             comboCategory: null,
+            charLanguage: null
+        },
+        {
+            turkishText: 't',
+            arabicText: 'دْ',
+            code: 't8',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'sukun',
             charLanguage: null
         },
         {
@@ -1331,6 +1935,15 @@ export const englishKeyboardDisambiguations = {
             charLanguage: null
         },
         {
+            turkishText: 'T',
+            arabicText: 'تْ',
+            code: 'T1',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'sukun',
+            charLanguage: null
+        },
+        {
             turkishText: 'Ṭ',
             arabicText: 'ط',
             code: 'T3',
@@ -1340,12 +1953,30 @@ export const englishKeyboardDisambiguations = {
             charLanguage: null
         },
         {
+            turkishText: 'Ṭ',
+            arabicText: 'طْ',
+            code: 'T2',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'sukun',
+            charLanguage: null
+        },
+        {
             turkishText: 'D',
             arabicText: 'ط',
             code: 'T6',
             dropdownOrder: 2,
             needsDisambiguation: true,
             comboCategory: null,
+            charLanguage: null
+        },
+        {
+            turkishText: 'D',
+            arabicText: 'طْ',
+            code: 'T4',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'sukun',
             charLanguage: null
         },
         {
@@ -1359,11 +1990,29 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'T',
+            arabicText: 'ةْ',
+            code: 'T5',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'sukun',
+            charLanguage: null
+        },
+        {
+            turkishText: 'T',
             arabicText: 'د',
             code: 'D7',
             dropdownOrder: 2,
             needsDisambiguation: true,
             comboCategory: null,
+            charLanguage: null
+        },
+        {
+            turkishText: 'T',
+            arabicText: 'دْ',
+            code: 'T8',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'sukun',
             charLanguage: null
         }
     ],
@@ -1375,6 +2024,15 @@ export const englishKeyboardDisambiguations = {
             dropdownOrder: 0,
             needsDisambiguation: true,
             comboCategory: null,
+            charLanguage: null
+        },
+        {
+            turkishText: 'v',
+            arabicText: 'وْ',
+            code: 'v1',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'sukun',
             charLanguage: null
         },
         {
@@ -1405,6 +2063,15 @@ export const englishKeyboardDisambiguations = {
             needsDisambiguation: true,
             comboCategory: null,
             charLanguage: null
+        },
+        {
+            turkishText: 'V',
+            arabicText: 'وْ',
+            code: 'V1',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'sukun',
+            charLanguage: null
         }
     ],
     'y': [
@@ -1419,11 +2086,29 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'y',
+            arabicText: '\u06cc'+ 'ْ',
+            code: 'y2',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'sukun',
+            charLanguage: null
+        },
+        {
+            turkishText: 'y',
             arabicText: 'ي',
             code: 'y',
             dropdownOrder: 4,
             needsDisambiguation: true,
             comboCategory: 'special',
+            charLanguage: null
+        },
+        {
+            turkishText: 'y',
+            arabicText: 'يْ',
+            code: 'y3',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'sukun',
             charLanguage: null
         },
         {
@@ -1457,11 +2142,29 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'Y',
+            arabicText: '\u06cc' + 'ْ',
+            code: 'Y2',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'sukun',
+            charLanguage: null
+        },
+        {
+            turkishText: 'Y',
             arabicText: 'ي',
             code: 'Y',
             dropdownOrder: 4,
             needsDisambiguation: true,
             comboCategory: 'special',
+            charLanguage: null
+        },
+        {
+            turkishText: 'Y',
+            arabicText: 'يْ',
+            code: 'Y3',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'sukun',
             charLanguage: null
         }
     ],
@@ -1476,12 +2179,30 @@ export const englishKeyboardDisambiguations = {
             charLanguage: null
         },
         {
+            turkishText: 'z',
+            arabicText: 'زْ',
+            code: 'z1',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'sukun',
+            charLanguage: null
+        },
+        {
             turkishText: 'ẓ',
             arabicText: 'ظ',
             code: 'z3',
             dropdownOrder: 2,
             needsDisambiguation: true,
             comboCategory: null,
+            charLanguage: null
+        },
+        {
+            turkishText: 'ẓ',
+            arabicText: 'ظْ',
+            code: 'z2',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'sukun',
             charLanguage: null
         },
         {
@@ -1494,12 +2215,30 @@ export const englishKeyboardDisambiguations = {
             charLanguage: null
         },
         {
+            turkishText: 'ż',
+            arabicText: 'ضْ',
+            code: 'z6',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'sukun',
+            charLanguage: null
+        },
+        {
             turkishText: 'ẕ',
             arabicText: 'ذ',
             code: 'z5',
             dropdownOrder: 2,
             needsDisambiguation: true,
             comboCategory: null,
+            charLanguage: null
+        },
+        {
+            turkishText: 'ẕ',
+            arabicText: 'ذْ',
+            code: 'z7',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'sukun',
             charLanguage: null
         },
         {
@@ -1586,12 +2325,30 @@ export const englishKeyboardDisambiguations = {
             charLanguage: null
         },
         {
+            turkishText: 'Z',
+            arabicText: 'زْ',
+            code: 'Z1',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'sukun',
+            charLanguage: null
+        },
+        {
             turkishText: 'Ẓ',
             arabicText: 'ظ',
             code: 'Z3',
             dropdownOrder: 2,
             needsDisambiguation: true,
             comboCategory: null,
+            charLanguage: null
+        },
+        {
+            turkishText: 'Ẓ',
+            arabicText: 'ظْ',
+            code: 'Z2',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'sukun',
             charLanguage: null
         },
         {
@@ -1604,12 +2361,30 @@ export const englishKeyboardDisambiguations = {
             charLanguage: null
         },
         {
+            turkishText: 'Ż',
+            arabicText: 'ضْ',
+            code: 'Z6',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'sukun',
+            charLanguage: null
+        },
+        {
             turkishText: 'Ẕ',
             arabicText: 'ذ',
             code: 'Z5',
             dropdownOrder: 2,
             needsDisambiguation: true,
             comboCategory: null,
+            charLanguage: null
+        },
+        {
+            turkishText: 'Ẕ',
+            arabicText: 'ذْ',
+            code: 'Z7',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'sukun',
             charLanguage: null
         }
     ],
@@ -2230,7 +3005,7 @@ export const englishKeyboardDisambiguations = {
         {
             turkishText: 'İ',
             arabicText: 'ﺍ',
-            code: 'I19',
+            code: 'I20',
             dropdownOrder: 2,
             needsDisambiguation: true,
             comboCategory: null,
@@ -2320,7 +3095,7 @@ export const englishKeyboardDisambiguations = {
         {
             turkishText: 'I',
             arabicText: 'ﺍ',
-            code: 'I20',
+            code: 'I21',
             dropdownOrder: 2,
             needsDisambiguation: true,
             comboCategory: null,
@@ -6195,7 +6970,7 @@ export const turkishKeyboardDisambiguations = {
         {
             turkishText: 'i',
             arabicText: 'ﺍ',
-            code: 'i19',
+            code: 'i20',
             dropdownOrder: 2,
             needsDisambiguation: true,
             comboCategory: null,
@@ -6269,7 +7044,7 @@ export const turkishKeyboardDisambiguations = {
         {
             turkishText: 'Ī',
             arabicText: '\u06cc', // Farsi yeh
-            code: 'i19',
+            code: 'I19',
             dropdownOrder: 2,
             needsDisambiguation: true,
             comboCategory: null,
@@ -6305,7 +7080,7 @@ export const turkishKeyboardDisambiguations = {
         {
             turkishText: 'İ',
             arabicText: 'ﺍ',
-            code: 'I19',
+            code: 'I20',
             dropdownOrder: 2,
             needsDisambiguation: true,
             comboCategory: null,
@@ -6388,7 +7163,7 @@ export const turkishKeyboardDisambiguations = {
         {
             turkishText: 'ı',
             arabicText: 'ﺍ',
-            code: 'i20',
+            code: 'i21',
             dropdownOrder: 2,
             needsDisambiguation: true,
             comboCategory: null,
@@ -6462,7 +7237,7 @@ export const turkishKeyboardDisambiguations = {
         {
             turkishText: 'I',
             arabicText: 'ﺍ',
-            code: 'I20',
+            code: 'I21',
             dropdownOrder: 2,
             needsDisambiguation: true,
             comboCategory: null,
