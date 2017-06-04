@@ -2106,7 +2106,7 @@ export const englishKeyboardDisambiguations = {
             turkishText: 'y',
             arabicText: 'يْ',
             code: 'y3',
-            dropdownOrder: 2,
+            dropdownOrder: 4,
             needsDisambiguation: true,
             comboCategory: 'sukun',
             charLanguage: null
