@@ -1369,7 +1369,7 @@ export const englishKeyboardDisambiguations = {
             dropdownOrder: 0,
             needsDisambiguation: true,
             comboCategory: null,
-            charLanguage: null
+            charLanguage: 'persian'
         },
         {
             turkishText: 'p',
@@ -1378,7 +1378,7 @@ export const englishKeyboardDisambiguations = {
             dropdownOrder: 2,
             needsDisambiguation: true,
             comboCategory: 'sukun',
-            charLanguage: null
+            charLanguage: 'persian'
         },
         {
             turkishText: 'p',
@@ -1387,7 +1387,7 @@ export const englishKeyboardDisambiguations = {
             dropdownOrder: 2,
             needsDisambiguation: true,
             comboCategory: null,
-            charLanguage: null
+            charLanguage: 'persian'
         },
         {
             turkishText: 'p',
@@ -1396,43 +1396,7 @@ export const englishKeyboardDisambiguations = {
             dropdownOrder: 2,
             needsDisambiguation: true,
             comboCategory: 'sukun',
-            charLanguage: null
-        },
-        {
-            turkishText: 'pp',
-            arabicText: 'پّ',
-            code: 'pp',
-            dropdownOrder: 3,
-            needsDisambiguation: true,
-            comboCategory: 'sheddah',
-            charLanguage: null
-        },
-        {
-            turkishText: 'pp',
-            arabicText: 'بّ',
-            code: 'ppb7',
-            dropdownOrder: 3,
-            needsDisambiguation: true,
-            comboCategory: 'sheddah',
-            charLanguage: null
-        },
-        {
-            turkishText: 'pp', 
-            arabicText: 'پ',
-            code: 'pp8',
-            dropdownOrder: 3,
-            needsDisambiguation: true,
-            comboCategory: 'double',
-            charLanguage: null
-        },
-        {
-            turkishText: 'pp', 
-            arabicText: 'ب',
-            code: 'ppb9',
-            dropdownOrder: 3,
-            needsDisambiguation: true,
-            comboCategory: 'double',
-            charLanguage: null
+            charLanguage: 'persian'
         }
     ],
     'P': [
@@ -1443,7 +1407,7 @@ export const englishKeyboardDisambiguations = {
             dropdownOrder: 0,
             needsDisambiguation: true,
             comboCategory: null,
-            charLanguage: null
+            charLanguage: 'persian'
         },
         {
             turkishText: 'P',
@@ -1452,7 +1416,7 @@ export const englishKeyboardDisambiguations = {
             dropdownOrder: 2,
             needsDisambiguation: true,
             comboCategory: 'sukun',
-            charLanguage: null
+            charLanguage: 'persian'
         },
         {
             turkishText: 'P',
@@ -1461,7 +1425,7 @@ export const englishKeyboardDisambiguations = {
             dropdownOrder: 2,
             needsDisambiguation: true,
             comboCategory: null,
-            charLanguage: null
+            charLanguage: 'persian'
         },
         {
             turkishText: 'P',
@@ -1470,7 +1434,7 @@ export const englishKeyboardDisambiguations = {
             dropdownOrder: 2,
             needsDisambiguation: true,
             comboCategory: 'sukun',
-            charLanguage: null
+            charLanguage: 'persian'
         }
     ],
     'r': [
@@ -6743,7 +6707,7 @@ export const turkishKeyboardDisambiguations = {
             dropdownOrder: 0,
             needsDisambiguation: true,
             comboCategory: null,
-            charLanguage: null
+            charLanguage: 'persian'
         },
         {
             turkishText: 'p',
@@ -6752,7 +6716,7 @@ export const turkishKeyboardDisambiguations = {
             dropdownOrder: 2,
             needsDisambiguation: true,
             comboCategory: 'sukun',
-            charLanguage: null
+            charLanguage: 'persian'
         },
         {
             turkishText: 'p',
@@ -6761,7 +6725,7 @@ export const turkishKeyboardDisambiguations = {
             dropdownOrder: 2,
             needsDisambiguation: true,
             comboCategory: null,
-            charLanguage: null
+            charLanguage: 'persian'
         },
         {
             turkishText: 'p',
@@ -6770,43 +6734,7 @@ export const turkishKeyboardDisambiguations = {
             dropdownOrder: 2,
             needsDisambiguation: true,
             comboCategory: 'sukun',
-            charLanguage: null
-        },
-        {
-            turkishText: 'pp', 
-            arabicText: 'پّ',
-            code: 'pp',
-            dropdownOrder: 3,
-            needsDisambiguation: true,
-            comboCategory: 'sheddah',
-            charLanguage: null
-        },
-        {
-            turkishText: 'pp',
-            arabicText: 'بّ',
-            code: 'ppb7',
-            dropdownOrder: 3,
-            needsDisambiguation: true,
-            comboCategory: 'sheddah',
-            charLanguage: null
-        },
-        {
-            turkishText: 'pp', 
-            arabicText: 'پ',
-            code: 'pp8',
-            dropdownOrder: 3,
-            needsDisambiguation: true,
-            comboCategory: 'double',
-            charLanguage: null
-        },
-        {
-            turkishText: 'pp', 
-            arabicText: 'ب',
-            code: 'ppb9',
-            dropdownOrder: 3,
-            needsDisambiguation: true,
-            comboCategory: 'double',
-            charLanguage: null
+            charLanguage: 'persian'
         }
     ],
     'P': [
@@ -6817,7 +6745,7 @@ export const turkishKeyboardDisambiguations = {
             dropdownOrder: 0,
             needsDisambiguation: true,
             comboCategory: null,
-            charLanguage: null
+            charLanguage: 'persian'
         },
         {
             turkishText: 'P',
@@ -6826,7 +6754,7 @@ export const turkishKeyboardDisambiguations = {
             dropdownOrder: 2,
             needsDisambiguation: true,
             comboCategory: 'sukun',
-            charLanguage: null
+            charLanguage: 'persian'
         },
         {
             turkishText: 'P',
@@ -6835,7 +6763,7 @@ export const turkishKeyboardDisambiguations = {
             dropdownOrder: 2,
             needsDisambiguation: true,
             comboCategory: null,
-            charLanguage: null
+            charLanguage: 'persian'
         },
         {
             turkishText: 'P',
@@ -6844,7 +6772,7 @@ export const turkishKeyboardDisambiguations = {
             dropdownOrder: 2,
             needsDisambiguation: true,
             comboCategory: 'sukun',
-            charLanguage: null
+            charLanguage: 'persian'
         }
     ],
     'r': [
