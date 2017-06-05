@@ -102,27 +102,9 @@ export const englishKeyboardDisambiguations = {
             charLanguage: null
         },
         {
-            turkishText: 'pp',
-            arabicText: 'بّ',
-            code: 'bb7',
-            dropdownOrder: 3,
-            needsDisambiguation: true,
-            comboCategory: 'sheddah',
-            charLanguage: null
-        },
-        {
             turkishText: 'bb',
             arabicText: 'ب',
             code: 'bb8',
-            dropdownOrder: 3,
-            needsDisambiguation: true,
-            comboCategory: 'double',
-            charLanguage: null
-        },
-        {
-            turkishText: 'pp',
-            arabicText: 'ب',
-            code: 'bb9',
             dropdownOrder: 3,
             needsDisambiguation: true,
             comboCategory: 'double',
@@ -3553,15 +3535,6 @@ export const englishKeyboardDisambiguations = {
             charLanguage: null
         },
         {
-            turkishText: 'aˀ',
-            arabicText: 'آ',
-            code: 'a\'11',
-            dropdownOrder: 2,
-            needsDisambiguation: true,
-            comboCategory: 'hamza',
-            charLanguage: null
-        },
-        {
             turkishText: 'eˀ',
             arabicText: 'أ',
             code: 'e\'6',
@@ -5377,27 +5350,9 @@ export const turkishKeyboardDisambiguations = {
             charLanguage: null
         },
         {
-            turkishText: 'pp',
-            arabicText: 'بّ',
-            code: 'bb7',
-            dropdownOrder: 3,
-            needsDisambiguation: true,
-            comboCategory: 'sheddah',
-            charLanguage: null
-        },
-        {
             turkishText: 'bb', 
             arabicText: 'ب',
             code: 'bb8',
-            dropdownOrder: 3,
-            needsDisambiguation: true,
-            comboCategory: 'double',
-            charLanguage: null
-        },
-        {
-            turkishText: 'pp',
-            arabicText: 'ب',
-            code: 'bb9',
             dropdownOrder: 3,
             needsDisambiguation: true,
             comboCategory: 'double',
@@ -8889,15 +8844,6 @@ export const turkishKeyboardDisambiguations = {
             turkishText: 'aˀ',
             arabicText: 'أ',
             code: 'a\'10',
-            dropdownOrder: 2,
-            needsDisambiguation: true,
-            comboCategory: 'hamza',
-            charLanguage: null
-        },
-        {
-            turkishText: 'aˀ',
-            arabicText: 'آ',
-            code: 'a\'11',
             dropdownOrder: 2,
             needsDisambiguation: true,
             comboCategory: 'hamza',
