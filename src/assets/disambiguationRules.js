@@ -94,20 +94,20 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'bb',
-            arabicText: 'بّ',
-            code: 'bb',
-            dropdownOrder: 3,
-            needsDisambiguation: true,
-            comboCategory: 'sheddah',
-            charLanguage: null
-        },
-        {
-            turkishText: 'bb',
             arabicText: 'ب',
             code: 'bb8',
             dropdownOrder: 3,
             needsDisambiguation: true,
             comboCategory: 'double',
+            charLanguage: null
+        },
+        {
+            turkishText: 'bb',
+            arabicText: 'بّ',
+            code: 'bb',
+            dropdownOrder: 3,
+            needsDisambiguation: true,
+            comboCategory: 'sheddah',
             charLanguage: null
         }
     ],
@@ -205,33 +205,6 @@ export const englishKeyboardDisambiguations = {
             charLanguage: null
         },
         {
-            turkishText: 'cc', 
-            arabicText: 'جّ',
-            code: 'cc',
-            dropdownOrder: 3,
-            needsDisambiguation: true,
-            comboCategory: 'sheddah',
-            charLanguage: null
-        },
-        {
-            turkishText: 'çç', 
-            arabicText: 'چّ',
-            code: 'cc2',
-            dropdownOrder: 3,
-            needsDisambiguation: true,
-            comboCategory: 'sheddah',
-            charLanguage: null
-        },
-        {
-            turkishText: 'çç', 
-            arabicText: 'جّ',
-            code: 'cc7',
-            dropdownOrder: 3,
-            needsDisambiguation: true,
-            comboCategory: 'sheddah',
-            charLanguage: null
-        },
-        {
             turkishText: 'cc',
             arabicText: 'ج',
             code: 'cc8',
@@ -256,6 +229,33 @@ export const englishKeyboardDisambiguations = {
             dropdownOrder: 3,
             needsDisambiguation: true,
             comboCategory: 'double',
+            charLanguage: null
+        },
+        {
+            turkishText: 'cc', 
+            arabicText: 'جّ',
+            code: 'cc',
+            dropdownOrder: 3,
+            needsDisambiguation: true,
+            comboCategory: 'sheddah',
+            charLanguage: null
+        },
+        {
+            turkishText: 'çç', 
+            arabicText: 'چّ',
+            code: 'cc2',
+            dropdownOrder: 3,
+            needsDisambiguation: true,
+            comboCategory: 'sheddah',
+            charLanguage: null
+        },
+        {
+            turkishText: 'çç', 
+            arabicText: 'جّ',
+            code: 'cc7',
+            dropdownOrder: 3,
+            needsDisambiguation: true,
+            comboCategory: 'sheddah',
             charLanguage: null
         }
     ],
@@ -372,24 +372,6 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'dd',
-            arabicText: 'دّ',
-            code: 'dd',
-            dropdownOrder: 3,
-            needsDisambiguation: true,
-            comboCategory: 'sheddah',
-            charLanguage: null
-        },
-        {
-            turkishText: 'ḍḍ',
-            arabicText: 'ضّ',
-            code: 'dd3',
-            dropdownOrder: 3,
-            needsDisambiguation: true,
-            comboCategory: 'sheddah',
-            charLanguage: null
-        },
-        {
-            turkishText: 'dd',
             arabicText: 'د',
             code: 'dd8',
             dropdownOrder: 3,
@@ -404,6 +386,24 @@ export const englishKeyboardDisambiguations = {
             dropdownOrder: 3,
             needsDisambiguation: true,
             comboCategory: 'double',
+            charLanguage: null
+        },
+        {
+            turkishText: 'dd',
+            arabicText: 'دّ',
+            code: 'dd',
+            dropdownOrder: 3,
+            needsDisambiguation: true,
+            comboCategory: 'sheddah',
+            charLanguage: null
+        },
+        {
+            turkishText: 'ḍḍ',
+            arabicText: 'ضّ',
+            code: 'dd3',
+            dropdownOrder: 3,
+            needsDisambiguation: true,
+            comboCategory: 'sheddah',
             charLanguage: null
         }
     ],
@@ -484,20 +484,20 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'ff',
-            arabicText: 'فّ',
-            code: 'ff',
-            dropdownOrder: 3,
-            needsDisambiguation: true,
-            comboCategory: 'sheddah',
-            charLanguage: null
-        },
-        {
-            turkishText: 'ff',
             arabicText: 'ف',
             code: 'ff1',
             dropdownOrder: 3,
             needsDisambiguation: true,
             comboCategory: 'double',
+            charLanguage: null
+        },
+        {
+            turkishText: 'ff',
+            arabicText: 'فّ',
+            code: 'ff',
+            dropdownOrder: 3,
+            needsDisambiguation: true,
+            comboCategory: 'sheddah',
             charLanguage: null
         }
     ],
@@ -595,24 +595,6 @@ export const englishKeyboardDisambiguations = {
             charLanguage: null
         },
         {
-            turkishText: 'gg',
-            arabicText: 'كّ',
-            code: 'gg',
-            dropdownOrder: 3,
-            needsDisambiguation: true,
-            comboCategory: 'sheddah',
-            charLanguage: null
-        },
-        {
-            turkishText: 'ġġ',
-            arabicText: 'غّ',
-            code: 'gg4',
-            dropdownOrder: 3,
-            needsDisambiguation: true,
-            comboCategory: 'sheddah',
-            charLanguage: null
-        },
-        {
             turkishText: 'gg', 
             arabicText: 'ك',
             code: 'gg8',
@@ -628,6 +610,24 @@ export const englishKeyboardDisambiguations = {
             dropdownOrder: 3,
             needsDisambiguation: true,
             comboCategory: 'double',
+            charLanguage: null
+        },
+        {
+            turkishText: 'gg',
+            arabicText: 'كّ',
+            code: 'gg',
+            dropdownOrder: 3,
+            needsDisambiguation: true,
+            comboCategory: 'sheddah',
+            charLanguage: null
+        },
+        {
+            turkishText: 'ġġ',
+            arabicText: 'غّ',
+            code: 'gg4',
+            dropdownOrder: 3,
+            needsDisambiguation: true,
+            comboCategory: 'sheddah',
             charLanguage: null
         }
     ],
@@ -770,33 +770,6 @@ export const englishKeyboardDisambiguations = {
             charLanguage: null
         },
         {
-            turkishText: 'hh',
-            arabicText: 'هّ',
-            code: 'hh',
-            dropdownOrder: 3,
-            needsDisambiguation: true,
-            comboCategory: 'sheddah',
-            charLanguage: null
-        },
-        {
-            turkishText: 'ḥḥ',
-            arabicText: 'حّ',
-            code: 'hh3',
-            dropdownOrder: 3,
-            needsDisambiguation: true,
-            comboCategory: 'sheddah',
-            charLanguage: null
-        },
-        {
-            turkishText: 'ẖẖ',
-            arabicText: 'خّ',
-            code: 'hh5',
-            dropdownOrder: 3,
-            needsDisambiguation: true,
-            comboCategory: 'sheddah',
-            charLanguage: null
-        },
-        {
             turkishText: 'hh', 
             arabicText: 'ه',
             code: 'hh6',
@@ -821,6 +794,33 @@ export const englishKeyboardDisambiguations = {
             dropdownOrder: 3,
             needsDisambiguation: true,
             comboCategory: 'double',
+            charLanguage: null
+        },
+        {
+            turkishText: 'hh',
+            arabicText: 'هّ',
+            code: 'hh',
+            dropdownOrder: 3,
+            needsDisambiguation: true,
+            comboCategory: 'sheddah',
+            charLanguage: null
+        },
+        {
+            turkishText: 'ḥḥ',
+            arabicText: 'حّ',
+            code: 'hh3',
+            dropdownOrder: 3,
+            needsDisambiguation: true,
+            comboCategory: 'sheddah',
+            charLanguage: null
+        },
+        {
+            turkishText: 'ẖẖ',
+            arabicText: 'خّ',
+            code: 'hh5',
+            dropdownOrder: 3,
+            needsDisambiguation: true,
+            comboCategory: 'sheddah',
             charLanguage: null
         }
     ],
@@ -910,20 +910,20 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'jj',
-            arabicText: 'ژّ',
-            code: 'jj',
-            dropdownOrder: 3,
-            needsDisambiguation: true,
-            comboCategory: 'sheddah',
-            charLanguage: null
-        },
-        {
-            turkishText: 'jj',
             arabicText: 'ژ',
             code: 'jj1',
             dropdownOrder: 3,
             needsDisambiguation: true,
             comboCategory: 'double',
+            charLanguage: null
+        },
+        {
+            turkishText: 'jj',
+            arabicText: 'ژّ',
+            code: 'jj',
+            dropdownOrder: 3,
+            needsDisambiguation: true,
+            comboCategory: 'sheddah',
             charLanguage: null
         }
     ],
@@ -1014,33 +1014,6 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'kk',
-            arabicText: 'كّ',
-            code: 'kk',
-            dropdownOrder: 3,
-            needsDisambiguation: true,
-            comboCategory: 'sheddah',
-            charLanguage: null
-        },
-        {
-            turkishText: 'ḳḳ',
-            arabicText: 'قّ',
-            code: 'kk3',
-            dropdownOrder: 3,
-            needsDisambiguation: true,
-            comboCategory: 'sheddah',
-            charLanguage: null
-        },
-        {
-            turkishText: 'gg',
-            arabicText: 'كّ',
-            code: 'kkg',
-            dropdownOrder: 3,
-            needsDisambiguation: true,
-            comboCategory: 'sheddah',
-            charLanguage: null
-        },
-        {
-            turkishText: 'kk',
             arabicText: 'ك',
             code: 'kk4',
             dropdownOrder: 3,
@@ -1064,6 +1037,33 @@ export const englishKeyboardDisambiguations = {
             dropdownOrder: 3,
             needsDisambiguation: true,
             comboCategory: 'double',
+            charLanguage: null
+        },
+        {
+            turkishText: 'kk',
+            arabicText: 'كّ',
+            code: 'kk',
+            dropdownOrder: 3,
+            needsDisambiguation: true,
+            comboCategory: 'sheddah',
+            charLanguage: null
+        },
+        {
+            turkishText: 'ḳḳ',
+            arabicText: 'قّ',
+            code: 'kk3',
+            dropdownOrder: 3,
+            needsDisambiguation: true,
+            comboCategory: 'sheddah',
+            charLanguage: null
+        },
+        {
+            turkishText: 'gg',
+            arabicText: 'كّ',
+            code: 'kkg',
+            dropdownOrder: 3,
+            needsDisambiguation: true,
+            comboCategory: 'sheddah',
             charLanguage: null
         }
     ],
@@ -1154,20 +1154,20 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'll',
-            arabicText: 'لّ',
-            code: 'll',
-            dropdownOrder: 3,
-            needsDisambiguation: true,
-            comboCategory: 'sheddah',
-            charLanguage: null
-        },
-        {
-            turkishText: 'll',
             arabicText: 'ل',
             code: 'll1',
             dropdownOrder: 3,
             needsDisambiguation: true,
             comboCategory: 'double',
+            charLanguage: null
+        },
+        {
+            turkishText: 'll',
+            arabicText: 'لّ',
+            code: 'll',
+            dropdownOrder: 3,
+            needsDisambiguation: true,
+            comboCategory: 'sheddah',
             charLanguage: null
         }
     ],
@@ -1211,21 +1211,21 @@ export const englishKeyboardDisambiguations = {
             charLanguage: null
         },
         {
-            turkishText: 'mm', 
-            arabicText: 'مّ',
-            code: 'mm',
-            dropdownOrder: 3,
-            needsDisambiguation: true,
-            comboCategory: 'sheddah',
-            charLanguage: null
-        },
-        {
             turkishText: 'mm',
             arabicText: 'م',
             code: 'mm1',
             dropdownOrder: 3,
             needsDisambiguation: true,
             comboCategory: 'double',
+            charLanguage: null
+        },
+        {
+            turkishText: 'mm', 
+            arabicText: 'مّ',
+            code: 'mm',
+            dropdownOrder: 3,
+            needsDisambiguation: true,
+            comboCategory: 'sheddah',
             charLanguage: null
         }
     ],
@@ -1287,21 +1287,21 @@ export const englishKeyboardDisambiguations = {
             charLanguage: null
         },
         {
-            turkishText: 'nn', 
-            arabicText: 'نّ',
-            code: 'nn',
-            dropdownOrder: 3,
-            needsDisambiguation: true,
-            comboCategory: 'sheddah',
-            charLanguage: null
-        },
-        {
             turkishText: 'nn',
             arabicText: 'ن',
             code: 'nn1',
             dropdownOrder: 3,
             needsDisambiguation: true,
             comboCategory: 'double',
+            charLanguage: null
+        },
+        {
+            turkishText: 'nn', 
+            arabicText: 'نّ',
+            code: 'nn',
+            dropdownOrder: 3,
+            needsDisambiguation: true,
+            comboCategory: 'sheddah',
             charLanguage: null
         }
     ],
@@ -1440,20 +1440,20 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'rr',
-            arabicText: 'رّ',
-            code: 'rr',
-            dropdownOrder: 3,
-            needsDisambiguation: true,
-            comboCategory: 'sheddah',
-            charLanguage: null
-        },
-        {
-            turkishText: 'rr',
             arabicText: 'ر',
             code: 'rr1',
             dropdownOrder: 3,
             needsDisambiguation: true,
             comboCategory: 'double',
+            charLanguage: null
+        },
+        {
+            turkishText: 'rr',
+            arabicText: 'رّ',
+            code: 'rr',
+            dropdownOrder: 3,
+            needsDisambiguation: true,
+            comboCategory: 'sheddah',
             charLanguage: null
         }
     ],
@@ -1550,6 +1550,42 @@ export const englishKeyboardDisambiguations = {
             comboCategory: 'sukun',
             charLanguage: null
         },
+         {
+            turkishText: 'ss',
+            arabicText: 'س',
+            code: 'ss6',
+            dropdownOrder: 3,
+            needsDisambiguation: true,
+            comboCategory: 'double',
+            charLanguage: null
+        },
+        {
+            turkishText: 'şş', 
+            arabicText: 'ش',
+            code: 'ss7',
+            dropdownOrder: 3,
+            needsDisambiguation: true,
+            comboCategory: 'double',
+            charLanguage: null
+        },
+        {
+            turkishText: 'ṣṣ', 
+            arabicText: 'ص',
+            code: 'ss8',
+            dropdownOrder: 3,
+            needsDisambiguation: true,
+            comboCategory: 'double',
+            charLanguage: null
+        },
+        {
+            turkishText: 'ŝŝ',
+            arabicText: 'ث',
+            code: 'ss9',
+            dropdownOrder: 3,
+            needsDisambiguation: true,
+            comboCategory: 'double',
+            charLanguage: null
+        },
         {
             turkishText: 'ss',
             arabicText: 'سّ',
@@ -1584,42 +1620,6 @@ export const englishKeyboardDisambiguations = {
             dropdownOrder: 3,
             needsDisambiguation: true,
             comboCategory: 'sheddah',
-            charLanguage: null
-        },
-        {
-            turkishText: 'ss',
-            arabicText: 'س',
-            code: 'ss6',
-            dropdownOrder: 3,
-            needsDisambiguation: true,
-            comboCategory: 'double',
-            charLanguage: null
-        },
-        {
-            turkishText: 'şş', 
-            arabicText: 'ش',
-            code: 'ss7',
-            dropdownOrder: 3,
-            needsDisambiguation: true,
-            comboCategory: 'double',
-            charLanguage: null
-        },
-        {
-            turkishText: 'ṣṣ', 
-            arabicText: 'ص',
-            code: 'ss8',
-            dropdownOrder: 3,
-            needsDisambiguation: true,
-            comboCategory: 'double',
-            charLanguage: null
-        },
-        {
-            turkishText: 'ŝŝ',
-            arabicText: 'ث',
-            code: 'ss9',
-            dropdownOrder: 3,
-            needsDisambiguation: true,
-            comboCategory: 'double',
             charLanguage: null
         }
     ],
@@ -1790,42 +1790,6 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'tt', 
-            arabicText: 'تّ',
-            code: 'tt',
-            dropdownOrder: 3,
-            needsDisambiguation: true,
-            comboCategory: 'sheddah',
-            charLanguage: null
-        },
-        {
-            turkishText: 'ṭṭ',
-            arabicText: 'طّ',
-            code: 'tt3',
-            dropdownOrder: 3,
-            needsDisambiguation: true,
-            comboCategory: 'sheddah',
-            charLanguage: null
-        },
-        {
-            turkishText: 'dd',
-            arabicText: 'طّ',
-            code: 'tt6',
-            dropdownOrder: 3,
-            needsDisambiguation: true,
-            comboCategory: 'sheddah',
-            charLanguage: null
-        },
-        {
-            turkishText: 'tt',
-            arabicText: 'ةّ',
-            code: 'tt7',
-            dropdownOrder: 3,
-            needsDisambiguation: true,
-            comboCategory: 'sheddah',
-            charLanguage: null
-        },
-        {
-            turkishText: 'tt', 
             arabicText: 'ت',
             code: 'tt8',
             dropdownOrder: 3,
@@ -1864,6 +1828,51 @@ export const englishKeyboardDisambiguations = {
             turkishText: 'tt', 
             arabicText: 'د',
             code: 'ttd12',
+            dropdownOrder: 3,
+            needsDisambiguation: true,
+            comboCategory: 'double',
+            charLanguage: null
+        },
+        {
+            turkishText: 'tt', 
+            arabicText: 'تّ',
+            code: 'tt',
+            dropdownOrder: 3,
+            needsDisambiguation: true,
+            comboCategory: 'sheddah',
+            charLanguage: null
+        },
+        {
+            turkishText: 'ṭṭ',
+            arabicText: 'طّ',
+            code: 'tt3',
+            dropdownOrder: 3,
+            needsDisambiguation: true,
+            comboCategory: 'sheddah',
+            charLanguage: null
+        },
+        {
+            turkishText: 'dd',
+            arabicText: 'طّ',
+            code: 'tt6',
+            dropdownOrder: 3,
+            needsDisambiguation: true,
+            comboCategory: 'sheddah',
+            charLanguage: null
+        },
+        {
+            turkishText: 'tt',
+            arabicText: 'ةّ',
+            code: 'tt7',
+            dropdownOrder: 3,
+            needsDisambiguation: true,
+            comboCategory: 'sheddah',
+            charLanguage: null
+        },
+        {
+            turkishText: 'tt', 
+            arabicText: 'دّ',
+            code: 'ttd13',
             dropdownOrder: 3,
             needsDisambiguation: true,
             comboCategory: 'double',
@@ -1983,20 +1992,20 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'vv',
-            arabicText: 'وّ',
-            code: 'vv',
-            dropdownOrder: 3,
-            needsDisambiguation: true,
-            comboCategory: 'sheddah',
-            charLanguage: null
-        },
-        {
-            turkishText: 'vv',
             arabicText: 'و',
             code: 'vv1',
             dropdownOrder: 3,
             needsDisambiguation: true,
             comboCategory: 'double',
+            charLanguage: null
+        },
+        {
+            turkishText: 'vv',
+            arabicText: 'وّ',
+            code: 'vv',
+            dropdownOrder: 3,
+            needsDisambiguation: true,
+            comboCategory: 'sheddah',
             charLanguage: null
         }
     ],
@@ -2059,20 +2068,20 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'yy',
-            arabicText: 'يّ',
-            code: 'yy',
-            dropdownOrder: 3,
-            needsDisambiguation: true,
-            comboCategory: 'sheddah',
-            charLanguage: null
-        },
-        {
-            turkishText: 'yy',
             arabicText: 'ي',
             code: 'yy1',
             dropdownOrder: 3,
             needsDisambiguation: true,
             comboCategory: 'double',
+            charLanguage: null
+        },
+        {
+            turkishText: 'yy',
+            arabicText: 'يّ',
+            code: 'yy',
+            dropdownOrder: 3,
+            needsDisambiguation: true,
+            comboCategory: 'sheddah',
             charLanguage: null
         }
     ],
@@ -2187,6 +2196,42 @@ export const englishKeyboardDisambiguations = {
             comboCategory: 'sukun',
             charLanguage: null
         },
+         {
+            turkishText: 'zz', 
+            arabicText: 'ز',
+            code: 'zz6',
+            dropdownOrder: 3,
+            needsDisambiguation: true,
+            comboCategory: 'double',
+            charLanguage: null
+        },
+        {
+            turkishText: 'ẓẓ', 
+            arabicText: 'ظ',
+            code: 'zz7',
+            dropdownOrder: 3,
+            needsDisambiguation: true,
+            comboCategory: 'double',
+            charLanguage: null
+        },
+        {
+            turkishText: 'żż',
+            arabicText: 'ض',
+            code: 'zz8',
+            dropdownOrder: 3,
+            needsDisambiguation: true,
+            comboCategory: 'double',
+            charLanguage: null
+        },
+        {
+            turkishText: 'ẕẕ', 
+            arabicText: 'ذ',
+            code: 'zz9',
+            dropdownOrder: 3,
+            needsDisambiguation: true,
+            comboCategory: 'double',
+            charLanguage: null
+        },
         {
             turkishText: 'zz',
             arabicText: 'زّ',
@@ -2221,42 +2266,6 @@ export const englishKeyboardDisambiguations = {
             dropdownOrder: 3,
             needsDisambiguation: true,
             comboCategory: 'sheddah',
-            charLanguage: null
-        },
-        {
-            turkishText: 'zz', 
-            arabicText: 'ز',
-            code: 'zz6',
-            dropdownOrder: 3,
-            needsDisambiguation: true,
-            comboCategory: 'double',
-            charLanguage: null
-        },
-        {
-            turkishText: 'ẓẓ', 
-            arabicText: 'ظ',
-            code: 'zz7',
-            dropdownOrder: 3,
-            needsDisambiguation: true,
-            comboCategory: 'double',
-            charLanguage: null
-        },
-        {
-            turkishText: 'żż',
-            arabicText: 'ض',
-            code: 'zz8',
-            dropdownOrder: 3,
-            needsDisambiguation: true,
-            comboCategory: 'double',
-            charLanguage: null
-        },
-        {
-            turkishText: 'ẕẕ', 
-            arabicText: 'ذ',
-            code: 'zz9',
-            dropdownOrder: 3,
-            needsDisambiguation: true,
-            comboCategory: 'double',
             charLanguage: null
         }
     ],
