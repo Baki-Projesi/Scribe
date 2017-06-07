@@ -5204,7 +5204,7 @@ export const englishKeyboardDisambiguations = {
     ],
     'allāh': [
         {
-            turkishText: 'allāh',
+            turkishText: 'Allāh',
             arabicText: 'ﷲ',
             code: 'allah',
             dropdownOrder: 1,
@@ -10422,7 +10422,7 @@ export const turkishKeyboardDisambiguations = {
     ],
     'allāh': [
         {
-            turkishText: 'allāh',
+            turkishText: 'Allāh',
             arabicText: 'ﷲ',
             code: 'allah',
             dropdownOrder: 1,
