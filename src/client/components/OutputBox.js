@@ -146,7 +146,7 @@ export default class OutputBox extends Component {
                 <div className="outputbox-display_container">
                     {textBlocks}
                 </div>
-                <p className="output-editor_label">Arabic Output</p>
+                <p className="output-editor_label">Ottoman Arabic Script Output</p>
             </div>
         );
     }
