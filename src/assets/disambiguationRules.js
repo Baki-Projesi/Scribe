@@ -10008,6 +10008,37 @@ export const turkishKeyboardDisambiguations = {
             charLanguage: 'arabic'
         }
     ],
+    'lid-d': [
+        {
+            turkishText: 'lid-d',
+            arabicText: 'للد',
+            code: 'dSun6',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: 'sun',
+            charLanguage: 'arabic'
+        },
+        {
+            turkishText: 'liḍ-ḍ',
+            arabicText: 'للض',
+            code: 'ddotSun7',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: 'sun',
+            charLanguage: 'arabic'
+        }
+    ],
+    'liḍ-d': [
+        {
+            turkishText: 'liḍ-ḍ',
+            arabicText: 'للض',
+            code: 'ddotSun8',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: 'sun',
+            charLanguage: 'arabic'
+        }
+    ],
     'Ad-d': [
         {
             turkishText: 'Ad-d',
@@ -10070,6 +10101,37 @@ export const turkishKeyboardDisambiguations = {
             charLanguage: 'arabic'
         }
     ],
+    'Lid-d': [
+        {
+            turkishText: 'Lid-d',
+            arabicText: 'للد',
+            code: 'DSun6',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: 'sun',
+            charLanguage: 'arabic'
+        },
+        {
+            turkishText: 'Liḍ-ḍ',
+            arabicText: 'للض',
+            code: 'DdotSun7',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: 'sun',
+            charLanguage: 'arabic'
+        }
+    ],
+    'Liḍ-d': [
+        {
+            turkishText: 'Liḍ-ḍ',
+            arabicText: 'للض',
+            code: 'DdotSun8',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: 'sun',
+            charLanguage: 'arabic'
+        }
+    ],
     'adh-dh': [
         {
             turkishText: 'adh-dh',
@@ -10103,6 +10165,17 @@ export const turkishKeyboardDisambiguations = {
             charLanguage: 'arabic'
         }
     ],
+    'lidh-dh': [
+        {
+            turkishText: 'lidh-dh',
+            arabicText: 'للذ',
+            code: 'dhSun3',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: 'sun',
+            charLanguage: 'arabic'
+        }
+    ],
     'Adh-dh': [
         {
             turkishText: 'Adh-dh',
@@ -10119,6 +10192,17 @@ export const turkishKeyboardDisambiguations = {
             turkishText: 'Edh-dh',
             arabicText: 'الذ',
             code: 'DhSun2',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: 'sun',
+            charLanguage: 'arabic'
+        }
+    ],
+    'Lidh-dh': [
+        {
+            turkishText: 'Lidh-dh',
+            arabicText: 'للذ',
+            code: 'DhSun3',
             dropdownOrder: 1,
             needsDisambiguation: true,
             comboCategory: 'sun',
@@ -10158,6 +10242,17 @@ export const turkishKeyboardDisambiguations = {
             charLanguage: 'arabic'
         }
     ],
+    'lin-n': [
+        {
+            turkishText: 'lin-n',
+            arabicText: 'للن',
+            code: 'nSun3',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: 'sun',
+            charLanguage: 'arabic'
+        }
+    ],
     'An-n': [
         {
             turkishText: 'An-n',
@@ -10174,6 +10269,17 @@ export const turkishKeyboardDisambiguations = {
             turkishText: 'En-n',
             arabicText: 'الن',
             code: 'NSun2',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: 'sun',
+            charLanguage: 'arabic'
+        }
+    ],
+    'Lin-n': [
+        {
+            turkishText: 'Lin-n',
+            arabicText: 'للن',
+            code: 'NSun3',
             dropdownOrder: 1,
             needsDisambiguation: true,
             comboCategory: 'sun',
@@ -10213,6 +10319,17 @@ export const turkishKeyboardDisambiguations = {
             charLanguage: 'arabic'
         }
     ],
+    'lir-r': [
+        {
+            turkishText: 'lir-r',
+            arabicText: 'للر',
+            code: 'rSun3',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: 'sun',
+            charLanguage: 'arabic'
+        }
+    ],
     'Ar-r': [
         {
             turkishText: 'Ar-r',
@@ -10229,6 +10346,17 @@ export const turkishKeyboardDisambiguations = {
             turkishText: 'Er-r',
             arabicText: 'الر',
             code: 'RSun2',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: 'sun',
+            charLanguage: 'arabic'
+        }
+    ],
+    'Lir-r': [
+        {
+            turkishText: 'Lir-r',
+            arabicText: 'للر',
+            code: 'RSun3',
             dropdownOrder: 1,
             needsDisambiguation: true,
             comboCategory: 'sun',
@@ -10388,6 +10516,57 @@ export const turkishKeyboardDisambiguations = {
             charLanguage: 'arabic'
         }
     ],
+    'lis-s': [
+        {
+            turkishText: 'lis-s',
+            arabicText: 'للس',
+            code: 'sSun9',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: 'sun',
+            charLanguage: 'arabic'
+        },
+        {
+            turkishText: 'liṣ-ṣ',
+            arabicText: 'للص',
+            code: 'sdotSun10',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: 'sun',
+            charLanguage: 'arabic'
+        },
+        {
+            turkishText: 'liŝ-ŝ',
+            arabicText: 'للث',
+            code: 'shatSun11',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: 'sun',
+            charLanguage: 'arabic'
+        }
+    ],
+    'liṣ-s': [
+        {
+            turkishText: 'liṣ-ṣ',
+            arabicText: 'للص',
+            code: 'sdotSun12',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: 'sun',
+            charLanguage: 'arabic'
+        }
+    ],
+    'liŝ-s': [
+        {
+            turkishText: 'liŝ-ŝ',
+            arabicText: 'للث',
+            code: 'shatSun13',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: 'sun',
+            charLanguage: 'arabic'
+        }
+    ],
     'As-s': [
         {
             turkishText: 'As-s',
@@ -10490,6 +10669,57 @@ export const turkishKeyboardDisambiguations = {
             charLanguage: 'arabic'
         }
     ],
+    'Lis-s': [
+        {
+            turkishText: 'Lis-s',
+            arabicText: 'للس',
+            code: 'SSun9',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: 'sun',
+            charLanguage: 'arabic'
+        },
+        {
+            turkishText: 'Liṣ-ṣ',
+            arabicText: 'للص',
+            code: 'SdotSun10',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: 'sun',
+            charLanguage: 'arabic'
+        },
+        {
+            turkishText: 'Liŝ-ŝ',
+            arabicText: 'للث',
+            code: 'ShatSun11',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: 'sun',
+            charLanguage: 'arabic'
+        }
+    ],
+    'Liṣ-s': [
+        {
+            turkishText: 'Liṣ-ṣ',
+            arabicText: 'للص',
+            code: 'SdotSun12',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: 'sun',
+            charLanguage: 'arabic'
+        }
+    ],
+    'Liŝ-s': [
+        {
+            turkishText: 'Liŝ-ŝ',
+            arabicText: 'للث',
+            code: 'ShatSun13',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: 'sun',
+            charLanguage: 'arabic'
+        }
+    ],
     'aş-ş': [
         {
             turkishText: 'aş-ş',
@@ -10523,6 +10753,17 @@ export const turkishKeyboardDisambiguations = {
             charLanguage: 'arabic'
         }
     ],
+    'liş-ş': [
+        {
+            turkishText: 'liş-ş',
+            arabicText: 'للش',
+            code: 'scSun14',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: 'sun',
+            charLanguage: 'arabic'
+        }
+    ],
     'Aş-ş': [
         {
             turkishText: 'Aş-ş',
@@ -10539,6 +10780,17 @@ export const turkishKeyboardDisambiguations = {
             turkishText: 'Eş-ş',
             arabicText: 'الش',
             code: 'ScSun2',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: 'sun',
+            charLanguage: 'arabic'
+        }
+    ],
+    'Liş-ş': [
+        {
+            turkishText: 'Liş-ş',
+            arabicText: 'للش',
+            code: 'ScSun14',
             dropdownOrder: 1,
             needsDisambiguation: true,
             comboCategory: 'sun',
@@ -10578,6 +10830,17 @@ export const turkishKeyboardDisambiguations = {
             charLanguage: 'arabic'
         }
     ],
+    'lish-sh': [
+        {
+            turkishText: 'lish-sh',
+            arabicText: 'للش',
+            code: 'shSun3',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: 'sun',
+            charLanguage: 'arabic'
+        }
+    ],
     'Ash-sh': [
         {
             turkishText: 'Ash-sh',
@@ -10594,6 +10857,17 @@ export const turkishKeyboardDisambiguations = {
             turkishText: 'Esh-sh',
             arabicText: 'الش',
             code: 'ShSun2',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: 'sun',
+            charLanguage: 'arabic'
+        }
+    ],
+    'Lish-sh': [
+        {
+            turkishText: 'Lish-sh',
+            arabicText: 'للش',
+            code: 'ShSun3',
             dropdownOrder: 1,
             needsDisambiguation: true,
             comboCategory: 'sun',
@@ -10693,6 +10967,37 @@ export const turkishKeyboardDisambiguations = {
             charLanguage: 'arabic'
         }
     ],
+    'lit-t': [
+        {
+            turkishText: 'lit-t',
+            arabicText: 'للت',
+            code: 'tSun6',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: 'sun',
+            charLanguage: 'arabic'
+        },
+        {
+            turkishText: 'liṭ-ṭ',
+            arabicText: 'للط',
+            code: 'tdotSun7',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: 'sun',
+            charLanguage: 'arabic'
+        }
+    ],
+    'liṭ-t': [
+        {
+            turkishText: 'liṭ-ṭ',
+            arabicText: 'للط',
+            code: 'tdotSun8',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: 'sun',
+            charLanguage: 'arabic'
+        }
+    ],
     'At-t': [
         {
             turkishText: 'At-t',
@@ -10755,6 +11060,37 @@ export const turkishKeyboardDisambiguations = {
             charLanguage: 'arabic'
         }
     ],
+    'Lit-t': [
+        {
+            turkishText: 'Lit-t',
+            arabicText: 'للت',
+            code: 'TSun6',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: 'sun',
+            charLanguage: 'arabic'
+        },
+        {
+            turkishText: 'Liṭ-ṭ',
+            arabicText: 'للط',
+            code: 'TdotSun7',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: 'sun',
+            charLanguage: 'arabic'
+        }
+    ],
+    'Liṭ-t': [
+        {
+            turkishText: 'Liṭ-ṭ',
+            arabicText: 'للط',
+            code: 'TdotSun8',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: 'sun',
+            charLanguage: 'arabic'
+        }
+    ],
     'ath-th': [
         {
             turkishText: 'ath-th',
@@ -10788,6 +11124,17 @@ export const turkishKeyboardDisambiguations = {
             charLanguage: 'arabic'
         }
     ],
+    'lith-th': [
+        {
+            turkishText: 'lith-th',
+            arabicText: 'للث',
+            code: 'thSun3',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: 'sun',
+            charLanguage: 'arabic'
+        }
+    ],
     'Ath-th': [
         {
             turkishText: 'Ath-th',
@@ -10804,6 +11151,17 @@ export const turkishKeyboardDisambiguations = {
             turkishText: 'Eth-th',
             arabicText: 'الث',
             code: 'ThSun2',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: 'sun',
+            charLanguage: 'arabic'
+        }
+    ],
+    'Lith-th': [
+        {
+            turkishText: 'Lith-th',
+            arabicText: 'للث',
+            code: 'ThSun3',
             dropdownOrder: 1,
             needsDisambiguation: true,
             comboCategory: 'sun',
@@ -11023,6 +11381,77 @@ export const turkishKeyboardDisambiguations = {
             charLanguage: 'arabic'
         }
     ],
+    'liz-z': [
+        {
+            turkishText: 'liz-z',
+            arabicText: 'للز',
+            code: 'zSun12',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: 'sun',
+            charLanguage: 'arabic'
+        },
+        {
+            turkishText: 'liẓ-ẓ',
+            arabicText: 'للظ',
+            code: 'zdotSun13',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: 'sun',
+            charLanguage: 'arabic'
+        },
+        {
+            turkishText: 'liẕ-ẕ',
+            arabicText: 'للذ',
+            code: 'zlineSun14',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: 'sun',
+            charLanguage: 'arabic'
+        },
+        {
+            turkishText: 'liż-ż',
+            arabicText: 'للظ',
+            code: 'zdot2Sun15',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: 'sun',
+            charLanguage: 'arabic'
+        }
+    ],
+    'liẓ-z': [
+        {
+            turkishText: 'liẓ-ẓ',
+            arabicText: 'للظ',
+            code: 'zdotSun16',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: 'sun',
+            charLanguage: 'arabic'
+        }
+    ],
+    'liẕ-z': [
+        {
+            turkishText: 'liẕ-ẕ',
+            arabicText: 'للذ',
+            code: 'zlineSun17',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: 'sun',
+            charLanguage: 'arabic'
+        }
+    ],
+    'liż-z': [
+        {
+            turkishText: 'liż-ż',
+            arabicText: 'للظ',
+            code: 'zdot2Sun18',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: 'sun',
+            charLanguage: 'arabic'
+        }
+    ],
     'Az-z': [
         {
             turkishText: 'Az-z',
@@ -11159,6 +11588,77 @@ export const turkishKeyboardDisambiguations = {
             turkishText: 'Eż-ż',
             arabicText: 'الظ',
             code: 'Zdot2Sun8',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: 'sun',
+            charLanguage: 'arabic'
+        }
+    ],
+    'Liz-z': [
+        {
+            turkishText: 'Liz-z',
+            arabicText: 'للز',
+            code: 'ZSun12',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: 'sun',
+            charLanguage: 'arabic'
+        },
+        {
+            turkishText: 'Liẓ-ẓ',
+            arabicText: 'للظ',
+            code: 'ZdotSun13',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: 'sun',
+            charLanguage: 'arabic'
+        },
+        {
+            turkishText: 'Liẕ-ẕ',
+            arabicText: 'للذ',
+            code: 'ZlineSun14',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: 'sun',
+            charLanguage: 'arabic'
+        },
+        {
+            turkishText: 'Liż-ż',
+            arabicText: 'للظ',
+            code: 'Zdot2Sun15',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: 'sun',
+            charLanguage: 'arabic'
+        }
+    ],
+    'Liẓ-z': [
+        {
+            turkishText: 'Liẓ-ẓ',
+            arabicText: 'للظ',
+            code: 'ZdotSun16',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: 'sun',
+            charLanguage: 'arabic'
+        }
+    ],
+    'Liẕ-z': [
+        {
+            turkishText: 'Liẕ-ẕ',
+            arabicText: 'للذ',
+            code: 'ZlineSun17',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: 'sun',
+            charLanguage: 'arabic'
+        }
+    ],
+    'Liż-z': [
+        {
+            turkishText: 'Liż-ż',
+            arabicText: 'للظ',
+            code: 'Zdot2Sun18',
             dropdownOrder: 1,
             needsDisambiguation: true,
             comboCategory: 'sun',
