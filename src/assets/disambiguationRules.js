@@ -2408,6 +2408,15 @@ export const englishKeyboardDisambiguations = {
             charLanguage: 'arabic'
         },
         {
+            turkishText: 'ā',
+            arabicText: '', // not represented in Turkish
+            code: 'a15',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: null,
+            charLanguage: null
+        },
+        {
             turkishText: 'a',
             arabicText: 'أ',
             code: 'ahamza',
@@ -7775,6 +7784,15 @@ export const turkishKeyboardDisambiguations = {
             needsDisambiguation: true,
             comboCategory: null,
             charLanguage: 'arabic'
+        },
+        {
+            turkishText: 'ā',
+            arabicText: '', // not represented in Turkish
+            code: 'a15',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: null,
+            charLanguage: null
         },
         {
             turkishText: 'a',
