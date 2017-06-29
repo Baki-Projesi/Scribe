@@ -64,6 +64,7 @@ export default class Transcribe extends Component {
         ]);
         const initEditorState = EditorState.createEmpty(decorator);
         this.state = generateDraftStateObject(initEditorState);
+        this.state.usingTurkishKeyboard = true;
 
         this.logState = () => {
             const content = this.state.editorState.getCurrentContent();
