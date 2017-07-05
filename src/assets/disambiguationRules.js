@@ -6,7 +6,6 @@ Codes:
 
 UI:
 - highlight selected option
-- change menu so the user has to select the keyboard that they are using first
 - add a menu for whether or not line numbers should be included
 */
 
@@ -1287,6 +1286,24 @@ export const englishKeyboardDisambiguations = {
             charLanguage: null
         },
         {
+            turkishText: 'ñ',
+            arabicText: 'ڭ',
+            code: 'n3',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: null,
+            charLanguage: null
+        },
+        {
+            turkishText: 'ñ',
+            arabicText: 'ڭْ',
+            code: 'n4',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'sukun',
+            charLanguage: null
+        },
+        {
             turkishText: 'nn',
             arabicText: 'ن',
             code: 'nn1',
@@ -1337,6 +1354,24 @@ export const englishKeyboardDisambiguations = {
             turkishText: 'Ñ',
             arabicText: 'كْ',
             code: 'N2',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'sukun',
+            charLanguage: null
+        },
+        {
+            turkishText: 'Ñ',
+            arabicText: 'ڭ',
+            code: 'N3',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: null,
+            charLanguage: null
+        },
+        {
+            turkishText: 'Ñ',
+            arabicText: 'ڭْ',
+            code: 'N4',
             dropdownOrder: 2,
             needsDisambiguation: true,
             comboCategory: 'sukun',
@@ -7179,6 +7214,24 @@ export const turkishKeyboardDisambiguations = {
             charLanguage: null
         },
         {
+            turkishText: 'ñ',
+            arabicText: 'ڭ',
+            code: 'n3',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: null,
+            charLanguage: null
+        },
+        {
+            turkishText: 'ñ',
+            arabicText: 'ڭْ',
+            code: 'n4',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'sukun',
+            charLanguage: null
+        },
+        {
             turkishText: 'nn', 
             arabicText: 'ن',
             code: 'nn1',
@@ -7229,6 +7282,24 @@ export const turkishKeyboardDisambiguations = {
             turkishText: 'Ñ',
             arabicText: 'كْ',
             code: 'N2',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: 'sukun',
+            charLanguage: null
+        },
+        {
+            turkishText: 'Ñ',
+            arabicText: 'ڭ',
+            code: 'N3',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: null,
+            charLanguage: null
+        },
+        {
+            turkishText: 'Ñ',
+            arabicText: 'ڭْ',
+            code: 'N4',
             dropdownOrder: 2,
             needsDisambiguation: true,
             comboCategory: 'sukun',
