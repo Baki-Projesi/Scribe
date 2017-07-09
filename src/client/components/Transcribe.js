@@ -77,6 +77,7 @@ export default class Transcribe extends Component {
 
         this.onChange = (editorState) => {
             let newState, current = generateDraftStateObject(editorState);
+            current.didFileLoad = false;
 
             if (current.oldSelectionState.isCollapsed()) {
                 // Selection is just the cursor w/ no characters highlighted
@@ -580,7 +581,7 @@ export default class Transcribe extends Component {
             const fr = new FileReader();
             fr.onload = function (e) {
                 let result = JSON.parse(e.target.result);
-                
+
                 let editState = EditorState.push(this.state.editorState, convertFromRaw(result));
                 let newState = generateDraftStateObject(editState);
                 newState.didFileLoad = true;
