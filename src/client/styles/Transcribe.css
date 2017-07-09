@@ -15,3 +15,33 @@
 
 }
 
+#openFileButton {
+    float: right;
+    background-color: #E85059;
+     border: none;
+    color: white;
+    padding: 8px 24px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    margin-top: 8px;
+
+}
+
+#saveToFileButton {
+    float: left;
+    background-color: #E85059;
+     border: none;
+    color: white;
+    padding: 8px 24px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    margin-top: 8px;
+}
+
+#filePickerInput {
+    float: right;
+    margin-top: 8px;
+
+}

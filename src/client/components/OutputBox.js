@@ -83,6 +83,10 @@ export default class OutputBox extends Component {
     componentWillReceiveProps(nextProps) {
         const currentProps = this.props.transcribeState;
         const newProps = nextProps.transcribeState;
+        if (newProps.didFileLoad) {
+            return this.doFullTranslate(newProps.editorState.getCurrentContent());
+        }
+
         let { contentBlocks, cursorBlockIndex } = this.state;
         let translationIndexes = [],
             newStartKey = newProps.editorState.getSelection().getAnchorKey(),
@@ -121,6 +125,24 @@ export default class OutputBox extends Component {
             contentBlocks: newContentBlocks,
             oldStartKey: newStartKey
         });
+    }
+
+    doFullTranslate(contentState) {
+        let newContentBlocks = [];
+        let translationIndexes = [];
+        let incomingBlocks = contentState.getBlocksAsArray();
+        for (let i = 0; i < incomingBlocks.length; i++) {
+            translationIndexes.push(i);
+            newContentBlocks[i] = {
+                key: incomingBlocks[i].getKey(),
+                outputText: ":)"
+            }
+        }
+        
+        newContentBlocks = this.translate(newContentBlocks, translationIndexes, contentState);
+        this.setState({
+            contentBlocks: newContentBlocks
+        })
     }
 
     render() {
