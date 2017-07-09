@@ -8,6 +8,7 @@ import {
     RichUtils,
     CompositeDecorator,
     convertToRaw,
+    convertFromRaw,
     getDefaultKeyBinding,
     KeyBindingUtil,
     Modifier
@@ -23,6 +24,7 @@ import DisambiguatedCharacter from './DisambiguatedCharacter';
 import { englishKeyboardDisambiguations, turkishKeyboardDisambiguations } from '../../assets/disambiguationRules';
 import bufferComboSearch from '../utils/bufferComboSearch';
 import generateDraftStateObject from '../utils/generateDraftStateObject';
+import FileSaver from 'file-saver';
 
 const store = {
     mostRecentAmbiguousCharCoords: null
@@ -82,7 +84,7 @@ export default class Transcribe extends Component {
             } else {
                 // At least one character highlighted
                 //newState = this._promptForComment(current);
-                newState = current; 
+                newState = current;
             }
             this.setState(newState);
         }
@@ -96,6 +98,8 @@ export default class Transcribe extends Component {
         this.keyBindingFn = this._keyBindingFn.bind(this);
         this.toggleCheckboxValue = this._toggleCheckboxValue.bind(this);
         this.handleKeyCommand = this._handleKeyCommand.bind(this);
+        this.doFileLoad = this._doFileLoad.bind(this);
+        this.allowOpen = this._allowOpen.bind(this)
     }
 
     //captures global key events, results of this function (a special command string) are passed to KeyCommand() before the window interprets them
@@ -555,6 +559,46 @@ export default class Transcribe extends Component {
         findWithRegex(regex, contentBlock, callback);
     }
 
+    doFileSave() {
+        let fileName = prompt("Please enter the name of this file.");
+
+        if (fileName) {
+            fileName = fileName.replace(/[|&;$%@"<>()+,.]/g, "");
+            fileName += ".json";
+            let file = new File([JSON.stringify(convertToRaw(this.state.editorState.getCurrentContent()))],
+                fileName,
+                { type: "text/plain;charset=utf-8" });
+
+            FileSaver.saveAs(file);
+        }
+
+    }
+
+    _doFileLoad() {
+        const files = this.refs.filePicker.files;
+        if (files.length > 0) {
+            const fr = new FileReader();
+            fr.onload = function (e) {
+                let result = JSON.parse(e.target.result);
+                
+                let editState = EditorState.push(this.state.editorState, convertFromRaw(result));
+                let newState = generateDraftStateObject(editState);
+                newState.didFileLoad = true;
+
+                this.setState(newState);
+            }.bind(this);
+            fr.readAsText(files.item(0));
+        }
+
+    }
+
+    _allowOpen() {
+        const files = this.refs.filePicker.files;
+        if (files.length > 0) {
+            this.refs.openButton.disabled = false;
+        }
+    }
+
     render() {
         const { inputText, } = this.state;
         let whichKeyboard = this.state.usingTurkishKeyboard ? "Turkish Keyboard" : "English Keyboard";
@@ -600,6 +644,13 @@ export default class Transcribe extends Component {
                         </ul>
                     </label>
 
+                </div>
+                <div>
+                    <input type="button" value="Save to File" id="saveToFileButton" onClick={this.doFileSave.bind(this)} />
+                </div>
+                <div>
+                    <input type="button" value="Open File" id="openFileButton" ref="openButton" onClick={this.doFileLoad.bind(this)} />
+                    <input type="file" ref="filePicker" id="filePickerInput" onChange={this.allowOpen.bind(this)} />
                 </div>
             </div>
         );
