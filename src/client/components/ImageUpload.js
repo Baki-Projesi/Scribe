@@ -30,11 +30,45 @@ export default class ImageUpload extends React.Component {
     reader.readAsDataURL(file)
   }
 
+  zoomIn() {
+    var doc = (document.getElementById("uploadedImg"));
+    if (doc) {
+      var docWidth = doc.style.width;
+      // first time clicking zoom (cannot read width for some reason)
+      if (!docWidth) {
+        console.log("first time")
+        doc.style.width = '150%';
+      } else { // after user has clicked "zoom" at least once
+        var currWidth = parseFloat(docWidth);
+        currWidth += 50;
+        doc.style.width = currWidth + "%";
+        console.log(doc.style.width);
+      }
+    }
+  }
+
+  zoomOut() {
+    var doc = (document.getElementById("uploadedImg"));
+    if (doc) {
+      var docWidth = doc.style.width;
+      // first time clicking zoom (cannot read width for some reason)
+      if (!docWidth) {
+        console.log("first time")
+        doc.style.width = '50%';
+      } else { // after user has clicked "zoom" at least once
+        var currWidth = parseFloat(docWidth);
+        currWidth -= 50;
+        doc.style.width = currWidth + "%";
+        console.log(doc.style.width);
+      }
+    }
+  }
+
   render() {
     let {imagePreviewUrl} = this.state;
     let ximagePreview = null;
     if (imagePreviewUrl) {
-      ximagePreview = (<img src={imagePreviewUrl} />);
+      ximagePreview = (<img id = "uploadedImg" src={imagePreviewUrl} />);
     } else {
       ximagePreview = (<div className="previewText">Select an image to view</div>);
     }
@@ -45,7 +79,10 @@ export default class ImageUpload extends React.Component {
         <div className="imgPreview">
           {ximagePreview}
         </div>
-
+        <div className="zoomButtons">
+            <button onClick ={this.zoomIn}> + </button>
+            <button onClick ={this.zoomOut}> - </button>
+        </div>
 
         <form onSubmit={(e)=>this._handleSubmit(e)}>
                 <div className="mdl-textfield mdl-js-textfield mdl-textfield--file fileInput">

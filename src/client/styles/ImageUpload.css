@@ -11,18 +11,18 @@ h3 {
 .imgPreview {
   text-align: center;
   height: 70vh;
-  width: 100%;
   max-height: 100%;
   max-width: 100%;
   border-left: 1px solid gray;
   border-right: 1px solid gray;
   border-top: 5px solid gray;
   border-bottom: 5px solid gray;
+  overflow-x: scroll;
+  overflow-y: scroll; 
 }
 
   img {
-    max-width: 100%;
-    max-height: 100%;
+    width: 100%;
   }
 
   
@@ -32,14 +32,29 @@ h3 {
 }
 
 .previewComponent {
-    width: 33%;
+    max-width: 33%;
     margin-right: 2em;
     margin-left: 2em;
+    width: 33%;
+
 }
 
 .centerText {
   text-align: center;
   width: 500px;
+}
+
+.zoomButtons {
+  text-align: right;
+  background: gray;
+  border-radius: 0px;
+  padding-bottom: 3px;
+  padding-right: 2px;
+}
+
+button {
+  margin: 2px;
+  font-weight: bolder;
 }
 
 .mdl-button--file input {
