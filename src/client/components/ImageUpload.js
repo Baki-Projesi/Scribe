@@ -55,10 +55,13 @@ export default class ImageUpload extends React.Component {
       if (!docWidth) {
         console.log("first time")
         doc.style.width = '50%';
-      } else { // after user has clicked "zoom" at least once
+      } else { 
+        // after user has clicked "zoom" at least once
         var currWidth = parseFloat(docWidth);
-        currWidth -= 50;
-        doc.style.width = currWidth + "%";
+        if (currWidth > 50) {
+          currWidth -= 50;
+          doc.style.width = currWidth + "%";
+        }
         console.log(doc.style.width);
       }
     }
