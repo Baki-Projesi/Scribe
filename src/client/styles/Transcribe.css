@@ -1,6 +1,7 @@
 #tool-window {
     padding: 2.5em;
     padding-bottom: .5em;
+    height: 100vh;
 }
 
 .tool-window_inputs {
@@ -18,7 +19,7 @@
 #openFileButton {
     float: right;
     background-color: #E85059;
-     border: none;
+    border: none;
     color: white;
     padding: 8px 24px;
     text-align: center;
