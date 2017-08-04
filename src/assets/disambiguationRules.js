@@ -5430,7 +5430,7 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'aż-ż',
-            arabicText: 'الظ',
+            arabicText: 'الض',
             code: 'zdot2Sun',
             dropdownOrder: 1,
             needsDisambiguation: true,
@@ -5463,7 +5463,7 @@ export const englishKeyboardDisambiguations = {
     'aż-z': [
         {
             turkishText: 'aż-ż',
-            arabicText: 'الظ',
+            arabicText: 'الض',
             code: 'zdot2Sun5',
             dropdownOrder: 1,
             needsDisambiguation: true,
@@ -5501,7 +5501,7 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'eż-ż',
-            arabicText: 'الظ',
+            arabicText: 'الض',
             code: 'zdot2Sun2',
             dropdownOrder: 1,
             needsDisambiguation: true,
@@ -5534,7 +5534,7 @@ export const englishKeyboardDisambiguations = {
     'eż-z': [
         {
             turkishText: 'eż-ż',
-            arabicText: 'الظ',
+            arabicText: 'الض',
             code: 'zdot2Sun8',
             dropdownOrder: 1,
             needsDisambiguation: true,
@@ -5572,7 +5572,7 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'ż-ż',
-            arabicText: 'لظ',
+            arabicText: 'لض',
             code: 'zdot2Sun1',
             dropdownOrder: 1,
             needsDisambiguation: true,
@@ -5605,7 +5605,7 @@ export const englishKeyboardDisambiguations = {
     '\'ż-z': [
         {
             turkishText: 'ż-ż',
-            arabicText: 'لظ',
+            arabicText: 'لض',
             code: 'zdot2Sun11',
             dropdownOrder: 1,
             needsDisambiguation: true,
@@ -5643,7 +5643,7 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'liż-ż',
-            arabicText: 'للظ',
+            arabicText: 'للض',
             code: 'zdot2Sun15',
             dropdownOrder: 1,
             needsDisambiguation: true,
@@ -5676,7 +5676,7 @@ export const englishKeyboardDisambiguations = {
     'liż-z': [
         {
             turkishText: 'liż-ż',
-            arabicText: 'للظ',
+            arabicText: 'للض',
             code: 'zdot2Sun18',
             dropdownOrder: 1,
             needsDisambiguation: true,
@@ -5714,7 +5714,7 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'Aż-ż',
-            arabicText: 'الظ',
+            arabicText: 'الض',
             code: 'Zdot2Sun',
             dropdownOrder: 1,
             needsDisambiguation: true,
@@ -5747,7 +5747,7 @@ export const englishKeyboardDisambiguations = {
     'Aż-z': [
         {
             turkishText: 'Aż-ż',
-            arabicText: 'الظ',
+            arabicText: 'الض',
             code: 'Zdot2Sun5',
             dropdownOrder: 1,
             needsDisambiguation: true,
@@ -5785,7 +5785,7 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'Eż-ż',
-            arabicText: 'الظ',
+            arabicText: 'الض',
             code: 'Zdot2Sun2',
             dropdownOrder: 1,
             needsDisambiguation: true,
@@ -5818,7 +5818,7 @@ export const englishKeyboardDisambiguations = {
     'Eż-z': [
         {
             turkishText: 'Eż-ż',
-            arabicText: 'الظ',
+            arabicText: 'الض',
             code: 'Zdot2Sun8',
             dropdownOrder: 1,
             needsDisambiguation: true,
@@ -5856,7 +5856,7 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'Liż-ż',
-            arabicText: 'للظ',
+            arabicText: 'للض',
             code: 'Zdot2Sun15',
             dropdownOrder: 1,
             needsDisambiguation: true,
@@ -5889,7 +5889,7 @@ export const englishKeyboardDisambiguations = {
     'Liż-z': [
         {
             turkishText: 'Liż-ż',
-            arabicText: 'للظ',
+            arabicText: 'للض',
             code: 'Zdot2Sun18',
             dropdownOrder: 1,
             needsDisambiguation: true,
@@ -11341,7 +11341,7 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'aż-ż',
-            arabicText: 'الظ',
+            arabicText: 'الض',
             code: 'zdot2Sun',
             dropdownOrder: 1,
             needsDisambiguation: true,
@@ -11374,7 +11374,7 @@ export const turkishKeyboardDisambiguations = {
     'aż-z': [
         {
             turkishText: 'aż-ż',
-            arabicText: 'الظ',
+            arabicText: 'الض',
             code: 'zdot2Sun5',
             dropdownOrder: 1,
             needsDisambiguation: true,
@@ -11412,7 +11412,7 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'eż-ż',
-            arabicText: 'الظ',
+            arabicText: 'الض',
             code: 'zdot2Sun2',
             dropdownOrder: 1,
             needsDisambiguation: true,
@@ -11445,7 +11445,7 @@ export const turkishKeyboardDisambiguations = {
     'eż-z': [
         {
             turkishText: 'eż-ż',
-            arabicText: 'الظ',
+            arabicText: 'الض',
             code: 'zdot2Sun8',
             dropdownOrder: 1,
             needsDisambiguation: true,
@@ -11483,7 +11483,7 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'ż-ż',
-            arabicText: 'لظ',
+            arabicText: 'لض',
             code: 'zdot2Sun1',
             dropdownOrder: 1,
             needsDisambiguation: true,
@@ -11516,7 +11516,7 @@ export const turkishKeyboardDisambiguations = {
     '\'ż-z': [
         {
             turkishText: 'ż-ż',
-            arabicText: 'لظ',
+            arabicText: 'لض',
             code: 'zdot2Sun11',
             dropdownOrder: 1,
             needsDisambiguation: true,
@@ -11554,7 +11554,7 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'liż-ż',
-            arabicText: 'للظ',
+            arabicText: 'للض',
             code: 'zdot2Sun15',
             dropdownOrder: 1,
             needsDisambiguation: true,
@@ -11587,7 +11587,7 @@ export const turkishKeyboardDisambiguations = {
     'liż-z': [
         {
             turkishText: 'liż-ż',
-            arabicText: 'للظ',
+            arabicText: 'للض',
             code: 'zdot2Sun18',
             dropdownOrder: 1,
             needsDisambiguation: true,
@@ -11625,7 +11625,7 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'Aż-ż',
-            arabicText: 'الظ',
+            arabicText: 'الض',
             code: 'Zdot2Sun',
             dropdownOrder: 1,
             needsDisambiguation: true,
@@ -11658,7 +11658,7 @@ export const turkishKeyboardDisambiguations = {
     'Aż-z': [
         {
             turkishText: 'Aż-ż',
-            arabicText: 'الظ',
+            arabicText: 'الض',
             code: 'Zdot2Sun5',
             dropdownOrder: 1,
             needsDisambiguation: true,
@@ -11696,7 +11696,7 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'Eż-ż',
-            arabicText: 'الظ',
+            arabicText: 'الض',
             code: 'Zdot2Sun2',
             dropdownOrder: 1,
             needsDisambiguation: true,
@@ -11729,7 +11729,7 @@ export const turkishKeyboardDisambiguations = {
     'Eż-z': [
         {
             turkishText: 'Eż-ż',
-            arabicText: 'الظ',
+            arabicText: 'الض',
             code: 'Zdot2Sun8',
             dropdownOrder: 1,
             needsDisambiguation: true,
@@ -11767,7 +11767,7 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'Liż-ż',
-            arabicText: 'للظ',
+            arabicText: 'للض',
             code: 'Zdot2Sun15',
             dropdownOrder: 1,
             needsDisambiguation: true,
@@ -11800,7 +11800,7 @@ export const turkishKeyboardDisambiguations = {
     'Liż-z': [
         {
             turkishText: 'Liż-ż',
-            arabicText: 'للظ',
+            arabicText: 'للض',
             code: 'Zdot2Sun18',
             dropdownOrder: 1,
             needsDisambiguation: true,
