@@ -1699,8 +1699,8 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'ā',
-            arabicText: 'ا',
-            code: 'a1',
+            arabicText: '', // not represented in Turkish
+            code: 'a15',
             dropdownOrder: 2,
             needsDisambiguation: true,
             comboCategory: null,
@@ -1708,13 +1708,22 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'ā',
+            arabicText: 'ا',
+            code: 'a1',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: null,
+            charLanguage: null
+        },
+        /*{
+            turkishText: 'ā',
             arabicText: 'آ',
             code: 'a2',
             dropdownOrder: 2,
             needsDisambiguation: true,
             comboCategory: null,
             charLanguage: null
-        },
+        },*/
         {
             turkishText: 'a',
             arabicText: '\u06cc', // Farsi yeh
@@ -1733,16 +1742,7 @@ export const englishKeyboardDisambiguations = {
             comboCategory: null,
             charLanguage: 'arabic'
         },
-        {
-            turkishText: 'ā',
-            arabicText: '', // not represented in Turkish
-            code: 'a15',
-            dropdownOrder: 2,
-            needsDisambiguation: true,
-            comboCategory: null,
-            charLanguage: null
-        },
-        {
+        /*{
             turkishText: 'a',
             arabicText: 'أ' + 'َ',
             code: 'a17',
@@ -1750,8 +1750,8 @@ export const englishKeyboardDisambiguations = {
             needsDisambiguation: true,
             comboCategory: null,
             charLanguage: null
-        },
-        {
+        },*/
+        /*{
             turkishText: 'a',
             arabicText: 'أ',
             code: 'ahamza',
@@ -1759,8 +1759,8 @@ export const englishKeyboardDisambiguations = {
             needsDisambiguation: true,
             comboCategory: 'hamza',
             charLanguage: null
-        },
-        {
+        },*/
+        /*{
             turkishText: 'a',
             arabicText: 'آ',
             code: 'ahamza2',
@@ -1768,7 +1768,7 @@ export const englishKeyboardDisambiguations = {
             needsDisambiguation: true,
             comboCategory: 'hamza',
             charLanguage: null
-        },
+        },*/
         {
             turkishText: 'a',
             arabicText: 'َ',
@@ -1834,7 +1834,7 @@ export const englishKeyboardDisambiguations = {
             comboCategory: null,
             charLanguage: null
         },
-        {
+        /*{
             turkishText: 'Ā',
             arabicText: 'آ',
             code: 'A2',
@@ -1842,7 +1842,7 @@ export const englishKeyboardDisambiguations = {
             needsDisambiguation: true,
             comboCategory: null,
             charLanguage: null
-        },
+        },*/
         {
             turkishText: 'A',
             arabicText: '\u06cc', // Farsi yeh
@@ -1861,7 +1861,7 @@ export const englishKeyboardDisambiguations = {
             comboCategory: null,
             charLanguage: 'arabic'
         },
-        {
+        /*{
             turkishText: 'A',
             arabicText: 'أ' + 'َ',
             code: 'A17',
@@ -1869,8 +1869,8 @@ export const englishKeyboardDisambiguations = {
             needsDisambiguation: true,
             comboCategory: null,
             charLanguage: null
-        },
-        {
+        },*/
+        /*{
             turkishText: 'A',
             arabicText: 'أ',
             code: 'Ahamza',
@@ -1878,8 +1878,8 @@ export const englishKeyboardDisambiguations = {
             needsDisambiguation: true,
             comboCategory: 'hamza',
             charLanguage: null
-        },
-        {
+        },*/
+        /*{
             turkishText: 'A',
             arabicText: 'آ',
             code: 'Ahamza2',
@@ -1887,7 +1887,7 @@ export const englishKeyboardDisambiguations = {
             needsDisambiguation: true,
             comboCategory: 'hamza',
             charLanguage: null
-        },
+        },*/
         {
             turkishText: 'A',
             arabicText: 'َ',
@@ -1971,7 +1971,7 @@ export const englishKeyboardDisambiguations = {
             comboCategory: null,
             charLanguage: 'arabic'
         },
-        {
+        /*{
             turkishText: 'e',
             arabicText: 'أ',
             code: 'ehamza',
@@ -1979,8 +1979,8 @@ export const englishKeyboardDisambiguations = {
             needsDisambiguation: true,
             comboCategory: 'hamza',
             charLanguage: null
-        },
-        {
+        },*/
+        /*{
             turkishText: 'e',
             arabicText: 'أ' + 'َ',
             code: 'e14',
@@ -1988,7 +1988,7 @@ export const englishKeyboardDisambiguations = {
             needsDisambiguation: true,
             comboCategory: null,
             charLanguage: null
-        },
+        },*/
         {
             turkishText: 'eyi',
             arabicText: 'ۀ' + '\u200c' + '\u2009',
@@ -2081,7 +2081,7 @@ export const englishKeyboardDisambiguations = {
             comboCategory: null,
             charLanguage: 'arabic'
         },
-        {
+        /*{
             turkishText: 'E',
             arabicText: 'أ' + 'َ',
             code: 'E14',
@@ -2089,8 +2089,8 @@ export const englishKeyboardDisambiguations = {
             needsDisambiguation: true,
             comboCategory: null,
             charLanguage: null
-        },
-        {
+        },*/
+        /*{
             turkishText: 'E',
             arabicText: 'أ',
             code: 'Ehamza',
@@ -2098,7 +2098,7 @@ export const englishKeyboardDisambiguations = {
             needsDisambiguation: true,
             comboCategory: 'hamza',
             charLanguage: null
-        },
+        },*/
         {
             turkishText: 'Eyi',
             arabicText: 'ۀ' + '\u200c' + '\u2009',
@@ -2236,7 +2236,7 @@ export const englishKeyboardDisambiguations = {
             comboCategory: null,
             charLanguage: null
         },
-        {
+        /*{
             turkishText: 'i',
             arabicText: 'ٸ',
             code: 'ihamza',
@@ -2244,7 +2244,7 @@ export const englishKeyboardDisambiguations = {
             needsDisambiguation: true,
             comboCategory: 'hamza',
             charLanguage: null
-        },
+        },*/
         {
             turkishText: 'i',
             arabicText: 'ي',
@@ -2481,7 +2481,7 @@ export const englishKeyboardDisambiguations = {
             comboCategory: 'special',
             charLanguage: null
         },        
-        {
+        /*{
             turkishText: 'İ',
             arabicText: 'ٸ',
             code: 'Ihamza',
@@ -2489,7 +2489,7 @@ export const englishKeyboardDisambiguations = {
             needsDisambiguation: true,
             comboCategory: 'hamza',
             charLanguage: null
-        },
+        },*/
         {
             turkishText: 'İ', 
             arabicText: 'ِ', // kasrah
@@ -2901,7 +2901,7 @@ export const englishKeyboardDisambiguations = {
             comboCategory: null,
             charLanguage: null
         },
-        {
+        /*{
             turkishText: 'u',
             arabicText: 'أ' + 'ُ',
             code: 'u16',
@@ -2909,8 +2909,8 @@ export const englishKeyboardDisambiguations = {
             needsDisambiguation: true,
             comboCategory: null,
             charLanguage: null
-        },
-        {
+        },*/
+        /*{
             turkishText: 'ü',
             arabicText: 'أ' + 'ُ',
             code: 'u17',
@@ -2918,8 +2918,8 @@ export const englishKeyboardDisambiguations = {
             needsDisambiguation: true,
             comboCategory: null,
             charLanguage: null
-        },
-        {
+        },*/
+        /*{
             turkishText: 'u',
             arabicText: 'ٶ',
             code: 'uhamza',
@@ -2927,7 +2927,7 @@ export const englishKeyboardDisambiguations = {
             needsDisambiguation: true,
             comboCategory: 'hamza',
             charLanguage: null
-        },
+        },*/
         {
             turkishText: 'u',
             arabicText: '\u200c' + 'ا',
@@ -3065,7 +3065,7 @@ export const englishKeyboardDisambiguations = {
             comboCategory: null,
             charLanguage: 'arabic'
         },
-        {
+        /*{
             turkishText: 'U',
             arabicText: 'أ' + 'ُ',
             code: 'U16',
@@ -3073,8 +3073,8 @@ export const englishKeyboardDisambiguations = {
             needsDisambiguation: true,
             comboCategory: null,
             charLanguage: null
-        },
-        {
+        },*/
+        /*{
             turkishText: 'Ü',
             arabicText: 'أ' + 'ُ',
             code: 'U17',
@@ -3082,8 +3082,8 @@ export const englishKeyboardDisambiguations = {
             needsDisambiguation: true,
             comboCategory: null,
             charLanguage: null
-        },
-        {
+        },*/
+        /*{
             turkishText: 'U',
             arabicText: 'ٶ',
             code: 'Uhamza',
@@ -3091,7 +3091,7 @@ export const englishKeyboardDisambiguations = {
             needsDisambiguation: true,
             comboCategory: 'hamza',
             charLanguage: null
-        },
+        },*/
         {
             turkishText: 'U',
             arabicText: '\u200c' + 'ا',
@@ -7091,7 +7091,7 @@ export const turkishKeyboardDisambiguations = {
             comboCategory: null,
             charLanguage: null
         },
-        {
+        /*{
             turkishText: 'ā',
             arabicText: 'آ',
             code: 'a2',
@@ -7099,7 +7099,7 @@ export const turkishKeyboardDisambiguations = {
             needsDisambiguation: true,
             comboCategory: null,
             charLanguage: null
-        },
+        },*/
         {
             turkishText: 'a',
             arabicText: '\u06cc', // Farsi yeh
@@ -7127,7 +7127,7 @@ export const turkishKeyboardDisambiguations = {
             comboCategory: null,
             charLanguage: null
         },
-        {
+        /*{
             turkishText: 'a',
             arabicText: 'أ' + 'َ',
             code: 'a17',
@@ -7135,8 +7135,8 @@ export const turkishKeyboardDisambiguations = {
             needsDisambiguation: true,
             comboCategory: null,
             charLanguage: null
-        },
-        {
+        },*/
+        /*{
             turkishText: 'a',
             arabicText: 'أ',
             code: 'ahamza',
@@ -7144,8 +7144,8 @@ export const turkishKeyboardDisambiguations = {
             needsDisambiguation: true,
             comboCategory: null,
             charLanguage: null
-        },
-        {
+        },*/
+        /*{
             turkishText: 'a',
             arabicText: 'آ',
             code: 'ahamza2',
@@ -7153,7 +7153,7 @@ export const turkishKeyboardDisambiguations = {
             needsDisambiguation: true,
             comboCategory: null,
             charLanguage: null
-        },
+        },*/
         {
             turkishText: 'a',
             arabicText: 'َ',
@@ -7219,7 +7219,7 @@ export const turkishKeyboardDisambiguations = {
             comboCategory: null,
             charLanguage: null
         },
-        {
+        /*{
             turkishText: 'Ā',
             arabicText: 'آ',
             code: 'A2',
@@ -7227,7 +7227,7 @@ export const turkishKeyboardDisambiguations = {
             needsDisambiguation: true,
             comboCategory: null,
             charLanguage: null
-        },
+        },*/
         {
             turkishText: 'A',
             arabicText: '\u06cc', // Farsi yeh
@@ -7246,7 +7246,7 @@ export const turkishKeyboardDisambiguations = {
             comboCategory: 'arabic',
             charLanguage: null
         },
-        {
+        /*{
             turkishText: 'A',
             arabicText: 'أ' + 'َ',
             code: 'A17',
@@ -7254,8 +7254,8 @@ export const turkishKeyboardDisambiguations = {
             needsDisambiguation: true,
             comboCategory: null,
             charLanguage: null
-        },
-        {
+        },*/
+        /*{
             turkishText: 'A',
             arabicText: 'أ',
             code: 'Ahamza',
@@ -7263,8 +7263,8 @@ export const turkishKeyboardDisambiguations = {
             needsDisambiguation: true,
             comboCategory: 'hamza',
             charLanguage: null
-        },
-        {
+        },*/
+        /*{
             turkishText: 'A',
             arabicText: 'آ',
             code: 'Ahamza2',
@@ -7272,7 +7272,7 @@ export const turkishKeyboardDisambiguations = {
             needsDisambiguation: true,
             comboCategory: 'hamza',
             charLanguage: null
-        },
+        },*/
         {
             turkishText: 'A',
             arabicText: 'َ',
@@ -7356,7 +7356,7 @@ export const turkishKeyboardDisambiguations = {
             comboCategory: null,
             charLanguage: 'arabic'
         },
-        {
+        /*{
             turkishText: 'e',
             arabicText: 'أ' + 'َ',
             code: 'e14',
@@ -7364,8 +7364,8 @@ export const turkishKeyboardDisambiguations = {
             needsDisambiguation: true,
             comboCategory: null,
             charLanguage: null
-        },
-        {
+        },*/
+        /*{
             turkishText: 'e',
             arabicText: 'أ',
             code: 'ehamza',
@@ -7373,7 +7373,7 @@ export const turkishKeyboardDisambiguations = {
             needsDisambiguation: true,
             comboCategory: null,
             charLanguage: null
-        },
+        },*/
         {
             turkishText: 'eyi',
             arabicText: 'ۀ' + '\u200c' + '\u2009',
@@ -7467,7 +7467,7 @@ export const turkishKeyboardDisambiguations = {
             comboCategory: null,
             charLanguage: 'arabic'
         },
-        {
+        /*{
             turkishText: 'E',
             arabicText: 'أ' + 'َ',
             code: 'E14',
@@ -7475,8 +7475,8 @@ export const turkishKeyboardDisambiguations = {
             needsDisambiguation: true,
             comboCategory: null,
             charLanguage: null
-        },
-        {
+        },*/
+        /*{
             turkishText: 'E',
             arabicText: 'أ',
             code: 'Ehamza',
@@ -7484,7 +7484,7 @@ export const turkishKeyboardDisambiguations = {
             needsDisambiguation: true,
             comboCategory: null,
             charLanguage: null
-        },
+        },*/
         {
             turkishText: 'Eyi',
             arabicText: 'ۀ' + '\u200c' + '\u2009',
@@ -7622,7 +7622,7 @@ export const turkishKeyboardDisambiguations = {
             comboCategory: null,
             charLanguage: null
         },
-        {
+        /*{
             turkishText: 'i',
             arabicText: 'ٸ',
             code: 'ihamza',
@@ -7630,7 +7630,7 @@ export const turkishKeyboardDisambiguations = {
             needsDisambiguation: true,
             comboCategory: null,
             charLanguage: null
-        },
+        },*/
         {
             turkishText: 'i',
             arabicText: 'ي',
@@ -7768,7 +7768,7 @@ export const turkishKeyboardDisambiguations = {
             comboCategory: 'special',
             charLanguage: null
         },
-        {
+        /*{
             turkishText: 'İ',
             arabicText: 'ٸ',
             code: 'Ihamza',
@@ -7776,7 +7776,7 @@ export const turkishKeyboardDisambiguations = {
             needsDisambiguation: true,
             comboCategory: null,
             charLanguage: null
-        },
+        },*/
         {
             turkishText: 'İ',
             arabicText: 'ِ', // kasrah
@@ -8232,7 +8232,7 @@ export const turkishKeyboardDisambiguations = {
             comboCategory: null,
             charLanguage: null
         },
-        {
+        /*{
             turkishText: 'u',
             arabicText: 'أ' + 'ُ',
             code: 'u16',
@@ -8240,8 +8240,8 @@ export const turkishKeyboardDisambiguations = {
             needsDisambiguation: true,
             comboCategory: null,
             charLanguage: null
-        },
-        {
+        },*/
+        /*{
             turkishText: 'u',
             arabicText: 'ٶ',
             code: 'uhamza',
@@ -8249,7 +8249,7 @@ export const turkishKeyboardDisambiguations = {
             needsDisambiguation: true,
             comboCategory: null,
             charLanguage: null
-        },
+        },*/
         {
             turkishText: 'u',
             arabicText: '\u200c' + 'ا',
@@ -8324,7 +8324,7 @@ export const turkishKeyboardDisambiguations = {
             comboCategory: null,
             charLanguage: 'arabic'
         },
-        {
+        /*{
             turkishText: 'U',
             arabicText: 'أ' + 'ُ',
             code: 'U16',
@@ -8332,8 +8332,8 @@ export const turkishKeyboardDisambiguations = {
             needsDisambiguation: true,
             comboCategory: null,
             charLanguage: null
-        },
-        {
+        },*/
+        /*{
             turkishText: 'U',
             arabicText: 'ٶ',
             code: 'Uhamza',
@@ -8341,7 +8341,7 @@ export const turkishKeyboardDisambiguations = {
             needsDisambiguation: true,
             comboCategory: null,
             charLanguage: null
-        },
+        },*/
         {
             turkishText: 'U',
             arabicText: '\u200c' + 'ا',
@@ -8407,7 +8407,7 @@ export const turkishKeyboardDisambiguations = {
             comboCategory: null,
             charLanguage: 'arabic'
         },
-        {
+        /*{
             turkishText: 'ü',
             arabicText: 'أ' + 'ُ',
             code: 'u17',
@@ -8415,7 +8415,7 @@ export const turkishKeyboardDisambiguations = {
             needsDisambiguation: true,
             comboCategory: null,
             charLanguage: null
-        },
+        },*/
         {
             turkishText: 'ü',
             arabicText: '\u200c' + 'ا',
@@ -8481,7 +8481,7 @@ export const turkishKeyboardDisambiguations = {
             comboCategory: null,
             charLanguage: 'arabic'
         },
-        {
+        /*{
             turkishText: 'Ü',
             arabicText: 'أ' + 'ُ',
             code: 'U17',
@@ -8489,7 +8489,7 @@ export const turkishKeyboardDisambiguations = {
             needsDisambiguation: true,
             comboCategory: null,
             charLanguage: null
-        },
+        },*/
         {
             turkishText: 'Ü',
             arabicText: '\u200c' + 'ا',
