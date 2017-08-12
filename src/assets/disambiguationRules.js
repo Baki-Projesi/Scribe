@@ -2085,6 +2085,15 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'y',
+            arabicText: 'ى' + 'ِ',
+            code: 'y4',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: null,
+            charLanguage: null
+        },
+        {
+            turkishText: 'y',
             arabicText: 'ي',
             code: 'y',
             dropdownOrder: 4,
@@ -2137,6 +2146,15 @@ export const englishKeyboardDisambiguations = {
             dropdownOrder: 2,
             needsDisambiguation: true,
             comboCategory: 'sukun',
+            charLanguage: null
+        },
+        {
+            turkishText: 'Y',
+            arabicText: 'ى' + 'ِ',
+            code: 'Y4',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: null,
             charLanguage: null
         },
         {
@@ -8088,6 +8106,15 @@ export const turkishKeyboardDisambiguations = {
             charLanguage: null
         },
         {
+            turkishText: 'y',
+            arabicText: 'ى' + 'ِ',
+            code: 'y4',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: null,
+            charLanguage: null
+        },
+        {
             turkishText: 'y', 
             arabicText: 'ي',
             code: 'y',
@@ -8141,6 +8168,15 @@ export const turkishKeyboardDisambiguations = {
             dropdownOrder: 2,
             needsDisambiguation: true,
             comboCategory: 'sukun',
+            charLanguage: null
+        },
+        {
+            turkishText: 'Y',
+            arabicText: 'ى' + 'ِ',
+            code: 'Y4',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: null,
             charLanguage: null
         },
         {
