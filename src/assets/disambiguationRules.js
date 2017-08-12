@@ -3170,18 +3170,18 @@ export const englishKeyboardDisambiguations = {
             turkishText: 'ˀā',
             arabicText: 'آ',
             code: 'a\'11',
-            dropdownOrder: 4,
+            dropdownOrder: 2,
             needsDisambiguation: true,
-            comboCategory: 'special',
+            comboCategory: 'hamza',
             charLanguage: 'arabic'
         },
         {
             turkishText: 'ˀā',
             arabicText: 'ا',
             code: 'a\'12',
-            dropdownOrder: 4,
+            dropdownOrder: 2,
             needsDisambiguation: true,
-            comboCategory: 'special',
+            comboCategory: 'hamza',
             charLanguage: 'arabic'
         }
     ],
@@ -8559,18 +8559,18 @@ export const turkishKeyboardDisambiguations = {
             turkishText: 'ˀā',
             arabicText: 'آ',
             code: 'a\'11',
-            dropdownOrder: 4,
+            dropdownOrder: 2,
             needsDisambiguation: true,
-            comboCategory: 'special',
+            comboCategory: 'hamza',
             charLanguage: 'arabic'
         },
         {
             turkishText: 'ˀā',
             arabicText: 'ا',
             code: 'a\'12',
-            dropdownOrder: 4,
+            dropdownOrder: 2,
             needsDisambiguation: true,
-            comboCategory: 'special',
+            comboCategory: 'hamza',
             charLanguage: 'arabic'
         }
     ],
