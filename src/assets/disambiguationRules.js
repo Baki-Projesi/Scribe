@@ -10450,28 +10450,6 @@ export const turkishKeyboardDisambiguations = {
             charLanguage: null
         }
     ],
-    'sh': [
-        {
-            turkishText: 'ş' + '\ufeff',
-            arabicText: 'ش',
-            code: 'sh',
-            dropdownOrder: 1,
-            needsDisambiguation: true,
-            comboCategory: null,
-            charLanguage: null
-        }
-    ],
-    'Sh': [
-        {
-            turkishText: 'Ş' + '\ufeff',
-            arabicText: 'ش',
-            code: 'Sh',
-            dropdownOrder: 1,
-            needsDisambiguation: true,
-            comboCategory: null,
-            charLanguage: null
-        }
-    ],
     'li\'l': [
         {
             turkishText: 'li\'l',
