@@ -650,7 +650,7 @@ export default class Transcribe extends Component {
                     <input type="button" value="Save to File" id="saveToFileButton" onClick={this.doFileSave.bind(this)} />
                 </div>
                 <div>
-                    <input type="button" value="Open File" id="openFileButton" ref="openButton" onClick={this.doFileLoad.bind(this)} />
+                    <input type="button" value="Open JSON File" id="openFileButton" ref="openButton" onClick={this.doFileLoad.bind(this)} />
                     <input type="file" ref="filePicker" id="filePickerInput" onChange={this.allowOpen.bind(this)} />
                 </div>
             </div>
