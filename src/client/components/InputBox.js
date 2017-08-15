@@ -8,6 +8,8 @@ import '../styles/CommentPopup.css';
 import CommentPopup from './CommentPopup';
 import Dropdown from './DropDown';
 import { EditorGutter } from './Draft-js-gutter';
+import FileSaver from 'file-saver';
+
 
 /*
     The input area contains a rich text editor that allows the typist to add comment entities to any part of the text
@@ -54,6 +56,24 @@ export default class InputBox extends Component {
         }
     }
 
+    doTextExport() {
+        let fileName = prompt("Please enter the name of this file.");
+        let plainTextBlocks = [];
+        this.props.editorState.getCurrentContent().getBlocksAsArray().forEach((contentBlock) => 
+            plainTextBlocks.push(contentBlock.getText() + "\r\n")
+        )
+
+        if (fileName) {
+            fileName = fileName.replace(/[|&;$%@"<>()+,.]/g, "");
+            fileName += ".txt";
+            let file = new File(plainTextBlocks,
+                fileName,
+                { type: "text/plain;charset=utf-8" });
+
+            FileSaver.saveAs(file);
+        }
+    }
+
     render() {
         let commentInput;
         if (this.props.showCommentInput) {
@@ -88,7 +108,10 @@ export default class InputBox extends Component {
                         ref="editor"
                         styleListItem={{color:'#a6a6a6'}}
                     />
-                    <p className="inputBox-editor_label">Transcription Input</p>
+                    <p className="inputBox-editor_label">
+                        <strong>Transcription Input &nbsp; &nbsp;</strong>
+                        <a href="javascript:void(0)" onClick={this.doTextExport.bind(this)}>Export as .txt</a>
+                    </p>
                 </div>
             </div>
         )

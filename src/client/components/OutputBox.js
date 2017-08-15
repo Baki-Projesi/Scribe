@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { List, Record } from 'immutable';
 import { convertToRaw, ContentBlock } from 'draft-js';
 import '../styles/OutputBox.css';
+import FileSaver from 'file-saver';
 
 export default class OutputBox extends Component {
 
@@ -145,6 +146,22 @@ export default class OutputBox extends Component {
         })
     }
 
+    doTextExport() {
+        let fileName = prompt("Please enter the name of this file.");
+        let plainTextBlocks = [];
+        this.state.contentBlocks.forEach((block => plainTextBlocks.push(block.outputText + "\r\n")))
+
+        if (fileName) {
+            fileName = fileName.replace(/[|&;$%@"<>()+,.]/g, "");
+            fileName += ".txt";
+            let file = new File(plainTextBlocks,
+                fileName,
+                { type: "text/plain;charset=utf-8" });
+
+            FileSaver.saveAs(file);
+        }
+    }
+
     render() {
         const { contentBlocks } = this.state;
         const textBlocks = [];
@@ -168,7 +185,11 @@ export default class OutputBox extends Component {
                 <div className="outputbox-display_container">
                     {textBlocks}
                 </div>
-                <p className="output-editor_label">Ottoman Arabic Script Output</p>
+                <p className="output-editor_label">
+                    <strong>Ottoman Arabic Script Output &nbsp; &nbsp;</strong>
+                    <a href="javascript:void(0)" onClick={this.doTextExport.bind(this)}>Export as .txt</a>
+                </p>
+                
             </div>
         );
     }
