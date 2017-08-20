@@ -1715,7 +1715,7 @@ export const englishKeyboardDisambiguations = {
             comboCategory: null,
             charLanguage: null
         },
-        /*{
+        {
             turkishText: 'ā',
             arabicText: 'آ',
             code: 'a2',
@@ -1723,7 +1723,7 @@ export const englishKeyboardDisambiguations = {
             needsDisambiguation: true,
             comboCategory: null,
             charLanguage: null
-        },*/
+        },
         {
             turkishText: 'a',
             arabicText: '\u06cc', // Farsi yeh
@@ -1760,7 +1760,7 @@ export const englishKeyboardDisambiguations = {
             comboCategory: 'hamza',
             charLanguage: null
         },*/
-        /*{
+        {
             turkishText: 'a',
             arabicText: 'آ',
             code: 'ahamza2',
@@ -1768,7 +1768,7 @@ export const englishKeyboardDisambiguations = {
             needsDisambiguation: true,
             comboCategory: 'hamza',
             charLanguage: null
-        },*/
+        },
         {
             turkishText: 'a',
             arabicText: 'َ',
@@ -1834,7 +1834,7 @@ export const englishKeyboardDisambiguations = {
             comboCategory: null,
             charLanguage: null
         },
-        /*{
+        {
             turkishText: 'Ā',
             arabicText: 'آ',
             code: 'A2',
@@ -1842,7 +1842,7 @@ export const englishKeyboardDisambiguations = {
             needsDisambiguation: true,
             comboCategory: null,
             charLanguage: null
-        },*/
+        },
         {
             turkishText: 'A',
             arabicText: '\u06cc', // Farsi yeh
@@ -1879,7 +1879,7 @@ export const englishKeyboardDisambiguations = {
             comboCategory: 'hamza',
             charLanguage: null
         },*/
-        /*{
+        {
             turkishText: 'A',
             arabicText: 'آ',
             code: 'Ahamza2',
@@ -1887,7 +1887,7 @@ export const englishKeyboardDisambiguations = {
             needsDisambiguation: true,
             comboCategory: 'hamza',
             charLanguage: null
-        },*/
+        },
         {
             turkishText: 'A',
             arabicText: 'َ',
@@ -7091,7 +7091,7 @@ export const turkishKeyboardDisambiguations = {
             comboCategory: null,
             charLanguage: null
         },
-        /*{
+        {
             turkishText: 'ā',
             arabicText: 'آ',
             code: 'a2',
@@ -7099,7 +7099,7 @@ export const turkishKeyboardDisambiguations = {
             needsDisambiguation: true,
             comboCategory: null,
             charLanguage: null
-        },*/
+        },
         {
             turkishText: 'a',
             arabicText: '\u06cc', // Farsi yeh
@@ -7145,7 +7145,7 @@ export const turkishKeyboardDisambiguations = {
             comboCategory: null,
             charLanguage: null
         },*/
-        /*{
+        {
             turkishText: 'a',
             arabicText: 'آ',
             code: 'ahamza2',
@@ -7153,7 +7153,7 @@ export const turkishKeyboardDisambiguations = {
             needsDisambiguation: true,
             comboCategory: null,
             charLanguage: null
-        },*/
+        },
         {
             turkishText: 'a',
             arabicText: 'َ',
@@ -7219,7 +7219,7 @@ export const turkishKeyboardDisambiguations = {
             comboCategory: null,
             charLanguage: null
         },
-        /*{
+        {
             turkishText: 'Ā',
             arabicText: 'آ',
             code: 'A2',
@@ -7227,7 +7227,7 @@ export const turkishKeyboardDisambiguations = {
             needsDisambiguation: true,
             comboCategory: null,
             charLanguage: null
-        },*/
+        },
         {
             turkishText: 'A',
             arabicText: '\u06cc', // Farsi yeh
@@ -7264,7 +7264,7 @@ export const turkishKeyboardDisambiguations = {
             comboCategory: 'hamza',
             charLanguage: null
         },*/
-        /*{
+        {
             turkishText: 'A',
             arabicText: 'آ',
             code: 'Ahamza2',
@@ -7272,7 +7272,7 @@ export const turkishKeyboardDisambiguations = {
             needsDisambiguation: true,
             comboCategory: 'hamza',
             charLanguage: null
-        },*/
+        },
         {
             turkishText: 'A',
             arabicText: 'َ',
