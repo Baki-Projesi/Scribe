@@ -1795,6 +1795,15 @@ export const englishKeyboardDisambiguations = {
             needsDisambiguation: true,
             comboCategory: 'special',
             charLanguage: 'arabic'
+        },
+        {
+            turkishText: 'a-i',
+            arabicText: 'ۀ' + '\u200c' + '\u2009',
+            code: 'ahamza3',
+            dropdownOrder: 3,
+            needsDisambiguation: true,
+            comboCategory: 'hamza',
+            charLanguage: 'arabic'
         }
     ],
     'A': [
@@ -1913,6 +1922,15 @@ export const englishKeyboardDisambiguations = {
             dropdownOrder: 4,
             needsDisambiguation: true,
             comboCategory: 'special',
+            charLanguage: 'arabic'
+        },
+        {
+            turkishText: 'A-i',
+            arabicText: 'ۀ' + '\u200c' + '\u2009',
+            code: 'Ahamza3',
+            dropdownOrder: 3,
+            needsDisambiguation: true,
+            comboCategory: 'hamza',
             charLanguage: 'arabic'
         }
     ],
@@ -7180,6 +7198,15 @@ export const turkishKeyboardDisambiguations = {
             needsDisambiguation: true,
             comboCategory: 'special',
             charLanguage: 'arabic'
+        },
+        {
+            turkishText: 'a-i',
+            arabicText: 'ۀ' + '\u200c' + '\u2009',
+            code: 'ahamza3',
+            dropdownOrder: 3,
+            needsDisambiguation: true,
+            comboCategory: 'hamza',
+            charLanguage: 'arabic'
         }
     ],
     'A': [
@@ -7298,6 +7325,15 @@ export const turkishKeyboardDisambiguations = {
             dropdownOrder: 4,
             needsDisambiguation: true,
             comboCategory: 'special',
+            charLanguage: 'arabic'
+        },
+        {
+            turkishText: 'A-i',
+            arabicText: 'ۀ' + '\u200c' + '\u2009',
+            code: 'aHamza3',
+            dropdownOrder: 3,
+            needsDisambiguation: true,
+            comboCategory: 'hamza',
             charLanguage: 'arabic'
         }
     ],
