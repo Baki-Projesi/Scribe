@@ -27,7 +27,7 @@ export default class DropDown extends Component {
         borderColor: 'grey',
         borderWidth: '1px',
         position: 'absolute',
-        width: '120px',
+        width: '140px',
         top: top + 24,
         left: left + 10,
         color: 'black'
