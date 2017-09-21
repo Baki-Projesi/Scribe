@@ -40,7 +40,7 @@ export default class DropDown extends Component {
     let dropdownOptions, k = 0;
     if (this.props.options) {
       dropdownOptions = this.props.options.map((option) =>
-        <li key={k++}>
+        <li className={'dropDown'} key={k++}>
           {this.generateDropdownString(option)}
         </li>
       );
