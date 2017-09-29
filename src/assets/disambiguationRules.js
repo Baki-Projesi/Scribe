@@ -472,18 +472,18 @@ export const englishKeyboardDisambiguations = {
     ],
     'h': [
         {
-            turkishText: 'ḥ',
-            arabicText: 'ح',
-            code: 'h3',
+            turkishText: 'h',
+            arabicText: 'ه',
+            code: 'h',
             dropdownOrder: 0,
             needsDisambiguation: true,
             comboCategory: null,
             charLanguage: null
         },
         {
-            turkishText: 'h',
-            arabicText: 'ه',
-            code: 'h',
+            turkishText: 'ḥ',
+            arabicText: 'ح',
+            code: 'h3',
             dropdownOrder: 2,
             needsDisambiguation: true,
             comboCategory: null,
@@ -564,18 +564,18 @@ export const englishKeyboardDisambiguations = {
     ],
     'H': [
         {
-            turkishText: 'Ḥ',
-            arabicText: 'ح',
-            code: 'H3',
+            turkishText: 'H',
+            arabicText: 'ه',
+            code: 'H',
             dropdownOrder: 0,
             needsDisambiguation: true,
             comboCategory: null,
             charLanguage: null
         },
         {
-            turkishText: 'H',
-            arabicText: 'ه',
-            code: 'H',
+            turkishText: 'Ḥ',
+            arabicText: 'ح',
+            code: 'H3',
             dropdownOrder: 2,
             needsDisambiguation: true,
             comboCategory: null,
@@ -5880,18 +5880,18 @@ export const turkishKeyboardDisambiguations = {
     ],
     'h': [
         {
-            turkishText: 'ḥ',
-            arabicText: 'ح',
-            code: 'h3',
+            turkishText: 'h',
+            arabicText: 'ه',
+            code: 'h',
             dropdownOrder: 0,
             needsDisambiguation: true,
             comboCategory: null,
             charLanguage: null
         },
         {
-            turkishText: 'h',
-            arabicText: 'ه',
-            code: 'h',
+            turkishText: 'ḥ',
+            arabicText: 'ح',
+            code: 'h3',
             dropdownOrder: 2,
             needsDisambiguation: true,
             comboCategory: null,
@@ -5972,18 +5972,18 @@ export const turkishKeyboardDisambiguations = {
     ],
     'H': [
         {
-            turkishText: 'Ḥ', 
-            arabicText: 'ح',
-            code: 'H3',
+            turkishText: 'H',
+            arabicText: 'ه',
+            code: 'H',
             dropdownOrder: 0,
             needsDisambiguation: true,
             comboCategory: null,
             charLanguage: null
         },
         {
-            turkishText: 'H',
-            arabicText: 'ه',
-            code: 'H',
+            turkishText: 'Ḥ', 
+            arabicText: 'ح',
+            code: 'H3',
             dropdownOrder: 2,
             needsDisambiguation: true,
             comboCategory: null,
