@@ -1443,6 +1443,15 @@ export const englishKeyboardDisambiguations = {
             needsDisambiguation: true,
             comboCategory: null,
             charLanguage: null
+        },
+        {
+            turkishText: '\u203f',
+            arabicText: ' ',
+            code: 'w7',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: null,
+            charLanguage: null
         }
     ],
     'y': [
@@ -6842,6 +6851,15 @@ export const turkishKeyboardDisambiguations = {
             turkishText: '\u200b',
             arabicText: 'ْ',
             code: 'w6',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: null,
+            charLanguage: null
+        },
+        {
+            turkishText: '\u203f',
+            arabicText: ' ',
+            code: 'w7',
             dropdownOrder: 2,
             needsDisambiguation: true,
             comboCategory: null,
