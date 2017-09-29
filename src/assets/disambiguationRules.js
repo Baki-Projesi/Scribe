@@ -472,18 +472,18 @@ export const englishKeyboardDisambiguations = {
     ],
     'h': [
         {
-            turkishText: 'ḥ',
-            arabicText: 'ح',
-            code: 'h3',
+            turkishText: 'h',
+            arabicText: 'ه',
+            code: 'h',
             dropdownOrder: 0,
             needsDisambiguation: true,
             comboCategory: null,
             charLanguage: null
         },
         {
-            turkishText: 'h',
-            arabicText: 'ه',
-            code: 'h',
+            turkishText: 'ḥ',
+            arabicText: 'ح',
+            code: 'h3',
             dropdownOrder: 2,
             needsDisambiguation: true,
             comboCategory: null,
@@ -564,18 +564,18 @@ export const englishKeyboardDisambiguations = {
     ],
     'H': [
         {
-            turkishText: 'Ḥ',
-            arabicText: 'ح',
-            code: 'H3',
+            turkishText: 'H',
+            arabicText: 'ه',
+            code: 'H',
             dropdownOrder: 0,
             needsDisambiguation: true,
             comboCategory: null,
             charLanguage: null
         },
         {
-            turkishText: 'H',
-            arabicText: 'ه',
-            code: 'H',
+            turkishText: 'Ḥ',
+            arabicText: 'ح',
+            code: 'H3',
             dropdownOrder: 2,
             needsDisambiguation: true,
             comboCategory: null,
@@ -1439,6 +1439,24 @@ export const englishKeyboardDisambiguations = {
             turkishText: '\u200b',
             arabicText: 'ْ',
             code: 'w6',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: null,
+            charLanguage: null
+        },
+        {
+            turkishText: '\u203f',
+            arabicText: ' ',
+            code: 'w7',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: null,
+            charLanguage: null
+        },
+        {
+            turkishText: '\u200b',
+            arabicText: 'یٍ',
+            code: 'w8',
             dropdownOrder: 2,
             needsDisambiguation: true,
             comboCategory: null,
@@ -5871,18 +5889,18 @@ export const turkishKeyboardDisambiguations = {
     ],
     'h': [
         {
-            turkishText: 'ḥ',
-            arabicText: 'ح',
-            code: 'h3',
+            turkishText: 'h',
+            arabicText: 'ه',
+            code: 'h',
             dropdownOrder: 0,
             needsDisambiguation: true,
             comboCategory: null,
             charLanguage: null
         },
         {
-            turkishText: 'h',
-            arabicText: 'ه',
-            code: 'h',
+            turkishText: 'ḥ',
+            arabicText: 'ح',
+            code: 'h3',
             dropdownOrder: 2,
             needsDisambiguation: true,
             comboCategory: null,
@@ -5963,18 +5981,18 @@ export const turkishKeyboardDisambiguations = {
     ],
     'H': [
         {
-            turkishText: 'Ḥ', 
-            arabicText: 'ح',
-            code: 'H3',
+            turkishText: 'H',
+            arabicText: 'ه',
+            code: 'H',
             dropdownOrder: 0,
             needsDisambiguation: true,
             comboCategory: null,
             charLanguage: null
         },
         {
-            turkishText: 'H',
-            arabicText: 'ه',
-            code: 'H',
+            turkishText: 'Ḥ', 
+            arabicText: 'ح',
+            code: 'H3',
             dropdownOrder: 2,
             needsDisambiguation: true,
             comboCategory: null,
@@ -6842,6 +6860,24 @@ export const turkishKeyboardDisambiguations = {
             turkishText: '\u200b',
             arabicText: 'ْ',
             code: 'w6',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: null,
+            charLanguage: null
+        },
+        {
+            turkishText: '\u203f',
+            arabicText: ' ',
+            code: 'w7',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: null,
+            charLanguage: null
+        },
+        {
+            turkishText: '\u200b',
+            arabicText: 'یٍ',
+            code: 'w8',
             dropdownOrder: 2,
             needsDisambiguation: true,
             comboCategory: null,
