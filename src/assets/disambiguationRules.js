@@ -5411,6 +5411,17 @@ export const englishKeyboardDisambiguations = {
             comboCategory: null,
             charLanguage: null
         }
+    ],
+    'billāh': [
+        {
+            turkishText: 'billāh',
+            arabicText: 'لله',
+            code: 'billah',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: null,
+            charLanguage: null
+        }
     ]
 
 }
@@ -10738,7 +10749,7 @@ export const turkishKeyboardDisambiguations = {
             arabicText: 'ﷲ',
             code: 'Allah',
             dropdownOrder: 1,
-            needsDisambiguation: true,
+            needsDisambiguation: true, 
             comboCategory: null,
             charLanguage: null
         }
@@ -10748,6 +10759,17 @@ export const turkishKeyboardDisambiguations = {
             turkishText: 'lillāh',
             arabicText: 'لله',
             code: 'lillah',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: null,
+            charLanguage: null
+        }
+    ],
+    'billāh': [
+        {
+            turkishText: 'billāh',
+            arabicText: 'لله',
+            code: 'billah',
             dropdownOrder: 1,
             needsDisambiguation: true,
             comboCategory: null,
