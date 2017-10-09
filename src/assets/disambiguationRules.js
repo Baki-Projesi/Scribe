@@ -2272,15 +2272,15 @@ export const englishKeyboardDisambiguations = {
             comboCategory: null,
             charLanguage: null
         },
-        /*{
+        {
             turkishText: 'i',
             arabicText: 'ٸ',
-            code: 'ihamza',
+            code: 'i28',
             dropdownOrder: 2,
             needsDisambiguation: true,
             comboCategory: 'hamza',
-            charLanguage: null
-        },*/
+            charLanguage: 'persian' //izafet
+        },
         {
             turkishText: 'i',
             arabicText: 'ي',
@@ -2517,15 +2517,15 @@ export const englishKeyboardDisambiguations = {
             comboCategory: 'special',
             charLanguage: null
         },        
-        /*{
+        {
             turkishText: 'İ',
             arabicText: 'ٸ',
-            code: 'Ihamza',
+            code: 'I28',
             dropdownOrder: 2,
             needsDisambiguation: true,
             comboCategory: 'hamza',
-            charLanguage: null
-        },*/
+            charLanguage: 'persian' //izafet
+        },
         {
             turkishText: 'İ', 
             arabicText: 'ِ', // kasrah
@@ -7964,15 +7964,15 @@ export const turkishKeyboardDisambiguations = {
             comboCategory: null,
             charLanguage: null
         },
-        /*{
+        {
             turkishText: 'i',
             arabicText: 'ٸ',
-            code: 'ihamza',
+            code: 'i28',
             dropdownOrder: 2,
             needsDisambiguation: true,
-            comboCategory: null,
-            charLanguage: null
-        },*/
+            comboCategory: 'hamza',
+            charLanguage: 'persian' //izafet
+        },
         {
             turkishText: 'i',
             arabicText: 'ي',
@@ -8110,15 +8110,15 @@ export const turkishKeyboardDisambiguations = {
             comboCategory: 'special',
             charLanguage: null
         },
-        /*{
+        {
             turkishText: 'İ',
             arabicText: 'ٸ',
-            code: 'Ihamza',
+            code: 'I28',
             dropdownOrder: 2,
             needsDisambiguation: true,
-            comboCategory: null,
-            charLanguage: null
-        },*/
+            comboCategory: 'hamza',
+            charLanguage: 'persian'
+        },
         {
             turkishText: 'İ',
             arabicText: 'ِ', // kasrah
