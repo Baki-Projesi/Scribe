@@ -30,7 +30,10 @@ export default class DropDown extends Component {
         width: '140px',
         top: top + 24,
         left: left + 10,
-        color: 'black'
+        color: 'black',
+        paddingRight: 10,
+        paddingBottom: 5,
+        paddingTop: 5
       },
       orderedList: {
         margin: '4px'
