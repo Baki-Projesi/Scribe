@@ -5674,15 +5674,47 @@ export const englishKeyboardDisambiguations = {
     'billāh': [
         {
             turkishText: 'billāh',
-            arabicText: 'لله',
+            arabicText: 'بالله‌',
             code: 'billah',
             dropdownOrder: 1,
             needsDisambiguation: true,
             comboCategory: null,
             charLanguage: null
         }
+    ],
+    'billah': [
+        {
+            turkishText: 'billah',
+            arabicText: 'بالله‌',
+            code: 'billah2',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: null,
+            charLanguage: null
+        }
+    ],
+    'lile': [
+        {
+            turkishText: 'lile',
+            arabicText: 'لـله',
+            code: 'lile',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: null,
+            charLanguage: null
+        }
+    ],
+    'lıle': [
+        {
+            turkishText: 'lıle',
+            arabicText: 'لـله',
+            code: 'lile2',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: null,
+            charLanguage: null
+        }
     ]
-
 }
 
 export const turkishKeyboardDisambiguations = {
@@ -11277,8 +11309,41 @@ export const turkishKeyboardDisambiguations = {
     'billāh': [
         {
             turkishText: 'billāh',
-            arabicText: 'لله',
+            arabicText: 'بالله‌',
             code: 'billah',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: null,
+            charLanguage: null
+        }
+    ],
+    'billah': [
+        {
+            turkishText: 'billah',
+            arabicText: 'بالله‌',
+            code: 'billah2',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: null,
+            charLanguage: null
+        }
+    ],
+    'lile': [
+        {
+            turkishText: 'lile',
+            arabicText: 'لـله',
+            code: 'lile',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: null,
+            charLanguage: null
+        }
+    ],
+    'lıle': [
+        {
+            turkishText: 'lıle',
+            arabicText: 'لـله',
+            code: 'lile2',
             dropdownOrder: 1,
             needsDisambiguation: true,
             comboCategory: null,
