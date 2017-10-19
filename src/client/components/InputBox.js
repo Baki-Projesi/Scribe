@@ -90,9 +90,13 @@ export default class InputBox extends Component {
             </div>;
         }
         if (this.props.showDropdown) {
+            const selectionEnd = this.props.editorState.getSelection().getEndOffset();
+            const obj = window.getSelection().getRangeAt(selectionEnd.selection);
+            var position = obj.getBoundingClientRect();      
             var dropdown = <Dropdown
                 coordinates={this.props.store.mostRecentAmbiguousCharCoords}
                 options={this.props.disambiguationOptions}
+                position={position}
             />
         }
         return (

@@ -16,8 +16,9 @@ export default class DropDown extends Component {
   }
 
   render() {
-    const top = this.props.coordinates ? this.props.coordinates.top : 108;
-    const left = this.props.coordinates ? this.props.coordinates.left : 60;
+    const scroll = window.scrollY;
+    const top = this.props.position.top === 0 ? 132 : this.props.position.top + 24;
+    const left = this.props.position.right === 0 ? 75 : this.props.position.right + 5;
 
     const dropDownStyles = {
       dropDownBox: {
@@ -28,8 +29,8 @@ export default class DropDown extends Component {
         borderWidth: '1px',
         position: 'absolute',
         width: '140px',
-        top: top + 24,
-        left: left + 10,
+        top: top + scroll,
+        left: left,
         color: 'black',
         paddingRight: 10,
         paddingBottom: 5,
