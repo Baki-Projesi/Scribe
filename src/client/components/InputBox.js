@@ -32,7 +32,6 @@ export default class InputBox extends Component {
             showCommentInput,
             store } = this.props;
         this.focus = () => this.refs.editor.focus();
-        const lastTop = 0;
     }
 
 
