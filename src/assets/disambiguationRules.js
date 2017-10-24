@@ -3158,6 +3158,15 @@ export const englishKeyboardDisambiguations = {
             charLanguage: null
         },
         {
+            turkishText: 'ʿʿ',
+            arabicText: 'عّ',
+            code: '\'13',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: null,
+            charLanguage: null
+        },
+        {
             turkishText: 'ˀ',
             arabicText: 'ء',
             code: '\'3',
@@ -8880,6 +8889,15 @@ export const turkishKeyboardDisambiguations = {
             arabicText: 'ع',
             code: '\'2',
             dropdownOrder: 0,
+            needsDisambiguation: true,
+            comboCategory: null,
+            charLanguage: null
+        },
+        {
+            turkishText: 'ʿʿ',
+            arabicText: 'عّ',
+            code: '\'13',
+            dropdownOrder: 2,
             needsDisambiguation: true,
             comboCategory: null,
             charLanguage: null
