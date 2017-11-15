@@ -17,7 +17,7 @@ export default class DropDown extends Component {
 
   render() {
     const scroll = window.scrollY;
-    const top = this.props.position.top === 0 ? 132 : this.props.position.top + 24;
+    const top = this.props.position.top === 0 ? 76 : this.props.position.top + 24;
     const left = this.props.position.right === 0 ? 75 : this.props.position.right + 5;
 
     const dropDownStyles = {
