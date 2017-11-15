@@ -8,9 +8,6 @@ export default class App extends Component {
   render() {
     return (
       <div className="App">
-        <div className="App-header">
-         The Baki Project
-        </div>
         <Transcribe />
       </div>
     );
