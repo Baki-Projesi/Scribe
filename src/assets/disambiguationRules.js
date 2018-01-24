@@ -2238,7 +2238,7 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'i',
-            arabicText: 'ﺍ',
+            arabicText: 'ا',
             code: 'i20',
             dropdownOrder: 2,
             needsDisambiguation: true,
@@ -2337,7 +2337,7 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'ı',
-            arabicText: 'ﺍ',
+            arabicText: 'ا',
             code: 'i21',
             dropdownOrder: 2,
             needsDisambiguation: true,
@@ -2474,7 +2474,7 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'İ',
-            arabicText: 'ﺍ',
+            arabicText: 'ا',
             code: 'I20',
             dropdownOrder: 2,
             needsDisambiguation: true,
@@ -2582,7 +2582,7 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'I',
-            arabicText: 'ﺍ',
+            arabicText: 'ا',
             code: 'I21',
             dropdownOrder: 2,
             needsDisambiguation: true,
@@ -2903,7 +2903,7 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'ü',
-            arabicText: 'ﺍ',
+            arabicText: 'ا',
             code: 'u5',
             dropdownOrder: 2,
             needsDisambiguation: true,
@@ -3067,7 +3067,7 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'Ü',
-            arabicText: 'ﺍ',
+            arabicText: 'ا',
             code: 'U5',
             dropdownOrder: 2,
             needsDisambiguation: true,
@@ -3407,6 +3407,24 @@ export const englishKeyboardDisambiguations = {
             needsDisambiguation: true,
             comboCategory: 'tanwin',
             charLanguage: null
+        },
+        {
+            turkishText: 'an',
+            arabicText: '',
+            code: 'atanwin1',
+            dropdownOrder: 4,
+            needsDisambiguation: true,
+            comboCategory: 'tanwin',
+            charLanguage: null
+        },
+        {
+            turkishText: 'an',
+            arabicText: 'ا',
+            code: 'atanwin2',
+            dropdownOrder: 4,
+            needsDisambiguation: true,
+            comboCategory: 'tanwin',
+            charLanguage: null
         }
     ],
     'en': [
@@ -3427,6 +3445,24 @@ export const englishKeyboardDisambiguations = {
             needsDisambiguation: true,
             comboCategory: 'tanwin',
             charLanguage: null
+        },
+        {
+            turkishText: 'en',
+            arabicText: '',
+            code: 'etanwin1',
+            dropdownOrder: 4,
+            needsDisambiguation: true,
+            comboCategory: 'tanwin',
+            charLanguage: null
+        },
+        {
+            turkishText: 'en',
+            arabicText: 'ا',
+            code: 'etanwin2',
+            dropdownOrder: 4,
+            needsDisambiguation: true,
+            comboCategory: 'tanwin',
+            charLanguage: null
         }
     ],
     'un': [
@@ -3434,6 +3470,15 @@ export const englishKeyboardDisambiguations = {
             turkishText: 'un',
             arabicText: 'ٌ',
             code: 'e8',
+            dropdownOrder: 4,
+            needsDisambiguation: true,
+            comboCategory: 'tanwin',
+            charLanguage: null
+        },
+        {
+            turkishText: 'un',
+            arabicText: '',
+            code: 'utanwin1',
             dropdownOrder: 4,
             needsDisambiguation: true,
             comboCategory: 'tanwin',
@@ -3449,6 +3494,15 @@ export const englishKeyboardDisambiguations = {
             needsDisambiguation: true,
             comboCategory: 'tanwin',
             charLanguage: null
+        },
+        {
+            turkishText: 'ün',
+            arabicText: '',
+            code: 'uumlautetanwin1',
+            dropdownOrder: 4,
+            needsDisambiguation: true,
+            comboCategory: 'tanwin',
+            charLanguage: null
         }
     ],
     'in': [
@@ -3456,6 +3510,15 @@ export const englishKeyboardDisambiguations = {
             turkishText: 'in',
             arabicText: 'ٍ',
             code: 'e9',
+            dropdownOrder: 4,
+            needsDisambiguation: true,
+            comboCategory: 'tanwin',
+            charLanguage: null
+        },
+        {
+            turkishText: 'in',
+            arabicText: '',
+            code: 'itanwin1',
             dropdownOrder: 4,
             needsDisambiguation: true,
             comboCategory: 'tanwin',
@@ -7971,7 +8034,7 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'i',
-            arabicText: 'ﺍ',
+            arabicText: 'ا',
             code: 'i20',
             dropdownOrder: 2,
             needsDisambiguation: true,
@@ -8108,7 +8171,7 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'İ',
-            arabicText: 'ﺍ',
+            arabicText: 'ا',
             code: 'I20',
             dropdownOrder: 2,
             needsDisambiguation: true,
@@ -8218,7 +8281,7 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'ı',
-            arabicText: 'ﺍ',
+            arabicText: 'ا',
             code: 'i21',
             dropdownOrder: 2,
             needsDisambiguation: true,
@@ -8319,7 +8382,7 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'I',
-            arabicText: 'ﺍ',
+            arabicText: 'ا',
             code: 'I21',
             dropdownOrder: 2,
             needsDisambiguation: true,
@@ -8774,7 +8837,7 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'ü',
-            arabicText: 'ﺍ',
+            arabicText: 'ا',
             code: 'u5',
             dropdownOrder: 2,
             needsDisambiguation: true,
@@ -8848,7 +8911,7 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'Ü',
-            arabicText: 'ﺍ',
+            arabicText: 'ا',
             code: 'U5',
             dropdownOrder: 2,
             needsDisambiguation: true,
@@ -9145,6 +9208,24 @@ export const turkishKeyboardDisambiguations = {
             needsDisambiguation: true,
             comboCategory: 'tanwin',
             charLanguage: null
+        },
+        {
+            turkishText: 'an',
+            arabicText: '',
+            code: 'atanwin1',
+            dropdownOrder: 4,
+            needsDisambiguation: true,
+            comboCategory: 'tanwin',
+            charLanguage: null
+        },
+        {
+            turkishText: 'an',
+            arabicText: 'ا',
+            code: 'atanwin2',
+            dropdownOrder: 4,
+            needsDisambiguation: true,
+            comboCategory: 'tanwin',
+            charLanguage: null
         }
     ],
     'en': [
@@ -9165,6 +9246,24 @@ export const turkishKeyboardDisambiguations = {
             needsDisambiguation: true,
             comboCategory: 'tanwin',
             charLanguage: null
+        },
+        {
+            turkishText: 'en',
+            arabicText: '',
+            code: 'etanwin1',
+            dropdownOrder: 4,
+            needsDisambiguation: true,
+            comboCategory: 'tanwin',
+            charLanguage: null
+        },
+        {
+            turkishText: 'en',
+            arabicText: 'ا',
+            code: 'etanwin2',
+            dropdownOrder: 4,
+            needsDisambiguation: true,
+            comboCategory: 'tanwin',
+            charLanguage: null
         }
     ],
     'un': [
@@ -9172,6 +9271,15 @@ export const turkishKeyboardDisambiguations = {
             turkishText: 'un',
             arabicText: 'ٌ',
             code: 'e8',
+            dropdownOrder: 4,
+            needsDisambiguation: true,
+            comboCategory: 'tanwin',
+            charLanguage: null
+        },
+        {
+            turkishText: 'un',
+            arabicText: '',
+            code: 'utanwin1',
             dropdownOrder: 4,
             needsDisambiguation: true,
             comboCategory: 'tanwin',
@@ -9187,6 +9295,15 @@ export const turkishKeyboardDisambiguations = {
             needsDisambiguation: true,
             comboCategory: 'tanwin',
             charLanguage: null
+        },
+        {
+            turkishText: 'ün',
+            arabicText: '',
+            code: 'uumlautetanwin1',
+            dropdownOrder: 4,
+            needsDisambiguation: true,
+            comboCategory: 'tanwin',
+            charLanguage: null
         }
     ],
     'in': [
@@ -9194,6 +9311,15 @@ export const turkishKeyboardDisambiguations = {
             turkishText: 'in',
             arabicText: 'ٍ',
             code: 'e9',
+            dropdownOrder: 4,
+            needsDisambiguation: true,
+            comboCategory: 'tanwin',
+            charLanguage: null
+        },
+        {
+            turkishText: 'in',
+            arabicText: '',
+            code: 'itanwin1',
             dropdownOrder: 4,
             needsDisambiguation: true,
             comboCategory: 'tanwin',
