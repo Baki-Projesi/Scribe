@@ -7842,7 +7842,6 @@ export const turkishKeyboardDisambiguations = {
             turkishText: 'eyi',
             arabicText: 'ۀ' + '\u200c' + '\u2009',
             code: 'ehamza1',
-            charLanguage: 'arabic',
             dropdownOrder: 3,
             needsDisambiguation: true,
             comboCategory: 'hamza',
