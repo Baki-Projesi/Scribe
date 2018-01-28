@@ -388,6 +388,19 @@ export default class Transcribe extends Component {
         const entityKey = contentStateWithEntity.getLastCreatedEntityKey();
         let newSelectionState;
 
+        //remove SPECIAL combos from the combination options list because they are hidden under SPECIALS menu by default
+        if (this.state.combinationOptions && 
+            this.state.combinationOptions.length > 0 && 
+            this.state.disambiguationOptions[this.state.disambiguationOptions.length - 1].turkishText === "SPECIALS") 
+            {
+            for (let i = 0; i < this.state.combinationOptions.length; i++) {
+            let comboOption = this.state.combinationOptions[i];
+                if (comboOption.dropdownOrder === 4) {
+                    this.state.combinationOptions.splice(i, 1);
+                }
+            }
+        }
+
         if (this.state.combinationOptions && this.state.combinationOptions.length > 0 && this.state.combinationOptions.length - choiceIndex > -1) {
             //user chose a combination, need to replace text backwards
             newSelectionState = adjustSelectionOffset(editorState.getSelection(), 0 - chosenText.length, 0);
