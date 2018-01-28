@@ -2237,6 +2237,15 @@ export const englishKeyboardDisambiguations = {
             charLanguage: null
         },
         {
+            turkishText: 'ī',
+            arabicText: 'ئ',
+            code: 'i29',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: null,
+            charLanguage: null
+        },
+        {
             turkishText: 'i',
             arabicText: 'ا',
             code: 'i20',
@@ -2467,6 +2476,15 @@ export const englishKeyboardDisambiguations = {
             turkishText: 'Ī',
             arabicText: 'ى',
             code: 'I18',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: null,
+            charLanguage: null
+        },
+        {
+            turkishText: 'Ī',
+            arabicText: 'ئ',
+            code: 'I29',
             dropdownOrder: 2,
             needsDisambiguation: true,
             comboCategory: null,
@@ -8033,6 +8051,15 @@ export const turkishKeyboardDisambiguations = {
             charLanguage: 'arabic'
         },
         {
+            turkishText: 'ī',
+            arabicText: 'ئ',
+            code: 'i29',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: null,
+            charLanguage: null
+        },
+        {
             turkishText: 'i',
             arabicText: 'ا',
             code: 'i20',
@@ -8168,6 +8195,15 @@ export const turkishKeyboardDisambiguations = {
             needsDisambiguation: true,
             comboCategory: null,
             charLanguage: 'arabic'
+        },
+        {
+            turkishText: 'Ī',
+            arabicText: 'ئ',
+            code: 'I29',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: null,
+            charLanguage: null
         },
         {
             turkishText: 'İ',
