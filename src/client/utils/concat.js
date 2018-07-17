@@ -39,7 +39,7 @@ export default function concat(baseObj, newObj) {
     /* UPDATE ENTITY MAP */
     const newEntityMap = renameKeys(newObj.entityMap, newKeysMap);
     newObj.entityMap = newEntityMap
-    console.log(newObj.entityMap);
+    //console.log(newObj.entityMap);
 
     /* UPDATE BLOCK LIST */
     newObj.blocks.forEach(function(block) {
