@@ -968,6 +968,17 @@ export const englishKeyboardDisambiguations = {
             charLanguage: 'persian'
         }
     ],
+    'q': [
+        {
+            turkishText: '\u21A1',
+            arabicText: '\u21A1',
+            code: 'q0',
+            dropdownOrder: 0,
+            needsDisambiguation: true,
+            comboCategory: null,
+            charLanguage: null
+        }
+    ],
     'r': [
         {
             turkishText: 'r',
@@ -6775,6 +6786,17 @@ export const turkishKeyboardDisambiguations = {
             needsDisambiguation: true,
             comboCategory: null,
             charLanguage: 'persian'
+        }
+    ],
+    'q': [
+        {
+            turkishText: '\u21A1',
+            arabicText: '\u21A1',
+            code: 'q0',
+            dropdownOrder: 0,
+            needsDisambiguation: true,
+            comboCategory: null,
+            charLanguage: null
         }
     ],
     'r': [
