@@ -1983,15 +1983,6 @@ export const englishKeyboardDisambiguations = {
             charLanguage: 'arabic'
         },
         {
-            turkishText: 'eyi',
-            arabicText: 'ۀ' + '\u200c' + '\u2009',
-            code: 'ehamza1',
-            dropdownOrder: 3,
-            needsDisambiguation: true,
-            comboCategory: 'hamza',
-            charLanguage: 'arabic'
-        },
-        {
             turkishText: 'e-i',
             arabicText: 'ۀ' + '\u200c' + '\u2009',
             code: 'ehamza2',
@@ -3286,6 +3277,17 @@ export const englishKeyboardDisambiguations = {
             turkishText: 'eyi',
             arabicText: 'ۀ' + '\u200c' + '\u2009' + '\u06cc',
             code: 'eyi',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: null,
+            charLanguage: null
+        }
+    ],
+    'ī-yi': [
+        {
+            turkishText: 'ī-yi',
+            arabicText: 'ئ',
+            code: 'iyi',
             dropdownOrder: 1,
             needsDisambiguation: true,
             comboCategory: null,
@@ -7681,16 +7683,6 @@ export const turkishKeyboardDisambiguations = {
             charLanguage: 'arabic'
         },
         {
-            turkishText: 'eyi',
-            arabicText: 'ۀ' + '\u200c' + '\u2009',
-            code: 'ehamza1',
-            charLanguage: 'arabic',
-            dropdownOrder: 3,
-            needsDisambiguation: true,
-            comboCategory: 'hamza',
-            charLanguage: 'arabic'
-        },
-        {
             turkishText: 'e-i',
             arabicText: 'ۀ' + '\u200c' + '\u2009',
             code: 'ehamza2',
@@ -8994,6 +8986,17 @@ export const turkishKeyboardDisambiguations = {
             needsDisambiguation: true,
             comboCategory: null,
             charLanguage: 'arabic'
+        }
+    ],
+    'ī-yi': [
+        {
+            turkishText: 'ī-yi',
+            arabicText: 'ئ',
+            code: 'iyi',
+            dropdownOrder: 1,
+            needsDisambiguation: true,
+            comboCategory: null,
+            charLanguage: null
         }
     ],
     'an': [
