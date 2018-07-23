@@ -3372,7 +3372,7 @@ export const englishKeyboardDisambiguations = {
     'yi': [ // does this need a capital case?
         {
             turkishText: 'yi',
-            arabicText: 'ٸ',
+            arabicText: 'ئ',
             code: 'iHamza',
             dropdownOrder: 1,
             needsDisambiguation: true,
@@ -3381,7 +3381,7 @@ export const englishKeyboardDisambiguations = {
         },
         {
             turkishText: 'yı',
-            arabicText: 'ٸ',
+            arabicText: 'ئ',
             code: 'iHamza1',
             dropdownOrder: 1,
             needsDisambiguation: true,
@@ -9200,7 +9200,7 @@ export const turkishKeyboardDisambiguations = {
     'yi': [
         {
             turkishText: 'yi',
-            arabicText: 'ٸ',
+            arabicText: 'ئ',
             code: 'iHamza',
             dropdownOrder: 1,
             needsDisambiguation: true,
