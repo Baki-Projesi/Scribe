@@ -3079,6 +3079,15 @@ export const englishKeyboardDisambiguations = {
             charLanguage: 'arabic'
         },
         {
+            turkishText: '\'',
+            arabicText: 'ا' + '\u200c', // alef
+            code: '\'14',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: null,
+            charLanguage: 'arabic'
+        },
+        {
             turkishText: 'ˀ',
             arabicText: 'أ',
             code: 'ae\'10',
@@ -8776,6 +8785,15 @@ export const turkishKeyboardDisambiguations = {
             turkishText: '\'',
             arabicText: '\u0671' + '\u200c', // alef wasla
             code: '\'4',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: null,
+            charLanguage: 'arabic'
+        },
+        {
+            turkishText: '\'',
+            arabicText: 'ا' + '\u200c', // alef
+            code: '\'14',
             dropdownOrder: 2,
             needsDisambiguation: true,
             comboCategory: null,
