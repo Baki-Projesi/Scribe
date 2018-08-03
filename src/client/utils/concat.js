@@ -1,7 +1,5 @@
 export default function concat(baseObj, newObj) {
     /**
-     * Global states: paragraph list, entitymap, key-counter
-     * 
      * Strategy: 
      * 1. Start with first jsonObj, append paragraphs and entityMap
      * 2. Update counter with key # of last entity
@@ -13,9 +11,10 @@ export default function concat(baseObj, newObj) {
      * 4. Update counter with key # of last entity
      * 5. repeat steps 3, 4 for each jsonObj
      * 6. Download resulting file to browser
+     * 
+     * Returns:
+     * New JSON object that is a result of 
      */
-
-    baseObj.blocks[baseObj.blocks.length - 1] // last paragraph
 
     // Ensure entity map is ordered so we can take the last key #
     const baseEntityMap = orderObjectKeys(baseObj.entityMap);
