@@ -10,9 +10,9 @@ app.use(morgan(':remote-addr - :remote-user [:date[clf]] ":method :url HTTP/:htt
 // Serve static assets
 app.use(express.static(path.resolve(__dirname, '..', 'build')));
 
-// app.get("/concat", (req, res) => { TODO create new page for concatenation of JSON files
-//     res.sendFile(path.resolve)
-// })
+app.get("/jsonconcat", (req, res) => { // TODO create new page for concatenation of JSON files
+    res.sendFile(path.resolve)
+})
 
 // Always return the main index.html, so react-router render the route in the client
 app.get('*', (req, res) => {
