@@ -15,6 +15,11 @@ export default function concat(baseObj, newObj) {
      * 6. Download resulting file to browser
      */
 
+    var blockKeys = {} //keep track of block keys for potential conflicts
+    baseObj.blocks.forEach(function(block){
+        blockKeys[block.key] = true;
+    });
+
     baseObj.blocks[baseObj.blocks.length - 1] // last paragraph
 
     // Ensure entity map is ordered so we can take the last key #
@@ -39,10 +44,14 @@ export default function concat(baseObj, newObj) {
     /* UPDATE ENTITY MAP */
     const newEntityMap = renameKeys(newObj.entityMap, newKeysMap);
     newObj.entityMap = newEntityMap
-    //console.log(newObj.entityMap);
 
     /* UPDATE BLOCK LIST */
     newObj.blocks.forEach(function(block) {
+        if (!blockKeys[block.key]) {
+            blockKeys[block.key] = true;
+        } else {
+            block.key = block.key + Math.floor(Math.random() * 10000) //not perfect but it'll do
+        }
         block.entityRanges.forEach(function(rangeObj) {
             rangeObj["key"] = newKeysMap[rangeObj["key"]];
         });
