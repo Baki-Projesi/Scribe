@@ -1,16 +1,18 @@
 import React, { PropTypes, Component } from 'react';
 import FileSaver from 'file-saver';
+import FilePicker from './FilePicker';
+
 import concat from '../utils/concat';
 import '../styles/FileConcat.css';
 
 export default class JSONConcat extends Component {
     constructor(props) {
         super(props);
+        this.handleAdditionalInput = this.handleAdditionalInput.bind(this);
         this.state = {
             fileNumber: 1,
             inputsToDisplay: [],
             filesToConcat: [],
-
         }
     }
 
@@ -19,19 +21,17 @@ export default class JSONConcat extends Component {
             fileNumber: this.state.fileNumber + 1,
             inputsToDisplay: [
                 ...this.state.inputsToDisplay,
-                <div id="fileInput">
-                    <label>File Selection #{this.state.fileNumber}</label><br/>
-                    <input type="file"
-                    id="chooseFile"
-                    name="jsonFile"
-                    accept="application/json, .json"
-                    multiple="multiple"
-                    onChange={this.addFilesToConcat.bind(this)} />
-                    <button name={this.state.fileNumber} onClick={this.removeFiles.bind(this)}>Remove File</button>
-                    <output id="list"></output>
-                </div>,
+                <FilePicker
+                    onNewInput={this.handleAdditionalInput}
+                    fileNumber={this.state.fileNumber} />,
             ],
         });
+    };
+
+    handleAdditionalInput(files) {
+        for (var i = 0; i < files.length; i++) {
+            this.setUpReader(files[i]);
+        }
     };
 
     removeFiles(e) {
@@ -81,24 +81,6 @@ export default class JSONConcat extends Component {
 
         reader.readAsText(file);
     }
-
-    addFilesToConcat(e) {
-        // add checks for less than two
-        e.preventDefault();
-        var files = e.target.files; // FileList object
-
-        // files is a FileList of File objects. List some properties.
-        var output = [];
-        for (var i = 0; i < files.length; i++) {
-            this.setUpReader(files[i]);
-            
-            output.push('<li><strong>', escape(files[i].name), '</strong> (', files[i].type || 'n/a', ') - ',
-                files[i].size, ' bytes, last modified: ',
-                files[i].lastModifiedDate ? files[i].lastModifiedDate.toLocaleDateString() : 'n/a',
-                        '</li>');
-        }
-        document.getElementById("list").innerHTML = '<ul>' + output.join('') + '</ul>';
-    };
 
     concatFiles(e) {
         e.preventDefault();
