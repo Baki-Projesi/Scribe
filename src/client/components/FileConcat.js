@@ -9,16 +9,6 @@ export default class JSONConcat extends Component {
         this.state = {
             fileNumber: 1,
             inputsToDisplay: [],
-                // <div id="fileInput">
-                //     <label>File #{initialFileNumber}</label><br/>
-                //     <input type="file"
-                //     id="chooseFile"
-                //     name="jsonFile"
-                //     accept="application/json, .json"
-                //     onChange={this.addFilesToConcat.bind(this)} />
-                //     <button name={initialFileNumber} onClick={this.removeFiles.bind(this)}>Remove File</button>
-                // </div>
-            // ],
             filesToConcat: [],
 
         }
@@ -30,13 +20,15 @@ export default class JSONConcat extends Component {
             inputsToDisplay: [
                 ...this.state.inputsToDisplay,
                 <div id="fileInput">
-                    <label>File #{this.state.fileNumber}</label><br/>
+                    <label>File Selection #{this.state.fileNumber}</label><br/>
                     <input type="file"
                     id="chooseFile"
                     name="jsonFile"
                     accept="application/json, .json"
+                    multiple="multiple"
                     onChange={this.addFilesToConcat.bind(this)} />
                     <button name={this.state.fileNumber} onClick={this.removeFiles.bind(this)}>Remove File</button>
+                    <output id="list"></output>
                 </div>,
             ],
         });
@@ -50,7 +42,7 @@ export default class JSONConcat extends Component {
         
         if (this.state.inputsToDisplay.length == 1) {
             this.setState({
-                fileNumber: 0,
+                fileNumber: 1,
                 inputsToDisplay: [],
             }); 
         } else if (this.state.inputsToDisplay.length == 2) {
@@ -73,21 +65,39 @@ export default class JSONConcat extends Component {
         console.log(this.state.inputsToDisplay)
     }
 
-    addFilesToConcat(e) {
-        // add checks for less than two
-        e.preventDefault();
+    setUpReader(file) {
         var jsonObj;
+        var that = this;
         var reader = new FileReader();
         reader.onload = function () {
             jsonObj = JSON.parse(reader.result);
-            this.setState({
+            that.setState({
                 filesToConcat: [
-                    ...this.state.filesToConcat,
+                    ...that.state.filesToConcat,
                     jsonObj,
                 ]
             });
-        }.bind(this);
-        reader.readAsText(e.target.files[0]);
+        };
+
+        reader.readAsText(file);
+    }
+
+    addFilesToConcat(e) {
+        // add checks for less than two
+        e.preventDefault();
+        var files = e.target.files; // FileList object
+
+        // files is a FileList of File objects. List some properties.
+        var output = [];
+        for (var i = 0; i < files.length; i++) {
+            this.setUpReader(files[i]);
+            
+            output.push('<li><strong>', escape(files[i].name), '</strong> (', files[i].type || 'n/a', ') - ',
+                files[i].size, ' bytes, last modified: ',
+                files[i].lastModifiedDate ? files[i].lastModifiedDate.toLocaleDateString() : 'n/a',
+                        '</li>');
+        }
+        document.getElementById("list").innerHTML = '<ul>' + output.join('') + '</ul>';
     };
 
     concatFiles(e) {
@@ -132,7 +142,7 @@ export default class JSONConcat extends Component {
                 <form>
                     {this.state.inputsToDisplay}
                 </form>
-                <button id="addFilePicker" onClick={this.addFile.bind(this)}>Add File</button>
+                <button id="addFilePicker" onClick={this.addFile.bind(this)}>Add File(s)</button>
                 <br />
                 <input id="addFilePicker" onClick={this.concatFiles.bind(this)} type="submit" value="Combine files"/>
             </div>
