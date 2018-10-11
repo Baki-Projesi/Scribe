@@ -1,0 +1,251 @@
+﻿{
+    "blocks": [
+        {
+            "key": "bb31f",
+            "text": "hij ḳ",
+            "type": "unstyled",
+            "depth": 0,
+            "inlineStyleRanges": [],
+            "entityRanges": [
+                {
+                    "offset": 0,
+                    "length": 1,
+                    "key": 0
+                },
+                {
+                    "offset": 1,
+                    "length": 1,
+                    "key": 1
+                },
+                {
+                    "offset": 2,
+                    "length": 1,
+                    "key": 2
+                },
+                {
+                    "offset": 3,
+                    "length": 1,
+                    "key": 3
+                },
+                {
+                    "offset": 4,
+                    "length": 1,
+                    "key": 4
+                }
+            ],
+            "data": {}
+        },
+        {
+            "key": "cgvne",
+            "text": "",
+            "type": "unstyled",
+            "depth": 0,
+            "inlineStyleRanges": [],
+            "entityRanges": [],
+            "data": {}
+        },
+        {
+            "key": "9q6se",
+            "text": "lmmmnōp",
+            "type": "unstyled",
+            "depth": 0,
+            "inlineStyleRanges": [],
+            "entityRanges": [
+                {
+                    "offset": 0,
+                    "length": 1,
+                    "key": 5
+                },
+                {
+                    "offset": 1,
+                    "length": 1,
+                    "key": 6
+                },
+                {
+                    "offset": 2,
+                    "length": 1,
+                    "key": 7
+                },
+                {
+                    "offset": 3,
+                    "length": 1,
+                    "key": 8
+                },
+                {
+                    "offset": 4,
+                    "length": 1,
+                    "key": 9
+                },
+                {
+                    "offset": 5,
+                    "length": 1,
+                    "key": 10
+                },
+                {
+                    "offset": 6,
+                    "length": 1,
+                    "key": 11
+                }
+            ],
+            "data": {}
+        }
+    ],
+    "entityMap": {
+        "0": {
+            "type": "DISAMBIGUATION",
+            "mutability": "IMMUTABLE",
+            "data": {
+                "turkishText": "h",
+                "arabicText": "ه",
+                "code": "h",
+                "dropdownOrder": 0,
+                "needsDisambiguation": true,
+                "comboCategory": null,
+                "charLanguage": null
+            }
+        },
+        "1": {
+            "type": "DISAMBIGUATION",
+            "mutability": "IMMUTABLE",
+            "data": {
+                "turkishText": "i",
+                "arabicText": "ی",
+                "code": "i14",
+                "dropdownOrder": 2,
+                "needsDisambiguation": true,
+                "comboCategory": null,
+                "charLanguage": "arabic"
+            }
+        },
+        "2": {
+            "type": "DISAMBIGUATION",
+            "mutability": "IMMUTABLE",
+            "data": {
+                "turkishText": "j",
+                "arabicText": "ژ",
+                "code": "j",
+                "dropdownOrder": 0,
+                "needsDisambiguation": true,
+                "comboCategory": null,
+                "charLanguage": null
+            }
+        },
+        "3": {
+            "type": "DISAMBIGUATION",
+            "mutability": "IMMUTABLE",
+            "data": {
+                "turkishText": " ",
+                "arabicText": " ",
+                "code": "sp",
+                "dropdownOrder": -1,
+                "needsDisambiguation": false,
+                "comboCategory": null,
+                "charLanguage": null
+            }
+        },
+        "4": {
+            "type": "DISAMBIGUATION",
+            "mutability": "IMMUTABLE",
+            "data": {
+                "turkishText": "ḳ",
+                "arabicText": "ق",
+                "code": "k3",
+                "dropdownOrder": 2,
+                "needsDisambiguation": true,
+                "comboCategory": null,
+                "charLanguage": null
+            }
+        },
+        "5": {
+            "type": "DISAMBIGUATION",
+            "mutability": "IMMUTABLE",
+            "data": {
+                "turkishText": "l",
+                "arabicText": "ل",
+                "code": "l",
+                "dropdownOrder": 0,
+                "needsDisambiguation": true,
+                "comboCategory": null,
+                "charLanguage": null
+            }
+        },
+        "6": {
+            "type": "DISAMBIGUATION",
+            "mutability": "IMMUTABLE",
+            "data": {
+                "turkishText": "m",
+                "arabicText": "م",
+                "code": "m",
+                "dropdownOrder": 0,
+                "needsDisambiguation": true,
+                "comboCategory": null,
+                "charLanguage": null
+            }
+        },
+        "7": {
+            "type": "DISAMBIGUATION",
+            "mutability": "IMMUTABLE",
+            "data": {
+                "turkishText": "m",
+                "arabicText": "م",
+                "code": "m",
+                "dropdownOrder": 0,
+                "needsDisambiguation": true,
+                "comboCategory": null,
+                "charLanguage": null
+            }
+        },
+        "8": {
+            "type": "DISAMBIGUATION",
+            "mutability": "IMMUTABLE",
+            "data": {
+                "turkishText": "m",
+                "arabicText": "م",
+                "code": "m",
+                "dropdownOrder": 0,
+                "needsDisambiguation": true,
+                "comboCategory": null,
+                "charLanguage": null
+            }
+        },
+        "9": {
+            "type": "DISAMBIGUATION",
+            "mutability": "IMMUTABLE",
+            "data": {
+                "turkishText": "n",
+                "arabicText": "ن",
+                "code": "n",
+                "dropdownOrder": 0,
+                "needsDisambiguation": true,
+                "comboCategory": null,
+                "charLanguage": null
+            }
+        },
+        "10": {
+            "type": "DISAMBIGUATION",
+            "mutability": "IMMUTABLE",
+            "data": {
+                "turkishText": "ō",
+                "arabicText": "و",
+                "code": "o1",
+                "dropdownOrder": 2,
+                "needsDisambiguation": true,
+                "comboCategory": null,
+                "charLanguage": null
+            }
+        },
+        "11": {
+            "type": "DISAMBIGUATION",
+            "mutability": "IMMUTABLE",
+            "data": {
+                "turkishText": "p",
+                "arabicText": "پ",
+                "code": "p",
+                "dropdownOrder": 0,
+                "needsDisambiguation": true,
+                "comboCategory": null,
+                "charLanguage": "persian"
+            }
+        }
+    }
+}

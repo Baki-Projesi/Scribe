@@ -109,7 +109,6 @@ Next Steps:
 The technologies involved in Scribe can be broken up into three layers: client-facing, server-side, and database. Our client-facing layer uses React JS, which is a framework made to display data and create interfaces on web pages. The server-side layer is written in Express, which provides user authentication and data retrieval functionality. We store our application data in a non-relational database that uses MongoDB as the driver. These technologies are used because they are widely accepted, relevant, and frequently updated. They will persist with support for years to come.
  
 - Application Hosting / Compute instances: Heroku Hobby/Standard Tier: $7-25/ month
-- Database: https://elements.heroku.com/addons/mongolab $0-18/ month 
 - Domain hosting: UW Servers, hosted by the Near Eastern Languages and Civilization (NELC) department
 - Client View layer: React JS - React makes writing and re-using UI components for the browser easy. There are plenty of resources at developers’ disposal.
 - Server Middleware: Express JS - Express is a fast, unopinionated server solution that is one of the most popular Node-server solutions today.
