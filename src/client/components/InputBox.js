@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import {
-    Editor,
-    RichUtils,
+    RichUtils
 } from 'draft-js';
 import '../styles/InputBox.css';
 import '../styles/CommentPopup.css';
 import CommentPopup from './CommentPopup';
 import Dropdown from './DropDown';
 import { EditorGutter } from './Draft-js-gutter';
-import FileSaver from 'file-saver';
+import writeFile from '../utils/fileWriter';
 
 
 /*
@@ -64,13 +63,7 @@ export default class InputBox extends Component {
         )
 
         if (fileName) {
-            fileName = fileName.replace(/[|&;$%@"<>()+,.]/g, "");
-            fileName += ".txt";
-            let file = new File(plainTextBlocks,
-                fileName,
-                { type: "text/plain;charset=utf-8" });
-
-            FileSaver.saveAs(file);
+            writeFile(fileName, '.txt', plainTextBlocks);
         }
     }
 

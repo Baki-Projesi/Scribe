@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { List, Record } from 'immutable';
 import { convertToRaw, ContentBlock } from 'draft-js';
 import '../styles/OutputBox.css';
-import FileSaver from 'file-saver';
+import writeFile from '../utils/fileWriter';
 
 export default class OutputBox extends Component {
 
@@ -152,13 +152,7 @@ export default class OutputBox extends Component {
         this.state.contentBlocks.forEach((block => plainTextBlocks.push(block.outputText + "\r\n")))
 
         if (fileName) {
-            fileName = fileName.replace(/[|&;$%@"<>()+,.]/g, "");
-            fileName += ".txt";
-            let file = new File(plainTextBlocks,
-                fileName,
-                { type: "text/plain;charset=utf-8" });
-
-            FileSaver.saveAs(file);
+            writeFile(fileName, '.txt', plainTextBlocks);
         }
     }
 

@@ -24,7 +24,7 @@ import DisambiguatedCharacter from './DisambiguatedCharacter';
 import { englishKeyboardDisambiguations, turkishKeyboardDisambiguations } from '../../assets/disambiguationRules';
 import bufferComboSearch from '../utils/bufferComboSearch';
 import generateDraftStateObject from '../utils/generateDraftStateObject';
-import FileSaver from 'file-saver';
+import writeFile from '../utils/fileWriter';
 
 const store = {
     mostRecentAmbiguousCharCoords: null
@@ -577,29 +577,48 @@ export default class Transcribe extends Component {
         let fileName = prompt("Please enter the name of this file.");
 
         if (fileName) {
-            fileName = fileName.replace(/[|&;$%@"<>()+,.]/g, "");
-            fileName += ".json";
-            let file = new File([JSON.stringify(convertToRaw(this.state.editorState.getCurrentContent()))],
-                fileName,
-                { type: "text/plain;charset=utf-8" });
+            //collect metadata and plaintext
+            let archiveContents = {};
+            archiveContents.latinPlainText = [];
+            archiveContents.arabicPlainText = [];
+            archiveContents.editorState = JSON.stringify(convertToRaw(this.state.editorState.getCurrentContent()))
+            
+            //grab latin plain text
+            this.state.editorState.getCurrentContent().getBlocksAsArray()
+                .forEach((contentBlock) => archiveContents.latinPlainText.push(contentBlock.getText() + "\r\n"));
 
-            FileSaver.saveAs(file);
+            //grab arabic plain text
+            this.outputBox.state.contentBlocks.forEach((block => archiveContents.arabicPlainText.push(block.outputText + "\r\n")))
+
+
+            //TODO add metadata instead of direct stringify
+            writeFile(fileName, '.json', JSON.stringify(archiveContents))
         }
-
     }
+
 
     _doFileLoad() {
         const files = this.refs.filePicker.files;
         if (files.length > 0) {
             const fr = new FileReader();
             fr.onload = function (e) {
-                let result = JSON.parse(e.target.result);
+                let fileContentsJson = JSON.parse(e.target.result);
+                if (fileContentsJson.hasOwnProperty("editorState") || fileContentsJson.hasOwnProperty("blocks"))
+                {
+                    let editState = fileContentsJson["editorState"] ? fileContentsJson["editorState"]  : fileContentsJson;
+                    if (typeof editState === 'string') {
+                        editState = JSON.parse(editState);
+                    }
 
-                let editState = EditorState.push(this.state.editorState, convertFromRaw(result));
-                let newState = generateDraftStateObject(editState);
-                newState.didFileLoad = true;
-
-                this.setState(newState);
+                    let combinedEditState = EditorState.push(this.state.editorState, convertFromRaw(editState));
+                    let newState = generateDraftStateObject(combinedEditState);
+                    newState.didFileLoad = true;
+    
+                    this.setState(newState);
+                } 
+                else {
+                    alert("There is no editor state data in the loaded file.")
+                }
             }.bind(this);
             fr.readAsText(files.item(0));
         }
@@ -639,6 +658,7 @@ export default class Transcribe extends Component {
                     <ImageUpload />
 
                     <OutputBox
+                        ref={outputBox => {this.outputBox = outputBox}}
                         transcribeState={this.state}
                     />
                 </div>

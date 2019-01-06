@@ -1,9 +1,9 @@
 import React, { PropTypes, Component } from 'react';
-import FileSaver from 'file-saver';
 import FilePicker from './FilePicker';
 
 import concat from '../utils/concat';
 import '../styles/FileConcat.css';
+import writeFile from '../utils/fileWriter';
 
 export default class JSONConcat extends Component {
     constructor(props) {
@@ -87,11 +87,10 @@ export default class JSONConcat extends Component {
  
         // console.log(this.state.filesToConcat);
         if (this.state.filesToConcat.length > 0) {
-            var basefile = this.state.filesToConcat[0];
+            let basefile = this.state.filesToConcat[0];
             for (var i = 1; i < this.state.filesToConcat.length; i++ ) {
                 var file = this.state.filesToConcat[i];
                 basefile = concat(basefile, file);
-                console.log(basefile);
             }
             this.downloadFile(basefile);
         } else {
@@ -103,13 +102,7 @@ export default class JSONConcat extends Component {
 
         let fileName = prompt("Please enter the name of this file.");
         if (fileName) {
-            fileName = fileName.replace(/[|&;$%@"<>()+,.]/g, "");
-            fileName += ".json";
-            let file = new File([JSON.stringify(fileToDownload)],
-                fileName,
-                { type: "text/plain;charset=utf-8" });
-
-            FileSaver.saveAs(file);
+            writeFile(fileName, '.json', JSON.stringify(fileToDownload))
         }
     };
 
