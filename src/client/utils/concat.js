@@ -1,4 +1,4 @@
-export default function concat(baseObj, newObj) {
+export default function concat(baseJson, newJson) {
     /**
      * Global states: paragraph list, entitymap, key-counter
      * 
@@ -15,7 +15,12 @@ export default function concat(baseObj, newObj) {
      * 6. Download resulting file to browser
      */
 
-    var blockKeys = {} //keep track of block keys for potential conflicts
+    let blockKeys = {} //keep track of block keys for potential conflicts
+    let baseObjStr = baseJson["editorState"] ? baseJson["editorState"] : baseJson;
+    let newObjStr = newJson["editorState"] ? newJson["editorState"] : newJson;
+    let baseObj = JSON.parse(baseObjStr);
+    let newObj = JSON.parse(newObjStr);
+
     baseObj.blocks.forEach(function(block){
         blockKeys[block.key] = true;
     });
@@ -58,11 +63,21 @@ export default function concat(baseObj, newObj) {
     });
 
     /* ADD EVERYTHING TO BASE OBJ */
-    baseObj.blocks = baseObj.blocks.concat(newObj.blocks);
-    baseObj.entityMap = Object.assign(baseObj.entityMap, newObj.entityMap);
+    let updatedObj = {};
+    let updatedJson = JSON.parse(JSON.stringify(baseJson));
+    updatedObj.blocks = baseObj.blocks.concat(newObj.blocks);
+    updatedObj.entityMap = Object.assign(baseObj.entityMap, newObj.entityMap);
 
-    /* RETURN MERGED OBJECT */
-    return baseObj;
+    /* REPLACE BASE JSON'S EDITOR STATE */
+
+    updatedJson.editorState = updatedObj;
+
+    /* CONVERT TO NEW JSON FORMAT */
+    delete updatedJson.blocks;
+    delete updatedJson.entityMap;
+    
+    /* RETURN MERGED JSON */
+    return updatedJson;
 }
 
 function orderObjectKeys(obj) {
