@@ -5653,7 +5653,7 @@ export const englishKeyboardDisambiguations = {
     ],
     'allāh': [
         {
-            turkishText: 'Allāh',
+            turkishText: 'allāh',
             arabicText: 'ﷲ',
             code: 'allah',
             dropdownOrder: 1,
@@ -5664,7 +5664,7 @@ export const englishKeyboardDisambiguations = {
     ],
     'Allāh': [
         {
-            turkishText: 'Allāh',
+            turkishText: 'allāh',
             arabicText: 'ﷲ',
             code: 'Allah',
             dropdownOrder: 1,
@@ -11300,7 +11300,7 @@ export const turkishKeyboardDisambiguations = {
     ],
     'allāh': [
         {
-            turkishText: 'Allāh',
+            turkishText: 'allāh',
             arabicText: 'ﷲ',
             code: 'allah',
             dropdownOrder: 1,
@@ -11311,7 +11311,7 @@ export const turkishKeyboardDisambiguations = {
     ],
     'Allāh': [
         {
-            turkishText: 'Allāh',
+            turkishText: 'allāh',
             arabicText: 'ﷲ',
             code: 'Allah',
             dropdownOrder: 1,
