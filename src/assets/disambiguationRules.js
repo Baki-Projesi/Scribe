@@ -1472,6 +1472,15 @@ export const englishKeyboardDisambiguations = {
             needsDisambiguation: true,
             comboCategory: null,
             charLanguage: null
+        },
+        {
+            turkishText: '\u200b',
+            arabicText: '\u0656',
+            code: 'w9',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: null,
+            charLanguage: null
         }
     ],
     'y': [
@@ -2176,6 +2185,15 @@ export const englishKeyboardDisambiguations = {
             charLanguage: null
         },
         {
+            turkishText: 'ī',
+            arabicText: '', //not represented in Arabic
+            code: 'i30',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: null,
+            charLanguage: null
+        },
+        {
             turkishText: 'i',
             arabicText: 'ا',
             code: 'i20',
@@ -2415,6 +2433,15 @@ export const englishKeyboardDisambiguations = {
             turkishText: 'Ī',
             arabicText: 'ئ',
             code: 'I29',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: null,
+            charLanguage: null
+        },
+        {
+            turkishText: 'Ī',
+            arabicText: '', //not represented in Arabic
+            code: 'I30',
             dropdownOrder: 2,
             needsDisambiguation: true,
             comboCategory: null,
@@ -3292,7 +3319,7 @@ export const englishKeyboardDisambiguations = {
             charLanguage: null
         }
     ],
-    'ī-yi': [
+    'ī-yi': [ // combo not recongized
         {
             turkishText: 'ī-yi',
             arabicText: 'ئ',
@@ -5626,7 +5653,7 @@ export const englishKeyboardDisambiguations = {
     ],
     'allāh': [
         {
-            turkishText: 'Allāh',
+            turkishText: 'allāh',
             arabicText: 'ﷲ',
             code: 'allah',
             dropdownOrder: 1,
@@ -5637,7 +5664,7 @@ export const englishKeyboardDisambiguations = {
     ],
     'Allāh': [
         {
-            turkishText: 'Allāh',
+            turkishText: 'allāh',
             arabicText: 'ﷲ',
             code: 'Allah',
             dropdownOrder: 1,
@@ -7181,6 +7208,15 @@ export const turkishKeyboardDisambiguations = {
             needsDisambiguation: true,
             comboCategory: null,
             charLanguage: null
+        },
+        {
+            turkishText: '\u200b',
+            arabicText: '\u0656',
+            code: 'w9',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: null,
+            charLanguage: null
         }
     ],
     'y': [
@@ -7885,6 +7921,15 @@ export const turkishKeyboardDisambiguations = {
             charLanguage: null
         },
         {
+            turkishText: 'ī', 
+            arabicText: '', // not represented in Arabic
+            code: 'i30',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: null,
+            charLanguage: null
+        },
+        {
             turkishText: 'i',
             arabicText: 'ا',
             code: 'i20',
@@ -8025,6 +8070,15 @@ export const turkishKeyboardDisambiguations = {
             turkishText: 'Ī',
             arabicText: 'ئ',
             code: 'I29',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: null,
+            charLanguage: null
+        },
+        {
+            turkishText: 'Ī',
+            arabicText: '', //not shown in Arabic
+            code: 'I30',
             dropdownOrder: 2,
             needsDisambiguation: true,
             comboCategory: null,
@@ -9006,7 +9060,7 @@ export const turkishKeyboardDisambiguations = {
             charLanguage: 'arabic'
         }
     ],
-    'ī-yi': [
+    'ī-yi': [ //combo not recognized
         {
             turkishText: 'ī-yi',
             arabicText: 'ئ',
@@ -11246,7 +11300,7 @@ export const turkishKeyboardDisambiguations = {
     ],
     'allāh': [
         {
-            turkishText: 'Allāh',
+            turkishText: 'allāh',
             arabicText: 'ﷲ',
             code: 'allah',
             dropdownOrder: 1,
@@ -11257,7 +11311,7 @@ export const turkishKeyboardDisambiguations = {
     ],
     'Allāh': [
         {
-            turkishText: 'Allāh',
+            turkishText: 'allāh',
             arabicText: 'ﷲ',
             code: 'Allah',
             dropdownOrder: 1,
