@@ -1472,6 +1472,15 @@ export const englishKeyboardDisambiguations = {
             needsDisambiguation: true,
             comboCategory: null,
             charLanguage: null
+        },
+        {
+            turkishText: '\u200b',
+            arabicText: '\u0656',
+            code: 'w9',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: null,
+            charLanguage: null
         }
     ],
     'y': [
@@ -3310,7 +3319,7 @@ export const englishKeyboardDisambiguations = {
             charLanguage: null
         }
     ],
-    'ī-yi': [
+    'ī-yi': [ // combo not recongized
         {
             turkishText: 'ī-yi',
             arabicText: 'ئ',
@@ -7199,6 +7208,15 @@ export const turkishKeyboardDisambiguations = {
             needsDisambiguation: true,
             comboCategory: null,
             charLanguage: null
+        },
+        {
+            turkishText: '\u200b',
+            arabicText: '\u0656',
+            code: 'w9',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: null,
+            charLanguage: null
         }
     ],
     'y': [
@@ -9042,7 +9060,7 @@ export const turkishKeyboardDisambiguations = {
             charLanguage: 'arabic'
         }
     ],
-    'ī-yi': [
+    'ī-yi': [ //combo not recognized
         {
             turkishText: 'ī-yi',
             arabicText: 'ئ',
