@@ -1521,9 +1521,27 @@ export const englishKeyboardDisambiguations = {
             charLanguage: null
         },
         {
-            turkishText: 'yy', //remove?
+            turkishText: 'yy',
             arabicText: 'يّ',
             code: 'yy',
+            dropdownOrder: 3,
+            needsDisambiguation: true,
+            comboCategory: 'sheddah',
+            charLanguage: null
+        },
+        {
+            turkishText: 'yy',
+            arabicText: 'ى',
+            code: 'yy2',
+            dropdownOrder: 3,
+            needsDisambiguation: true,
+            comboCategory: 'double',
+            charLanguage: null
+        },
+        {
+            turkishText: 'yy',
+            arabicText: 'ىّ',
+            code: 'yy3',
             dropdownOrder: 3,
             needsDisambiguation: true,
             comboCategory: 'sheddah',
@@ -7257,9 +7275,27 @@ export const turkishKeyboardDisambiguations = {
             charLanguage: null
         },
         {
-            turkishText: 'yy', //remove?
+            turkishText: 'yy',
             arabicText: 'يّ',
             code: 'yy',
+            dropdownOrder: 3,
+            needsDisambiguation: true,
+            comboCategory: 'sheddah',
+            charLanguage: null
+        },
+        {
+            turkishText: 'yy',
+            arabicText: 'ى',
+            code: 'yy2',
+            dropdownOrder: 3,
+            needsDisambiguation: true,
+            comboCategory: 'double',
+            charLanguage: null
+        },
+        {
+            turkishText: 'yy',
+            arabicText: 'ىّ',
+            code: 'yy3',
             dropdownOrder: 3,
             needsDisambiguation: true,
             comboCategory: 'sheddah',
