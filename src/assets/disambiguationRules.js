@@ -1799,6 +1799,15 @@ export const englishKeyboardDisambiguations = {
             charLanguage: 'arabic'
         },
         {
+            turkishText: 'ā', 
+            arabicText: 'ي',
+            code: 'a17',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: null,
+            charLanguage: 'arabic'
+        },
+        {
             turkishText: 'a',
             arabicText: 'آ',
             code: 'ahamza2',
@@ -7538,6 +7547,15 @@ export const turkishKeyboardDisambiguations = {
             turkishText: 'ā',
             arabicText: 'ى', // alef maksura
             code: 'a14',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: null,
+            charLanguage: 'arabic'
+        },
+        {
+            turkishText: 'ā', 
+            arabicText: 'ي',
+            code: 'a17',
             dropdownOrder: 2,
             needsDisambiguation: true,
             comboCategory: null,
