@@ -8465,6 +8465,15 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'ö',
+            arabicText: 'و',
+            code: 'o7',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: null,
+            charLanguage: null
+        },
+        {
+            turkishText: 'ö',
             arabicText: 'او',
             code: 'o3',
             dropdownOrder: 2,
@@ -8476,15 +8485,6 @@ export const turkishKeyboardDisambiguations = {
             turkishText: 'ö',
             arabicText: 'ﺍ',
             code: 'o5',
-            dropdownOrder: 2,
-            needsDisambiguation: true,
-            comboCategory: null,
-            charLanguage: null
-        },
-        {
-            turkishText: 'ö',
-            arabicText: 'و',
-            code: 'o7',
             dropdownOrder: 2,
             needsDisambiguation: true,
             comboCategory: null,
@@ -8503,6 +8503,15 @@ export const turkishKeyboardDisambiguations = {
         },
         {
             turkishText: 'Ö',
+            arabicText: 'و',
+            code: 'O7',
+            dropdownOrder: 2,
+            needsDisambiguation: true,
+            comboCategory: null,
+            charLanguage: null
+        },
+        {
+            turkishText: 'Ö',
             arabicText: 'او',
             code: 'O3',
             dropdownOrder: 2,
@@ -8514,15 +8523,6 @@ export const turkishKeyboardDisambiguations = {
             turkishText: 'Ö',
             arabicText: 'ﺍ',
             code: 'O5',
-            dropdownOrder: 2,
-            needsDisambiguation: true,
-            comboCategory: null,
-            charLanguage: null
-        },
-        {
-            turkishText: 'Ö',
-            arabicText: 'و',
-            code: 'O7',
             dropdownOrder: 2,
             needsDisambiguation: true,
             comboCategory: null,
