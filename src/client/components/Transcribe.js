@@ -585,10 +585,10 @@ export default class Transcribe extends Component {
             
             //grab latin plain text
             this.state.editorState.getCurrentContent().getBlocksAsArray()
-                .forEach((contentBlock) => archiveContents.latinPlainText.push(contentBlock.getText() + "\r\n"));
+                .forEach((contentBlock) => archiveContents.latinPlainText.push(contentBlock.getText()));
 
             //grab arabic plain text
-            this.outputBox.state.contentBlocks.forEach((block => archiveContents.arabicPlainText.push(block.outputText + "\r\n")))
+            this.outputBox.state.contentBlocks.forEach((block => archiveContents.arabicPlainText.push(block.outputText)))
 
 
             //TODO add metadata instead of direct stringify
