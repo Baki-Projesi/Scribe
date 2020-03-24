@@ -1,0 +1,56 @@
+.root {
+    font-family: 'Georgia', 'serif';
+}
+
+.buttons {
+    margin-bottom: 10;
+    margin-top: 10;
+    font-size: 16;
+    text-align: 'center';
+}
+
+.commentInputContainer {
+    margin-bottom: 10;
+}
+
+.commentInput {
+    font-family: 'Georgia', 'serif';
+    margin-right: 10;
+    padding: 3;
+}
+
+.editor {
+    border: 1px solid #ccc;
+    background-color: white;
+    font-size: 20px;
+    cursor: 'text';
+    text-align: left;
+    width: 100%;
+    height: 100%;
+    padding: 1em;
+    word-wrap: break-word;
+    line-height: 1.2em;
+}
+
+.inputBox-editor {
+    display: flex;
+    height: 74vh;
+    width: 35%;
+}
+
+.inputBox-editor_label {
+    border-top: 3px dashed grey;
+    text-align: center;
+    padding-top: 5px;
+}
+
+.comment {
+    opacity: 0.5;
+    background-color: '#ff9e91';
+    text-Decoration: 'underline';
+}
+
+.dropDown {
+    font-size: 20px;
+    line-height: 1.75em;
+}

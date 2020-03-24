@@ -1,0 +1,32 @@
+.JSONConcat {
+    margin: 2em;
+}
+#addFilePicker {
+    background-color: #E85059;
+    border: none;
+    color: white;
+    padding: 8px 24px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    margin-top: 8px
+}
+
+#fileInput {
+    display: inline-block;
+    margin: 1.5em;
+    /* padding: .5em; */
+}
+
+label {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+#chooseFile {
+    width: 100%;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    border-bottom: 3px solid #E85059;
+
+}
