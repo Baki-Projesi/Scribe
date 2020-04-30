@@ -17,14 +17,14 @@ The tool currently, from left to right, has a Latin-based Turkish input box, an 
 This tool is a work in progress, and future iterations will focus on building out the collaborative features of the tool, such as authentication, a project management system, and integrating with The Baki Project's manuscript database.
  
 Next Steps:
-- finish implementing comment functionality
+- implement comment functionality
 - continue usability testing
-- add save state functionality
+- add the ability to save transcriptions to a database
 - refine UI
 - build project management structure
-- capture work metadata about a particular transcription
-- display a read-only view of The Baki Project's manuscript database
- 
+- capture transcription metadata
+- display a read-only view of The Baki Project's manuscript database for users who are not part of the project
+
 ## List of Contents
  
 - Baki-RTT/
@@ -43,6 +43,7 @@ Next Steps:
     - routes.js
     - assets/
       - disambiguationRules.js
+        - This outlines the unique transcription rules for both English and Turkish keyboards
       - logo.svg
     - client/
       - components/
