@@ -1,4 +1,8 @@
 This tool was created by The Baki Project, a Newbook Digital Texts in the Humanities project. Researchers, primarily from the University of Washington (UW), Turkish transcriptionists, Ottomanist scholars, and a UW iSchool Informatics capstone team worked together to produce Scribe, a tool designed to mitigate the faith gap between Arabic and Latin-based Turkish manuscripts.
+
+### Information about the tool and it's purpose can be found on the [Wiki](https://github.com/Baki-Projesi/Scribe/wiki)
+ 
+ 
  
 Below you will find a Project Overview, a List of Contents, a summary of the major technology decisions made related to the Technology Stack, and Contact Information.
  
