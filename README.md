@@ -115,9 +115,9 @@ The technologies involved in Scribe can be broken up into three layers: client-f
 - Server Middleware: Express JS - Express is a fast, unopinionated server solution that is one of the most popular Node-server solutions today.
 - Authentication: Auth0 - Auth0 is an industry leader when it comes to authentication frameworks, and they have simple plugins for using their auth on ExpressJS.
 - Database for Document Storage: MongoDB - MongoDB’s NoSQL, JSON document-based storage matches the structure of our working application data. Using MongoDB allows us to work with native JSON.
+
+Learn more about the technology stack here: https://github.com/Baki-Projesi/Baki-RTT/wiki
  
 ## Contact Information
  
-- Natasha Dietzler - ndiet@uw.edu
-- Rutvi Patel - rutvi@uw.edu
-- Brad Holland - bradholl@uw.edu
+Sarah Ketchley - ketchley@uw.edu
