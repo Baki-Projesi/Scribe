@@ -1,4 +1,8 @@
 This tool was created by The Baki Project, a Newbook Digital Texts in the Humanities project. Researchers, primarily from the University of Washington (UW), Turkish transcriptionists, Ottomanist scholars, and a UW iSchool Informatics capstone team worked together to produce Scribe, a tool designed to mitigate the faith gap between Arabic and Latin-based Turkish manuscripts.
+
+### Information about the tool and it's purpose can be found on the [Wiki](https://github.com/Baki-Projesi/Scribe/wiki)
+ 
+ 
  
 Below you will find a Project Overview, a List of Contents, a summary of the major technology decisions made related to the Technology Stack, and Contact Information.
  
@@ -17,14 +21,14 @@ The tool currently, from left to right, has a Latin-based Turkish input box, an 
 This tool is a work in progress, and future iterations will focus on building out the collaborative features of the tool, such as authentication, a project management system, and integrating with The Baki Project's manuscript database.
  
 Next Steps:
-- finish implementing comment functionality
+- implement comment functionality
 - continue usability testing
-- add save state functionality
+- add the ability to save transcriptions to a database
 - refine UI
 - build project management structure
-- capture work metadata about a particular transcription
-- display a read-only view of The Baki Project's manuscript database
- 
+- capture transcription metadata
+- display a read-only view of The Baki Project's manuscript database for users who are not part of the project
+
 ## List of Contents
  
 - Baki-RTT/
@@ -43,6 +47,7 @@ Next Steps:
     - routes.js
     - assets/
       - disambiguationRules.js
+        - This outlines the unique transcription rules for both English and Turkish keyboards
       - logo.svg
     - client/
       - components/
@@ -114,9 +119,9 @@ The technologies involved in Scribe can be broken up into three layers: client-f
 - Server Middleware: Express JS - Express is a fast, unopinionated server solution that is one of the most popular Node-server solutions today.
 - Authentication: Auth0 - Auth0 is an industry leader when it comes to authentication frameworks, and they have simple plugins for using their auth on ExpressJS.
 - Database for Document Storage: MongoDB - MongoDB’s NoSQL, JSON document-based storage matches the structure of our working application data. Using MongoDB allows us to work with native JSON.
+
+Learn more about the technology stack here: https://github.com/Baki-Projesi/Baki-RTT/wiki
  
 ## Contact Information
  
-- Natasha Dietzler - ndiet@uw.edu
-- Rutvi Patel - rutvi@uw.edu
-- Brad Holland - bradholl@uw.edu
+Sarah Ketchley - ketchley@uw.edu

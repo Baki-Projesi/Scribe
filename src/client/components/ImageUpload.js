@@ -75,30 +75,29 @@ export default class ImageUpload extends React.Component {
     } else {
       ximagePreview = (<div className="previewText">Select an image to view</div>);
     }
-
-    return (
-      <div className="previewComponent">
-
-        <div className="imgPreview">
-          {ximagePreview}
-        </div>
-        <div className="zoomButtons">
-            <button onClick ={this.zoomIn}> + </button>
-            <button onClick ={this.zoomOut}> - </button>
-        </div>
-
-        <form onSubmit={(e)=>this._handleSubmit(e)}>
-                <div className="mdl-textfield mdl-js-textfield mdl-textfield--file fileInput">
-                    <input className="mdl-textfield__input" placeholder="File" value={this.state.file.name} type="text" readOnly/>
-                    <div className="mdl-button mdl-button--primary mdl-button--icon mdl-button--file">
-                        <i className="material-icons">attach_file</i><input type="file" onChange={(e)=>this._handleImageChange(e)} />
+    if (this.props.isCollapsed) {
+      return null;
+    } else {
+      return (
+        <div className="previewComponent">
+            <div className="imgPreview">
+              {ximagePreview}
+            </div>
+            <div className="zoomButtons">
+                <button onClick ={this.zoomIn}> + </button>
+                <button onClick ={this.zoomOut}> - </button>
+            </div>
+  
+            <form onSubmit={(e)=>this._handleSubmit(e)}>
+                    <div className="mdl-textfield mdl-js-textfield mdl-textfield--file fileInput">
+                        <input className="mdl-textfield__input" placeholder="File" value={this.state.file.name} type="text" readOnly/>
+                        <div className="mdl-button mdl-button--primary mdl-button--icon mdl-button--file">
+                            <i className="material-icons">attach_file</i><input type="file" onChange={(e)=>this._handleImageChange(e)} />
+                        </div>
                     </div>
-                </div>
-            {/*<button className="submitButton" 
-              type="submit" 
-              onClick={(e)=>this._handleSubmit(e)}>Upload Image</button>*/}
-        </form>
-      </div>
-    )
+            </form>
+        </div>
+      )
+    }
   }
 }
