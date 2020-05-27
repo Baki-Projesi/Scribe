@@ -17,7 +17,8 @@ p {
 
 .outputbox-display {
     text-align: right;
-    width: 33%;
+    flex-grow: 1;
+    margin-left: 1em;
     border: 1px solid #ccc;
     background-color: white;
     padding: 1.3em;

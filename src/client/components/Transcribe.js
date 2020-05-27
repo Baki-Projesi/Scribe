@@ -67,6 +67,7 @@ export default class Transcribe extends Component {
         const initEditorState = EditorState.createEmpty(decorator);
         this.state = generateDraftStateObject(initEditorState);
         this.state.usingTurkishKeyboard = true;
+        this.state.isViewerCollapsed = false;
 
         this.logState = () => {
             const content = this.state.editorState.getCurrentContent();
@@ -655,7 +656,7 @@ export default class Transcribe extends Component {
                         onCommentInputKeyDown={this.onCommentInputKeyDown}
                         removeComment={this.removeComment}
                     />
-                    <ImageUpload />
+                    <ImageUpload isCollapsed={this.state.isViewerCollapsed} />
 
                     <OutputBox
                         ref={outputBox => {this.outputBox = outputBox}}
@@ -677,6 +678,7 @@ export default class Transcribe extends Component {
                             <li className="mdl-menu__item" onClick={this.toggleCheckboxValue.bind(this, "English Keyboard")}>English Keyboard</li>
                         </ul>
                     </label>
+                    <input type="checkbox" onChange={() => {this.setState({isViewerCollapsed: !this.state.isViewerCollapsed})}}></input><span>Collapse image viewer</span>
 
                 </div>
                 <div>
