@@ -683,6 +683,9 @@ export default class Transcribe extends Component {
                 </div>
                 <div>
                     <input type="button" value="Save to File" id="saveToFileButton" onClick={this.doFileSave.bind(this)} />
+                    <input type="button" value="Combine Files" id="combineFileButton" onClick={() => {
+                        window.open(window.location + "JSONconcat", "_blank"); 
+                    }} />
                 </div>
                 <div>
                     <input type="button" value="Open JSON File" id="openFileButton" ref="openButton" onClick={this.doFileLoad.bind(this)} />
